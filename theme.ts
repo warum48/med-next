@@ -23,6 +23,7 @@ export const theme = createTheme({
       '#059080',
     ],
     brightPink: [
+      /*
       '#fee6f6',
       '#ED9BCF',
       '#EC7CC3',
@@ -33,7 +34,18 @@ export const theme = createTheme({
       '#FF00A1',
       '#E00890',
       '#C50E82',
-      '#AD1374',
+      '#AD1374',*/
+
+      "#ffe9f6",
+      "#ffd1e6",
+      "#faa1c9",
+      "#f66eab",
+      "#f24391",
+      "#f02881",
+      "#f01879",
+      "#d60867",
+      "#c0005c",
+      "#a9004f"
     ],
    // secondaryArray: DesignService.colorSсheme.secondaryArray
 

@@ -48,8 +48,8 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
           <IconPhone size={40} color="#e64980" />
         </Box>
         <Box>
-          <Title order={4} c="pink">+7(812)424-64-74</Title>
-          <Text fw={500} c="pink" fz="xs">
+          <Title order={4}>+7(812)424-64-74</Title>
+          <Text fw={500} fz="xs" ml={'3px'}>
             Контактный центр 24 часа
           </Text>
         </Box>
@@ -58,7 +58,7 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
       <Box
         className={styles.settingsIcon}
         onClick={(e) => setAsideOpen(!asideOpen)}
-        style={{ cursor: 'pointer' }}
+        
         m='xs'
       >
         <IconSettings />
