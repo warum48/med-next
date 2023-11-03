@@ -1,0 +1,141 @@
+.control {
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-xl);
+    color: var(--mantine-color-text);
+    font-size: var(--mantine-font-size-sm);
+  
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+      color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+    }
+  }
+  
+  .link {
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    padding-left: var(--mantine-spacing-md);
+    margin-left: var(--mantine-spacing-xl);
+    font-size: var(--mantine-font-size-sm);
+    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+    border-left: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+      color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+    }
+    
+  }
+
+  .level1link{
+    text-decoration: none;
+  }
+
+  .active button  {
+    font-weight: 700;
+   /* background-color: ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0]};
+    color: ${theme.colorScheme === 'dark' ? theme.white : theme.black}; 
+    div div div div
+    */
+    border-right: 3px solid var(--mantine-color-second-4) !important;
+    /*border: 4px solid pink;
+    .mantine-ThemeIcon-root
+    */
+  }
+
+  /*.active button div div div {
+    
+    color: var(--mantine-color-second-4);
+    background-color:var(--mantine-color-second-0);
+
+  }*/
+
+  .active :global(.mantine-ThemeIcon-root){
+    /* color: pink;  */
+    color: var(--mantine-color-second-4);
+    background-color:var(--mantine-color-second-0);
+
+  }
+  
+  .chevron {
+    transition: transform 200ms ease;
+  }
+  
+
+  /*
+  control {
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    padding: ${theme.spacing.xs} ${theme.spacing.md};
+    color: ${theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black};
+    font-size: ${theme.fontSizes.sm};
+  
+    &:hover {
+      background-color: ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0]};
+      color: ${theme.colorScheme === 'dark' ? theme.white : theme.black};
+    }
+  }*/
+  
+
+  /*
+  link {
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    padding: ${theme.spacing.xs} ${theme.spacing.md};
+    padding-left: rem(31);
+    margin-left: rem(30);
+    font-size: ${theme.fontSizes.sm};
+    color: ${theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7]};
+    border-left: ${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]};
+  
+    &:hover {
+      background-color: ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0]};
+      color: ${theme.colorScheme === 'dark' ? theme.white : theme.black};
+    }
+  
+    &.active button div div div div {
+      font-weight: 700;
+      background-color: ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0]};
+      color: ${theme.colorScheme === 'dark' ? theme.white : theme.black};
+      border-left: 4px solid pink;
+      border: 4px solid pink;
+    }
+  }
+  
+  level1link {
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    font-size: ${theme.fontSizes.sm};
+    color: ${theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7]};
+  
+    &:hover {
+      background-color: ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0]};
+      color: ${theme.colorScheme === 'dark' ? theme.white : theme.black};
+    }
+  
+    &.active {
+      font-weight: 700;
+      color: ${theme.colorScheme === 'dark' ? theme.white : theme.black};
+      border-right: 3px solid #fb6eb5!important;
+    }
+  
+    &.active div {
+      font-weight: 700;
+    }
+  
+    &.active .mantine-ThemeIcon-root {
+      color: ${theme.colors.brightPink[6]};
+      background-color: ${theme.colors.brightPink[0]};
+    }
+  }
+  
+  chevron {
+    transition: transform 200ms ease;
+  }
+  */

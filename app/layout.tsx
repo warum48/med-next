@@ -1,12 +1,18 @@
-import '@mantine/core/styles.css';
+
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, CSSVariablesResolver } from '@mantine/core';
 import { theme } from '../theme';
+import { MAppShell } from '@/components/MAppShell/MAppShell';
+//import '@mantine/core/styles.css';
+import '@mantine/core/styles.layer.css';
+import { ProvidersWrapper } from './ProvidersWrapper';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: 'Virilis',
+  description: 'Сеть детских клиник Вирилис',
 };
+
+
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -20,7 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
   );
