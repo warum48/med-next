@@ -1,0 +1,11 @@
+.control {
+    padding-left: rem(50);
+    padding-right: rem(50);
+  /*  font-family: `Greycliff CF, ${theme.fontFamily}`,*/
+    font-size: rem(22);
+
+   /*[theme.fn.smallerThan('md')]: { */
+    @media (max-width: $mantine-breakpoint-md) {    
+      width: '100%';
+    }
+  }

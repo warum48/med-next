@@ -12,6 +12,12 @@
 /.next/
 /out/
 
+# yarn
+/.yarn
+/.yarn/
+*.gz
+/.yarn/install-state.gz
+
 # production
 /build
 
