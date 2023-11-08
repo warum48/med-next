@@ -42,10 +42,10 @@ export const GlobalProvider = ({ children }: Props) => {
   //const location = useLocation();
   const {DesignService} = useDesign();
   //console.log('location', location);
-  console.log('window.location.origin', window.location.origin);
+ // console.log('window.location.origin', window.location.origin);
 
   //let pathtoserver = "https://dev.shop-survey.ru:8002/";
-  let pathtoserver = window.location.origin+"/";
+  let pathtoserver = window.location.origin ? window.location.origin+"/" : '/';
   try{
     //if(  import.meta.env.VITE_PATH_TO_SERVER){
     //pathtoserver = import.meta.env.VITE_PATH_TO_SERVER;
@@ -55,7 +55,7 @@ export const GlobalProvider = ({ children }: Props) => {
   }
 
   useEffect(()=>{
-    if(window.location.origin.includes('localhost')){
+    if(window?.location?.origin?.includes('localhost')){
       setIsDebug(true);
     }
   },[])
