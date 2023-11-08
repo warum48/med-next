@@ -70,11 +70,11 @@ export function CarouselMain() {
      // mode: 'no-cors'
      })
       .then((response) => {
-        console.log('resp', response)
+        //console.log('resp', response)
        return response.json()
       })
       .then((data) => {
-        console.log('data', data);
+        //console.log('data', data);
         setPosts(data.advSlider);
       })
       .catch((err) => {

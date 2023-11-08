@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'; 
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 //import Cookies from 'js-cookie'
 //import api from './api';
 //import jwt from "jsonwebtoken";
@@ -9,22 +9,24 @@ import { usePathname, useRouter } from 'next/navigation';
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: any) => {
+  const [user, setUser] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
+  const router = useRouter();
+  const pathname = usePathname();
 
-    const [user, setUser] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
-    const router = useRouter();
-    const pathname = usePathname();
-
-
-    React.useEffect(() => {
-        console.log('USER', pathname);
-        // checks if the user is authenticated
-        !user
-        ? router.push("/")
-        : console.log('user');
-        //router.push("/dashboard");
-      }, [pathname]);
-/*
+  React.useEffect(() => {
+    console.log('USER', pathname);
+    // checks if the user is authenticated
+    if (!user) {
+        console.log('NET USERA')
+      router.push('/');
+     // setIsLoading(false);
+    } else {
+      console.log('user');
+    }
+    //router.push("/dashboard");
+  }, [pathname]);
+  /*
     useEffect(() => {
         async function fetchUserFromCookie() {
             const token = Cookies.get('token')
@@ -56,19 +58,52 @@ export const AuthProvider = ({ children }: any) => {
         window.location.pathname = '/login'
     }
     */
-
-
+ /* if (isLoading) {
     return (
-        <AuthContext.Provider value={{ isAuthenticated: !!user
-        //, user, login, loading: isLoading, logout 
-        }}>
-            {children}
-        </AuthContext.Provider>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated: !!user,
+        //, user, login, loading: isLoading, logout
+      }}
+    ><>'loading'</>;
+    </AuthContext.Provider>
     )
-}
+  } */
 
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuthenticated: !!user,
+        //, user, login, loading: isLoading, logout
+      }}
+    >
+      {!isLoading ? <>loading</> : children}
+    </AuthContext.Provider>
+  );
+};
 
-
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => useContext(AuthContext);
 
 //auth https://clerk.com/blog/next13-api-routes-2?utm_source=www.google.com&utm_medium=referral&utm_campaign=none
+/*
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const userInfo = GET_USER_FROM_LS;
+    if (router.pathname !== "/login" && !userInfo) {
+     router.push("/login");
+    } else {
+     setIsLoading(false)
+    }
+  }, []);
+
+  if(isLoading) {
+   return <YourLoadingComponent />
+  }
+
+  return YOUR_DEFAULT_RETURN;
+}
+*/
+//https://stackoverflow.com/questions/72081729/how-to-avoid-unlogged-users-to-see-pages-for-logged-in-users-next-js-client-sid

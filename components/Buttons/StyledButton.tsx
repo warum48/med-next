@@ -27,9 +27,9 @@ export const StyledButton = ({
   //const { classes, theme } = useStyles();
 
   const { DesignService } = React.useContext(GlobalContext);
-  console.log('DesignService', DesignService);
-  console.log('DesignService.buttonRadius', DesignService?.buttonRadius);
-  console.log('-=====appearence', appearence);
+  //console.log('DesignService', DesignService);
+  //console.log('DesignService.buttonRadius', DesignService?.buttonRadius);
+  //console.log('-=====appearence', appearence);
 
   if (appearence == 'intro_second') {
     return (
