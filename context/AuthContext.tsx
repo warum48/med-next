@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: any) => {
     // checks if the user is authenticated
     if (!user) {
         console.log('NET USERA')
-      router.push('/');
+     // router.push('/');
      // setIsLoading(false);
     } else {
       console.log('user');
