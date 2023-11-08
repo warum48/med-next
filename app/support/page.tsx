@@ -10,7 +10,7 @@ import { useCookies } from 'react-cookie';
 //import { RoutesTypes } from 'ROUTES';
 import { TextInfo, Title1_main } from '@/components/TextBlocks/TextBlocks';
 import Link from 'next/link';
-import { RoutesTypes } from '../ROUTES';
+import { RoutesTypes } from '../../global/ROUTES';
 import { InnerPageContainer } from '@/components/Containers/InnerPageContainer';
 
 export default function Support() {

@@ -25,7 +25,7 @@ import {
   //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
   import { Intro } from './Intro';
   //import { CarouselMain } from '../../components/Carousel/CarouselMain';
-  import { StyledButton } from '../../components/Buttons/StyledButton';
+  import { StyledButton } from '../Buttons/StyledButton';
   import classes from './HomePage.module.css';
 import { CarouselMain } from './Carousel';
   

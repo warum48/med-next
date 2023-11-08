@@ -1,5 +1,5 @@
 'use client'
-import { innerPageMaxWidth } from '@/app/CONSTS';
+import { innerPageMaxWidth } from '@/global/CONSTS';
 import { Title, Text,  rem, Box, Paper, Transition } from '@mantine/core';
 //import { innerPageMaxWidth } from '../../CONSTS';
 import { useEffect, useState } from 'react';

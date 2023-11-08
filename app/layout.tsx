@@ -6,7 +6,7 @@ import { MAppShell } from '@/components/MAppShell/MAppShell';
 //import '@mantine/core/styles.css';
 import '@mantine/core/styles.layer.css';
 import '@mantine/carousel/styles.css';
-import { ProvidersWrapper } from './ProvidersWrapper';
+import { ProvidersWrapper } from '../global/ProvidersWrapper';
 
 export const metadata = {
   title: 'Virilis',

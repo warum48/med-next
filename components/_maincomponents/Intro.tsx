@@ -1,6 +1,6 @@
 import { Box, Title, Text, BackgroundImage, Button, rem,  } from '@mantine/core';
 import * as React from 'react';
-import { StyledButton } from '../../components/Buttons/StyledButton';
+import { StyledButton } from '../Buttons/StyledButton';
 import classes from './Intro.module.css';
 
 export const Intro = () => {

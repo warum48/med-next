@@ -12,7 +12,7 @@ import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
 //import { Logo } from './Logo';
 import classes from './NavbarNested.module.css';
-import { pages } from '@/app/ROUTES';
+import { pages } from '@/global/ROUTES';
 
 const mockdata = [
   { label: 'Dashboard', icon: IconGauge },

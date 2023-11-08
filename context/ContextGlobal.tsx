@@ -1,7 +1,7 @@
-'use client'
-import React, { createContext, useState, useEffect } from "react";
+'use client';
+import React, { createContext, useState, useEffect } from 'react';
 //import { useLocation } from "react-router-dom";
-import { TColorScheme, TDesignService, useDesign } from "./useDesign";
+import { TColorScheme, TDesignService, useDesign } from './useDesign';
 /*import {useSearchParamsService} from "_utilslib";
 import type { TSearchParamsService } from "_utilslib";
 import { useQuery } from "@apollo/client";
@@ -12,15 +12,14 @@ import { exportImagesZipFileNameVar } from "_apollo/state/Export_Images";
 import { exportImagesZipLinkVar } from "_apollo/state/Export_Images";*/
 
 interface IContext {
-
   token: string; //авторизация
   setToken: React.Dispatch<React.SetStateAction<string>>;
-  asideOpen:boolean, 
+  asideOpen: boolean;
   setAsideOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  pathtoserver:string;
+  pathtoserver: string;
   isDebug: boolean;
   DesignService: TDesignService;
-/*  SearchParamsService: TSearchParamsService;  //много функций
+  /*  SearchParamsService: TSearchParamsService;  //много функций
   
   UpdatingQueryService: any;
   
@@ -36,50 +35,50 @@ type Props = {
 //--------------component-----------
 
 export const GlobalProvider = ({ children }: Props) => {
-  const [token, setToken] = React.useState("");
-  const [asideOpen, setAsideOpen] = React.useState(false);
-  const [isDebug, setIsDebug] = useState<boolean>(false);
-  //const location = useLocation();
-  const {DesignService} = useDesign();
-  //console.log('location', location);
- // console.log('window.location.origin', window.location.origin);
-
-  //let pathtoserver = "https://dev.shop-survey.ru:8002/";
-  let pathtoserver = window.location.origin ? window.location.origin+"/" : '/';
   try{
-    //if(  import.meta.env.VITE_PATH_TO_SERVER){
-    //pathtoserver = import.meta.env.VITE_PATH_TO_SERVER;
-    //}
+  console.log('+++window'); //, window
   }catch(e){
     console.log(e);
   }
+  const [token, setToken] = React.useState('');
+  const [asideOpen, setAsideOpen] = React.useState(false);
+  const [isDebug, setIsDebug] = useState<boolean>(false);
+  //const location = useLocation();
+  const { DesignService } = useDesign();
+  //console.log('location', location);
+  // console.log('window.location.origin', window.location.origin);
 
-  useEffect(()=>{
-    if(window?.location?.origin?.includes('localhost')){
-      setIsDebug(true);
-    }
-  },[])
+  //let pathtoserver = "https://dev.shop-survey.ru:8002/";
+  //let pathtoserver = window.location.origin ? window.location.origin+"/" : '/';
+  let pathtoserver = '/';
+  try {
+    //if(  import.meta.env.VITE_PATH_TO_SERVER){
+    //pathtoserver = import.meta.env.VITE_PATH_TO_SERVER;
+    //}
+  } catch (e) {
+    console.log(e);
+  }
 
-
+  useEffect(() => {
+    // if(window?.location?.origin?.includes('localhost')){
+    //  setIsDebug(true);
+    // }
+  }, []);
 
   const value = {
     token,
     setToken,
-    asideOpen, setAsideOpen,
+    asideOpen,
+    setAsideOpen,
     pathtoserver,
     isDebug,
-    DesignService
-   /* setIsDebug,
+    DesignService,
+    /* setIsDebug,
     
     SearchParamsService,
     
     UpdatingQueryService*/
   };
 
-  return (
-      <GlobalContext.Provider value={value}>
-          {children}
-      </GlobalContext.Provider>
-  );
+  return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
 };
-
