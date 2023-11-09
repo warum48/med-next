@@ -4,6 +4,8 @@ import { theme } from '../theme';
 import { MAppShell } from '@/components/MAppShell/MAppShell';
 import { GlobalProvider } from '@/context/ContextGlobal';
 import { AuthProvider } from '@/context/AuthContext';
+//import { ApolloWrapper } from '@/apollo/apollo-wrapper';
+import { ApolloSettingsProvider } from '@/apollo';
 
 const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
@@ -27,12 +29,14 @@ export const ProvidersWrapper = ({ children }: any) => {
   }
 
   return (
+    <ApolloSettingsProvider>
     <GlobalProvider>
-        <AuthProvider>
-    <MantineProvider theme={theme} cssVariablesResolver={resolver}>
-      <MAppShell>{children}</MAppShell>
-    </MantineProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <MantineProvider theme={theme} cssVariablesResolver={resolver}>
+          <MAppShell>{children}</MAppShell>
+        </MantineProvider>
+      </AuthProvider>
     </GlobalProvider>
+    </ApolloSettingsProvider>
   );
 };

@@ -1,29 +1,46 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { RoutesTypes } from '@/global/ROUTES';
+import { useCookies } from 'react-cookie';
 //import Cookies from 'js-cookie'
 //import api from './api';
 //import jwt from "jsonwebtoken";
 //import { createContext, useContext, useState } from 'react'
 
 //const JWT_KEY = process.env.JWT_SECRET_KEY;
-const AuthContext = createContext({});
+interface IContext {
+  isAuthenticated: boolean,
+        //, user, login, loading: isLoading, logout
+        checkAuth: () =>void
+}
+
+export const AuthContext = createContext({} as IContext);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(false);
+  const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    console.log('USER', pathname);
-    // checks if the user is authenticated
-    if (!user) {
-        console.log('NET USERA')
-     // router.push('/');
-     // setIsLoading(false);
+  function checkAuth() {
+    //if (!user) {
+      if (!cookiesToken) {  
+      console.log('NET USERA');
+      // router.push('/');
+      // setIsLoading(false);
     } else {
       console.log('user');
+      if (pathname == RoutesTypes.Auth) {
+        router.push(RoutesTypes.Home);
+      }
     }
+  }
+
+  React.useEffect(() => {
+    console.log('pathname', pathname);
+    // checks if the user is authenticated
+
     //router.push("/dashboard");
   }, [pathname]);
   /*
@@ -58,7 +75,7 @@ export const AuthProvider = ({ children }: any) => {
         window.location.pathname = '/login'
     }
     */
- /* if (isLoading) {
+  /* if (isLoading) {
     return (
     <AuthContext.Provider
       value={{
@@ -73,8 +90,9 @@ export const AuthProvider = ({ children }: any) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!user,
+        isAuthenticated: !!cookiesToken,//!!user,
         //, user, login, loading: isLoading, logout
+        checkAuth: checkAuth
       }}
     >
       {!isLoading ? <>loading</> : children}
@@ -82,7 +100,7 @@ export const AuthProvider = ({ children }: any) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+//export const useAuth = () => useContext(AuthContext);
 
 //auth https://clerk.com/blog/next13-api-routes-2?utm_source=www.google.com&utm_medium=referral&utm_campaign=none
 /*
