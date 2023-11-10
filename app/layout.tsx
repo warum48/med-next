@@ -17,6 +17,7 @@ export const metadata = {
 
 
 export default function RootLayout({ children }: { children: any }) {
+  console.log('__root.layput');
   return (
     <html lang="en">
       <head>

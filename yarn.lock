@@ -2293,6 +2293,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/dates@npm:^7.2.1":
+  version: 7.2.1
+  resolution: "@mantine/dates@npm:7.2.1"
+  dependencies:
+    clsx: 2.0.0
+  peerDependencies:
+    "@mantine/core": 7.2.1
+    "@mantine/hooks": 7.2.1
+    dayjs: ^1.10.5
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 4c919b56fdb54ec8be4702903af1b69b109e7eab6be980c2207f458bcce46b0280ab26ca1958210f9a868b3f19dfa7782a4916009915015dffd86e560c3212ac
+  languageName: node
+  linkType: hard
+
 "@mantine/form@npm:^7.2.1":
   version: 7.2.1
   resolution: "@mantine/form@npm:7.2.1"
@@ -7020,6 +7035,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.10":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: a6b5a3813b8884f5cd557e2e6b7fa569f4c5d0c97aca9558e38534af4f2d60daafd3ff8c2000fed3435cfcec9e805bcebd99f90130c6d1c5ef524084ced588c4
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -11006,6 +11028,7 @@ __metadata:
     "@babel/core": ^7.22.1
     "@mantine/carousel": ^7.0.0
     "@mantine/core": 7.2.0
+    "@mantine/dates": ^7.2.1
     "@mantine/form": ^7.2.1
     "@mantine/hooks": 7.2.0
     "@next/bundle-analyzer": ^13.5.3
@@ -11027,6 +11050,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.59.7
     "@typescript-eslint/parser": ^5.59.7
     babel-loader: ^9.1.2
+    dayjs: ^1.11.10
     embla-carousel-react: ^8.0.0-rc14
     eslint: ^8.41.0
     eslint-config-airbnb: 19.0.4

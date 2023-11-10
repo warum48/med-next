@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: any) => {
       // router.push('/');
       // setIsLoading(false);
     } else {
-      console.log('user');
+      console.log('-=-=-=-=user');
       if (pathname == RoutesTypes.Auth) {
         router.push(RoutesTypes.Home);
       }
@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }: any) => {
 
   React.useEffect(() => {
     console.log('pathname', pathname);
+    checkAuth()
     // checks if the user is authenticated
 
     //router.push("/dashboard");
