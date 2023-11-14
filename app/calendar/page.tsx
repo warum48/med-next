@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 //------MUI-----
 //import { useTheme } from "@mui/material/styles";
@@ -11,7 +11,6 @@ import React, { useEffect, useState } from 'react';
   Button,
 } from "@mui/material"; */
 //------COMPONENTS----
-
 
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid'; // TODO check if I need it
@@ -42,7 +41,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 //import { EventInfo } from './FullCalendar/EventInfo';
 //import { zIndexMap } from "_zIndexMap";
 //import { Helmet } from 'react-helmet';
-import { Box, Button, Grid, Group, Space, Stack, Tooltip } from '@mantine/core';
+import { Box, Button, Grid, Group, SimpleGrid, Space, Stack, Tooltip } from '@mantine/core';
 //import { Title1_main, Title2_second, Title4_second } from '../../_styles/headers';
 import { useCookies } from 'react-cookie';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
@@ -52,7 +51,7 @@ import { AppointmentItem } from '@/components/_calendar/AppointmentItem';
 //import { AppointmentItem } from './components/AppointmentItem';
 //import { GET_CALENDAR } from "_apollo/queries/calendar/calendar";
 
-export default function CalendarPage()  {
+export default function CalendarPage() {
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   //const theme = useTheme();
   //const localizer = momentLocalizer(moment);
@@ -181,8 +180,6 @@ export default function CalendarPage()  {
 
   return (
     <InnerPageContainer>
-      
-
       {/*
       <Dialog
         open={eventView}
@@ -219,58 +216,66 @@ export default function CalendarPage()  {
         //mt="xl"
       >
         <Title1_main>Календарь посещений</Title1_main>
-        <Space h='xl'/>
-        <Grid gutter={'2.5rem'} >
+        <Space h="xl" />
+        <Grid gutter={'2.5rem'}>
           <Grid.Col span={12}>
-          <Title4_second>Ближайшие записи:</Title4_second>
-          <Space h='xl'></Space>
-            <Group grow>
-              
+            <Title4_second>Ближайшие записи:</Title4_second>
+            <Space h="xl"></Space>
+            <SimpleGrid
+              // grow
+              cols={{ base: 1, lg: 2 }}
+              spacing={{ base: 'md', sm: 'md' }}
+              verticalSpacing={{ base: 'md', sm: 'md' }}
+            >
               {Array.from(Array(3)).map((item: any, index: number) => (
-                <AppointmentItem timeStart={events[index].start} {...mockDoctor} key={'ap'+index}/>
+                <AppointmentItem
+                  timeStart={events[index].start}
+                  {...mockDoctor}
+                  key={'ap' + index}
+                />
               ))}
-            </Group>
+            </SimpleGrid>
           </Grid.Col>
           <Grid.Col span={12}>
-           <Space h='xl'/>
-              <Box
-                key={'index' + cookieToken}
-                className="calendar_page_calendar"
-                maw={1200}
-                mt={'-1.1rem'}
-                //sx={{
-                //mt: { xs: 4, md: 0 },
-                //  mt: 0
-                //}}
-              >
-                {userHasAppointments ? (
-                  <Box>
-                    {events.length > 0 && (
-                      <FullCalendar
-                        fixedWeekCount={false}
-                        //moreLinkContent={rendermoreLinkContent}
-                        key={'ke' + calKey}
-                        plugins={[
-                          dayGridPlugin,
-                          timeGridPlugin,
-                          //interactionPlugin
-                        ]}
-                        headerToolbar={{
-                          left: 'prev,next today',
-                          center: 'title',
-                          right: 'dayGridMonth,timeGridDay', //timeGridWeek,
-                        }}
-                        initialView="dayGridMonth"
-                        // editable={true}
-                        selectable={true}
-                        selectMirror={true}
-                        dayMaxEvents={true}
-                        firstDay={1}
-                        locale={ruLocale}
-                        //initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-                        initialEvents={events} //{data.getStKalendar.resultsList}
-                        eventClick={handleEventClick}
-                        /*eventContent={(arg) => {
+            <Space h="xl" />
+            <Box
+              key={'index' + cookieToken}
+              className="calendar_page_calendar"
+              maw={1200}
+              mt={'-1.1rem'}
+              //sx={{
+              //mt: { xs: 4, md: 0 },
+              //  mt: 0
+              //}}
+            >
+              {userHasAppointments ? (
+                <Box>
+                  {events.length > 0 && (
+                    <FullCalendar
+                      fixedWeekCount={false}
+                      //moreLinkContent={rendermoreLinkContent}
+                      key={'ke' + calKey}
+                      plugins={[
+                        dayGridPlugin,
+                        timeGridPlugin,
+                        //interactionPlugin
+                      ]}
+                      headerToolbar={{
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridDay', //timeGridWeek,
+                      }}
+                      initialView="dayGridMonth"
+                      // editable={true}
+                      selectable={true}
+                      selectMirror={true}
+                      dayMaxEvents={true}
+                      firstDay={1}
+                      locale={ruLocale}
+                      //initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+                      initialEvents={events} //{data.getStKalendar.resultsList}
+                      eventClick={handleEventClick}
+                      /*eventContent={(arg) => {
                       return (
                         <Tooltip
                          // placement="top"
@@ -286,9 +291,9 @@ export default function CalendarPage()  {
                         </Tooltip>
                       );
                     }} */
-                      />
-                    )}
-                    {/*
+                    />
+                  )}
+                  {/*
                 <TableAPIStatus
                   loading={loading}
                   data={data}
@@ -299,12 +304,11 @@ export default function CalendarPage()  {
                   tableArray={events}
                   emptyArrayText="Не найдено событий, удовлетворяющих условиям фильтров"
                   />*/}
-                  </Box>
-                ) : (
-                  <Box>Нет записей</Box>
-                )}
-              </Box>
-              
+                </Box>
+              ) : (
+                <Box>Нет записей</Box>
+              )}
+            </Box>
           </Grid.Col>
         </Grid>
       </Box>
@@ -314,6 +318,6 @@ export default function CalendarPage()  {
                 )*/}
     </InnerPageContainer>
   );
-};
+}
 
 //https://stackoverflow.com/questions/57194259/react-fullcalendar-v4-tooltip

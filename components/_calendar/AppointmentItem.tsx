@@ -61,7 +61,7 @@ export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIcon
     
       <CardContainer
         expanded={expanded}
-        miw={expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -32) }//448}
+        //miw={expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -40) }//448} //-32
       >
         <CardExpandButton expanded={expanded} setExpanded={setExpanded}/>
        

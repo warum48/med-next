@@ -10,6 +10,13 @@ import '@mantine/dates/styles.css';
 import '@/styles/index.css';
 import { ProvidersWrapper } from '../global/ProvidersWrapper';
 
+import { Alegreya } from 'next/font/google'
+
+const alegreya = Alegreya({
+  subsets: ['latin', 'cyrillic'],
+  display: 'swap',
+})
+
 export const metadata = {
   title: 'Virilis',
   description: 'Сеть детских клиник Вирилис',
@@ -20,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: any }) {
   console.log('__root.layput');
   return (
-    <html lang="en">
+    <html lang="en" className={alegreya.className}>
       <head>
         <ColorSchemeScript />
         <link rel="shortcut icon" href="/favicon.svg" />

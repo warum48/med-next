@@ -5,6 +5,14 @@ import { createTheme } from '@mantine/core';
 export const theme = createTheme({
   /* Put your mantine theme override here */
  // colorScheme,
+ breakpoints: {
+  'xs': '36em',
+  'sm': '48em',
+  'md': '62em',
+  'lg': '75em',
+  'xl': '88em',
+  'xxl': '100em', //!!added
+ },
   colors: {
    // virilisPink: ['#fb6eb5'],
    // virilisGreen: ['#2fb797'],
@@ -36,7 +44,8 @@ export const theme = createTheme({
       '#C50E82',
       '#AD1374',*/
 
-      "#ffe9f6",
+      //"#ffe9f611",
+      "#f66eab11",
       "#ffd1e6",
       "#faa1c9",
       "#f66eab",

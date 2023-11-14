@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from 'react';
 import {
   AppShell,
@@ -10,6 +10,7 @@ import {
   Group,
   useMantineColorScheme,
   Box,
+  Grid,
 } from '@mantine/core';
 
 import { useDisclosure } from '@mantine/hooks';
@@ -28,28 +29,30 @@ import { IconSettings } from '@tabler/icons-react';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { NavbarNested } from './NavbarNested';
 import { Header } from './Header';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 //import { RoutesTypes } from 'ROUTES';
 
-export function MAppShell({children}:any) {
+export function MAppShell({ children }: any) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const theme = useMantineTheme();
-  const [openedAside, setOpenedAside] = useState(false);
+  //const [openedAside, setOpenedAside] = useState(false);
   const largeScreen = useMediaQuery('(min-width: 88em)');
   const midUpScreen = useMediaQuery('(min-width: 75em)');
   const { DesignService, asideOpen, setAsideOpen } = React.useContext(GlobalContext);
- // const [opened, { toggle }] = useDisclosure();
- const [opened, setOpened] = useState(false);
+  // const [opened, { toggle }] = useDisclosure();
+  const [opened, setOpened] = useState(false);
   //const location = useLocation();
-  const headerProps = {opened, setOpened, asideOpen, setAsideOpen}
+  const headerProps = { opened, setOpened, asideOpen, setAsideOpen };
 
   return (
     <AppShell
       header={{ height: { base: 60, md: 70, lg: 80 } }}
       navbar={{
-        width: { base: 320,
-          // md: 300, lg: 400 
-          },
+        width: {
+          base: 320,
+          // md: 300, lg: 400
+        },
         breakpoint: 'sm',
         collapsed: { mobile: !opened },
       }}
@@ -57,15 +60,16 @@ export function MAppShell({children}:any) {
     >
       <AppShell.Header>
         <Group h="100%" px="md">
-         {/* <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
-          <Header {...headerProps}/>
+          {/* <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
+          <Header {...headerProps} />
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md" pb={0}
-     // pr={{base: 0, md: 'md'}}
-     pr={0}
+      <AppShell.Navbar
+        p="md"
+        pb={0}
+        // pr={{base: 0, md: 'md'}}
+        pr={0}
       >
-       
         {/*Array(15)
           .fill(0)
           .map((_, index) => (
@@ -73,9 +77,22 @@ export function MAppShell({children}:any) {
           ))
           
           */}
-          <NavbarNested/>
+        <NavbarNested />
       </AppShell.Navbar>
-      <AppShell.Main style={{background: 'linear-gradient(180deg, rgba(250, 250, 250, 0) -4.58%, #f6f6f6 53.11%, #f4f4f4 74.48%, rgba(255, 255, 255, 0) 94.27%);'}}>{children}</AppShell.Main>
+      <AppShell.Main
+        style={{
+          background:
+            'linear-gradient(180deg, #99999907 -4.58%, #66666605 33.11%, #66666611 74.48%, #99999907 94.27%);',
+        }}
+      >
+        
+        {asideOpen ? children : 
+        <Grid gutter="md" pb='xl'>
+          <Grid.Col span={9}>{children}</Grid.Col>
+          <Grid.Col span={3}><ColorSchemeToggle /></Grid.Col>
+      </Grid> }
+     
+      </AppShell.Main>
     </AppShell>
   );
 }

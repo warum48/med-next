@@ -50,7 +50,7 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
         <Box>
           <Title order={4}>+7(812)424-64-74</Title>
           <Text fw={500} fz="xs" ml={'3px'}>
-            Контактный центр 24 часа
+            Контактный центр 24 часа 
           </Text>
         </Box>
       </Group>
@@ -58,7 +58,6 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
       <Box
         className={styles.settingsIcon}
         onClick={(e) => setAsideOpen(!asideOpen)}
-        
         m='xs'
       >
         <IconSettings />
