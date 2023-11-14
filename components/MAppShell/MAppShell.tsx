@@ -75,7 +75,7 @@ export function MAppShell({children}:any) {
           */}
           <NavbarNested/>
       </AppShell.Navbar>
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main style={{background: 'linear-gradient(180deg, rgba(250, 250, 250, 0) -4.58%, #f6f6f6 53.11%, #f4f4f4 74.48%, rgba(255, 255, 255, 0) 94.27%);'}}>{children}</AppShell.Main>
     </AppShell>
   );
 }

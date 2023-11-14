@@ -25,6 +25,7 @@ import { ApolloError, NetworkStatus } from '@apollo/client';
 //import { ErrorMessage } from '../../../components/Errors/ErrorMessage';
 import { GetMedicalCentersQuery } from '@/__generated__/graphql';
 import { ErrorMessage } from '../Errors/ErrorMessage';
+import classes from './MedCenterChooser.module.css';
 
 type TProps = {
   form: any;
@@ -54,7 +55,7 @@ export const MedCenterChooser = ({
           //value={valueAdress} onChange={setValueAdress}
           {...form.getInputProps('address')}
         >
-          <Group gap="xl">
+          <div className={classes.medcontainer} >
             <Stack gap="xs">
               {data_medcenter?.getMedicalCenters?.data
                 ?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
@@ -95,7 +96,7 @@ export const MedCenterChooser = ({
                   />
                 ))}
             </Stack>
-          </Group>
+          </div>
         </Checkbox.Group>
       )}
     </>

@@ -1,5 +1,5 @@
 'use client';
-import { MantineProvider, ColorSchemeScript, CSSVariablesResolver } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, CSSVariablesResolver, MantineColorsTuple } from '@mantine/core';
 import { theme } from '../theme';
 import { MAppShell } from '@/components/MAppShell/MAppShell';
 import { GlobalProvider } from '@/context/ContextGlobal';
@@ -23,6 +23,14 @@ const resolver: CSSVariablesResolver = (theme) => ({
   },
 });
 
+const addColors = {colors:{
+  
+    'ocean-blue': ['#7AD1DD', '#5FCCDB', '#44CADC', '#2AC9DE', '#1AC2D9', '#11B7CD', '#09ADC3', '#0E99AC', '#128797', '#147885'] as MantineColorsTuple,
+    //'bright-pink': ['#F0BBDD', '#ED9BCF', '#EC7CC3', '#ED5DB8', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'] as MantineColorsTuple,
+    'secondary-array': ['#F0BBDD', '#ED9BCF', '#EC7CC3', '#ED5DB8', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'] as MantineColorsTuple,
+
+  }}
+
 export const ProvidersWrapper = ({ children }: any) => {
   if (theme?.colors?.brightPink) {
     console.log('theme.colors.brightPink[5]', theme?.colors?.brightPink[5]);
@@ -32,7 +40,7 @@ export const ProvidersWrapper = ({ children }: any) => {
     <ApolloSettingsProvider>
     <GlobalProvider>
       <AuthProvider>
-        <MantineProvider theme={theme} cssVariablesResolver={resolver}>
+        <MantineProvider theme={{ ...addColors, ...theme}} cssVariablesResolver={resolver}>
           <MAppShell>{children}</MAppShell>
         </MantineProvider>
       </AuthProvider>

@@ -1906,6 +1906,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fullcalendar/core@npm:^6.1.9":
+  version: 6.1.9
+  resolution: "@fullcalendar/core@npm:6.1.9"
+  dependencies:
+    preact: ~10.12.1
+  checksum: 836db3e40cd441faab974665a454e46f8e5288d6a5fcb38193ae95c19ec3dc639c48c944a69d633ec64e73f7b6752d76f92363c3c6ca8c08dbd88d84b160ab77
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/daygrid@npm:^6.1.9, @fullcalendar/daygrid@npm:~6.1.9":
+  version: 6.1.9
+  resolution: "@fullcalendar/daygrid@npm:6.1.9"
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.9
+  checksum: 3db55247c4e1911462c37ff0448fcef8be132c5a0a0eada9ec00aef6c203f2d4fdffb82131566318e6eec2848b9ad6b8174b5e36c307106fa0c48071942096f4
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/react@npm:^6.1.9":
+  version: 6.1.9
+  resolution: "@fullcalendar/react@npm:6.1.9"
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.9
+    react: ^16.7.0 || ^17 || ^18
+    react-dom: ^16.7.0 || ^17 || ^18
+  checksum: 7471c2947c11371af7eca6a71f38108483150347780eb2fb2bf6bf7c4c357f5d3b51136b3dfd9bf79e627ace7cd4e544b10fd4f06021b0240945126a3f392602
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/timegrid@npm:^6.1.9":
+  version: 6.1.9
+  resolution: "@fullcalendar/timegrid@npm:6.1.9"
+  dependencies:
+    "@fullcalendar/daygrid": ~6.1.9
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.9
+  checksum: 8c12a508f7c96be7897ba7496e2253efd1a3a01a8e7e7049bc5f1832fbbb04dec55d32cb41f8e2f03bc1f8d4a404508c48548a7b8f66684db36093e3ee12b412
+  languageName: node
+  linkType: hard
+
 "@graphql-typed-document-node/core@npm:^3.1.1":
   version: 3.2.0
   resolution: "@graphql-typed-document-node/core@npm:3.2.0"
@@ -9438,6 +9478,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "immer@npm:10.0.3"
+  checksum: 76acabe6f40e752028313762ba477a5d901e57b669f3b8fb406b87b9bb9b14e663a6fbbf5a6d1ab323737dd38f4b2494a4e28002045b88948da8dbf482309f28
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^3.2.1, import-fresh@npm:^3.3.0":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -11026,6 +11073,10 @@ __metadata:
     "@apollo/client": ^3.8.7
     "@apollo/experimental-nextjs-app-support": ^0.5.1
     "@babel/core": ^7.22.1
+    "@fullcalendar/core": ^6.1.9
+    "@fullcalendar/daygrid": ^6.1.9
+    "@fullcalendar/react": ^6.1.9
+    "@fullcalendar/timegrid": ^6.1.9
     "@mantine/carousel": ^7.0.0
     "@mantine/core": 7.2.0
     "@mantine/dates": ^7.2.1
@@ -11063,6 +11114,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-testing-library: ^5.11.0
     graphql: ^16.8.1
+    immer: ^10.0.3
     jest: ^29.5.0
     jest-environment-jsdom: ^29.5.0
     next: 13.5.3
@@ -12420,6 +12472,13 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 1d8611341b073143ad90486fcdfeab49edd243377b1f51834dc4f6d028e82ce5190e4f11bb2633276864503654fb7cab28e67abdc0fbf9d1f88cad4a0ff0beea
+  languageName: node
+  linkType: hard
+
+"preact@npm:~10.12.1":
+  version: 10.12.1
+  resolution: "preact@npm:10.12.1"
+  checksum: 0de99f477563ab7f94a0f964952ad216375973c0dcd9eb49881f8eb5effc5ed6948da062548c87d5bb0d82f1a1e516b649020e760eab3a0503dfdd8e64d34a26
   languageName: node
   linkType: hard
 

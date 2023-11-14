@@ -92,8 +92,10 @@ export function DoctorInfo({
           {expanded ? '✕' : '➔'}
         </Button>
         <Grid>
-          <Grid.Col span="auto">
-            <Group wrap="nowrap">
+          <Grid.Col span="auto" maw="100%">
+            <Group 
+            wrap="nowrap"
+            >
               <Avatar src={photo} size={expanded ? 150 : 80} radius="md" />
               <div>
                 <Text fz="xs" tt="uppercase" fw={700} c="dimmed">

@@ -6,7 +6,7 @@ import classes from './NavbarLinksGroup.module.css';
 import Link from 'next/link';
 
 import { useRouter } from 'next/navigation'; //'next/router';
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface LinksGroupProps {
   icon: React.FC<any>;
@@ -20,7 +20,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const items = (hasLinks ? links : []).map((link) => (
     <Text<'a'>
@@ -39,7 +39,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
       <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
         <Group justify="space-between" gap={0}>
           <Box style={{ display: 'flex', alignItems: 'center' }}>
-            <ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'} >
+            <ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'}>
               <Icon style={{ width: rem(18), height: rem(18) }} />
             </ThemeIcon>
             <Box ml="md">{label}</Box>
@@ -64,8 +64,28 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
   //asPath
 
   console.log('router.pathname', pathname);
+  console.log('link ', link );
+  console.log('-----link.substring(1, link.length)', link?.substring(1, link?.length));
 
-  return <>{link ? <Link href={link} className={pathname == link ? (classes.active + ' ' + classes.level1link) : (classes.level1link) }>{Item}</Link> : Item}</>;
+  return (
+    <>
+      {link ? (
+        <Link
+          href={link}
+          className={
+            //!!pathname == link 
+           // pathname.replace('/','').includes(link.replace('/','')) 
+           pathname == link || pathname.substring(1, pathname.length).includes(link.substring(1, link.length)) && link.substring(1, link.length) != ''
+            ? classes.active + ' ' + classes.level1link : classes.level1link
+          }
+        >
+          {Item}
+        </Link>
+      ) : (
+        Item
+      )}
+    </>
+  );
 }
 
 const mockdata = {

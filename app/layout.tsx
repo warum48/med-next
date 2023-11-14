@@ -6,6 +6,7 @@ import { MAppShell } from '@/components/MAppShell/MAppShell';
 //import '@mantine/core/styles.css';
 import '@mantine/core/styles.layer.css';
 import '@mantine/carousel/styles.css';
+import '@mantine/dates/styles.css';
 import '@/styles/index.css';
 import { ProvidersWrapper } from '../global/ProvidersWrapper';
 

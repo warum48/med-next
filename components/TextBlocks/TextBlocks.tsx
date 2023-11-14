@@ -34,14 +34,16 @@ export const TitleLabel = ({ children, ...props }: TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title
+    <>
+   {/* <Title
     // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
     // {...props}
-    >
+  > */}
       <Text className={classes.title3} component="span" inherit {...props}>
         {children}
       </Text>
-    </Title>
+    {/*</Title>*/}
+    </>
   );
 };
 

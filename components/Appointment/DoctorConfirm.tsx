@@ -9,7 +9,7 @@ import { StyledButton } from '../Buttons/StyledButton';
 type TProps = {
   form?: any;
 };
-type UserInfoIconsProps = {
+type DoctorConfirmProps = {
   avatar: string;
   name: string;
   title: string;
@@ -24,7 +24,7 @@ export const DoctorConfirm = ({
   phone,
   email,
   form,
-}: UserInfoIconsProps & TProps) => {
+}: DoctorConfirmProps & TProps) => {
   const theme = useMantineTheme();
   return (
     <>

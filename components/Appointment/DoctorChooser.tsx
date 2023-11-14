@@ -1,7 +1,7 @@
 //351
 
 import { Title, Text, Grid } from '@mantine/core';
-import { UserInfoIcons } from './userInfoIcons';
+//import { UserInfoIcons } from './userInfoIcons';
 //import { useHeadersStyles } from '../../../_styles/headers';
 //import { mockDoctor } from '../mock/data';
 import { useQuery } from '@apollo/client';
