@@ -52,7 +52,8 @@ import { CarouselMain } from './Carousel';
         <Box
           //my="-0.125rem"
           mt="-xs" 
-         
+         maw={1350}
+         style={{margin: '0 auto'}}
         >
           <Container my="md" p="0" style={{ maxWidth: '100%' }}>
             {/*<Intro/>*/}

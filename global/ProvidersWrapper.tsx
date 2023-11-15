@@ -1,11 +1,16 @@
 'use client';
 import { MantineProvider, ColorSchemeScript, CSSVariablesResolver, MantineColorsTuple } from '@mantine/core';
 import { theme } from '../theme';
-import { MAppShell } from '@/components/MAppShell/MAppShell';
+//import { MAppShell } from '@/components/MAppShell/MAppShell';
 import { GlobalProvider } from '@/context/ContextGlobal';
 import { AuthProvider } from '@/context/AuthContext';
 //import { ApolloWrapper } from '@/apollo/apollo-wrapper';
 import { ApolloSettingsProvider } from '@/apollo';
+import dynamic from 'next/dynamic';
+
+const MAppShell=  dynamic(() => import('@/components/MAppShell/MAppShell').then((mod) => mod.MAppShell) , {
+  ssr: false,
+}) 
 
 const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
