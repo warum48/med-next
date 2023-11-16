@@ -26,6 +26,9 @@ import { Doctor } from '@/__generated__/graphql';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import React from 'react';
 import { GET_DOCTORS_SERVICES } from '@/apollo/queries/main/getDoctorsServices';
+import { CardContainer } from '../Card/CardContainer';
+import { CardExpandButton } from '../Card/CardExpandButton';
+import { innerPageMaxWidth } from '@/global/CONSTS';
 
 /*const useStyles = createStyles((theme) => ({
   icon: {
@@ -70,27 +73,11 @@ export function DoctorInfo({
   },[data_services])
 
   return (
-    <Grid.Col span={expanded ? 12 : 6}>
-      <Paper
-        //maw={700}
-        style={{ position: 'relative' }}
-        shadow="xs"
-        p={expanded ? 'xl' : 'xs'}
-        withBorder
-        //w={expanded ? '100%':'50%'}
-        //miw={expanded ? '100%':300}
-        //mih={expanded ? 400 : 0}
-        //ml='xs'
+    <CardContainer
+        expanded={expanded}
+       // miw={expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -40) }//448}
       >
-        <Button
-          //compact
-          size="compact-xs"
-          variant="light"
-          style={{ position: 'absolute', top: '4px', right: '4px' }}
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? '✕' : '➔'}
-        </Button>
+        <CardExpandButton expanded={expanded} setExpanded={setExpanded}/>
         <Grid>
           <Grid.Col span="auto" maw="100%">
             <Group 
@@ -160,7 +147,6 @@ export function DoctorInfo({
             </Grid.Col>
           )}
         </Grid>
-      </Paper>
-    </Grid.Col>
+      </CardContainer>
   );
 }

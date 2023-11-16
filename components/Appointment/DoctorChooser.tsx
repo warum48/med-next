@@ -1,6 +1,6 @@
 //351
 
-import { Title, Text, Grid } from '@mantine/core';
+import { Title, Text, Grid, Group, SimpleGrid } from '@mantine/core';
 //import { UserInfoIcons } from './userInfoIcons';
 //import { useHeadersStyles } from '../../../_styles/headers';
 //import { mockDoctor } from '../mock/data';
@@ -22,17 +22,25 @@ export const DoctorChooser = () => {
 
   return (
     <>
-      {/*<Title>
-        <Text className={classes.title3} component="span" inherit>
-          Наши врачи ( <u>популярные</u> / <u>все</u> )
-        </Text>
-      </Title>*/}
+      
       <TitleLabel>Наши врачи  ( <u>популярные</u> / <u>все</u> )</TitleLabel>
-      <Grid>
+      {/*<Group 
+            grow
+            >
         {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
           <DoctorInfo key={'uii' + index} {...item} />
         ))}
-      </Grid>
+        </Group>*/}
+        <SimpleGrid
+           // grow
+           cols={{ base: 1, lg: 2 }}
+            spacing={{ base: 'md', sm: 'md' }}
+      verticalSpacing={{ base: 'md', sm: 'md' }}
+            >
+        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
+          <DoctorInfo key={'uii' + index} {...item} />
+        ))}
+      </SimpleGrid>
     </>
   );
 };

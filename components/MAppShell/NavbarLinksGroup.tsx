@@ -40,7 +40,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
         <Group justify="space-between" gap={0}>
           <Box style={{ display: 'flex', alignItems: 'center' }}>
             <ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'}>
-              <Icon style={{ width: rem(18), height: rem(18) }} />
+            <Icon style={{ width: rem(18), height: rem(18) }} />
             </ThemeIcon>
             <Box ml="md">{label}</Box>
           </Box>

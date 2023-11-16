@@ -29,6 +29,7 @@
     line-height: 1.05;
     max-width: rem(500);
     font-size: rem(18);
+    color:var(--mantine-color-second-4);
 }
 
 .title5 {

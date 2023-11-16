@@ -104,14 +104,25 @@ export function CarouselMain() {
   );*/
 
   return (
-   
+    <Card
+    withBorder 
+    //radius="md" 
+    p={0} 
+    mb='md'
+   // className={classes.carousel}
+   //style={{
+    //marginBottom:0, 
+    //paddingBottom:0, 
+    //height:'400px', 
+   // overflow:'hidden', borderRadius: '0.5rem',  border:'0.0625rem solid #dee2e6'}}
+    >
         <Carousel
         //radius="md"
-        //withBorder
+       // withBorder
         //mantine-Carousel-root
           withIndicators
           loop
-          style={{borderRadius: '0.5rem',  border:'0.0625rem solid #dee2e6'}}
+         // style={{borderRadius: '0.5rem',  border:'0.0625rem solid #dee2e6'}}
           classNames={{
             root: classes.carousel,
             controls: classes.carouselControls,
@@ -123,6 +134,7 @@ export function CarouselMain() {
           {slides}
          
         </Carousel>
+        </Card>
       
   )
 }

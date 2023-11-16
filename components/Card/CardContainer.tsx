@@ -1,9 +1,9 @@
 import { Paper } from '@mantine/core';
 import * as React from 'react';
 
-type TProps = { children: React.ReactNode; expanded: boolean; miw: string | number };
+type TProps = { children: React.ReactNode; expanded: boolean; miw?: string | number };
 
-export const CardContainer = ({ children, expanded = false, miw }: TProps) => {
+export const CardContainer = ({ children, expanded = false, miw="100%" }: TProps) => {
   //React.PropsWithChildren
 
   return (
