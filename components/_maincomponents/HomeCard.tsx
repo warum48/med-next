@@ -1,5 +1,14 @@
-import { Paper, Title, rem, useMantineTheme, Text } from '@mantine/core';
+import { Paper, Title, rem, useMantineTheme, Text, ThemeIcon, Group, Stack, Box } from '@mantine/core';
 import * as React from 'react';
+import {
+    IconNotes,
+    IconCalendarStats,
+    IconGauge,
+    IconPresentationAnalytics,
+    IconFileAnalytics,
+    IconAdjustments,
+    IconLock,
+  } from '@tabler/icons-react';
 
 type TProps = {
   textColor?: string;
@@ -22,7 +31,17 @@ export const HomeCard = ({ textColor = 'black', bgColor = '#FFF8FB', children }:
         height: SECONDARY_COL_HEIGHT,
       }}
     >
-      {children}
+        <Group align='top' wrap='nowrap' gap="xs">
+        {/*<ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'} style={{backgroundColor:'white'}}></ThemeIcon>*/}
+            <IconNotes style={{ width: rem(28), height: rem(28) , 
+               // color: 'white'
+                paddingTop:'4px'
+                }} />
+            
+            <Box>{children}</Box>
+            
+        </Group>
+      
     </Paper>
   );
 };
