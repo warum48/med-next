@@ -25,8 +25,9 @@ export default function Support() {
             Если у вас есть замечания или предложения по работе сайта <br />
             пишите нам на{' '}
             <Anchor size="sm" component="button">
-              lalala@mail.ru
+              lalala@mail.ru 
             </Anchor>
+             &nbsp;или звоните по телефону +7 (812)331-17-00 (Круглосуточный контактный центр)
           </TextInfo>
         </>
       ) : (

@@ -74,7 +74,7 @@ export enum RoutesTypes {
       link: RoutesTypes.Calendar,
     },
     {
-      label: 'Документы',
+      label: 'Запросить документы', //TODO review
       icon: IconFiles,
       link: RoutesTypes.Documents,
     },
@@ -85,11 +85,12 @@ export enum RoutesTypes {
       link: RoutesTypes.Payments,
     },
   
-    {
+  /*  {
       label: 'Профиль',
       icon: IconUserCircle,
       link: RoutesTypes.Profile,
     },
+    */
   
     {
       label: 'Моя семья',
@@ -104,7 +105,7 @@ export enum RoutesTypes {
     },
   
     {
-      label: 'Техподдержка',
+      label: 'Обратная связь',
       icon: IconHelp,
       link: RoutesTypes.Support,
     },

@@ -13,7 +13,7 @@ export default function HomePage() {
       <UserHomePage /> :
       <Home />
     }
-      <ColorSchemeToggle />
+      {/*<ColorSchemeToggle />*/}
     </>
   );
 }

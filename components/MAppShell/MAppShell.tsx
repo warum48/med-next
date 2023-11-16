@@ -67,35 +67,38 @@ export function MAppShell({ children }: any) {
         </Group>
       </AppShell.Header>
 
-
-{cookieToken.mednekot ?
-      <AppShell.Navbar
-        p="md"
-        pb={0}
-        // pr={{base: 0, md: 'md'}}
-        pr={0}
-      >
-        <NavbarNested />
-      </AppShell.Navbar> : ''}
-
+      {cookieToken.mednekot ? (
+        <AppShell.Navbar
+          p="md"
+          pb={0}
+          // pr={{base: 0, md: 'md'}}
+          pr={0}
+        >
+          <NavbarNested />
+        </AppShell.Navbar>
+      ) : (
+        ''
+      )}
 
       <AppShell.Main
-        style={{
-         // background:
-         //   'linear-gradient(180deg, #99999907 -4.58%, #66666605 33.11%, #66666611 74.48%, #99999907 94.27%)',
-        }}
+        style={
+          {
+            // background:
+            //   'linear-gradient(180deg, #99999907 -4.58%, #66666605 33.11%, #66666611 74.48%, #99999907 94.27%)',
+          }
+        }
       >
-        
-        {!asideOpen ? 
-        
-        children 
-        
-        : 
-        <Grid gutter="md" pb='xl'>
-          <Grid.Col span={9}>{children}</Grid.Col>
-          <Grid.Col span={3}><ColorSchemeToggle /></Grid.Col>
-      </Grid> }
-     
+        {!asideOpen ? (
+          children
+        ) : (
+          <Grid gutter="md" pb="xl">
+            <Grid.Col span={9}>{children}</Grid.Col>
+            <Grid.Col span={3}>
+              <Text c='gray' size="sm">Надо подумать нужен ли этот столбец и зачем</Text>
+            {/*<ColorSchemeToggle /> */}
+            </Grid.Col>
+          </Grid>
+        )}
       </AppShell.Main>
     </AppShell>
   );
