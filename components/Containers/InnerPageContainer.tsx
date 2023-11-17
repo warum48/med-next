@@ -16,9 +16,15 @@ export const InnerPageContainer = ({ children, className }: TChildren & { classN
 
   if (inPaper) {
     return (
-      <Transition mounted={mounted} transition="fade" duration={400} timingFunction="ease">
-        {(styles) => (
-          <Box className={className + ' innerCont'} mx={{ lg: '1rem', md: 0 }} style={styles}>
+      <>
+     {/* <Transition mounted={mounted} transition="fade" duration={400} timingFunction="ease"> 
+      {(styles) => (
+     */}
+    
+       
+          <Box className={className + ' innerCont'} mx={{ lg: '1rem', md: 0 }}
+           //style={styles}
+           >
             <Paper
               mx="auto"
               shadow="sm"
@@ -43,8 +49,10 @@ export const InnerPageContainer = ({ children, className }: TChildren & { classN
               </Box>
             </Paper>
           </Box>
+{/*
         )}
-      </Transition>
+      </Transition> */}
+      </>
     );
   }
 

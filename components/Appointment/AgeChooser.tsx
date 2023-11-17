@@ -1,7 +1,7 @@
 import { Group, Radio, RangeSlider, Slider, Title, rem, useMantineTheme } from '@mantine/core';
 import { ChangeEvent, useState } from 'react';
 // TODO remove from yarn import Switch from "react-switch";
-import {SwitchWithText} from '../Switch/Switch';
+import { SwitchWithText } from '../Switch/Switch';
 import { IconGripVertical, IconHeart, IconPoint } from '@tabler/icons-react';
 import classes from './SliderMarks.module.css';
 import React from 'react';
@@ -16,71 +16,80 @@ export const AgeChooser = ({ form }: TProps) => {
   //  setChecked(nextChecked);
   //};
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setChecked(e.target.checked);
-    };
+    setChecked(e.target.checked);
+  };
   const point = (
     <IconPoint style={{ marginTop: rem(6), width: rem(10), height: rem(10) }} stroke={1.5} />
   );
-  const [value, setValue] = useState<number| undefined>(undefined);
+  const [value, setValue] = useState<number | undefined>(undefined);
 
   React.useEffect(() => {
-    if(value != null) {
-    setSliderTouched(true);
+    if (value != null) {
+      setSliderTouched(true);
     }
-  }, [    value]);
+  }, [value]);
 
   const marks = [
-      { value: 0, label: '﹤1', hint:'Меньше 1 года' },
-      { value: 1, label: '1', hint:'1 год' },
-      { value: 2, label: '2', hint:'2 года' },
-      { value: 3, label: '3', hint:'3 года' },
-      { value: 4, label: '4', hint:'4 года' },
-      { value: 5, label: '5', hint:'5 лет' },
-      { value: 6, label: '6', hint:'6 лет' },
-      { value: 7, label: '7', hint:'7 лет' },
-      { value: 8, label: '8', hint:'8 лет' },
-      { value: 9, label: '9', hint:'9 лет' },
-      { value: 10, label: '10', hint:'10 лет' },
-      { value: 11, label: '11', hint:'11 лет' },
-      { value: 12, label: '12', hint:'12 лет' },
-      { value: 13, label: '13', hint:'13 лет' },
-      { value: 14, label: '14', hint:'14 лет' },
-      { value: 15, label: '15', hint:'15 лет' },
-      { value: 16, label: '16', hint:'16 лет' },
-      { value: 17, label: '17', hint:'17 лет' },
-    ]
+    { value: 0, label: '﹤1', hint: 'Меньше 1 года' },
+    { value: 1, label: '1', hint: '1 год' },
+    { value: 2, label: '2', hint: '2 года' },
+    { value: 3, label: '3', hint: '3 года' },
+    { value: 4, label: '4', hint: '4 года' },
+    { value: 5, label: '5', hint: '5 лет' },
+    { value: 6, label: '6', hint: '6 лет' },
+    { value: 7, label: '7', hint: '7 лет' },
+    { value: 8, label: '8', hint: '8 лет' },
+    { value: 9, label: '9', hint: '9 лет' },
+    { value: 10, label: '10', hint: '10 лет' },
+    { value: 11, label: '11', hint: '11 лет' },
+    { value: 12, label: '12', hint: '12 лет' },
+    { value: 13, label: '13', hint: '13 лет' },
+    { value: 14, label: '14', hint: '14 лет' },
+    { value: 15, label: '15', hint: '15 лет' },
+    { value: 16, label: '16', hint: '16 лет' },
+    { value: 17, label: '17', hint: '17 лет' },
+  ];
 
   const marksWPoints = [
-    { value: 0, label: '<1', hint:'Меньше 1 года' },
-    { value: 1, label: point, hint:'1 год' },
-    { value: 2, label: '2', hint:'2 года' },
-    { value: 3, label: point, hint:'3 года' },
-    { value: 4, label: '4', hint:'4 года' },
-    { value: 5, label: point, hint:'5 лет' },
-    { value: 6, label: '6', hint:'6 лет' },
-    { value: 7, label: point , hint:'7 лет' },
-    { value: 8, label: '8', hint:'8 лет' },
-    { value: 9, label: point, hint:'9 лет' },
-    { value: 10, label: '10', hint:'10 лет' },
-    { value: 11, label: point, hint:'11 лет' },
-    { value: 12, label: '12', hint:'12 лет' },
-    { value: 13, label: point, hint:'13 лет' },
-    { value: 14, label: '14', hint:'14 лет' },
-    { value: 15, label: point, hint:'15 лет' },
-    { value: 16, label: '16', hint:'16 лет' },
-    { value: 17, label: point, hint:'17 лет' },
-  ]
+    { value: 0, label: '<1', hint: 'Меньше 1 года' },
+    { value: 1, label: point, hint: '1 год' },
+    { value: 2, label: '2', hint: '2 года' },
+    { value: 3, label: point, hint: '3 года' },
+    { value: 4, label: '4', hint: '4 года' },
+    { value: 5, label: point, hint: '5 лет' },
+    { value: 6, label: '6', hint: '6 лет' },
+    { value: 7, label: point, hint: '7 лет' },
+    { value: 8, label: '8', hint: '8 лет' },
+    { value: 9, label: point, hint: '9 лет' },
+    { value: 10, label: '10', hint: '10 лет' },
+    { value: 11, label: point, hint: '11 лет' },
+    { value: 12, label: '12', hint: '12 лет' },
+    { value: 13, label: point, hint: '13 лет' },
+    { value: 14, label: '14', hint: '14 лет' },
+    { value: 15, label: point, hint: '15 лет' },
+    { value: 16, label: '16', hint: '16 лет' },
+    { value: 17, label: point, hint: '17 лет' },
+  ];
 
-  const styles = { thumb: { borderWidth: 2, height: 26, width: 26, padding: 3, 
-    color: sliderTouched ? 'green' : 'gray', 
-    borderColor: sliderTouched ? theme.colors.oceanBlue[9] : 'lightgray'  ,
-   // backgroundColor: '#666666ff',
-    //opacity:.1
-  }
-  }
+  const styles = {
+    markLabel: {
+marginTop:'6px'
+    },
+
+    thumb: {
+      borderWidth: 2,
+      height: 26,
+      width: 26,
+      padding: 3,
+      color: sliderTouched ? 'green' : 'gray',
+      borderColor: sliderTouched ? theme.colors.oceanBlue[9] : 'lightgray',
+      // backgroundColor: '#666666ff',
+      //opacity:.1
+    },
+  };
   return (
     <>
-    {/*
+      {/*
     <Radio.Group
       name="age"
       label="Возраст пациента"
@@ -98,7 +107,7 @@ export const AgeChooser = ({ form }: TProps) => {
       </Group>
     </Radio.Group>
   */}
-  {/*
+      {/*
   <label htmlFor="small-radius-switch">
   <span>Возраст пациента</span>
   <Switch
@@ -164,34 +173,40 @@ export const AgeChooser = ({ form }: TProps) => {
     id="small-radius-switch"
   />
   </label>*/}
-    
-    <SwitchWithText leftText="Ребенок" rightText="Взрослый" label="Возраст пациента" checked={checked} handleChange={handleChange}/>
-    
-     {!checked && 
-     <><Title order={6} mb='0' c={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}>{
-      value != undefined ? 
-      marks[value].hint
-      : 'Выберите возраст'
-      }</Title>
-    <Slider
-    onMouseUpCapture={()=>console.log('click')}
-    ml='xs'
-      //mt="xl"
-      mb="xl"
-      classNames={classes}
-      thumbChildren={<IconHeart size="1rem" stroke={1.5} />}
-      styles={styles}
-      color={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}
-      min={0}
-      max={17}
-      label={null}
-      value={value} onChange={setValue} 
-    //  defaultValue={[30, 60]}
-    //  thumbChildren={<IconGripVertical style={{ width: rem(20), height: rem(20) }} stroke={1.5} />}
-      marks={marks}
-    />
-    </>
-     }
+
+      <SwitchWithText
+        leftText="Ребенок"
+        rightText="Взрослый"
+        label="Возраст пациента"
+        checked={checked}
+        handleChange={handleChange}
+      />
+
+      {!checked && (
+        <>
+          <Title order={6} mb="0" c={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}>
+            {value != undefined ? marks[value].hint : 'Выберите возраст'}
+          </Title>
+          <Slider
+            onMouseUpCapture={() => console.log('click')}
+            ml="xs"
+            //mt="xl"
+            mb="xl"
+            classNames={classes}
+            thumbChildren={<IconHeart size="1rem" stroke={1.5} />}
+            styles={styles}
+            color={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}
+            min={0}
+            max={17}
+            label={null}
+            value={value}
+            onChange={setValue}
+            //  defaultValue={[30, 60]}
+            //  thumbChildren={<IconGripVertical style={{ width: rem(20), height: rem(20) }} stroke={1.5} />}
+            marks={marks}
+          />
+        </>
+      )}
     </>
   );
 };

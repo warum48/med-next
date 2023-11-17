@@ -55,11 +55,11 @@ export const UserHomePage = () => {
                     Ближайшие приемы
                   </Title>
                   </Group>
-                  <Text c="#7A7A7A">22.12.2023</Text>
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">22.12.2023</Text>
+                  <Text size='sm'  c="#7A7A7A">
                     <b>Терапевт</b> Мария Ивановна Кузнецова
                   </Text>
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">
                     Всего <b>2</b> приема
                   </Text>
                 </HomeCard>
@@ -70,10 +70,10 @@ export const UserHomePage = () => {
                     Документы
                   </Title>
 
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">
                     <b>2</b> новых
                   </Text>
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">
                     Всего <b>5</b>{' '}
                   </Text>
                 </HomeCard>
@@ -83,7 +83,7 @@ export const UserHomePage = () => {
                   <Title order={3} c="#E86CA6">
                     Медицинская карта
                   </Title>
-                  <Text c="#7A7A7A">Вся ваша история всегда с вами</Text>
+                  <Text size='sm'  c="#7A7A7A">Вся ваша история всегда с вами</Text>
                 </HomeCard>
               </Grid.Col>
             </Grid>
@@ -91,7 +91,7 @@ export const UserHomePage = () => {
             <Grid gutter="md">
               
               <Grid.Col span={6}>
-                {/*<HomeCard bgColor='#f6abce'><Title order={3} c='#ffffff'>Баланс</Title><Text c="#7A7A7A">6000 р</Text></HomeCard>*/}
+                {/*<HomeCard bgColor='#f6abce'><Title order={3} c='#ffffff'>Баланс</Title><Text size='sm'  c="#7A7A7A">6000 р</Text></HomeCard>*/}
                 <HomeCard 
                 bgColor="#FFF8FB"
                 //bgColor="#ffebf3"
@@ -99,7 +99,7 @@ export const UserHomePage = () => {
                   <Title order={3} c="#E86CA6">
                     Баланс
                   </Title>
-                  <Text c="#7A7A7A">6000 р</Text>
+                  <Text size='sm'  c="#7A7A7A">6000 р</Text>
                 </HomeCard>
               </Grid.Col>
               <Grid.Col span={6}>
@@ -145,10 +145,10 @@ export const UserHomePage = () => {
                     Моя семья{' '}
                   </Title>
 
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">
                     <b>Добавляйте детей и бабушек! </b>{' '}
                   </Text>
-                  <Text c="#7A7A7A">
+                  <Text size='sm'  c="#7A7A7A">
                     Мы добавили очень удобный функционал, все ваши родственники будут построены
                   </Text>
                 </HomeCard>
