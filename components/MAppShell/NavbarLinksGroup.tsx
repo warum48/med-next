@@ -63,9 +63,9 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
 
   //asPath
 
-  console.log('router.pathname', pathname);
-  console.log('link ', link );
-  console.log('-----link.substring(1, link.length)', link?.substring(1, link?.length));
+  //console.log('router.pathname', pathname);
+  //console.log('link ', link );
+  //console.log('-----link.substring(1, link.length)', link?.substring(1, link?.length));
 
   return (
     <>

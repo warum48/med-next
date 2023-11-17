@@ -15,8 +15,12 @@ const MAppShell=  dynamic(() => import('@/components/MAppShell/MAppShell').then(
 const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
     // '--mantine-hero-height': theme.other.heroHeight,
+    
+    //  '--switchtext-height': '64px'
+    
   },
   light: {
+    //'--text-color': '#999999',
     '--mantine-color-second': theme.colors.brightPink[5],
     '--mantine-color-second-4': theme.colors.brightPink[4],
     '--mantine-color-second-0': theme.colors.brightPink[0],

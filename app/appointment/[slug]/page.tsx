@@ -236,13 +236,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
 
   return (
     <InnerPageContainer className="appointment">
-      <Box
-        maw={1200}
-        mx="auto"
-        w={'100%'}
-        //mt="xl"
-      >
-        <Box mih={'80vh'}>
+      
           {/*<h4> Записаться на прием </h4>*/}
           <Title1_main>Записаться на прием</Title1_main>
           <Space h="xl" />
@@ -472,10 +466,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
               </>
             )}
           </Group>
-        </Box>
-        {/*  <DataPreview data={data_medcenter} />
-        <FastCommentBlock />*/}
-      </Box>
+        
     </InnerPageContainer>
   );
 }

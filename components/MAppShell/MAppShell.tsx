@@ -31,9 +31,12 @@ import { NavbarNested } from './NavbarNested';
 import { Header } from './Header';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import { innerPageMaxWidth } from '@/global/CONSTS';
+import { RoutesTypes } from '@/global/ROUTES';
+import { usePathname } from 'next/navigation';
 //import { RoutesTypes } from 'ROUTES';
 
 export function MAppShell({ children }: any) {
+  const pathname = usePathname();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const theme = useMantineTheme();
@@ -46,6 +49,9 @@ export function MAppShell({ children }: any) {
   //const location = useLocation();
   const headerProps = { opened, setOpened, asideOpen, setAsideOpen };
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+ // const { colorScheme, setColorScheme } = useMantineColorScheme();
+ console.log('location.pathname', location.pathname);
+ console.log('location.pathname === RoutesTypes.Home', location.pathname === RoutesTypes.Home)
 
   return (
     <AppShell
@@ -85,6 +91,13 @@ export function MAppShell({ children }: any) {
           {
             // background:
             //   'linear-gradient(180deg, #99999907 -4.58%, #66666605 33.11%, #66666611 74.48%, #99999907 94.27%)',
+            background:
+            colorScheme === 'dark'
+              ? theme.colors.dark[9]
+              : 
+              pathname === RoutesTypes.Home ?
+              DesignService.colorSсheme.sketch.homePageBackground[DesignService.backgroundNum].style :
+              DesignService.colorSсheme.sketch.mainBackground[DesignService.backgroundNum].style
           }
         }
       >
@@ -95,7 +108,7 @@ export function MAppShell({ children }: any) {
             <Grid.Col span={9}>{children}</Grid.Col>
             <Grid.Col span={3}>
               <Text c='gray' size="sm">Надо подумать нужен ли этот столбец и зачем</Text>
-            {/*<ColorSchemeToggle /> */}
+            <ColorSchemeToggle /> 
             </Grid.Col>
           </Grid>
         )}
