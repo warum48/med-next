@@ -1,0 +1,6 @@
+.hoveringCell{
+    cursor: pointer;
+}
+.hoveringCell:hover{
+    background-color: #99999911;
+}

@@ -133,13 +133,11 @@ export const Title4_second = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title
-    // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
-    >
+    
       <Text className={classes.title4} component="span" inherit>
         {children}
       </Text>
-    </Title>
+    
   );
 };
 
