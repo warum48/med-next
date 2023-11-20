@@ -1,0 +1,21 @@
+.warning{
+    
+   /* margin-top: var(--mantine-spacing-md); */
+    background-color: var(--mantine-color-red-0);
+    border-color: var(--mantine-color-red-3);
+}
+.warning_text{
+    color: var(--mantine-color-red-5);
+    font-size: var(--mantine-font-size-md);
+    font-weight: var(--mantine-font-weight-bold);
+}
+
+.warning_text_small{
+    color: var(--mantine-color-red-5);
+    font-size: var(--mantine-font-size-sm);
+    font-weight: var(--mantine-font-weight-bold);
+}
+
+.debt_table{
+    background-color: var(--mantine-color-body);
+}

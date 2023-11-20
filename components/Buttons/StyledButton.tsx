@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import * as React from 'react';
-import { Button, ButtonProps,  rem } from '@mantine/core';
+import { Button, ButtonProps, rem } from '@mantine/core';
 import { TChildren } from '../Containers/InnerPageContainer';
 import { ReactHTMLElement } from 'react';
 import { GlobalContext } from '@/context/ContextGlobal';
@@ -8,7 +8,7 @@ import { GlobalContext } from '@/context/ContextGlobal';
 import classes from './StyledButton.module.css';
 
 type TProps = {
-  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel';
+  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
@@ -22,8 +22,6 @@ export const StyledButton = ({
 }: TProps & ButtonProps) => {
   //& TChildren
 
-
-
   //const { classes, theme } = useStyles();
 
   const { DesignService } = React.useContext(GlobalContext);
@@ -33,21 +31,23 @@ export const StyledButton = ({
 
   if (appearence == 'intro_second') {
     return (
-    <Button
-      variant="gradient"
-      gradient={{ from: 'pink', to: 'DeepPink' }}
-      size="xl"
-      className={classes.control}
-      mt={40}
-      style={{ borderRadius:
-        DesignService.sizeAndRadius.buttonRadius[
-          DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-        ].style}}
-    >
-      {children}
-     {/*} Записаться на прием */}
-     
-    </Button>)
+      <Button
+        variant="gradient"
+        gradient={{ from: 'pink', to: 'DeepPink' }}
+        size="xl"
+        className={classes.control}
+        mt={40}
+        style={{
+          borderRadius:
+            DesignService.sizeAndRadius.buttonRadius[
+              DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+            ].style,
+        }}
+      >
+        {children}
+        {/*} Записаться на прием */}
+      </Button>
+    );
   }
 
   if (appearence == 'main_second') {
@@ -56,7 +56,7 @@ export const StyledButton = ({
         variant="gradient"
         // gradient={{ from: 'pink', to: '#ff3ebb' }}
         gradient={{ from: 'pink', to: '#fd55d0' }}
-        size="md"//"sm"
+        size="md" //"sm"
         //className={classes.control}
         //mt={40}
         style={{
@@ -81,14 +81,17 @@ export const StyledButton = ({
       <Button
         variant="gradient"
         gradient={{ from: '#01868a', to: '#0dab5f' }}
-        size="md"//"sm"
+        size="md" //"sm"
         // size="xl"
         //className={classes.control}
         // mt={40}
-        style={{ borderRadius:
-          DesignService.sizeAndRadius.buttonRadius[
-            DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-          ].style, ...sx }}
+        style={{
+          borderRadius:
+            DesignService.sizeAndRadius.buttonRadius[
+              DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+            ].style,
+          ...sx,
+        }}
         onClick={onClick}
         {...props}
       >
@@ -106,10 +109,13 @@ export const StyledButton = ({
         // size="xl"
         //className={classes.control}
         // mt={40}
-        style={{ borderRadius:
-          DesignService.sizeAndRadius.buttonRadius[
-            DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-          ].style, ...sx }}
+        style={{
+          borderRadius:
+            DesignService.sizeAndRadius.buttonRadius[
+              DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+            ].style,
+          ...sx,
+        }}
         onClick={onClick}
         {...props}
       >
@@ -117,5 +123,21 @@ export const StyledButton = ({
       </Button>
     );
   }
+
+  if (appearence == 'main_small') {
+    return (
+      <Button
+        size="compact-xs"
+        //!!compact
+        // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
+        // sx={{marginLeft:'auto'}}
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
   return <Button>{children}</Button>;
 };

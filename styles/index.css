@@ -5,4 +5,11 @@ a{
     object-position: center top;
   }
 
+  .mainColor{
+    color:var(--mantine-color-main-4);
+}
+.secondColor{
+    color:var(--mantine-color-second-4);
+}
+
  

@@ -1,16 +1,20 @@
 'use client'
 import * as React from 'react';
-import { Box, Group, Space, Title, Text, useMantineTheme } from '@mantine/core';
+import { Box, Group, Space, Title, Text, useMantineTheme, Spoiler, Collapse } from '@mantine/core';
 //import { Title1_main, Title2_main, Title2_second, TitleLabel } from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
 //import { PayHistory } from './components/History';
 import { StyledButton } from '../../components/Buttons/StyledButton';
 import { DatePickerInput } from '@mantine/dates';
-import { PayHistory } from '@/components/PaymentsHistory/History';
-import { Title1_main, Title2_main, Title2_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
+import { PayHistory } from '@/components/_payments/PaymentsHistory/History';
+import { ActionLink, Title1_main, Title2_main, Title2_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
+import { useState } from 'react';
+import { Debt } from '@/components/_payments/Debt/Debt';
+import { PostponedPayments } from '@/components/_payments/Postponed/PostponedPayments';
 
 export default function Payments() {
   const theme = useMantineTheme();
+
   return (
     <InnerPageContainer>
       <Title1_main>Текущий баланс</Title1_main>
@@ -23,13 +27,20 @@ export default function Payments() {
           <Text>4800 ₽ </Text>
         </Title>
       </Group>
-      <Text c="dimmed">Задолженность: 0 ₽</Text>
-      <Space h="xl" />
+      
+       
+      
+      <Space h="sm" />
       <Group>
         <TitleLabel>Внести оплату:</TitleLabel>
         <StyledButton appearence="main_second">Оплатить</StyledButton>
       </Group>
       <Space h="xl" />
+      <Debt/>
+      <Space h="xl" />
+      <Title2_second>Отложенные платежи</Title2_second>
+      <Space h="xs" />
+      <PostponedPayments/>
       <Space h="xl" />
       <Group gap="md" justify="space-between"
       //"apart"

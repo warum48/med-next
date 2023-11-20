@@ -100,7 +100,7 @@ export enum RoutesTypes {
   
     {
       label: 'Медицинская карта',
-      icon: IconUsersGroup,
+      icon: IconNotes,
       link: RoutesTypes.MedicalCard,
     },
   

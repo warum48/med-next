@@ -22,7 +22,7 @@ import { produce } from 'immer';
 import { StyledButton } from '@/components/Buttons/StyledButton';
 import { RoutesTypes } from '@/global/ROUTES';
 import Link from 'next/link';
-import { Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
+import { InnerPageTitle, Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { EditableText } from '@/components/Inputs/EditableText';
 
 export default function Profile() {
@@ -116,7 +116,9 @@ export default function Profile() {
   ]);
   return (
     <InnerPageContainer>
+
       <Title1_main>Профиль</Title1_main>
+    {/* !! <InnerPageTitle>Профиль</InnerPageTitle> */}
       <Space h="xl" />
       <Tabs
         defaultValue="type1"
@@ -135,9 +137,9 @@ export default function Profile() {
         </Tabs.List>
         <Space h="xl" />
         <Tabs.Panel value="type1" pt="xs">
-          <Stack>
+          <Stack gap={6}>
             {userInfo.map((item, index) => (
-              <Group key={'uinf' + index}>
+              <Group key={'uinf' + index} px='md' py='8' style={index%2==1?{ backgroundColor: '#f5f5f5' }: {}}>
                 <TitleLabel>{item.name}:</TitleLabel>
                 <EditableText
                   autosize={item.autosize}

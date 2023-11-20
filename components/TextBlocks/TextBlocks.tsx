@@ -1,14 +1,32 @@
 import { TAnyFields, TChildren } from '@/types/types';
-import { Title, Text,  rem, TitleProps } from '@mantine/core';
+import { Title, Text, rem, TitleProps, Anchor, Group } from '@mantine/core';
 //import { TAnyFields, TChildren } from '../_types/Types';
 import classes from './TextBlocks.module.css';
 
 import React from 'react';
+import { IconNotes } from '@tabler/icons-react';
 //const { DesignService, asideOpen, setAsideOpen } = React.useContext(GlobalContext);
 
 type TCustTitle = typeof Title;
 
-
+export const ActionLink = ({ children, ...props }: any) => {
+  return (
+    <Anchor
+      {...props}
+      size="sm"
+      component="button"
+      //onClick={() =>
+      //  refetch
+      //    ? refetch()
+      //    : () => {
+      //        console.log('nothing to refetch');
+      //      }
+      //}
+    >
+      {children}
+    </Anchor>
+  );
+};
 
 export const Card_pretitle = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
@@ -22,7 +40,6 @@ export const Card_pretitle = ({ children }: TChildren) => {
 
 export const Card_title = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
-
   return (
     <Text fz="lg" fw={500} className={classes.name}>
       {children}
@@ -35,27 +52,36 @@ export const TitleLabel = ({ children, ...props }: TChildren & TAnyFields) => {
 
   return (
     <>
-   {/* <Title
+      {/* <Title
     // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
     // {...props}
   > */}
       <Text className={classes.title3} component="span" inherit {...props}>
         {children}
       </Text>
-    {/*</Title>*/}
+      {/*</Title>*/}
     </>
   );
 };
 
-export const TextInfo = ({ children }: TChildren & TAnyFields) => {
-  //const { classes, theme } = useHeadersStyles();
-
+export const TitleLabel_second = ({ children, ...props }: TChildren & TAnyFields) => {
   return (
-    
-      <Text className={classes.basicInfo} component="span" inherit>
-        {children}
-      </Text>
+    <Text
+      className={`${classes.title3} ${classes.secondColor}`}
+      component="span"
+      inherit
+      {...props}
+    >
+      {children}
+    </Text>
+  );
+};
 
+export const TextInfo = ({ children }: TChildren & TAnyFields) => {
+  return (
+    <Text className={classes.basicInfo} component="span" inherit>
+      {children}
+    </Text>
   );
 };
 
@@ -147,5 +173,22 @@ export const Title1_main = ({ children, ...props }: TitleProps) => {
         {children}
       </Text>
     </Title>
+  );
+};
+
+export const InnerPageTitle = ({ children }: TChildren) => {
+  return (
+    <div className={classes.blue_square_bg}>
+      <div className={classes.white_strip}></div>
+      <Group><IconNotes style={{ width: rem(30), height: rem(30) , 
+                color: 'green',
+                paddingTop:'4px',
+                //marginLeft:'-2px',
+                marginRight:'-10px',
+                zIndex:9
+                }} />
+      <Title1_main style={{zIndex:10}}>{children}</Title1_main></Group>
+      
+    </div>
   );
 };

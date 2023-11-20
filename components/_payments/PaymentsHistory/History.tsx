@@ -8,7 +8,7 @@ import 'dayjs/locale/ru';
 //import { TitleLabel, useHeadersStyles } from '../../../_styles/headers';
 import { Table } from '@mantine/core';
 import { innerPageMaxWidth } from '@/global/CONSTS';
-import { TitleLabel } from '../TextBlocks/TextBlocks';
+import { TitleLabel } from '../../TextBlocks/TextBlocks';
 //import { innerPageMaxWidth } from '../../../CONSTS';
 
 
