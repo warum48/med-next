@@ -41,18 +41,22 @@ import DialogTitle from "@mui/material/DialogTitle";
 //import { EventInfo } from './FullCalendar/EventInfo';
 //import { zIndexMap } from "_zIndexMap";
 //import { Helmet } from 'react-helmet';
-import { Box, Button, Grid, Group, SimpleGrid, Space, Stack, Tooltip } from '@mantine/core';
+import { Box, Button, Grid, Group, Modal, SimpleGrid, Space, Stack, Tooltip } from '@mantine/core';
 //import { Title1_main, Title2_second, Title4_second } from '../../_styles/headers';
 import { useCookies } from 'react-cookie';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
-import { Title1_main, Title4_second } from '@/components/TextBlocks/TextBlocks';
+import { TextInfo, Title1_main, Title4_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { AppointmentItem } from '@/components/_calendar/AppointmentItem';
+import { useDisclosure } from '@mantine/hooks';
+import dayjs from 'dayjs';
 //import { AppointmentItem } from './components/AppointmentItem';
 //import { AppointmentItem } from './components/AppointmentItem';
 //import { GET_CALENDAR } from "_apollo/queries/calendar/calendar";
 
 export default function CalendarPage() {
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  const [opened, { open, close }] = useDisclosure(false);
+  const [curItem, setCurItem] = useState(0);
   //const theme = useTheme();
   //const localizer = momentLocalizer(moment);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
@@ -73,10 +77,24 @@ export default function CalendarPage() {
       start: '2023-07-14 15:00',
       end: '2023-07-14 15:30',
     },
+    { title: 'Терапевт', date: '2023-11-12', start: '2023-11-12 12:20', end: '2023-11-12 12:40' },
+    {
+      title: 'Детский Массаж',
+      date: '2023-11-12',
+      start: '2023-11-12 12:40',
+      end: '2023-11-12 13:10',
+    },
   ]);
 
+  const defEvent = {
+    title: '',
+    date: '',
+    start: '',
+    end: '',
+  }
+
   const [eventView, setEventView] = useState(false);
-  const [curEvent, setCurEvent] = useState(null);
+  const [curEvent, setCurEvent] = useState(defEvent);
 
   const userHasAppointments = true;
 
@@ -101,6 +119,9 @@ export default function CalendarPage() {
   const handleEventClick = (clickInfo: any) => {
     setEventView(true);
     setCurEvent(clickInfo.event);
+    console.log('clickInfo.event', clickInfo.event);
+    //setOpened(true);
+    open();
   };
 
   /*
@@ -316,6 +337,25 @@ export default function CalendarPage() {
       {/*
     </> 
                 )*/}
+
+<Modal.Root opened={opened} onClose={close} 
+      //title={"Посещение " + elements[curItem].date} 
+      centered>
+      <Modal.Overlay />
+        <Modal.Content>
+          <Modal.Header>
+            <Modal.Title><Title4_second>{"Посещение "+ dayjs(curEvent?.start).format('DD.MM.YYYY HH:mm') }</Title4_second></Modal.Title>
+            <Modal.CloseButton />
+          </Modal.Header>
+          <Modal.Body>
+
+         <TitleLabel>{curEvent.title}</TitleLabel><br/>   
+        <TitleLabel>Врач:&nbsp;</TitleLabel>
+      <TextInfo>Иванов Иван Иванович</TextInfo>
+              
+      </Modal.Body>
+      </Modal.Content>
+      </Modal.Root>
     </InnerPageContainer>
   );
 }

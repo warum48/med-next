@@ -147,6 +147,10 @@
   }
 }
 
+.fc.fc-popover{
+  z-index:9;
+}
+
 
 
 /*
