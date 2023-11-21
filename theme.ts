@@ -13,6 +13,11 @@ export const theme = createTheme({
   'xl': '88em',
   'xxl': '100em', //!!added
  },
+ other: {
+  virilisPink: '#E2378D',//'#fb6eb5',
+   virilisGreen: '#2fb797',
+   virilisDarkGreen: '#00574B',
+ },
   colors: {
    // virilisPink: ['#fb6eb5'],
    // virilisGreen: ['#2fb797'],

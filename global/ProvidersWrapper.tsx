@@ -12,6 +12,8 @@ const MAppShell=  dynamic(() => import('@/components/MAppShell/MAppShell').then(
   ssr: false,
 }) 
 
+// docs: https://mantine.dev/styles/css-variables/
+
 const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
     // '--mantine-hero-height': theme.other.heroHeight,
@@ -21,11 +23,17 @@ const resolver: CSSVariablesResolver = (theme) => ({
   },
   light: {
     //'--text-color': '#999999',
+    '--mantine-color-virilis-darkgreen': theme.other.virilisDarkGreen,
+    '--mantine-color-virilis-pink': theme.other.virilisPink,
+    '--mantine-color-virilis-green': theme.other.virilisGreen,
     '--mantine-color-second': theme.colors.brightPink[5],
     '--mantine-color-second-4': theme.colors.brightPink[4],
     '--mantine-color-second-0': theme.colors.brightPink[0],
   },
   dark: {
+    '--mantine-color-virilis-darkgreen': theme.other.virilisDarkGreen,
+    '--mantine-color-virilis-pink': theme.other.virilisPink,
+    '--mantine-color-virilis-green': theme.other.virilisGreen,
     '--mantine-color-second': theme.colors.brightPink[5],
     '--mantine-color-second-4': theme.colors.brightPink[4],
     '--mantine-color-second-0': theme.colors.brightPink[0],

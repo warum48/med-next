@@ -16,9 +16,10 @@ interface UserInfoIconsProps {
   title: string;
   phone: string;
   email: string;
+  isMain: boolean;
 }
 
-export function FamilyMember({ avatar, name, title, phone, email }: UserInfoIconsProps) {
+export function FamilyMember({ avatar, name, title, phone, email, isMain=false }: UserInfoIconsProps) {
   //const { classes } = useStyles();
   //const {classes : headerClasses } = useHeadersStyles();
   const [expanded, setExpanded] = useState(false);
@@ -80,7 +81,7 @@ export function FamilyMember({ avatar, name, title, phone, email }: UserInfoIcon
           </Group>
          
           
-            <FMInfo expanded={expanded}/>
+            <FMInfo expanded={expanded} isMain={isMain}/>
             
           </Grid.Col>
           

@@ -35,6 +35,7 @@ export enum RoutesTypes {
     Support = "/support",
     Empty = "/empty",
     MedicalCard = "/medicalcard",
+    Abonement = "/abonement",
     //---export:---
     Execution = "/execution",
     Pictures = "/pictures",
@@ -102,6 +103,12 @@ export enum RoutesTypes {
       label: 'Медицинская карта',
       icon: IconNotes,
       link: RoutesTypes.MedicalCard,
+    },
+
+    {
+      label: 'Абонемент',
+      icon: IconNotes,
+      link: RoutesTypes.Abonement,
     },
   
     {

@@ -36,9 +36,10 @@ import { StyledButton } from '../Buttons/StyledButton';
 
 type TProps = {
   expanded: boolean;
+  isMain: boolean;
 };
-export function FMInfo({ expanded }: TProps) {
-    const theme = useMantineTheme();
+export function FMInfo({ expanded, isMain }: TProps) {
+  const theme = useMantineTheme();
   //const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {console.log(e)}
   /*const changeInfo = (text:string, fieldId: string) => {
     console.log(text, fieldId);
@@ -183,17 +184,20 @@ export function FMInfo({ expanded }: TProps) {
   ]);
   return (
     <>
-    <Group>
-      <Card_pretitle>
-        {userInfo.find((obj) => obj.field == 'type')?.newValue ||
-          userInfo.find((obj) => obj.field == 'type')?.mock}
-      </Card_pretitle>
-      <Tooltip label="Главный юзер" 
-      //color={theme.colors.secondaryArray[4]}
-      color={theme.colors.brightPink[4]}
-      >
-<IconCrown color="pink"/></Tooltip>
-</Group>
+      <Group>
+        <Card_pretitle>
+          {userInfo.find((obj) => obj.field == 'type')?.newValue ||
+            userInfo.find((obj) => obj.field == 'type')?.mock}
+        </Card_pretitle>
+        <Tooltip
+          label={isMain? "Главный пользователь" : "Назначить главным пользователем"}
+          //color={theme.colors.secondaryArray[4]}
+         // color={theme.colors.brightPink[4]}
+          color={!isMain? theme.other.virilisPink : theme.colors.gray[9]}
+        >
+          <IconCrown color={isMain? theme.other.virilisPink : theme.colors.gray[4]} style={{cursor: isMain? 'default' : 'pointer'}}/>
+        </Tooltip>
+      </Group>
       <Card_title>
         {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
           userInfo.find((obj) => obj.field == 'secondName')?.mock}
@@ -206,16 +210,16 @@ export function FMInfo({ expanded }: TProps) {
       </Card_title>
       {expanded && (
         <>
-          <Divider mt="xl"  mb="sm" />
+          <Divider mt="xl" mb="sm" />
           <Stack
           //w='100%'
           >
             {userInfo.map((item, index) => (
               <Group
-              //grow
-              key={'fi'+index}
+                //grow
+                key={'fi' + index}
               >
-                <TitleLabel>{item.name}:</TitleLabel> 
+                <TitleLabel>{item.name}:</TitleLabel>
                 {/* <TextInfo>{item.mock ? item.mock : '-'}</TextInfo> */}
                 <EditableText
                   autosize={item.autosize}

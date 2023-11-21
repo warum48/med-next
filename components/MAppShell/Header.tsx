@@ -40,20 +40,20 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
           height={40}
         />
       </Box>
-      <Text className={styles.title}>
+     {/*} <Text className={styles.title}>
         <i>ЛИЧНЫЙ КАБИНЕТ ПОЛЬЗОВАТЕЛЯ</i>
-      </Text>
-      <Group className={styles.contactGroup}>
+  </Text> */}
+     {/* <Group className={styles.contactGroup}>
         <Box className={styles.contactIcon}>
           <IconPhone size={40} color="#e64980" />
-        </Box>
-        <Box>
-          <Title order={4}>+7(812)424-64-74</Title>
+</Box> */}
+        <Box className={styles.contactGroup}>
+          <Title order={4}>+7 (812) 424-64-74</Title>
           <Text fw={500} fz="xs" ml={'3px'}>
             Контактный центр 24 часа 
           </Text>
         </Box>
-      </Group>
+    {/*}  </Group> */}
       <DemoLogIn suppressHydrationWarning={true} />
       <Box
         className={styles.settingsIcon}

@@ -1,10 +1,11 @@
 import { TAnyFields, TChildren } from '@/types/types';
-import { Title, Text, rem, TitleProps, Anchor, Group } from '@mantine/core';
+import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme } from '@mantine/core';
 //import { TAnyFields, TChildren } from '../_types/Types';
 import classes from './TextBlocks.module.css';
 
 import React from 'react';
 import { IconNotes } from '@tabler/icons-react';
+import { alegreya, alegreya_bold } from '@/global/Fonts';
 //const { DesignService, asideOpen, setAsideOpen } = React.useContext(GlobalContext);
 
 type TCustTitle = typeof Title;
@@ -15,6 +16,7 @@ export const ActionLink = ({ children, ...props }: any) => {
       {...props}
       size="sm"
       component="button"
+      pt='1' // !! don't know why but it is shifted up
       //onClick={() =>
       //  refetch
       //    ? refetch()
@@ -158,15 +160,17 @@ export const Title4_main = ({ children }: TChildren) => {
 export const Title1_main = ({ children, ...props }: TitleProps) => {
   //TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
+  const theme = useMantineTheme();
   return (
     <Title {...props}>
       <Text
         className={classes.title}
         component="span"
         inherit
-        variant="gradient"
+       // variant="gradient"
         //gradient={{ from: 'DeepPink', to: 'pink' }}
-        gradient={{ from: '#01868a', to: '#0ee57d' }}
+        //gradient={{ from: '#01868a', to: '#0ee57d' }}
+        c={theme.other.virilisDarkGreen} //Dark
       >
         {children}
       </Text>
@@ -190,3 +194,9 @@ export const InnerPageTitle = ({ children }: TChildren) => {
     </div>
   );
 };
+
+export const HomeCardTitle = ({ children, ...props }: TChildren & TAnyFields) => {
+  return(
+  <Title order={3} {...props} className={alegreya_bold.className}>{children}</Title>
+  )
+}

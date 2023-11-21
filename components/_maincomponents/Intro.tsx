@@ -1,29 +1,29 @@
-import { Box, Title, Text, BackgroundImage, Button, rem, Space, useMantineColorScheme,  } from '@mantine/core';
+import {
+  Box,
+  Title,
+  Text,
+  BackgroundImage,
+  Button,
+  rem,
+  Space,
+  useMantineColorScheme,
+} from '@mantine/core';
 import * as React from 'react';
 import { StyledButton } from '../Buttons/StyledButton';
 import classes from './Intro.module.css';
+import { alegreya, alegreya_bold } from '@/global/Fonts';
 
-import { Alegreya, Alegreya_Sans } from 'next/font/google'
-
-const alegreya = Alegreya_Sans({
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  weight: '400',
-})
 
 
 export const Intro = () => {
-
   const { colorScheme, setColorScheme } = useMantineColorScheme();
 
   console.log('colorScheme', colorScheme);
 
-
   return (
-    
     <BackgroundImage
-    src="https://med.shop-survey.ru/images/frame-1-1.jpg"
-     // src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : '' }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
+      src="https://med.shop-survey.ru/images/frame-1-1.jpg"
+      // src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : '' }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
       radius="md"
       style={{
         height: 420, //SECONDARY_COL_HEIGHT,
@@ -34,8 +34,7 @@ export const Intro = () => {
         position: 'relative',
       }}
     >
-    
-     {/* <Box
+      {/* <Box
         tyle={{
           position: 'absolute',
           //zIndex:'-1',
@@ -60,15 +59,16 @@ export const Intro = () => {
           gradient={{ from: 'DeepPink', to: 'pink' }}
           className={alegreya.className}
         >
-         Медицина для детей<br/>
-с&nbsp;рождения до 18 лет
-        </Text><Space h="xs" />{' '}
-        {/*широкий спектр медицинских услуг*/}
-        32 года опыта<br/>
-и ответственности
+          Медицина для детей
+          <br />
+          с&nbsp;рождения до 18 лет
+        </Text>
+        <Space h="xs" /> {/*широкий спектр медицинских услуг*/}
+        32 года опыта
+        <br />и ответственности
       </Title>
 
-     {/*} <Button
+      {/*} <Button
         variant="gradient"
         gradient={{ from: 'pink', to: 'DeepPink' }}
         size="xl"
@@ -78,7 +78,7 @@ export const Intro = () => {
       >
         Записаться на прием
       </Button> */}
-      <StyledButton appearence='intro_second'>Записаться на прием</StyledButton>
+      <StyledButton appearence="intro_second">Записаться на прием</StyledButton>
     </BackgroundImage>
   );
 };

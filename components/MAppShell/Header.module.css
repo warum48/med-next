@@ -89,7 +89,7 @@
   /* background: linear-gradient(90deg, #ffffff 60%, #ffffff00 100%); */
   border-radius: 100px;
   padding: 6px;
-  color: var(--mantine-color-second-4);
+  color: var(--mantine-color-virilis-darkgreen);
   @media (max-width: $mantine-breakpoint-sm) {
     display: none;
 }
