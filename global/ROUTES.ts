@@ -15,6 +15,7 @@ import {
     IconCalendarPlus,
     IconId,
     IconHome,
+    IconTicket,
   } from '@tabler/icons-react';
 
 /**
@@ -64,11 +65,7 @@ export enum RoutesTypes {
       ],*/
     },
   
-    {
-      label: 'Личный кабинет / регистрация',
-      icon: IconId,
-      link: RoutesTypes.Auth,
-    },
+    
     {
       label: 'Календарь посещений',
       icon: IconCalendar,
@@ -107,7 +104,7 @@ export enum RoutesTypes {
 
     {
       label: 'Абонемент',
-      icon: IconNotes,
+      icon: IconTicket,
       link: RoutesTypes.Abonement,
     },
   
@@ -116,4 +113,12 @@ export enum RoutesTypes {
       icon: IconHelp,
       link: RoutesTypes.Support,
     },
+]
+
+export const demoPages = [
+  {
+    label: 'Личный кабинет / регистрация',
+    icon: IconId,
+    link: RoutesTypes.Auth,
+  },
 ]

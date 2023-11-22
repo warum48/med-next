@@ -25,6 +25,7 @@ import { TextInfo, Title4_second, TitleLabel } from '@/components/TextBlocks/Tex
 import { useDisclosure } from '@mantine/hooks';
 //import { innerPageMaxWidth } from '../../../CONSTS';
 import styles from '@/styles/Tables.module.css';
+import { useRouter } from 'next/navigation';
 
 interface TProps {}
 
@@ -34,6 +35,7 @@ export function MyAbonements({}: TProps) {
   const [expanded, setExpanded] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const [curItem, setCurItem] = useState(0);
+  const router = useRouter();
   const elements = [
     {
       start: '01.01.2023',
@@ -52,7 +54,8 @@ export function MyAbonements({}: TProps) {
   const rows = elements.map((element, index) => (
     <Table.Tr
       //key={element.name}
-      onClick={()=>{open(); setCurItem(index)}}
+     // onClick={()=>{open(); setCurItem(index)}}
+      onClick={()=>{router.push('/abonement/1')}}
       key={'tr' + index}
       className={styles.hoveringCell}
     >

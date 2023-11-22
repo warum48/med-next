@@ -5,6 +5,7 @@ import { createTheme } from '@mantine/core';
 export const theme = createTheme({
   /* Put your mantine theme override here */
  // colorScheme,
+ fontFamily: 'Onest, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
  breakpoints: {
   'xs': '36em',
   'sm': '48em',
@@ -14,8 +15,8 @@ export const theme = createTheme({
   'xxl': '100em', //!!added
  },
  other: {
-  virilisPink: '#E2378D',//'#fb6eb5',
-   virilisGreen: '#2fb797',
+  virilisPink: '#e3378d',//'#E2378D',//'#fb6eb5',
+   virilisGreen: '#019f90',//'#2fb797',
    virilisDarkGreen: '#00574B',
  },
   colors: {

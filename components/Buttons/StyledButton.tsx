@@ -8,7 +8,7 @@ import { GlobalContext } from '@/context/ContextGlobal';
 import classes from './StyledButton.module.css';
 
 type TProps = {
-  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small';
+  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small' | 'main_gradient' | 'main_second_outlined';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
@@ -32,17 +32,19 @@ export const StyledButton = ({
   if (appearence == 'intro_second') {
     return (
       <Button
-        variant="gradient"
-        gradient={{ from: 'pink', to: 'DeepPink' }}
+        //variant="gradient"
+        //gradient={{ from: 'pink', to: 'DeepPink' }}
         size="xl"
-        className={classes.control}
+        className={classes.intro_second}
+
+       // className={classes.main_second}
         mt={40}
-        style={{
-          borderRadius:
-            DesignService.sizeAndRadius.buttonRadius[
-              DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-            ].style,
-        }}
+        //style={{
+        //  borderRadius:
+        //    DesignService.sizeAndRadius.buttonRadius[
+        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+        //    ].style,
+        //}}
       >
         {children}
         {/*} Записаться на прием */}
@@ -53,21 +55,22 @@ export const StyledButton = ({
   if (appearence == 'main_second') {
     return (
       <Button
-        variant="gradient"
+       // variant="gradient"
         // gradient={{ from: 'pink', to: '#ff3ebb' }}
-        gradient={{ from: 'pink', to: '#fd55d0' }}
+      //  gradient={{ from: 'pink', to: '#fd55d0' }}
         size="md" //"sm"
         //className={classes.control}
+        className={classes.main_second}
         //mt={40}
-        style={{
-          borderRadius:
-            DesignService.sizeAndRadius.buttonRadius[
-              DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-            ].style, //
-          //DesignService.sizeAndRadius.buttonRadius[DesignService.buttonRadius].style,
-          //'100px'
-          ...sx,
-        }}
+        //style={{
+        //  borderRadius:
+        //    DesignService.sizeAndRadius.buttonRadius[
+        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+        //    ].style, //
+        //  //DesignService.sizeAndRadius.buttonRadius[DesignService.buttonRadius].style,
+        //  //'100px'
+        //  ...sx,
+        //}}
         onClick={onClick}
         {...props}
       >
@@ -76,7 +79,7 @@ export const StyledButton = ({
       </Button>
     );
   }
-  if (appearence == 'main_first') {
+  if (appearence == 'main_gradient') {
     return (
       <Button
         variant="gradient"
@@ -92,6 +95,54 @@ export const StyledButton = ({
             ].style,
           ...sx,
         }}
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
+  if (appearence == 'main_first') {
+    return (
+      <Button
+        //variant="gradient"
+        //gradient={{ from: '#01868a', to: '#0dab5f' }}
+        size="md" //"sm"
+        // size="xl"
+        className={classes.main_first}
+        // mt={40}
+        //style={{
+        //  borderRadius:
+        //    DesignService.sizeAndRadius.buttonRadius[
+        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+        //    ].style,
+        //  ...sx,
+        //}}
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
+  if (appearence == 'main_second_outlined') {
+    return (
+      <Button
+        //variant="gradient"
+        //gradient={{ from: '#01868a', to: '#0dab5f' }}
+        size="md" //"sm"
+        // size="xl"
+        className={classes.main_outlined}
+        // mt={40}
+        //style={{
+        //  borderRadius:
+        //    DesignService.sizeAndRadius.buttonRadius[
+        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
+        //    ].style,
+        //  ...sx,
+        //}}
         onClick={onClick}
         {...props}
       >
@@ -128,6 +179,7 @@ export const StyledButton = ({
     return (
       <Button
         size="compact-xs"
+        className={classes.main_small}
         //!!compact
         // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
         // sx={{marginLeft:'auto'}}

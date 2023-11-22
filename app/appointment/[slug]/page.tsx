@@ -430,7 +430,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
             {active !== 0 && (
               //<Button variant="default" onClick={prevStep}>
               <>
-                <StyledButton appearence={'main_first'} onClick={prevStep}>
+                <StyledButton appearence={'main_second_outlined'} onClick={prevStep}>
                   Назад
                 </StyledButton>
                 {/* <Button

@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }: any) => {
     } else {
       console.log('-=-=-=-=user');
       if (pathname == RoutesTypes.Auth) {
-        router.push(RoutesTypes.Home);
+        //!!!router.push(RoutesTypes.Home);
+        console.log('redirect to auth')
       }
     }
   }

@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300&family=Onest:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 a{
+    text-decoration: none;
+    font-size: var(--mantine-font-size-sm)/*0.875rem;*/
+   /* color:var(--mantine-color-main-4);*/
+}
+a:hover{
+    text-decoration: underline;
+}
+a.decoration_none:hover{
     text-decoration: none;
 }
 .mantine-Avatar-image{
@@ -10,6 +20,10 @@ a{
 }
 .secondColor{
     color:var(--mantine-color-second-4);
+}
+
+.color_text{
+    color:var(--mantine-color-text);
 }
 
  

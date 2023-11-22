@@ -19,7 +19,7 @@ export const AllAbonementsItem = ({clinic, summ, clinicDebtAr, lastItem}: TProps
         <TitleLabel_second>{summ}₽</TitleLabel_second>
         <StyledButton appearence='main_small'>Подробнее</StyledButton>
     </Group>
-    <Text size='sm'>Описание</Text>
+    <Text size='sm'>6 профилактических осмотров доверенным педиатром на дому: еженедельно до месяца, далее ежемесячно, от 8 профилактических осмотров врачами-специалистами на дому</Text>
    {/*} <List>
         {clinicDebtAr.map((item, index) => (
             <List.Item key={'debt' + index}>

@@ -21,7 +21,9 @@ import { produce } from 'immer';
 
 import {
     ActionLink,
+  TextHighlighted,
   TextInfo,
+  TextInfoWarning,
   Title1_main,
   Title2_second,
   TitleLabel,
@@ -30,6 +32,11 @@ import { TreatmentHistory } from '@/components/_medicalcard/CardHistory/History'
 import { PostponedPayments } from '@/components/_payments/Postponed/PostponedPayments';
 import { MyAbonements } from '@/components/_abonement/MyAbonements';
 import { AllAbonements } from '@/components/_abonement/AllAbonements';
+import { Services } from '@/components/_abonement/Services';
+import { StyledButton } from '@/components/Buttons/StyledButton';
+import { ServicesGrouped } from '@/components/_abonement/ServicesGrouped';
+import Link from 'next/link';
+import { RoutesTypes } from '@/global/ROUTES';
 
 export default function MedicalCard() {
   const changeInfo = useCallback((text: string, fieldId: string) => {
@@ -129,7 +136,10 @@ export default function MedicalCard() {
         6 профилактических осмотров доверенным педиатром на дому: еженедельно до месяца, далее
         ежемесячно, от 8 профилактических осмотров врачами-специалистами на дому
       </TextInfo>
+
       <Space h="md" />
+     {/*} <Title2_second>Услуги</Title2_second>
+      <Space h="xs" /> */}
       <Stack gap='xs'>
         <Group><TitleLabel>Медицинский центр: </TitleLabel> <TextInfo>Онни</TextInfo></Group>
         <Group><TitleLabel>Дата начала: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
@@ -138,11 +148,28 @@ export default function MedicalCard() {
         <Group><TitleLabel>Доверенный педиатр: </TitleLabel><TextInfo>Иванов Иван Иванович, +7 (812) 123-45-67</TextInfo></Group>
         <Group><TitleLabel>Специалисты: </TitleLabel><ActionLink>Подробнее ▾</ActionLink></Group>
       </Stack>
+
+      <Space h="md" />
+      <Title2_second>Финансы</Title2_second>
+      <Space h="xs" />
+      <Stack gap='xs'>
+        <Group><TitleLabel>Цена абонемента (с учетом скидки): </TitleLabel> <TextHighlighted>15000 Р</TextHighlighted></Group>
+        <Group><TitleLabel>Скидка: </TitleLabel><TextHighlighted>5000 Р</TextHighlighted></Group>
+        <Group><TitleLabel>Дата планируемой оплаты: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
+        <Group><TitleLabel>Сумма планируемой оплаты: </TitleLabel><TextInfo>15000 Р</TextInfo></Group>
+        <Group><TitleLabel>Задолженность по абонементу: </TitleLabel><TextInfoWarning>1500 Р</TextInfoWarning></Group>
+        <div className="" style={{alignSelf: 'flex-start'}}><StyledButton appearence='main_small'>Оплатить</StyledButton></div>
+      </Stack>
       <Space h="xs" />
 
       <Space h="md" />
       <Title2_second>Услуги</Title2_second>
       <Space h="xs" />
+      <ServicesGrouped/>
+     
+      <TextInfo>Подробнее об оказанных услугах в разделе </TextInfo>
+      <Anchor component={Link} href={RoutesTypes.MedicalCard}>медицинская карта</Anchor>
+            
       {/*<AllAbonements />*/}
     </InnerPageContainer>
   );

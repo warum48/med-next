@@ -11,29 +11,27 @@ import { ActionLink, Title1_main, Title2_main, Title2_second, TitleLabel } from 
 import { useState } from 'react';
 import { Debt } from '@/components/_payments/Debt/Debt';
 import { PostponedPayments } from '@/components/_payments/Postponed/PostponedPayments';
+import { FromTo } from '@/components/Dates/FromTo';
 
 export default function Payments() {
   const theme = useMantineTheme();
 
   return (
     <InnerPageContainer>
-      <Title1_main>Текущий баланс</Title1_main>
+      <Title1_main>Платежи</Title1_main>
       <Space h="xl" />
       <Group>
-        <Title2_main>Остаток по депозиту:</Title2_main>
-        <Title order={2} 
-       // c={theme.colors.virilisPink[0]}
-        >
-          <Text>4800 ₽ </Text>
-        </Title>
+        <Title2_second>Остаток по депозиту: <b className="mainColor">4800 ₽</b></Title2_second>
+       
+        
       </Group>
       
        
       
       <Space h="sm" />
       <Group>
-        <TitleLabel>Внести оплату:</TitleLabel>
-        <StyledButton appearence="main_second">Оплатить</StyledButton>
+        {/*<TitleLabel>Внести оплату:</TitleLabel>*/}
+        <StyledButton appearence="main_first">Внести оплату</StyledButton>
       </Group>
       <Space h="xl" />
       <Debt/>
@@ -47,21 +45,7 @@ export default function Payments() {
       >
         <Title2_second>История платежей</Title2_second>
         <Group gap="md">
-          <DatePickerInput
-            //value={value} onChange={setValue}
-            //label="С даты"
-            placeholder="С даты"
-            hideWeekdays
-            locale="ru"
-          />
-          {/*<Divider orientation="vertical" />*/}
-          <DatePickerInput
-            //label="По дату"
-            placeholder="По дату"
-            //value={value} onChange={setValue}
-            hideWeekdays
-            locale="ru"
-          />
+          <FromTo/>
         </Group>
       </Group>
       <Space h="xs" />

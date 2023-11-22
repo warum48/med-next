@@ -1,11 +1,59 @@
-.control {
+.intro_second {
+  border-radius: 100px;
+  background-color: var(--mantine-color-virilis-pink);
     padding-left: rem(50);
     padding-right: rem(50);
   /*  font-family: `Greycliff CF, ${theme.fontFamily}`,*/
     font-size: rem(22);
+    transition: all .4s;
 
    /*[theme.fn.smallerThan('md')]: { */
     @media (max-width: $mantine-breakpoint-md) {    
       width: '100%';
     }
+  }
+  .intro_second:hover{
+    background-color: var(--mantine-color-virilis-green);
+  }
+
+  .main_second{
+    transition: all .4s;
+    background-color: var(--mantine-color-virilis-pink);
+    border-radius: 100px;
+  }
+  .main_second:hover{
+    background-color: var(--mantine-color-virilis-green);
+  }
+
+  .main_first{
+    transition: all .4s;
+    background-color: var(--mantine-color-virilis-green);
+    border-radius: 100px;
+  }
+  .main_first:hover{
+    background-color: var(--mantine-color-virilis-pink);
+  }
+
+  .main_outlined{
+    transition: all .4s;
+    background-color: var(--mantine-color-body);
+    border-color: var(--mantine-color-virilis-pink);
+    color: var(--mantine-color-virilis-pink);
+    border-radius: 100px;
+  }
+
+  .main_outlined:hover{
+    border-color: var(--mantine-color-virilis-green);
+    color: var(--mantine-color-virilis-green);
+  }
+
+ 
+
+  .main_small{
+    border-radius: 100px;
+    transition: all .4s;
+    background-color: var(--mantine-color-virilis-green);
+  }
+  .main_small:hover{
+    background-color: var(--mantine-color-virilis-pink);
   }

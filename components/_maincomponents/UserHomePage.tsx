@@ -25,9 +25,28 @@ import classes from './HomePage.module.css';
 import { CarouselMain } from './Carousel';
 import { HomeCard } from './HomeCard';
 import { relative } from 'path';
-import { IconNotes } from '@tabler/icons-react';
+//import { IconNotes } from '@tabler/icons-react';
 import { RoutesTypes } from '@/global/ROUTES';
 import { HomeCardTitle, TitleLabel } from '../TextBlocks/TextBlocks';
+
+import {
+  IconNotes,
+  IconCalendarStats,
+  IconGauge,
+  IconPresentationAnalytics,
+  IconFileAnalytics,
+  IconAdjustments,
+  IconLock,
+  IconHelp,
+  IconUsersGroup,
+  IconUserCircle,
+  IconCurrencyRubel,
+  IconFiles,
+  IconCalendar,
+  IconCalendarPlus,
+  IconId,
+  IconHome,
+} from '@tabler/icons-react';
 
 export const UserHomePage = () => {
   const theme = useMantineTheme();
@@ -54,19 +73,20 @@ export const UserHomePage = () => {
                   bgColor="#FFF8FB"
                   href={RoutesTypes.Calendar}
                   color={theme.other.virilisPink}
+                  icon={IconCalendar}
                 >
                   <Group>
                     <HomeCardTitle c={theme.other.virilisPink}>
                       Ближайшие приемы
                     </HomeCardTitle>
                   </Group>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     22.12.2023
                   </Text>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     <b>Терапевт</b> Мария Ивановна Кузнецова
                   </Text>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     Всего <b>2</b> приема
                   </Text>
                 </HomeCard>
@@ -76,15 +96,16 @@ export const UserHomePage = () => {
                   bgColor="#E8F8F5"
                   href={RoutesTypes.Documents}
                   color={theme.other.virilisGreen}
+                  icon={IconFiles}
                 >
                   <HomeCardTitle c="#007966">
                     Документы
                   </HomeCardTitle>
 
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     <b>2</b> новых
                   </Text>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     Всего <b>5</b>{' '}
                   </Text>
                 </HomeCard>
@@ -95,11 +116,12 @@ export const UserHomePage = () => {
                   href={RoutesTypes.MedicalCard}
                   //color="#E86CA6"
                   color={theme.other.virilisPink}
+                  icon={IconNotes}
                 >
                   <HomeCardTitle c={theme.other.virilisPink}>
                     Медицинская карта
                   </HomeCardTitle>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     Вся ваша история всегда с вами
                   </Text>
                 </HomeCard>
@@ -113,6 +135,7 @@ export const UserHomePage = () => {
                   href={RoutesTypes.Payments}
                   bgColor="#FFF8FB"
                   color={theme.other.virilisPink}
+                  icon={IconCurrencyRubel}
                   //bgColor="#ffebf3"
                 >
                   <HomeCardTitle c={theme.other.virilisPink}>
@@ -159,15 +182,15 @@ export const UserHomePage = () => {
                 </Paper>
               </Grid.Col>
               <Grid.Col>
-                <HomeCard bgColor="#E8F8F5" href={RoutesTypes.Family} color={theme.other.virilisGreen}>
+                <HomeCard bgColor="#E8F8F5" href={RoutesTypes.Family} color={theme.other.virilisGreen} icon={IconUsersGroup}>
                   <HomeCardTitle c="#007966">
                     Моя семья{' '}
                   </HomeCardTitle>
 
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     <b>Добавляйте детей и бабушек! </b>{' '}
                   </Text>
-                  <Text size="sm" c="#7A7A7A">
+                  <Text size="sm" c={theme.black}>
                     Мы добавили очень удобный функционал, все ваши родственники будут построены
                   </Text>
                 </HomeCard>

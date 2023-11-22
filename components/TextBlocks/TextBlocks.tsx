@@ -87,6 +87,23 @@ export const TextInfo = ({ children }: TChildren & TAnyFields) => {
   );
 };
 
+export const TextHighlighted = ({ children }: TChildren & TAnyFields) => {
+  const theme = useMantineTheme();
+  return (
+    <Text className={classes.basicInfo} component="span" inherit c={theme.other.virilisPink} >
+      <b>{children}</b>
+    </Text>
+  );
+};
+export const TextInfoWarning = ({ children }: TChildren & TAnyFields) => {
+  const theme = useMantineTheme();
+  return (
+    <Text className={classes.basicInfo} component="span" inherit c={theme.colors.red[5]} >
+      <b>{children}</b>
+    </Text>
+  );
+};
+
 export const TextRegular = ({ children }: TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
 
@@ -164,7 +181,8 @@ export const Title1_main = ({ children, ...props }: TitleProps) => {
   return (
     <Title {...props}>
       <Text
-        className={classes.title}
+       // className={classes.title}
+        className={ alegreya.className}
         component="span"
         inherit
        // variant="gradient"
