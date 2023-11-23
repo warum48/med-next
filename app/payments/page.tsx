@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { Debt } from '@/components/_payments/Debt/Debt';
 import { PostponedPayments } from '@/components/_payments/Postponed/PostponedPayments';
 import { FromTo } from '@/components/Dates/FromTo';
+import { SpaceYMain } from '@/components/Spacers/Spacers';
 
 export default function Payments() {
   const theme = useMantineTheme();
@@ -19,7 +20,7 @@ export default function Payments() {
   return (
     <InnerPageContainer>
       <Title1_main>Платежи</Title1_main>
-      <Space h="xl" />
+      <SpaceYMain/>
       <Group>
         <Title2_second>Остаток по депозиту: <b className="mainColor">4800 ₽</b></Title2_second>
        
@@ -33,13 +34,13 @@ export default function Payments() {
         {/*<TitleLabel>Внести оплату:</TitleLabel>*/}
         <StyledButton appearence="main_first">Внести оплату</StyledButton>
       </Group>
-      <Space h="xl" />
+      <SpaceYMain/>
       <Debt/>
-      <Space h="xl" />
+      <SpaceYMain/>
       <Title2_second>Отложенные платежи</Title2_second>
       <Space h="xs" />
       <PostponedPayments/>
-      <Space h="xl" />
+      <SpaceYMain/>
       <Group gap="md" justify="space-between"
       //"apart"
       >

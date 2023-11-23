@@ -2,6 +2,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 //import { useLocation } from "react-router-dom";
 import { TColorScheme, TDesignService, useDesign } from './useDesign';
+import { useMediaQuery } from '@mantine/hooks';
+import { em } from '@mantine/core';
 /*import {useSearchParamsService} from "_utilslib";
 import type { TSearchParamsService } from "_utilslib";
 import { useQuery } from "@apollo/client";
@@ -19,6 +21,7 @@ interface IContext {
   pathtoserver: string;
   isDebug: boolean;
   DesignService: TDesignService;
+  isMobile?: boolean;
   /*  SearchParamsService: TSearchParamsService;  //много функций
   
   UpdatingQueryService: any;
@@ -43,6 +46,7 @@ export const GlobalProvider = ({ children }: Props) => {
   const [token, setToken] = React.useState('');
   const [asideOpen, setAsideOpen] = React.useState(false);
   const [isDebug, setIsDebug] = useState<boolean>(false);
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   //const location = useLocation();
   const { DesignService } = useDesign();
   //console.log('location', location);
@@ -73,6 +77,7 @@ export const GlobalProvider = ({ children }: Props) => {
     pathtoserver,
     isDebug,
     DesignService,
+    isMobile
     /* setIsDebug,
     
     SearchParamsService,

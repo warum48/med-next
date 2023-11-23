@@ -1,8 +1,8 @@
 import { Box, Center } from '@mantine/core';
 import * as React from 'react';
 //import { TitleLabel } from '../../_styles/headers';
-import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
-import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
+import { FloatingLabelInput } from '../Inputs/FloatingLabelInput';
+import { FloatingLabelInputMask } from '../Inputs/FloatingLabelInputMask';
 import { TitleLabel } from '../TextBlocks/TextBlocks';
 
 type TProps = {
@@ -15,7 +15,7 @@ export const AppointmentForm = ({form}:any) => {
         <Box 
         //maw={400} 
         //mx="auto"
-        mx={'0.25rem'}
+        //mx={'0.25rem'}
          w={'100%'} mt="xl">
                 
                     {/*

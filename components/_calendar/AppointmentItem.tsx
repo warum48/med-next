@@ -66,7 +66,14 @@ export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIcon
         <CardExpandButton expanded={expanded} setExpanded={setExpanded}/>
        
           <Group wrap="nowrap">
-            <Avatar src={avatar} size={expanded? 150:80} radius="md" />
+            <Avatar src={avatar} 
+            visibleFrom="md"
+            size={expanded? 150:80} 
+            radius="md" />
+            <Avatar src={avatar} 
+            hiddenFrom="md"
+            size={80} 
+            radius="md" />
             <div>
               <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
                 {title}

@@ -28,7 +28,7 @@ export const InnerPageContainer = ({ children, className }: TChildren & { classN
             <Paper
               mx="auto"
               shadow="sm"
-              p="xl"
+              p={{base: 'sm', md: 'xl'}}//"xl"
               pt="md"
               maw={innerPageMaxWidth}
              // mt="-md"

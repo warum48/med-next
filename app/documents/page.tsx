@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
@@ -28,6 +28,7 @@ import {
   Divider,
   Badge,
   Textarea,
+  em,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 //import { FastCommentsCommentWidget } from 'fastcomments-react';
@@ -39,8 +40,10 @@ import { StyledButton } from '../../components/Buttons/StyledButton';
 import { DatePicker, DatePickerInput } from '@mantine/dates';
 import { FromTo } from '../../components/Dates/FromTo';
 import { Title1_main } from '@/components/TextBlocks/TextBlocks';
+import { useMediaQuery } from '@mantine/hooks';
 
 export default function Documents() {
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
   //const theme = useMantineTheme();
@@ -69,73 +72,68 @@ export default function Documents() {
 
   return (
     <InnerPageContainer>
-      <Box
-        maw={1200}
-        // mx="auto"
-        w={'100%'}
-        //mt="xl"
-      >
-        <Box 
-       // mih={'80vh'}
-        >
-          {/*<h4> Записаться на прием </h4>*/}
-          <Title1_main>Документы</Title1_main>
-          <Space h="xl" />
-          <Text c="dimmed">
-            В этом разделе личного кабинета вы можете отправить запрос на документы
-          </Text>
-          <Space h="xl" />
+      {/*<h4> Записаться на прием </h4>*/}
+      <Title1_main>Документы</Title1_main>
+      <Space h="xl" />
+      <Text c="dimmed">
+        В этом разделе личного кабинета вы можете отправить запрос на документы
+      </Text>
+      <Space h="xl" />
 
-          <Tabs defaultValue="type1">
-            <Tabs.List>
-              <Tabs.Tab
-                value="type1"
-                //icon={<IconPhoto size="0.8rem" />}
-              >
-                ЗАПРОСИТЬ ДОКУМЕНТЫ
-              </Tabs.Tab>
-              <Tabs.Tab
-                value="type2"
-                // icon={<IconMessageCircle size="0.8rem" />}
-              >
-                ИСТОРИЯ ЗАПРОСОВ
-              </Tabs.Tab>
-              {/*}
+      <Tabs
+        defaultValue="type1"
+        // orientation="vertical"
+        //  placement='top'
+      >
+        <Tabs.List>
+          <Tabs.Tab
+            value="type1"
+            //icon={<IconPhoto size="0.8rem" />}
+          >
+            {isMobile ? 'ЗАПРОСИТЬ' : 'ЗАПРОСИТЬ ДОКУМЕНТЫ'}
+          </Tabs.Tab>
+          <Tabs.Tab
+            value="type2"
+            // icon={<IconMessageCircle size="0.8rem" />}
+          >
+            {isMobile ? 'ИСТОРИЯ' : 'ИСТОРИЯ ЗАПРОСОВ'}
+          </Tabs.Tab>
+          {/*}
               <Tabs.Tab
                 value="type3"
                 // icon={<IconSettings size="0.8rem" />}
               >
                 ТИП 3
   </Tabs.Tab> */}
-            </Tabs.List>
+        </Tabs.List>
 
-            <Tabs.Panel value="type1" pt="xs">
-            <Box>
-              <Space h="xl" />
-              <Group align="top" gap="xl">
-                <Radio.Group
-                  name="age"
-                  label="Выберите документ:"
-                  {...form.getInputProps('doc')}
-                  //value={valueAge}
-                  //onChange={setValueAge}
-                  // description="This is anonymous"
-                  // withAsterisk
-                >
-                  <Stack mt="md">
-                    {docsAr.map((item, index) => (
-                      <Group key={'doc' + index}>
-                        <Radio value={'doc' + index} label={item.name} />
-                        {item.status && item.status == 'waiting' && (
-                          <Badge color="pink">Запрошен</Badge>
-                        )}
-                        {item.readyDate && <Badge>Выдан {item.readyDate}</Badge>}
-                      </Group>
-                    ))}
-                  </Stack>
-                </Radio.Group>
-                <Space w="xl" />
-                {/*}  <Paper
+        <Tabs.Panel value="type1" pt="xs">
+          <Box>
+            <Space h="xl" />
+            <Group align="top" gap="xl">
+              <Radio.Group
+                name="age"
+                label="Выберите документ:"
+                {...form.getInputProps('doc')}
+                //value={valueAge}
+                //onChange={setValueAge}
+                // description="This is anonymous"
+                // withAsterisk
+              >
+                <Stack mt="md">
+                  {docsAr.map((item, index) => (
+                    <Group key={'doc' + index}>
+                      <Radio value={'doc' + index} label={item.name} />
+                      {item.status && item.status == 'waiting' && (
+                        <Badge color="pink">Запрошен</Badge>
+                      )}
+                      {item.readyDate && <Badge>Выдан {item.readyDate}</Badge>}
+                    </Group>
+                  ))}
+                </Stack>
+              </Radio.Group>
+              <Space w="xl" />
+              {/*}  <Paper
                   shadow="md"
                   p="md"
                   withBorder
@@ -155,58 +153,52 @@ export default function Documents() {
                     />
                   </Group>
                         </Paper> */}
-                
-                  <Stack>
-                    <FromTo/>
-                    <Select
-                      maw={420}
-                      label="На кого"
-                      placeholder="Выберите пациента"
-                      data={[
-                        { value: 'react', label: 'На себя' },
-                        { value: 'ng', label: 'Дочь Анна Антонова Антоновна' },
-                        // { value: 'svelte', label: 'Svelte' },
-                        // { value: 'vue', label: 'Vue' },
-                      ]}
-                    />
-                    <Textarea
-                      maw={420}
-                      placeholder="Ваши пожелания и уточнее"
-                      label="Комментарий"
-                      autosize
-                      minRows={2}
-                    />
 
-                    <Radio.Group label="Способ получения документов" name="default">
-                      <Group mt="xs">
-                        <Radio label="Лично в Клинике" value="r1_1" />
-                        <Radio label="По электронной почте" value="r1_2" />
-                      </Group>
-                    </Radio.Group>
+              <Stack>
+                <FromTo />
+                <Select
+                  maw={420}
+                  label="На кого"
+                  placeholder="Выберите пациента"
+                  data={[
+                    { value: 'react', label: 'На себя' },
+                    { value: 'ng', label: 'Дочь Анна Антонова Антоновна' },
+                    // { value: 'svelte', label: 'Svelte' },
+                    // { value: 'vue', label: 'Vue' },
+                  ]}
+                />
+                <Textarea
+                  maw={420}
+                  placeholder="Ваши пожелания и уточнее"
+                  label="Комментарий"
+                  autosize
+                  minRows={2}
+                />
 
-                    <Space h="xs" />
-                    <Center>
-              <StyledButton appearence="main_second">Скачать</StyledButton></Center>
-                    
-                  </Stack>
-                
-              </Group>
+                <Radio.Group label="Способ получения документов" name="default">
+                  <Group mt="xs">
+                    <Radio label="Лично в Клинике" value="r1_1" />
+                    <Radio label="По электронной почте" value="r1_2" />
+                  </Group>
+                </Radio.Group>
 
-              
-              </Box>
+                <Space h="xs" />
+                <Center>
+                  <StyledButton appearence="main_second">Запросить</StyledButton>
+                </Center>
+              </Stack>
+            </Group>
+          </Box>
+        </Tabs.Panel>
 
-            </Tabs.Panel>
-
-            <Tabs.Panel value="type2" pt="xs">
-              Документы тип 2
-            </Tabs.Panel>
-            {/*
+        <Tabs.Panel value="type2" pt="xs">
+          Документы тип 2
+        </Tabs.Panel>
+        {/*
             <Tabs.Panel value="type3" pt="xs">
               Документы тип 3
                             </Tabs.Panel> */}
-          </Tabs>
-        </Box>
-      </Box>
+      </Tabs>
     </InnerPageContainer>
   );
 }

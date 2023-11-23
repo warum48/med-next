@@ -10,7 +10,7 @@ export const CardContainer = ({ children, expanded = false, miw="100%" }: TProps
     <Paper
       style={{ position: 'relative' }}
       shadow="0"
-      p={expanded ? 'xl' : 'xs'}
+      p={expanded ? { base: 'xs', md: 'xl' }  : 'xs'}
       withBorder
       miw={miw} //{expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -32) }//448}
     >

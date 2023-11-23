@@ -11,6 +11,7 @@ import {
   rem,
   ThemeIcon,
 } from '@mantine/core';
+import * as React from 'react'
 
 import { Calendar } from '@mantine/dates';
 import { DatePicker } from '@mantine/dates';
@@ -19,6 +20,7 @@ import { useState } from 'react';
 import 'dayjs/locale/ru';
 //import { useHeadersStyles } from '../../../_styles/headers';
 import { FMInfo } from './FMInfo';
+import { GlobalContext } from '@/context/ContextGlobal';
 
 interface UserInfoIconsProps {
   avatar: string;
@@ -39,9 +41,10 @@ export function FamilyMember({
 }: UserInfoIconsProps) {
   //const { classes } = useStyles();
   //const {classes : headerClasses } = useHeadersStyles();
+  const { isMobile } = React.useContext(GlobalContext); //GlobalContext();
   const [expanded, setExpanded] = useState(false);
   return (
-    <Grid.Col span={expanded ? 12 : 6}>
+    <Grid.Col span={expanded || isMobile ? 12 : 6}>
       <Paper
         //maw={700}
         style={{ position: 'relative' }}
@@ -63,49 +66,10 @@ export function FamilyMember({
         >
          {expanded ? <IconX/> :  <IconPencil /> }
         </ThemeIcon>
-        {/* <Button
-          size="compact-xs"
-          variant="light"
-          style={{ position: 'absolute', top: '4px', right: '4px', 
-        //  fontSize:'24px'
-         }}
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? '✕' : <ThemeIcon variant="light" size={30}><IconPencil/></ThemeIcon>}
-        </Button>
-        */}
+        
         <Grid>
           <Grid.Col span="auto">
-            <Group wrap="nowrap">
-              {/*   <Avatar src={avatar} size={expanded? 150:80} radius="md" /> */}
-              <div>
-                {/*  <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
-                {title}
-              </Text>
-
-              <Text fz="lg" fw={500} className={classes.name}>
-                {name}
-              </Text>
-
-  */}
-
-                {/*
-          <Group noWrap spacing={10} mt={3}>
-            <IconAt stroke={1.5} size="1rem" className={classes.icon} />
-            <Text fz="xs" c="dimmed">
-              {email}
-            </Text>
-          </Group>
-
-          <Group noWrap spacing={10} mt={5}>
-            <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
-            <Text fz="xs" c="dimmed">
-              {phone}
-            </Text>
-  </Group> */}
-              </div>
-            </Group>
-
+           
             <FMInfo expanded={expanded} isMain={isMain} />
           </Grid.Col>
         </Grid>

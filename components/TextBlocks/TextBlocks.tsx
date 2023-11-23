@@ -1,5 +1,5 @@
 import { TAnyFields, TChildren } from '@/types/types';
-import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme } from '@mantine/core';
+import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme, TextProps } from '@mantine/core';
 //import { TAnyFields, TChildren } from '../_types/Types';
 import classes from './TextBlocks.module.css';
 
@@ -179,16 +179,17 @@ export const Title1_main = ({ children, ...props }: TitleProps) => {
   //const { classes, theme } = useHeadersStyles();
   const theme = useMantineTheme();
   return (
-    <Title {...props}>
+    <Title  {...props}>
       <Text
        // className={classes.title}
-        className={ alegreya.className}
+        className={classes.title1 + ' ' +  alegreya.className}
         component="span"
         inherit
        // variant="gradient"
         //gradient={{ from: 'DeepPink', to: 'pink' }}
         //gradient={{ from: '#01868a', to: '#0ee57d' }}
         c={theme.other.virilisDarkGreen} //Dark
+       
       >
         {children}
       </Text>

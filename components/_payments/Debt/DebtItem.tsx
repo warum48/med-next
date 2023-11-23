@@ -19,13 +19,13 @@ export const DebtItem = ({clinic, summ, clinicDebtAr, lastItem}: TProps) =>{
         <TitleLabel_second>{summ}₽</TitleLabel_second>
         <StyledButton appearence='main_small'>Оплатить</StyledButton>
     </Group>
-    <List>
+    <List pr="xl">
         {clinicDebtAr.map((item, index) => (
             <List.Item key={'debt' + index}>
                 <Group>
-                <TextInfo>{item.description}</TextInfo> /
-                <TextInfo>{item.date}</TextInfo> / 
-                    <TextInfo>{item.summ} ₽</TextInfo>
+                <TextInfo>{item.description} &nbsp;/&nbsp;
+                {item.date} &nbsp;/&nbsp; 
+                   {item.summ}&nbsp;₽</TextInfo>
                 </Group>
             </List.Item>
         ))}

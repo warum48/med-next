@@ -113,7 +113,7 @@
 }
 
 .burger{
-    @media (min-width: $mantine-breakpoint-sm) {
+    @media (min-width: $mantine-breakpoint-md) {
         display: none;
     }
 }

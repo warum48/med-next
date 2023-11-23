@@ -15,14 +15,17 @@ import classes from './NavbarNested.module.css';
 import { pages } from '@/global/ROUTES';
 import { demoPages } from '@/global/ROUTES';
 import { useCookies } from 'react-cookie';
+import React from 'react';
 
+type TProps = {
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-
-export function NavbarNested() {
+export function NavbarNested({setOpened}:TProps) {
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   //const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
-  const links = pages.map((item) => <LinksGroup {...item} key={item.label} />);
-  const demolinks = demoPages.map((item) => <LinksGroup {...item} key={item.label} />);
+  const links = pages.map((item) => <LinksGroup {...item} key={item.label} setOpened={setOpened}/>);
+  const demolinks = demoPages.map((item) => <LinksGroup {...item} key={item.label} setOpened={setOpened}/>);
 
   return (
     <nav className={classes.navbar}>

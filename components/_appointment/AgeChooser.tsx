@@ -73,7 +73,8 @@ export const AgeChooser = ({ form }: TProps) => {
 
   const styles = {
     markLabel: {
-marginTop:'6px'
+      marginTop: '6px',
+      fontSize:'10px'
     },
 
     thumb: {

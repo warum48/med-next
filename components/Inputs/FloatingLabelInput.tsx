@@ -54,6 +54,7 @@ export function FloatingLabelInput({ label, form, formField,mask, ...props }: TF
     
         <TextInput
           label={label}
+          //mr='xs'
           // placeholder="OMG, it also has a placeholder"
           //required
           classNames={classes}

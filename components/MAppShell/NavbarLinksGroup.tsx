@@ -14,9 +14,10 @@ interface LinksGroupProps {
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];
   link?: string;
+  setOpened : React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: LinksGroupProps) {
+export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, setOpened:setMenuOpened }: LinksGroupProps) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const router = useRouter();
@@ -71,6 +72,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
     <>
       {link ? (
         <Link
+        onClick={() =>setMenuOpened(false)}
           href={link}
           className={
             //!!pathname == link 
@@ -98,10 +100,10 @@ const mockdata = {
   ],
 };
 
-export function NavbarLinksGroup() {
+export function NavbarLinksGroup({setOpened}:any) {
   return (
     <Box mih={220} p="md">
-      <LinksGroup {...mockdata} />
+      <LinksGroup {...mockdata} setOpened={setOpened}/>
     </Box>
   );
 }

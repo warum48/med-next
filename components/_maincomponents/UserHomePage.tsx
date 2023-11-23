@@ -167,7 +167,7 @@ export const UserHomePage = () => {
                       backgroundBlendMode: 'screen',
                     }}
                   ></Box>
-                  <Box style={{ zIndex: 999, position: 'relative' }} p="xl">
+                  <Box style={{ zIndex: 9, position: 'relative' }} p="xl">
                     <Center>
                       <Stack align="center" gap={'xs'}>
                         <HomeCardTitle c="#007966">

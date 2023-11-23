@@ -61,10 +61,16 @@ export function MAppShell({ children }: any) {
           base: cookieToken.mednekot ? 320 : 1,
           // md: 300, lg: 400
         },
-        breakpoint: 'sm',
-        collapsed: { mobile: !opened },
+        breakpoint: 'md',
+        collapsed: { mobile: !opened,
+        //   desktop:!opened 
+        //desktop:false
+          },
       }}
-      padding="md"
+      padding={{base: 0, md: 'md'}}//"md"
+      pt={{base: '3rem', md:0,   lg:'md', 
+      //xl:'md'
+    }}//'md'
     >
       <AppShell.Header>
         <Group h="100%" px="md">
@@ -80,13 +86,14 @@ export function MAppShell({ children }: any) {
           // pr={{base: 0, md: 'md'}}
           pr={0}
         >
-          <NavbarNested />
+          <NavbarNested setOpened={setOpened} />
         </AppShell.Navbar>
       ) : (
         ''
       )}
 
       <AppShell.Main
+      
         style={
           {
             // background:

@@ -25,6 +25,7 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
   return (
     <Box className={styles.container}>
       <Burger
+      hiddenFrom="lg"
         opened={opened}
         onClick={() => setOpened((o) => !o)}
         size="sm"

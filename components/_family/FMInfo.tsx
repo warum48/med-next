@@ -201,10 +201,10 @@ export function FMInfo({ expanded, isMain }: TProps) {
       <Card_title>
         {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
           userInfo.find((obj) => obj.field == 'secondName')?.mock}
-        &nbsp;
+        {" "}
         {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
           userInfo.find((obj) => obj.field == 'firstName')?.mock}
-        &nbsp;
+         {" "}
         {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
           userInfo.find((obj) => obj.field == 'middleName')?.mock}
       </Card_title>

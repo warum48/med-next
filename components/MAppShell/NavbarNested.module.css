@@ -13,7 +13,7 @@
     margin-right: calc(var(--mantine-spacing-md) * -1);
     margin-top: calc(var(--mantine-spacing-md) * -1);
 
-    @media (max-width: $mantine-breakpoint-sm) {
+    @media (max-width: $mantine-breakpoint-md) {
       width:100%;
       padding-right:0;
       /* margin-right:calc(var(--mantine-spacing-md) ); */
