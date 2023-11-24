@@ -85,16 +85,16 @@
 
 @media (max-width: 600px){
   .fc .fc-toolbar-title{
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
 .fc-toolbar-title{
   font-weight: 300;
  /* gradient={{ from: '#01868a', to: '#0ee57d' }}*/
-  background: -webkit-linear-gradient(45deg, #01868a, #0ee57d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--mantine-color-virilis-green);/*-webkit-linear-gradient(45deg, #01868a, #0ee57d);*/
+ /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
 }
 
 .fc .fc-toolbar.fc-header-toolbar{
@@ -150,6 +150,21 @@
 .fc.fc-popover{
   z-index:9;
 }
+
+@media(max-width: $mantine-breakpoint-md){
+  .fc-toolbar-title{
+    position: absolute;
+    top:0px;
+    left:0px;
+  }
+  .calendar_page_calendar{
+    padding-top:30px;
+    position:relative;
+    font-size: 0.875rem;
+  }
+}
+
+
 
 
 
