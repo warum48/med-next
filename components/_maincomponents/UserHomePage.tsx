@@ -27,7 +27,7 @@ import { HomeCard } from './HomeCard';
 import { relative } from 'path';
 //import { IconNotes } from '@tabler/icons-react';
 import { RoutesTypes } from '@/global/ROUTES';
-import { HomeCardTitle, TitleLabel } from '../TextBlocks/TextBlocks';
+import { HomeCardTitle, HomeCardTitleAdv, TitleLabel } from '../TextBlocks/TextBlocks';
 
 import {
   IconNotes,
@@ -55,7 +55,11 @@ export const UserHomePage = () => {
 
   return (
     <>
-      <Box mt="-xs" maw={1350} style={{ margin: '0 auto' }}>
+      <Box p={{ base: 'sm', md: 0 }} mt={{ base: 0, md: '-md',
+       //lg: '-md'//'-xl' 
+      }} maw={1350} 
+     // style={{ margin: '0 auto' }} 
+      >
         <Container my="md" p="0" style={{ maxWidth: '100%' }}>
           <SimpleGrid
             cols={{ base: 1, lg: 2 }}
@@ -170,12 +174,12 @@ export const UserHomePage = () => {
                   <Box style={{ zIndex: 9, position: 'relative' }} p="xl">
                     <Center>
                       <Stack align="center" gap={'xs'}>
-                        <HomeCardTitle c="#007966">
+                        <HomeCardTitleAdv c="#007966">
                           Прививки?
-                        </HomeCardTitle>
-                        <HomeCardTitle  c="#007966">
+                        </HomeCardTitleAdv>
+                        <HomeCardTitleAdv  c="#007966">
                           Диспансеризация?
-                        </HomeCardTitle>
+                        </HomeCardTitleAdv>
                       </Stack>
                     </Center>
                   </Box>

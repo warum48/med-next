@@ -40,6 +40,8 @@ import { mockDoctor, profAr } from '@/components/_appointment/mockdata';
 import { DoctorChooser } from '@/components/_appointment/DoctorChooser';
 import { useRouter } from 'next/navigation';
 import { SpaceYMain } from '@/components/Spacers/Spacers';
+import { SwitchWithText } from '@/components/Switch/Switch';
+import { SwitchWithTextMantine } from '@/components/Switch/SwitchMantine';
 
 export default function Appointment({ params }: { params: { slug: string } }) {
   const theme = useMantineTheme();
@@ -91,6 +93,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
       search: '',
       age: '', //age0-age3
       appointmentType: 'apt0', //apt0-3
+      paymentType: true,
       address: [''],
       // search: '',
 
@@ -111,6 +114,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
 
       if (active === 2) {
         return {
+          birthday: values.birthday.trim().includes('_') ? 'Проведите дату рождения' : null,
           firstName:
             values.firstName.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           lastName:
@@ -119,10 +123,10 @@ export default function Appointment({ params }: { params: { slug: string } }) {
           email: /^\S+@\S+$/.test(values.email) ? null : 'Некорректный email',
           // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           //password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
-          age:
-            values.age.trim().length < 8 || values.age.trim().includes('_')
-              ? 'Это поле обязательно'
-              : null,
+         //!! age:
+         //!!   values.age.trim().length < 8 || values.age.trim().includes('_')
+         //!!     ? 'Это поле обязательно'
+         //!!     : null,
         };
       }
 
@@ -217,7 +221,19 @@ export default function Appointment({ params }: { params: { slug: string } }) {
               </Radio.Group>
 
               <Space h="xxs" />
-
+              {/*<SwitchWithText
+        leftText="Ребенок"
+        rightText="Взрослый"
+        label="Возраст пациента"
+        //checked={checked}
+        //handleChange={handleChange}
+  /> */}
+              <SwitchWithTextMantine
+                leftText="Обычная запись"
+                rightText="По полису дмс"
+                label="Форма оплаты"
+                {...form.getInputProps('paymentType', { type: 'checkbox' })}
+              />
               <AgeChooser form={form} />
 
               <Space h="xxs" />

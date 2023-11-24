@@ -21,7 +21,7 @@
   
   .required {
     transition: opacity 150ms ease;
-    opacity: 0;
+    /*opacity: 0;*/
   
     [data-floating] & {
       opacity: 1;

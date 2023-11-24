@@ -43,7 +43,7 @@ export const Card_pretitle = ({ children }: TChildren) => {
 export const Card_title = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
   return (
-    <Text fz="lg" fw={500} className={classes.name}>
+    <Text className={classes.card_title}>
       {children}
     </Text>
   );
@@ -216,6 +216,16 @@ export const InnerPageTitle = ({ children }: TChildren) => {
 
 export const HomeCardTitle = ({ children, ...props }: TChildren & TAnyFields) => {
   return(
-  <Title order={3} {...props} className={alegreya_bold.className}>{children}</Title>
+  <Title mb='xs' 
+  //order={3} 
+  {...props} className={classes.home_card_title + ' ' + alegreya_bold.className}>{children}</Title>
+  )
+}
+
+export const HomeCardTitleAdv = ({ children, ...props }: TChildren & TAnyFields) => {
+  return(
+  <Title mb='xs' 
+  //order={3} 
+  {...props} className={classes.home_card_title_adv + ' ' + alegreya_bold.className}>{children}</Title>
   )
 }

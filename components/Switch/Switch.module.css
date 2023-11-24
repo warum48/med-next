@@ -3,7 +3,7 @@
 .toggle_slider {
   --switchtext-height: 44px;
   position: relative;
-  width: 260px;
+  width: 280px;
   height: var(--switchtext-height);
   border: 1px solid lightgray;
   border-radius: var(--switchtext-height);
@@ -21,6 +21,19 @@
   transition: 0.4s;
   
 }
+
+/*
+.toggle_slider :global(.mantine-Checkbox-labelWrapper){
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  border-radius:var(--switchtext-height);
+  cursor: pointer;
+  transition: 0.4s;
+}*/
 
 .slider:before {
   position: absolute;
@@ -46,16 +59,20 @@
 }
 
 .text_left{
+  transition: 0.4s;
   color: var(--mantine-color-body);
 }
 .text_right{
+  transition: 0.4s;
   color: var(--mantine-color-text);
 }
 
 .text_left.selected{
+  transition: 0.4s;
   color: var(--mantine-color-text);
 }
 .text_right.selected{
+  transition: 0.4s;
   color: var(--mantine-color-body);
 }
 
@@ -83,6 +100,17 @@
  background-color: white;
 }
 
-.toggle_slider :global(input)[type='checkbox']:checked + .slider:before {
-  transform: translateX(129px);
+.toggle_slider :global(input)[type='checkbox']:checked +   .slider:before {
+  transform: translateX(139px);
 }
+
+.toggle_slider :global([data-checked="true"]) .slider:before {
+  transition: 0.4s;
+  transform: translateX(139px);
+}
+
+/*
+.checked:before {
+  transition: 0.4s;
+  transform: translateX(139px);
+} */

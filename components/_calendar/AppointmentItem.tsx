@@ -9,6 +9,7 @@ import { innerPageMaxWidth } from '@/global/CONSTS';
 import { CardContainer } from '../Card/CardContainer';
 import { CardExpandButton } from '../Card/CardExpandButton';
 import { StyledButton } from '../Buttons/StyledButton';
+import { Card_pretitle, Card_title } from '../TextBlocks/TextBlocks';
 //import { StyledButton } from '../../../components/Buttons/StyledButton';
 //import { innerPageMaxWidth } from '../../../CONSTS';
 //import { CardContainer } from '../../../components/Card/CardContainer';
@@ -75,13 +76,13 @@ export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIcon
             size={80} 
             radius="md" />
             <div>
-              <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+              <Card_pretitle>
                 {title}
-              </Text>
+              </Card_pretitle>
 
-              <Text fz="lg" fw={500} >
+              <Card_title >
                 {name}
-              </Text>
+              </Card_title>
 
               <Text fz="xs" fw={500} >
                Время приема: {timeStart}

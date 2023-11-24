@@ -22,7 +22,11 @@ export const InnerPageContainer = ({ children, className }: TChildren & { classN
      */}
     
        
-          <Box className={className + ' innerCont'} mx={{ lg: '1rem', md: 0 }}
+          <Box className={className + ' innerCont'} 
+          mx={{ 
+            //lg: '1rem',
+             md: 0 
+            }}
            //style={styles}
            >
             <Paper

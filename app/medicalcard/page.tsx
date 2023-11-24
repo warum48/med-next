@@ -21,6 +21,7 @@ import { produce } from 'immer';
 import { FromTo } from '../../components/Dates/FromTo';
 import { TextInfo, Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import {  TreatmentHistory } from '@/components/_medicalcard/CardHistory/History';
+import classes from "./page.module.css";
 
 export default function MedicalCard() {
   const changeInfo = useCallback((text: string, fieldId: string) => {
@@ -117,6 +118,7 @@ export default function MedicalCard() {
       <Space h="xl" />
       <Tabs
         defaultValue="type1"
+       // classNames={classes}
         //styles={(theme) => ({
         //  tab: {
         //    ...theme.fn.focusStyles(),

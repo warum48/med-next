@@ -72,8 +72,9 @@ mask={mask}
           // onBlur={() => setFocused(false)}
           mt="md"
           autoComplete="on"//"off"//"no" //nope
-          {...props}
+         
           {...inputProps}
+          {...props}
           //{...form.getInputProps('firstName')}
           data-floating={floating}
       labelProps={{ 'data-floating': floating }}

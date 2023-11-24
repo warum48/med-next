@@ -35,7 +35,7 @@ export const HomeCard = ({ color = 'black', bgColor = '#FFF8FB', children, href,
     href={href ? href : ''}
       shadow="0"
       radius="md"
-      p="md"
+      p={{ base: 'xs', md: 'md' }}//"md"
       opacity={1}
       style={{
         backgroundColor: bgColor,
@@ -45,10 +45,10 @@ export const HomeCard = ({ color = 'black', bgColor = '#FFF8FB', children, href,
     >
         <Group align='top' wrap='nowrap' gap="xs">
         {/*<ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'} style={{backgroundColor:'white'}}></ThemeIcon>*/}
-          <Icon style={{ width: rem(28), height: rem(28) , 
+         <Box visibleFrom="sm" > <Icon  style={{ width: rem(28), height: rem(28) , 
                 color: color,
                 paddingTop:'4px'
-                }} /> 
+                }} /> </Box>
                {/*Icon && <Icon/> */}
             
             <Box>{children}</Box>

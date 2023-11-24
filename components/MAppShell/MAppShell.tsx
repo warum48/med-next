@@ -68,7 +68,7 @@ export function MAppShell({ children }: any) {
           },
       }}
       padding={{base: 0, md: 'md'}}//"md"
-      pt={{base: '3rem', md:0,   lg:'md', 
+      pt={{base: '3rem', md:0,  // lg:'md', 
       //xl:'md'
     }}//'md'
     >

@@ -83,18 +83,21 @@
   background-color: #333333;
 }
 
-@media (max-width: 600px){
-  .fc .fc-toolbar-title{
-    font-size: 20px;
-  }
-}
+
 
 .fc-toolbar-title{
   font-weight: 300;
+  font-size: 24px;
  /* gradient={{ from: '#01868a', to: '#0ee57d' }}*/
   color: var(--mantine-color-virilis-green);/*-webkit-linear-gradient(45deg, #01868a, #0ee57d);*/
  /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;*/
+}
+
+@media (max-width:  $mantine-breakpoint-sm){
+  .fc .fc-toolbar-title{
+    font-size: 20px;
+  }
 }
 
 .fc .fc-toolbar.fc-header-toolbar{
@@ -151,7 +154,7 @@
   z-index:9;
 }
 
-@media(max-width: $mantine-breakpoint-md){
+@media(max-width: $mantine-breakpoint-xs){
   .fc-toolbar-title{
     position: absolute;
     top:0px;
