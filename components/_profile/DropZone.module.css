@@ -1,0 +1,4 @@
+.dashed_border{
+    padding: var(--mantine-spacing-md);
+    border: 2px dashed lightgray
+}

@@ -45,10 +45,12 @@ import { Box, Button, Grid, Group, Modal, SimpleGrid, Space, Stack, Tooltip } fr
 //import { Title1_main, Title2_second, Title4_second } from '../../_styles/headers';
 import { useCookies } from 'react-cookie';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
-import { TextInfo, Title1_main, Title4_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
+import { TextInfo, Title1_main, Title2_second, Title4_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { AppointmentItem } from '@/components/_calendar/AppointmentItem';
 import { useDisclosure } from '@mantine/hooks';
 import dayjs from 'dayjs';
+import { SpaceYMain } from '@/components/Spacers/Spacers';
+import { AppointmentServices } from '@/components/_calendar/AppointmentServices';
 //import { AppointmentItem } from './components/AppointmentItem';
 //import { AppointmentItem } from './components/AppointmentItem';
 //import { GET_CALENDAR } from "_apollo/queries/calendar/calendar";
@@ -240,8 +242,11 @@ export default function CalendarPage() {
         <Space h="xl" />
         <Grid gutter={'2.5rem'}>
           <Grid.Col span={12}>
-            <Title4_second>Ближайшие записи:</Title4_second>
-            <Space h="xl"></Space>
+           {/*} <Title4_second>Ближайшие записи:</Title4_second>
+            <Space h="xl"></Space> */}
+            <Title2_second>Ближайшие записи:</Title2_second>
+            {/*<SpaceYMain /> */}
+            <Space h="xs" />
             <SimpleGrid
               // grow
               cols={{ base: 1, lg: 2 }}
@@ -352,6 +357,8 @@ export default function CalendarPage() {
          <TitleLabel>{curEvent.title}</TitleLabel><br/>   
         <TitleLabel>Врач:&nbsp;</TitleLabel>
       <TextInfo>Иванов Иван Иванович</TextInfo>
+      <SpaceYMain/>
+      <AppointmentServices/>
               
       </Modal.Body>
       </Modal.Content>

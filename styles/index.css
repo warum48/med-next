@@ -29,4 +29,9 @@ a.decoration_none:hover{
     color:var(--mantine-color-text);
 }
 
+/*-----tw-like utils--*/
+.cursor-pointer{
+    cursor: pointer;
+}
+
  

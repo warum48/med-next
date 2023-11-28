@@ -25,6 +25,7 @@ import {
   import { useDisclosure } from '@mantine/hooks';
   //import { innerPageMaxWidth } from '../../../CONSTS';
   import styles from '@/styles/Tables.module.css';
+import { appointmentData } from '@/components/___mockdata/mockdata';
   
   interface TProps {}
   
@@ -34,45 +35,9 @@ import {
     const [expanded, setExpanded] = useState(false);
     const [opened, { open, close }] = useDisclosure(false);
     const [curItem, setCurItem] = useState(0);
-    const elements = [
-      {
-        date: '01.01.2023',
-        speciality: 'Терапевт',
-        name: 'Иванов Иван Иванович',
-        process: 'Общий анализ крови ',
-        status: 'Оказана',
-      },
-      {
-        date: '01.02.2023',
-        speciality: 'Терапевт',
-        name: 'Иванов Иван Иванович',
-        process: 'Общий анализ крови ',
-        status: 'Оказана',
-      },
-      {
-        date: '01.03.2023',
-        speciality: 'Терапевт',
-        name: 'Иванов Иван Иванович',
-        process: 'Полный анализ крови',
-        status: 'Оказана',
-      },
-      {
-        date: '01.04.2023',
-        speciality: 'Терапевт',
-        name: 'Иванов Иван Иванович',
-        process: 'Общий анализ крови ',
-        status: 'Оказана',
-      },
-      {
-        date: '01.05.2023',
-        speciality: 'Терапевт',
-        name: 'Иванов Иван Иванович',
-        process: 'Общий анализ крови ',
-        status: 'Оказана',
-      },
-    ];
   
-    const rows = elements.map((element, index) => (
+  
+    const rows = appointmentData.map((element, index) => (
       <Table.Tr
         //key={element.name}
         onClick={()=>{open(); setCurItem(index)}}
@@ -114,12 +79,12 @@ import {
         <Modal.Overlay />
           <Modal.Content>
             <Modal.Header>
-              <Modal.Title><Title4_second>{"Посещение " + elements[curItem].date}</Title4_second></Modal.Title>
+              <Modal.Title><Title4_second>{"Посещение " + appointmentData[curItem].date}</Title4_second></Modal.Title>
               <Modal.CloseButton />
             </Modal.Header>
             <Modal.Body>
           <TitleLabel>Врач:&nbsp;</TitleLabel>
-        <TextInfo>{elements[curItem].name}</TextInfo>
+        <TextInfo>{appointmentData[curItem].name}</TextInfo>
         </Modal.Body>
         </Modal.Content>
         </Modal.Root>

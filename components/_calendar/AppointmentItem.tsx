@@ -1,4 +1,4 @@
-import {  Avatar, Text, Group, Box, Paper, Button, Grid, Stack, Divider, rem } from '@mantine/core';
+import {  Avatar, Text, Group, Box, Paper, Button, Grid, Stack, Divider, rem, Table, Space } from '@mantine/core';
 
 import { Calendar } from '@mantine/dates';
 import { DatePicker } from '@mantine/dates';
@@ -9,7 +9,10 @@ import { innerPageMaxWidth } from '@/global/CONSTS';
 import { CardContainer } from '../Card/CardContainer';
 import { CardExpandButton } from '../Card/CardExpandButton';
 import { StyledButton } from '../Buttons/StyledButton';
-import { Card_pretitle, Card_title } from '../TextBlocks/TextBlocks';
+import { Card_pretitle, Card_title, Title4_second } from '../TextBlocks/TextBlocks';
+import { appointmentData } from '../___mockdata/mockdata';
+import { SpaceYMain } from '../Spacers/Spacers';
+import { AppointmentServices } from './AppointmentServices';
 //import { StyledButton } from '../../../components/Buttons/StyledButton';
 //import { innerPageMaxWidth } from '../../../CONSTS';
 //import { CardContainer } from '../../../components/Card/CardContainer';
@@ -109,8 +112,8 @@ export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIcon
             
           </Group>
           {expanded && <>
-          <Divider mt="xl" />
-            Услуги на приеме
+          <SpaceYMain/>
+          <AppointmentServices/>
             <Divider my="xl" />
             <StyledButton appearence='main_second'>Отменить запись</StyledButton>
             </>}

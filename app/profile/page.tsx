@@ -1,7 +1,8 @@
-'use client'
+'use client';
 import * as React from 'react';
 import {
   Anchor,
+  Avatar,
   Box,
   Divider,
   Group,
@@ -24,8 +25,10 @@ import { RoutesTypes } from '@/global/ROUTES';
 import Link from 'next/link';
 import { InnerPageTitle, Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { EditableText } from '@/components/Inputs/EditableText';
+import { DropZone } from '@/components/_profile/DropZone';
 
 export default function Profile() {
+  const [photoUpload, setPhotoUpload] = useState<boolean>(false);
   const changeInfo = useCallback((text: string, fieldId: string) => {
     setUserInfo(
       produce((draft) => {
@@ -116,9 +119,21 @@ export default function Profile() {
   ]);
   return (
     <InnerPageContainer>
-
-      <Title1_main>Профиль</Title1_main>
-    {/* !! <InnerPageTitle>Профиль</InnerPageTitle> */}
+      <Group w="100%" justify="space-between" align="flex-start">
+        <Title1_main>Профиль</Title1_main>
+        {!photoUpload ? (
+          <Avatar
+          className='cursor-pointer'
+            src="avatar.png"
+            alt="Загрузить фото"
+            size={50}
+            onClick={() => setPhotoUpload(true)}
+          />
+        ) : (
+          <DropZone setPhotoUpload={setPhotoUpload}/>
+        )}
+      </Group>
+      {/* !! <InnerPageTitle>Профиль</InnerPageTitle> */}
       <Space h="xl" />
       <Tabs
         defaultValue="type1"
@@ -139,7 +154,12 @@ export default function Profile() {
         <Tabs.Panel value="type1" pt="xs">
           <Stack gap={6}>
             {userInfo.map((item, index) => (
-              <Group key={'uinf' + index} px='md' py='8' style={index%2==1?{ backgroundColor: '#f5f5f5' }: {}}>
+              <Group
+                key={'uinf' + index}
+                px="md"
+                py="8"
+                style={index % 2 == 1 ? { backgroundColor: '#f5f5f5' } : {}}
+              >
                 <TitleLabel>{item.name}:</TitleLabel>
                 <EditableText
                   autosize={item.autosize}
