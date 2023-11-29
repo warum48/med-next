@@ -45,6 +45,7 @@ import { TRegStep } from '@/app/registration/page';
 import { patientRegistrationInitValue, patientRegistrationVar, phoneNumberVar } from '@/apollo/state/Registration';
 import { PATIENT_REGISTRATION } from '@/apollo/queries/accounts/mutations/patientRegistration';
 import { FloatingLabelSelect } from '../Inputs/FloatingLabelSelect';
+import { FormPaper } from '../Containers/FormPaper';
 //import {formatDateRuToNormal} from 
 
 type TRegFormProps = { //<T>
@@ -116,12 +117,13 @@ export function RegForm({ setStep }: TRegFormProps) { //<T><T>
   }, [data_reg]);
 
   return (
-    <Container size={500} mb={'xl'}>
-      <Title1_main 
+    <Container size={500} mb={40} pt={{base: 'xl', md: '0'}} >
+     <Group grow> <Title1_main 
       //align="center"
-      >Регистрация</Title1_main>
+      ta="center"
+      >Регистрация</Title1_main></Group>
 
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+      <FormPaper>
         <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
           {/*<TextInput label="Телефон" placeholder="you@yourmail.ru" required />*/}
           <TitleLabel>Ваши данные</TitleLabel>
@@ -183,8 +185,10 @@ export function RegForm({ setStep }: TRegFormProps) { //<T><T>
           </Button>
         </form>
        {/* <Text>{data_reg?.patientRegistration?.detail}</Text> */}
+       {error_reg &&
         <ErrorMessage detail={data_reg?.patientRegistration?.details} />
-      </Paper>
+       }
+      </FormPaper>
     </Container>
   );
 }

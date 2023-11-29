@@ -1,10 +1,10 @@
 .intro_second {
   border-radius: 100px;
   background-color: var(--mantine-color-virilis-pink);
-    padding-left: rem(50);
-    padding-right: rem(50);
+    padding-left: rem(36);
+    padding-right: rem(36);
   /*  font-family: `Greycliff CF, ${theme.fontFamily}`,*/
-    font-size: rem(22);
+    font-size: rem(16);
     transition: all .4s;
 
    /*[theme.fn.smallerThan('md')]: { */

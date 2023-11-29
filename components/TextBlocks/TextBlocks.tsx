@@ -174,13 +174,14 @@ export const Title4_main = ({ children }: TChildren) => {
   );
 };
 
-export const Title1_main = ({ children, ...props }: TitleProps) => {
+export const Title1_main = ({ children, ...props }: TChildren & TAnyFields) => {
   //TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
   const theme = useMantineTheme();
   return (
-    <Title  {...props}>
+    
       <Text
+     // ta="center"
        // className={classes.title}
         className={classes.title1 + ' ' +  alegreya.className}
         component="span"
@@ -189,11 +190,11 @@ export const Title1_main = ({ children, ...props }: TitleProps) => {
         //gradient={{ from: 'DeepPink', to: 'pink' }}
         //gradient={{ from: '#01868a', to: '#0ee57d' }}
         c={theme.other.virilisDarkGreen} //Dark
-       
+       {...props}
       >
         {children}
       </Text>
-    </Title>
+    
   );
 };
 

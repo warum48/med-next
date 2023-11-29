@@ -16,6 +16,7 @@ import { confirmationCodeVar, flashCallCodeVar, phoneNumberVar } from '@/apollo/
 import { REGISTRATION_FLASH_CALL_CODE } from '@/apollo/queries/accounts/mutations/registrationFlashCallCode';
 import { FloatingLabelInputMask } from '../Inputs/FloatingLabelInputMask';
 import { TextInfo, Title1_main } from '../TextBlocks/TextBlocks';
+import { FormPaper } from '../Containers/FormPaper';
 //import { TextInfo, Title1_main } from '../../_styles/headers';
 //import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
@@ -95,11 +96,11 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
   return (
     <>
       <Container size={360} my={40}>
-        <Title1_main 
+      <Group grow><Title1_main ta="center"
         //align="center"
-        >Введите код подтверждения</Title1_main>
+        >Введите код подтверждения</Title1_main></Group>
 
-        <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        <FormPaper>
           <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
             <FloatingLabelInputMask
               label="Код из смс"
@@ -121,8 +122,10 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
               Далее
             </Button>
           </form>
+          {error &&
           <ErrorMessage detail={data?.registrationFlashCallCode?.details} />
-        </Paper>
+}
+        </FormPaper>
       </Container>
       {/*<FastCommentBlock />*/}
     </>

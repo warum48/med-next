@@ -13,8 +13,6 @@ import { StyledButton } from '../Buttons/StyledButton';
 import classes from './Intro.module.css';
 import { alegreya, alegreya_bold } from '@/global/Fonts';
 
-
-
 export const Intro = () => {
   const { colorScheme, setColorScheme } = useMantineColorScheme();
 
