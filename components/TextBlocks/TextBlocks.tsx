@@ -189,7 +189,7 @@ export const Title1_main = ({ children, ...props }: TChildren & TAnyFields) => {
        // variant="gradient"
         //gradient={{ from: 'DeepPink', to: 'pink' }}
         //gradient={{ from: '#01868a', to: '#0ee57d' }}
-        c={theme.other.virilisDarkGreen} //Dark
+        //c={theme.other.virilisDarkGreen} //Dark
        {...props}
       >
         {children}
@@ -228,5 +228,12 @@ export const HomeCardTitleAdv = ({ children, ...props }: TChildren & TAnyFields)
   <Title mb='xs' 
   //order={3} 
   {...props} className={classes.home_card_title_adv + ' ' + alegreya_bold.className}>{children}</Title>
+  )
+}
+
+export const HomeCardText = ({ children, ...props }: TChildren & TAnyFields) => {
+  const theme = useMantineTheme();
+  return(
+  <Text size="sm" className="color_text">{children}</Text>
   )
 }

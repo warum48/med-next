@@ -27,7 +27,12 @@ import { HomeCard } from './HomeCard';
 import { relative } from 'path';
 //import { IconNotes } from '@tabler/icons-react';
 import { RoutesTypes } from '@/global/ROUTES';
-import { HomeCardTitle, HomeCardTitleAdv, TitleLabel } from '../TextBlocks/TextBlocks';
+import {
+  HomeCardText,
+  HomeCardTitle,
+  HomeCardTitleAdv,
+  TitleLabel,
+} from '../TextBlocks/TextBlocks';
 
 import {
   IconNotes,
@@ -47,6 +52,7 @@ import {
   IconId,
   IconHome,
 } from '@tabler/icons-react';
+import { Advert } from './Advert';
 
 export const UserHomePage = () => {
   const theme = useMantineTheme();
@@ -55,10 +61,15 @@ export const UserHomePage = () => {
 
   return (
     <>
-      <Box p={{ base: 'sm', md: 0 }} mt={{ base: 0, md: '-md',
-       //lg: '-md'//'-xl' 
-      }} maw={1350} 
-     // style={{ margin: '0 auto' }} 
+      <Box
+        p={{ base: 'sm', md: 0 }}
+        mt={{
+          base: 0,
+          md: '-md',
+          //lg: '-md'//'-xl'
+        }}
+        maw={1350}
+        // style={{ margin: '0 auto' }}
       >
         <Container my="md" p="0" style={{ maxWidth: '100%' }}>
           <SimpleGrid
@@ -74,129 +85,87 @@ export const UserHomePage = () => {
             <Grid gutter="md">
               <Grid.Col>
                 <HomeCard
-                  bgColor="#FFF8FB"
+                  bgColor={theme.other.pinkTransparent} //"#FFF8FB"
                   href={RoutesTypes.Calendar}
                   color={theme.other.virilisPink}
                   icon={IconCalendar}
                 >
                   <Group>
-                    <HomeCardTitle c={theme.other.virilisPink}>
-                      Ближайшие приемы
-                    </HomeCardTitle>
+                    <HomeCardTitle c={theme.other.virilisPink}>Ближайшие приемы</HomeCardTitle>
                   </Group>
-                  <Text size="sm" c={theme.black}>
-                    22.12.2023
-                  </Text>
-                  <Text size="sm" c={theme.black}>
+                  <HomeCardText>22.12.2023</HomeCardText>
+                  <HomeCardText>
                     <b>Терапевт</b> Мария Ивановна Кузнецова
-                  </Text>
-                  <Text size="sm" c={theme.black}>
+                  </HomeCardText>
+                  <HomeCardText>
                     Всего <b>2</b> приема
-                  </Text>
+                  </HomeCardText>
                 </HomeCard>
               </Grid.Col>
               <Grid.Col span={6}>
                 <HomeCard
-                  bgColor="#E8F8F5"
+                  bgColor={theme.other.greenTransparent}
                   href={RoutesTypes.Documents}
                   color={theme.other.virilisGreen}
                   icon={IconFiles}
                 >
-                  <HomeCardTitle c="#007966">
-                    Документы
-                  </HomeCardTitle>
+                  <HomeCardTitle c={theme.other.virilisGreen}>Документы</HomeCardTitle>
 
-                  <Text size="sm" c={theme.black}>
+                  <HomeCardText>
                     <b>2</b> новых
-                  </Text>
-                  <Text size="sm" c={theme.black}>
+                  </HomeCardText>
+                  <HomeCardText>
                     Всего <b>5</b>{' '}
-                  </Text>
+                  </HomeCardText>
                 </HomeCard>
               </Grid.Col>
               <Grid.Col span={6}>
                 <HomeCard
-                  bgColor="#FFF8FB"
+                  bgColor={theme.other.pinkTransparent}
                   href={RoutesTypes.MedicalCard}
                   //color="#E86CA6"
                   color={theme.other.virilisPink}
                   icon={IconNotes}
                 >
-                  <HomeCardTitle c={theme.other.virilisPink}>
-                    Медицинская карта
-                  </HomeCardTitle>
-                  <Text size="sm" c={theme.black}>
-                    Вся ваша история всегда с вами
-                  </Text>
+                  <HomeCardTitle c={theme.other.virilisPink}>Медицинская карта</HomeCardTitle>
+                  <HomeCardText>Вся ваша история всегда с вами</HomeCardText>
                 </HomeCard>
               </Grid.Col>
             </Grid>
 
             <Grid gutter="md">
               <Grid.Col span={6}>
-                {/*<HomeCard bgColor='#f6abce'><HomeCardTitle c='#ffffff'>Баланс</Title><Text size='sm'  c="#7A7A7A">6000 р</Text></HomeCard>*/}
+                {/*<HomeCard bgColor='#f6abce'><HomeCardTitle c='#ffffff'>Баланс</Title><Text size='sm'  c="#7A7A7A">6000 р</HomeCardText></HomeCard>*/}
                 <HomeCard
                   href={RoutesTypes.Payments}
-                  bgColor="#FFF8FB"
+                  bgColor={theme.other.pinkTransparent}
                   color={theme.other.virilisPink}
                   icon={IconCurrencyRubel}
                   //bgColor="#ffebf3"
                 >
-                  <HomeCardTitle c={theme.other.virilisPink}>
-                    Баланс
-                  </HomeCardTitle>
-                  <TitleLabel c="black">6000 ₽</TitleLabel>
+                  <HomeCardTitle c={theme.other.virilisPink}>Баланс</HomeCardTitle>
+                  <TitleLabel c={theme.other.virilisPink}>6000 ₽</TitleLabel>
                 </HomeCard>
               </Grid.Col>
               <Grid.Col span={6}>
-                <Paper
-                  shadow="0"
-                  radius="md"
-                  opacity={1}
-                  style={{
-                    backgroundColor: '#e8fdff', //"#f2f2f2",//'#E8F8F5',//'#fde4ef',
-                    height: SECONDARY_COL_HEIGHT,
-                    position: 'relative',
-                  }}
-                >
-                  <Box
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      position: 'absolute',
-                      backgroundImage: 'url(/images/white_circ.png)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      opacity: 0.8,
-                      backgroundBlendMode: 'screen',
-                    }}
-                  ></Box>
-                  <Box style={{ zIndex: 9, position: 'relative' }} p="xl">
-                    <Center>
-                      <Stack align="center" gap={'xs'}>
-                        <HomeCardTitleAdv c="#007966">
-                          Прививки?
-                        </HomeCardTitleAdv>
-                        <HomeCardTitleAdv  c="#007966">
-                          Диспансеризация?
-                        </HomeCardTitleAdv>
-                      </Stack>
-                    </Center>
-                  </Box>
-                </Paper>
+                <Advert/>
               </Grid.Col>
               <Grid.Col>
-                <HomeCard bgColor="#E8F8F5" href={RoutesTypes.Family} color={theme.other.virilisGreen} icon={IconUsersGroup}>
-                  <HomeCardTitle c="#007966">
-                    Моя семья{' '}
-                  </HomeCardTitle>
+                <HomeCard
+                 // bgColor="#E8F8F5"
+                  bgColor={theme.other.greenTransparent}
+                  href={RoutesTypes.Family}
+                  color={theme.other.virilisGreen}
+                  icon={IconUsersGroup}
+                >
+                  <HomeCardTitle c={theme.other.virilisGreen}>Моя семья </HomeCardTitle>
 
-                  <Text size="sm" c={theme.black}>
+                  <HomeCardText>
                     <b>Добавляйте детей и бабушек! </b>{' '}
-                  </Text>
-                  <Text size="sm" c={theme.black}>
+                  </HomeCardText>
+                  <HomeCardText>
                     Мы добавили очень удобный функционал, все ваши родственники будут построены
-                  </Text>
+                  </HomeCardText>
                 </HomeCard>
               </Grid.Col>
             </Grid>

@@ -7,6 +7,7 @@ import {
   rem,
   Space,
   useMantineColorScheme,
+  Center,
 } from '@mantine/core';
 import * as React from 'react';
 import { StyledButton } from '../Buttons/StyledButton';
@@ -20,8 +21,8 @@ export const Intro = () => {
 
   return (
     <BackgroundImage
-      src="https://med.shop-survey.ru/images/frame-1-1.jpg"
-      // src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : '' }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
+      //src="https://med.shop-survey.ru/images/frame-1-1.jpg"
+       src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : '' }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
       radius="md"
       style={{
         height: 420, //SECONDARY_COL_HEIGHT,
@@ -48,7 +49,8 @@ export const Intro = () => {
             'linear-gradient(114deg, rgb(255, 255, 255) 0%, rgba(255,255,255,0.90) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)', //'white'
         }} 
       ></Box>*/}
-      <Title className={classes.title + ' ' + alegreya.className}>
+      <Box darkHidden>
+      <Title className={classes.title + ' ' + alegreya.className} >
         {' '}
         <Text
           component="span"
@@ -65,18 +67,32 @@ export const Intro = () => {
         32 года опыта
         <br />и ответственности
       </Title>
-
-      {/*} <Button
-        variant="gradient"
-        gradient={{ from: 'pink', to: 'DeepPink' }}
-        size="xl"
-        className={classes.control}
-        mt={40}
-        sx={{ borderRadius: '100px' }}
-      >
-        Записаться на прием
-      </Button> */}
       <StyledButton appearence="intro_second">Записаться на прием</StyledButton>
+      </Box>
+
+      <Center lightHidden>
+        <Box>
+      <Title className={classes.title + ' ' + alegreya.className} ta='center'>
+        {' '}
+        <Text
+          component="span"
+          inherit
+          variant="gradient"
+          gradient={{ from: 'DeepPink', to: 'pink' }}
+          className={alegreya.className}
+        >
+          Медицина для детей
+          <br />
+          с&nbsp;рождения до 18 лет
+        </Text>
+        <Space h="xs" /> {/*широкий спектр медицинских услуг*/}
+        32 года опыта
+        <br />и ответственности
+      </Title>
+      <Center>
+      <StyledButton appearence="intro_second">Записаться на прием</StyledButton></Center>
+      </Box>
+      </Center>
     </BackgroundImage>
   );
 };

@@ -28,6 +28,12 @@ a.decoration_none:hover{
 .color_text{
     color:var(--mantine-color-text);
 }
+.color_body{
+    color:var(--mantine-color-body);
+}
+.gray_highlight{
+    background-color:var(--mantine-color-virilis-gray-highlight);
+}
 
 /*-----tw-like utils--*/
 .cursor-pointer{

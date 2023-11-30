@@ -23,6 +23,7 @@ const resolver: CSSVariablesResolver = (theme) => ({
   },
   light: {
     //'--text-color': '#999999',
+    '--mantine-color-virilis-gray-highlight': theme.other.grayHighligt,
     '--mantine-color-virilis-darkgreen': theme.other.virilisDarkGreen,
     '--mantine-color-virilis-pink': theme.other.virilisPink,
     '--mantine-color-virilis-green': theme.other.virilisGreen,
@@ -31,7 +32,8 @@ const resolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-second-0': theme.colors.brightPink[0],
   },
   dark: {
-    '--mantine-color-virilis-darkgreen': theme.other.virilisDarkGreen,
+    '--mantine-color-virilis-gray-highlight': theme.other.grayHighligt,
+    '--mantine-color-virilis-darkgreen': theme.other.virilisGreen,
     '--mantine-color-virilis-pink': theme.other.virilisPink,
     '--mantine-color-virilis-green': theme.other.virilisGreen,
     '--mantine-color-second': theme.colors.brightPink[5],

@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import {
   Anchor,
+  Avatar,
   Box,
+  Center,
   Divider,
   Group,
   PasswordInput,
@@ -33,6 +35,8 @@ import { IconCrown } from '@tabler/icons-react';
 import { Card_pretitle, Card_title, TitleLabel } from '../TextBlocks/TextBlocks';
 import { EditableText } from '../Inputs/EditableText';
 import { StyledButton } from '../Buttons/StyledButton';
+import { DropZone } from '../_profile/DropZone';
+import { SpaceYMain } from '../Spacers/Spacers';
 
 type TProps = {
   expanded: boolean;
@@ -40,6 +44,7 @@ type TProps = {
 };
 export function FMInfo({ expanded, isMain }: TProps) {
   const theme = useMantineTheme();
+  const [photoUpload, setPhotoUpload] = useState<boolean>(false);
   //const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {console.log(e)}
   /*const changeInfo = (text:string, fieldId: string) => {
     console.log(text, fieldId);
@@ -184,40 +189,61 @@ export function FMInfo({ expanded, isMain }: TProps) {
   ]);
   return (
     <>
-      <Group>
-        <Card_pretitle>
-          {userInfo.find((obj) => obj.field == 'type')?.newValue ||
-            userInfo.find((obj) => obj.field == 'type')?.mock}
-        </Card_pretitle>
-        <Tooltip
-          label={isMain? "Главный пользователь" : "Назначить главным пользователем"}
-          //color={theme.colors.secondaryArray[4]}
-         // color={theme.colors.brightPink[4]}
-          color={!isMain? theme.other.virilisPink : theme.colors.gray[9]}
-        >
-          <IconCrown color={isMain? theme.other.virilisPink : theme.colors.gray[4]} style={{cursor: isMain? 'default' : 'pointer'}}/>
-        </Tooltip>
+      <Group wrap="nowrap" >
+        <Avatar onClick={() => { expanded ?setPhotoUpload(true) : console.log('skip')} } className="cursor-pointer"/>
+        <div>
+          <Group w="100%">
+            <Card_pretitle>
+              {userInfo.find((obj) => obj.field == 'type')?.newValue ||
+                userInfo.find((obj) => obj.field == 'type')?.mock}
+            </Card_pretitle>
+            <Tooltip
+              label={isMain ? 'Главный пользователь' : 'Назначить главным пользователем'}
+              //color={theme.colors.secondaryArray[4]}
+              // color={theme.colors.brightPink[4]}
+              color={!isMain ? theme.other.virilisPink : theme.colors.gray[9]}
+            >
+              <IconCrown
+                color={isMain ? theme.other.virilisPink : theme.colors.gray[4]}
+                style={{ cursor: isMain ? 'default' : 'pointer' }}
+              />
+            </Tooltip>
+          </Group>
+          
+            <Card_title>
+              {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
+                userInfo.find((obj) => obj.field == 'secondName')?.mock}{' '}
+              {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
+                userInfo.find((obj) => obj.field == 'firstName')?.mock}{' '}
+              {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
+                userInfo.find((obj) => obj.field == 'middleName')?.mock}
+            </Card_title>
+          
+        </div>
       </Group>
-      <Card_title>
-        {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
-          userInfo.find((obj) => obj.field == 'secondName')?.mock}
-        {" "}
-        {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
-          userInfo.find((obj) => obj.field == 'firstName')?.mock}
-         {" "}
-        {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
-          userInfo.find((obj) => obj.field == 'middleName')?.mock}
-      </Card_title>
+      {photoUpload && (
+        <>
+        <SpaceYMain/>
+          <DropZone setPhotoUpload={setPhotoUpload}/>
+          
+          </>
+        )}
+        
       {expanded && (
         <>
           <Divider mt="xl" mb="sm" />
           <Stack
-          //w='100%'
+            //w='100%'
+            gap={6}
           >
             {userInfo.map((item, index) => (
               <Group
                 //grow
+                px="md"
+                py="8"
                 key={'fi' + index}
+                //style={index % 2 == 1 ? { backgroundColor: '#99999911' } : {}}
+                className={index % 2 == 1 ? 'gray_highlight' : ''}
               >
                 <TitleLabel>{item.name}:</TitleLabel>
                 {/* <TextInfo>{item.mock ? item.mock : '-'}</TextInfo> */}

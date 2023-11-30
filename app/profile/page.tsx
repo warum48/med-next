@@ -158,7 +158,8 @@ export default function Profile() {
                 key={'uinf' + index}
                 px="md"
                 py="8"
-                style={index % 2 == 1 ? { backgroundColor: '#f5f5f5' } : {}}
+                //style={index % 2 == 1 ? { backgroundColor: '#f5f5f5' } : {}}
+                className={index % 2 == 1 ? 'gray_highlight' : ''}
               >
                 <TitleLabel>{item.name}:</TitleLabel>
                 <EditableText

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 
-import { Box, Grid, Space } from '@mantine/core';
+import { Box, Center, Grid, Space } from '@mantine/core';
 
 //import { Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
@@ -60,9 +60,11 @@ export default function Family() {
       ) : (
         <>
           <Space h="xl" />
+          <Center>
           <StyledButton appearence={'main_second'} onClick={() => setAddMemberOpen(true)}>
             Добавить родственника
           </StyledButton>
+          </Center>
         </>
       )}
     </InnerPageContainer>

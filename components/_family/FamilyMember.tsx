@@ -44,7 +44,7 @@ export function FamilyMember({
   const { isMobile } = React.useContext(GlobalContext); //GlobalContext();
   const [expanded, setExpanded] = useState(false);
   return (
-    <Grid.Col span={expanded || isMobile ? 12 : 6}>
+    <Grid.Col span={expanded || isMobile ? 12 : 6} >
       <Paper
         //maw={700}
         style={{ position: 'relative' }}
@@ -68,7 +68,7 @@ export function FamilyMember({
         </ThemeIcon>
         
         <Grid>
-          <Grid.Col span="auto">
+          <Grid.Col span="auto" maw={'100%'}>
            
             <FMInfo expanded={expanded} isMain={isMain} />
           </Grid.Col>

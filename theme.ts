@@ -15,9 +15,13 @@ export const theme = createTheme({
   'xxl': '100em', //!!added
  },
  other: {
-  virilisPink: '#e3378d',//'#E2378D',//'#fb6eb5',
+  pinkTransparent: 'rgba(249, 124, 187, 0.08)',
+  greenTransparent: 'rgba(73, 223, 210, 0.1)',
+  virilisPink: '#e3378d',//'#E2378D',//'#fb6eb5', //'#ec529f',// 
    virilisGreen: '#019f90',//'#2fb797',
    virilisDarkGreen: '#00574B',
+   //transparentGray: "#99999911"
+   grayHighligt: '#99999911',
  },
   colors: {
    // virilisPink: ['#fb6eb5'],
