@@ -58,7 +58,7 @@ export function MAppShell({ children }: any) {
       header={{ height: { base: 60, md: 70, lg: 80 } }}
       navbar={{
         width: {
-          base: cookieToken.mednekot ? 320 : 1,
+          base: cookieToken.mednekot ? 320 : 1, //320
           // md: 300, lg: 400
         },
         breakpoint: 'md',
@@ -68,7 +68,7 @@ export function MAppShell({ children }: any) {
           },
       }}
       padding={{base: 0, md: 'md'}}//"md"
-      pt={{base: '3rem', md:0,  // lg:'md', 
+      pt={{base: '3.5rem', md:0,  // lg:'md', 
       //xl:'md'
     }}//'md'
     >
