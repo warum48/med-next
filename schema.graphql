@@ -1,0 +1,87 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+"""Date (isoformat)"""
+scalar Date
+
+"""Date with time (isoformat)"""
+scalar DateTime
+
+input FlashCallCode {
+  phoneNumber: String!
+  code: String!
+}
+
+type LoginResult {
+  data: Token
+  statusCode: Int
+  details: String
+}
+
+type Mutation {
+  patientRegistration(patient: PatientRegistration!): RequestResult!
+  registrationFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
+  changePasswordByPhone(newPassword: String!): RequestResult!
+  changePasswordFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
+  changePhoneByPhone(oldPhoneNumber: String!, newPhoneNumber: String!): RequestResult!
+  changePhoneFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
+}
+
+input PatientRegistration {
+  firstName: String!
+  lastName: String!
+  patronymic: String = null
+  birthDate: String!
+  gender: String = null
+  email: String!
+  phoneNumber: String!
+  additionalPhoneNumber: String = null
+  password: String!
+}
+
+type Query {
+  patienLoginByPassword(phoneNumber: String!, password: String!): LoginResult!
+  patientLoginByPhone(phoneNumber: String!): LoginResult!
+  loginFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
+  getUserData: UserData!
+}
+
+type RequestResult {
+  data: String
+  statusCode: Int
+  details: String
+}
+
+type Token {
+  token: String!
+}
+
+type User {
+  id: Int!
+  clientUserId: Int
+  clientCardId: Int
+  clientPersonalAreaId: Int
+  firstName: String
+  lastName: String
+  patronymic: String
+  birthDate: Date
+  gender: String
+  email: String
+  phoneNumber: String!
+  additionalPhoneNumber: String
+  isActive: Boolean
+  isVerified: Boolean
+  created: DateTime
+  lastLogin: DateTime
+  lastVisit: DateTime
+}
+
+type UserData {
+  data: User
+  statusCode: Int
+  details: String
+}
+

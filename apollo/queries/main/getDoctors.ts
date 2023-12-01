@@ -1,49 +1,27 @@
-import { gql } from "../../../__generated__/gql";
+//import { gql } from "../../../__generated__/gql";
+
+import { gql } from "@apollo/client";
 
 export const GET_DOCTORS = gql(`
-query getDoctors($filteringAttrs: DoctorInput, $orderingAttrs: DoctorInput, $skip: Int, $limit: Int){
-    getDoctors(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit){
+query getDoctors($filteringAttrs: DoctorInput, $orderingAttrs: DoctorInput, $skip: Int, $limit: Int, $descSorting: Boolean){
+    getDoctors(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit, descSorting: $descSorting){
         data{
             id
             clientDoctorId
-            medicalCenterId
-            medicalDepartmentId
-            fio
-            description
+            firstName
+            lastName
+            patronymic
+            birthDate
             photo
+            doctorCategoryId
+            privatePhone
+            workPhone
+            email
+            commonExperience
             isActive
-            medicalCenter{
+            doctorCategory{
                 id
-                clientMcenterId
-                cityId
-                name
-                address
-                longitude
-                latitude
-                description
-                inn
-                bankBic
-                settlementAccount
-                correspondentAccount
-                kpp
-                isActive
-                logo
-                websiteUrl
-                phoneFax
-                dmsPhone
-                workTime
-                collectionTestsTime
-                vaccinationTime
-                city{
-                    id
-                    clientCityId
-                    name
-                    isActive
-                }
-            }
-            medicalDepartment{
-                id
-                clientDepartmentId
+                clientDcategoryId
                 name
                 description
                 isActive

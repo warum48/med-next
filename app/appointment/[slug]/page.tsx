@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { QueryResult, useQuery } from '@apollo/client';
+import { OperationVariables, QueryResult, useQuery } from '@apollo/client';
 import {
   Stepper,
   Button,
@@ -22,13 +22,16 @@ import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { InnerPageContainer } from '@/components/Containers/InnerPageContainer';
 
 import {
-  GetMedicalCentersQuery,
-  GetServicesDirectionsQuery,
-  ServiceDirection,
+//GetMedicalCenters,
+  //GetServicesDirectionsQuery,
+  //ServiceDirection,
+  MedicalCenterResult
 } from '@/__generated__/graphql';
-import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
+//import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
 import { GET_SERVICES } from '@/apollo/queries/main/getServices';
-import { GET_SERVICES_DIRECTIONS } from '@/apollo/queries/main/getServicesDirections';
+//import { 
+  //GET_SERVICES_DIRECTIONS, 
+//  GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesDirections';
 import { RoutesTypes } from '@/global/ROUTES';
 import { Title1_main, Title2_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { AgeChooser } from '@/components/_appointment/AgeChooser';
@@ -42,6 +45,8 @@ import { useRouter } from 'next/navigation';
 import { SpaceYMain } from '@/components/Spacers/Spacers';
 import { SwitchWithText } from '@/components/Switch/Switch';
 import { SwitchWithTextMantine } from '@/components/Switch/SwitchMantine';
+import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
+import { GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesTypes';
 
 export default function Appointment({ params }: { params: { slug: string } }) {
   const theme = useMantineTheme();
@@ -55,22 +60,23 @@ export default function Appointment({ params }: { params: { slug: string } }) {
     error: error_mc,
     refetch: refetch_mc,
     networkStatus: networkStatus_mc,
-  }: QueryResult<GetMedicalCentersQuery> = useQuery<GetMedicalCentersQuery>(GET_MEDICAL_CENTERS, {
+  } = useQuery(GET_MEDICAL_CENTERS, {
     context: { clientName: 'main' },
   });
 
+  /*
   const {
     data: servicesData,
     loading: servicesLoading,
     error: servicesError,
-  } = useQuery(GET_SERVICES, { context: { clientName: 'main' } });
+  } = useQuery(GET_SERVICES, { context: { clientName: 'main' } });*/
 
   const {
     data: data_services_directions,
     loading: loading_services_directions,
     error: error_services_directions,
-  }: QueryResult<GetServicesDirectionsQuery> = useQuery<GetServicesDirectionsQuery>(
-    GET_SERVICES_DIRECTIONS,
+  } = useQuery(
+    GET_SERVICES_TYPES,
     { context: { clientName: 'main' } }
   );
 
@@ -290,9 +296,11 @@ export default function Appointment({ params }: { params: { slug: string } }) {
                 По услугам ( <u>популярные</u> / <u>все</u> )
               </TitleLabel>
 
-              <Group gap="xs">
+           {/*   <Group gap="xs">
                 {data_services_directions?.getServicesDirections?.data?.map(
-                  (item: ServiceDirection, index: number) => (
+                  (item: any
+                    //ServiceDirection
+                    , index: number) => (
                     <Button
                       variant="default"
                       size="compact_xs"
@@ -304,7 +312,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
                   )
                 )}
               </Group>
-              <Space h="xxs" />
+                    <Space h="xxs" /> */}
 
               <DoctorChooser />
             </Stack>

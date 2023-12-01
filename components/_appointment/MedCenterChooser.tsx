@@ -26,10 +26,11 @@ import { ApolloError, NetworkStatus } from '@apollo/client';
 import { GetMedicalCentersQuery } from '@/__generated__/graphql';
 import { ErrorMessage } from '../Errors/ErrorMessage';
 import classes from './MedCenterChooser.module.css';
+import { MedicalCenterResult } from '@/-__generated__/graphql';
 
 type TProps = {
   form: any;
-  data_medcenter: GetMedicalCentersQuery | undefined; //any;
+  data_medcenter: any;//MedicalCenterResult;//GetMedicalCentersQuery | undefined; //any;
   loading_mc: boolean;
   error_mc: ApolloError | undefined;
   refetch_mc: () => void;

@@ -17,6 +17,7 @@ import {
   Button,
   Box,
   useMantineTheme,
+  Center,
 } from '@mantine/core';
 import { ApolloSettingsContext } from '@/apollo/context';
 import { phoneNumberVar } from '@/apollo/state/Registration';
@@ -95,6 +96,7 @@ export default function AuthPhonePass() {
     <>
       <Container size={420} my={40}>
         
+        <Center><Box>
         <Title1_main 
         //align="center"
         >Добро пожаловать!</Title1_main>
@@ -108,6 +110,8 @@ export default function AuthPhonePass() {
           </Anchor>
           </Link>
         </Text>
+        </Box>
+        </Center>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form onSubmit={form.onSubmit((values) => onSubmit(values))}>

@@ -10,7 +10,7 @@ import { useQuery } from '@apollo/client';
 import { DoctorInfo } from './DoctorInfo';
 import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
-import { GetDoctorsQuery } from '@/__generated__/graphql';
+//import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
   //const { classes, theme } = useHeadersStyles();
@@ -18,7 +18,7 @@ export const DoctorChooser = () => {
     data: data_doctors, //DoctorResult
     loading: loading_doctors,
     error: error_doctors,
-  } = useQuery<GetDoctorsQuery>(GET_DOCTORS, { context: { clientName: 'main' } });
+  } = useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
 
   return (
     <>

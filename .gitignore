@@ -42,3 +42,6 @@ yarn-error.log*
 
 # storybook
 storybook-static
+
+#apollo src
+/__gqlsrc__

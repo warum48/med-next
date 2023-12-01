@@ -19,6 +19,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "apollo": ["./apollo/"],
       "react": ["./node_modules/@types/react"],
       "@/*": [
         "./*"

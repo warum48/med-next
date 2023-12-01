@@ -117,8 +117,13 @@ export enum RoutesTypes {
 
 export const demoPages = [
   {
-    label: 'Личный кабинет / регистрация',
+    label: 'Авторизация',
     icon: IconId,
     link: RoutesTypes.Auth,
+  },
+  {
+    label: 'Регистрация',
+    icon: IconId,
+    link: RoutesTypes.Registration,
   },
 ]

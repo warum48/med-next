@@ -38,10 +38,10 @@ export function NavbarNested({setOpened}:TProps) {
       <ScrollArea className={classes.links}>
         <div className={classes.linksInner}>{links}</div>
        
-       {/* 
+      
         <Divider my="sm" mt='-sm'/>
        <Text size='xs' pl='xl' >демо ссылки:</Text>
-        <div className={classes.linksInner}>{demolinks}</div> */}
+        <div className={classes.linksInner}>{demolinks}</div> 
       </ScrollArea>
 
       {/*}   <div className={classes.footer}>

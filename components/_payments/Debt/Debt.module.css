@@ -1,7 +1,7 @@
 .warning{
     
    /* margin-top: var(--mantine-spacing-md); */
-    background-color: var(--mantine-color-red-0);
+    background-color: #ff000011;
     border-color: var(--mantine-color-red-3);
 }
 .warning_text{
