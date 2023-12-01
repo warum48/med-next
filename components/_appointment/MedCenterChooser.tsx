@@ -26,7 +26,7 @@ import { ApolloError, NetworkStatus } from '@apollo/client';
 import { GetMedicalCentersQuery } from '@/__generated__/graphql';
 import { ErrorMessage } from '../Errors/ErrorMessage';
 import classes from './MedCenterChooser.module.css';
-import { MedicalCenterResult } from '@/-__generated__/graphql';
+//import { MedicalCenterResult } from '@/-__generated__/graphql';
 
 type TProps = {
   form: any;
