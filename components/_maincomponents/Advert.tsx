@@ -11,6 +11,7 @@ export const Advert = () => {
       style={{
         backgroundColor: '#e8fdff', //"#f2f2f2",//'#E8F8F5',//'#fde4ef',
         //  height: SECONDARY_COL_HEIGHT,
+        height: '100%',
         position: 'relative',
       }}
     >
@@ -43,6 +44,7 @@ opacity={1}
 style={{
   backgroundColor: '#38e8f811', //"#f2f2f2",//'#E8F8F5',//'#fde4ef',
   //  height: SECONDARY_COL_HEIGHT,
+  height: '100%',
   position: 'relative',
 }}
 >

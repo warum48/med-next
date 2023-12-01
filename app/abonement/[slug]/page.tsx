@@ -140,24 +140,24 @@ export default function MedicalCard() {
       <Space h="md" />
      {/*} <Title2_second>Услуги</Title2_second>
       <Space h="xs" /> */}
-      <Stack gap='xs'>
-        <Group><TitleLabel>Медицинский центр: </TitleLabel> <TextInfo>Онни</TextInfo></Group>
-        <Group><TitleLabel>Дата начала: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
-        <Group><TitleLabel>Дата окончания: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
-        <Group><TitleLabel>Сервисный менеджер: </TitleLabel><TextInfo>Иванов Иван Иванович, +7 (812) 123-45-67</TextInfo></Group>
-        <Group><TitleLabel>Доверенный педиатр: </TitleLabel><TextInfo>Иванов Иван Иванович, +7 (812) 123-45-67</TextInfo></Group>
-        <Group><TitleLabel>Специалисты: </TitleLabel><ActionLink>Подробнее ▾</ActionLink></Group>
+      <Stack  gap={6}>
+        <Group px="md" py="8"><TitleLabel>Медицинский центр: </TitleLabel> <TextInfo>Онни</TextInfo></Group>
+        <Group px="md" py="8" className='gray_highlight'><TitleLabel>Дата начала: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
+        <Group px="md" py="8"><TitleLabel>Дата окончания: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
+        <Group px="md" py="8" className='gray_highlight'><TitleLabel>Сервисный менеджер: </TitleLabel><TextInfo>Иванов Иван Иванович, +7 (812) 123-45-67</TextInfo></Group>
+        <Group px="md" py="8"><TitleLabel>Доверенный педиатр: </TitleLabel><TextInfo>Иванов Иван Иванович, +7 (812) 123-45-67</TextInfo></Group>
+        <Group px="md" py="8" className='gray_highlight'><TitleLabel>Специалисты: </TitleLabel><ActionLink>Подробнее ▾</ActionLink></Group>
       </Stack>
 
       <Space h="md" />
       <Title2_second>Финансы</Title2_second>
       <Space h="xs" />
-      <Stack gap='xs'>
-        <Group><TitleLabel>Цена абонемента (с учетом скидки): </TitleLabel> <TextHighlighted>15000 Р</TextHighlighted></Group>
-        <Group><TitleLabel>Скидка: </TitleLabel><TextHighlighted>5000 Р</TextHighlighted></Group>
-        <Group><TitleLabel>Дата планируемой оплаты: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
-        <Group><TitleLabel>Сумма планируемой оплаты: </TitleLabel><TextInfo>15000 Р</TextInfo></Group>
-        <Group><TitleLabel>Задолженность по абонементу: </TitleLabel><TextInfoWarning>1500 Р</TextInfoWarning></Group>
+      <Stack gap={6}>
+        <Group px="md" py="8"><TitleLabel>Цена абонемента (с учетом скидки): </TitleLabel> <TextHighlighted>15000 Р</TextHighlighted></Group>
+        <Group px="md" py="8" className='gray_highlight'><TitleLabel>Скидка: </TitleLabel><TextHighlighted>5000 Р</TextHighlighted></Group>
+        <Group px="md" py="8"><TitleLabel>Дата планируемой оплаты: </TitleLabel><TextInfo>20.09.2023</TextInfo></Group>
+        <Group px="md" py="8" className='gray_highlight'><TitleLabel>Сумма планируемой оплаты: </TitleLabel><TextInfo>15000 Р</TextInfo></Group>
+        <Group px="md" py="8"><TitleLabel>Задолженность по абонементу: </TitleLabel><TextInfoWarning>1500 Р</TextInfoWarning></Group>
         <div className="" style={{alignSelf: 'flex-start'}}><StyledButton appearence='main_small'>Оплатить</StyledButton></div>
       </Stack>
       <Space h="xs" />

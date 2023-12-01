@@ -49,7 +49,8 @@ export function FamilyMember({
         //maw={700}
         style={{ position: 'relative' }}
         shadow="0" //</Grid.Col>"xs"
-        p={expanded ? 'xl' : 'xs'}
+       // p={expanded ? 'xl' : 'xs'}
+        p={expanded ? {base: 'md', md: 'xl'}  : 'xs'}
         withBorder
         //w={expanded ? '100%':'50%'}
         //miw={expanded ? '100%':300}

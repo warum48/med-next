@@ -29,7 +29,7 @@ export default function Payments() {
       
        
       
-      <Space h="sm" />
+      <Space h="md" />
       <Group>
         {/*<TitleLabel>Внести оплату:</TitleLabel>*/}
         <StyledButton appearence="main_first">Внести оплату</StyledButton>
@@ -38,7 +38,7 @@ export default function Payments() {
       <Debt/>
       <SpaceYMain/>
       <Title2_second>Отложенные платежи</Title2_second>
-      <Space h="xs" />
+      <Space h="md" />
       <PostponedPayments/>
       <SpaceYMain/>
       <Group gap="md" justify="space-between"

@@ -19,7 +19,7 @@ a.decoration_none:hover{
   }
 
   .mainColor{
-    color:var(--mantine-color-main-4);
+    color:var(--mantine-color-main);
 }
 .secondColor{
     color:var(--mantine-color-second-4);

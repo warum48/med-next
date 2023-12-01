@@ -189,8 +189,13 @@ export function FMInfo({ expanded, isMain }: TProps) {
   ]);
   return (
     <>
-      <Group wrap="nowrap" >
-        <Avatar onClick={() => { expanded ?setPhotoUpload(true) : console.log('skip')} } className="cursor-pointer"/>
+      <Group wrap="nowrap">
+        <Avatar
+          onClick={() => {
+            expanded ? setPhotoUpload(true) : console.log('skip');
+          }}
+          className="cursor-pointer"
+        />
         <div>
           <Group w="100%">
             <Card_pretitle>
@@ -209,26 +214,24 @@ export function FMInfo({ expanded, isMain }: TProps) {
               />
             </Tooltip>
           </Group>
-          
-            <Card_title>
-              {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
-                userInfo.find((obj) => obj.field == 'secondName')?.mock}{' '}
-              {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
-                userInfo.find((obj) => obj.field == 'firstName')?.mock}{' '}
-              {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
-                userInfo.find((obj) => obj.field == 'middleName')?.mock}
-            </Card_title>
-          
+
+          <Card_title>
+            {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
+              userInfo.find((obj) => obj.field == 'secondName')?.mock}{' '}
+            {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
+              userInfo.find((obj) => obj.field == 'firstName')?.mock}{' '}
+            {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
+              userInfo.find((obj) => obj.field == 'middleName')?.mock}
+          </Card_title>
         </div>
       </Group>
       {photoUpload && (
         <>
-        <SpaceYMain/>
-          <DropZone setPhotoUpload={setPhotoUpload}/>
-          
-          </>
-        )}
-        
+          <SpaceYMain />
+          <DropZone setPhotoUpload={setPhotoUpload} />
+        </>
+      )}
+
       {expanded && (
         <>
           <Divider mt="xl" mb="sm" />

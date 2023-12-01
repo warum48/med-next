@@ -1,5 +1,5 @@
 import { TAnyFields, TChildren } from '@/types/types';
-import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme, TextProps } from '@mantine/core';
+import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme, TextProps, Space } from '@mantine/core';
 //import { TAnyFields, TChildren } from '../_types/Types';
 import classes from './TextBlocks.module.css';
 
@@ -43,9 +43,9 @@ export const Card_pretitle = ({ children }: TChildren) => {
 export const Card_title = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
   return (
-    <Text className={classes.card_title}>
+    <span className={classes.card_title}>
       {children}
-    </Text>
+    </span>
   );
 };
 
@@ -53,37 +53,32 @@ export const TitleLabel = ({ children, ...props }: TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <>
-      {/* <Title
-    // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
-    // {...props}
-  > */}
-      <Text className={classes.title3} component="span" inherit {...props}>
+   
+      <span className={classes.title3} 
+      //{...props}
+      >
         {children}
-      </Text>
-      {/*</Title>*/}
-    </>
+      </span>
+      
   );
 };
 
 export const TitleLabel_second = ({ children, ...props }: TChildren & TAnyFields) => {
   return (
-    <Text
+    <span
       className={`${classes.title3} ${classes.secondColor}`}
-      component="span"
-      inherit
-      {...props}
+     // {...props}
     >
       {children}
-    </Text>
+    </span>
   );
 };
 
 export const TextInfo = ({ children }: TChildren & TAnyFields) => {
   return (
-    <Text className={classes.basicInfo} component="span" inherit>
+    <span className={classes.basicInfo} >
       {children}
-    </Text>
+    </span>
   );
 };
 
@@ -108,13 +103,11 @@ export const TextRegular = ({ children }: TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title
-    // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
-    >
+    
       <Text className={classes.regularText} component="span" inherit>
         {children}
       </Text>
-    </Title>
+    
   );
 };
 
@@ -122,11 +115,11 @@ export const Title2_second = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title>
-      <Text className={classes.title2} component="span" inherit>
+   
+      <span className={classes.title2} >
         {children}
-      </Text>
-    </Title>
+      </span>
+    
   );
 };
 
@@ -134,17 +127,13 @@ export const Title2_main = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title>
-      <Text
+   
+      <span
         className={classes.title2}
-        component="span"
-        inherit
-        variant="gradient"
-        gradient={{ from: '#01868a', to: '#0dbc68' }}
       >
         {children}
-      </Text>
-    </Title>
+      </span>
+    
   );
 };
 
@@ -153,9 +142,9 @@ export const Title4_second = ({ children }: TChildren) => {
 
   return (
     
-      <Text className={classes.title4} component="span" inherit>
+      <span className={classes.title4} >
         {children}
-      </Text>
+      </span>
     
   );
 };
@@ -164,13 +153,11 @@ export const Title4_main = ({ children }: TChildren) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Title
-    // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
-    >
-      <Text className={classes.title5} component="span" inherit>
+    
+      <span className={classes.title5} >
         {children}
-      </Text>
-    </Title>
+      </span>
+    
   );
 };
 
@@ -180,20 +167,12 @@ export const Title1_main = ({ children, ...props }: TChildren & TAnyFields) => {
   const theme = useMantineTheme();
   return (
     
-      <Text
-     // ta="center"
-       // className={classes.title}
+      <span
         className={classes.title1 + ' ' +  alegreya.className}
-        component="span"
-        inherit
-       // variant="gradient"
-        //gradient={{ from: 'DeepPink', to: 'pink' }}
-        //gradient={{ from: '#01868a', to: '#0ee57d' }}
-        //c={theme.other.virilisDarkGreen} //Dark
        {...props}
       >
         {children}
-      </Text>
+      </span>
     
   );
 };
@@ -217,23 +196,30 @@ export const InnerPageTitle = ({ children }: TChildren) => {
 
 export const HomeCardTitle = ({ children, ...props }: TChildren & TAnyFields) => {
   return(
-  <Title mb='xs' 
+    <>
+  <span 
+  //mb='xs' 
   //order={3} 
-  {...props} className={classes.home_card_title + ' ' + alegreya_bold.className}>{children}</Title>
+  {...props} className={classes.home_card_title + ' ' + alegreya_bold.className + ' ' + props.className}>{children}</span>
+  <Space h="xs" />
+  </>
   )
 }
 
 export const HomeCardTitleAdv = ({ children, ...props }: TChildren & TAnyFields) => {
   return(
-  <Title mb='xs' 
+    <>
+  <span
+  //mb='xs' 
   //order={3} 
-  {...props} className={classes.home_card_title_adv + ' ' + alegreya_bold.className}>{children}</Title>
+  {...props} className={classes.home_card_title_adv + ' ' + alegreya_bold.className + ' ' + props.className}>{children}</span>
+  </>
   )
 }
 
 export const HomeCardText = ({ children, ...props }: TChildren & TAnyFields) => {
-  const theme = useMantineTheme();
+  //const theme = useMantineTheme();
   return(
-  <Text size="sm" className="color_text">{children}</Text>
+  <div className="color_text">{children}</div>
   )
 }

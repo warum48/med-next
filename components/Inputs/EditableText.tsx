@@ -51,12 +51,15 @@ export const EditableText = ({
                // label="Autosize with no rows limit"
                 autosize
                 minRows={2}
-                miw={320}
+                //miw={320}
+               // w="100%"
                 onChange={onChange} 
                 value={text}
               />
             ) : (
-              <TextInput value={text} onChange={onChange} miw={320} />
+              <TextInput value={text} onChange={onChange} 
+             // miw={320} 
+              />
             )}
             <Anchor onClick={() => setEdit(false)} c="gray" size={'xs'}>
               Готово

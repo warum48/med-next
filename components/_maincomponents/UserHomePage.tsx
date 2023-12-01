@@ -32,6 +32,7 @@ import {
   HomeCardTitle,
   HomeCardTitleAdv,
   TitleLabel,
+  TitleLabel_second,
 } from '../TextBlocks/TextBlocks';
 
 import {
@@ -90,9 +91,12 @@ export const UserHomePage = () => {
                   color={theme.other.virilisPink}
                   icon={IconCalendar}
                 >
-                  <Group>
-                    <HomeCardTitle c={theme.other.virilisPink}>Ближайшие приемы</HomeCardTitle>
-                  </Group>
+                 
+                    <HomeCardTitle 
+                    //c={theme.other.virilisPink}
+                    className="secondColor"
+                    >Ближайшие приемы</HomeCardTitle>
+                 
                   <HomeCardText>22.12.2023</HomeCardText>
                   <HomeCardText>
                     <b>Терапевт</b> Мария Ивановна Кузнецова
@@ -109,7 +113,10 @@ export const UserHomePage = () => {
                   color={theme.other.virilisGreen}
                   icon={IconFiles}
                 >
-                  <HomeCardTitle c={theme.other.virilisGreen}>Документы</HomeCardTitle>
+                  <HomeCardTitle 
+                 // c={theme.other.virilisGreen}
+                  className="mainColor"
+                  >Документы</HomeCardTitle>
 
                   <HomeCardText>
                     <b>2</b> новых
@@ -127,7 +134,10 @@ export const UserHomePage = () => {
                   color={theme.other.virilisPink}
                   icon={IconNotes}
                 >
-                  <HomeCardTitle c={theme.other.virilisPink}>Медицинская карта</HomeCardTitle>
+                  <HomeCardTitle 
+                  //c={theme.other.virilisPink}
+                  className="secondColor"
+                  >Медицинская карта</HomeCardTitle>
                   <HomeCardText>Вся ваша история всегда с вами</HomeCardText>
                 </HomeCard>
               </Grid.Col>
@@ -143,8 +153,14 @@ export const UserHomePage = () => {
                   icon={IconCurrencyRubel}
                   //bgColor="#ffebf3"
                 >
-                  <HomeCardTitle c={theme.other.virilisPink}>Баланс</HomeCardTitle>
-                  <TitleLabel c={theme.other.virilisPink}>6000 ₽</TitleLabel>
+                  <HomeCardTitle 
+                 // c={theme.other.virilisPink}
+                 className="secondColor"
+                  >Баланс</HomeCardTitle>
+                  <TitleLabel_second
+                  //c={theme.other.virilisPink}
+                  //className="secondColor"
+                  >6000 ₽</TitleLabel_second>
                 </HomeCard>
               </Grid.Col>
               <Grid.Col span={6}>
@@ -158,7 +174,11 @@ export const UserHomePage = () => {
                   color={theme.other.virilisGreen}
                   icon={IconUsersGroup}
                 >
-                  <HomeCardTitle c={theme.other.virilisGreen}>Моя семья </HomeCardTitle>
+                  <HomeCardTitle 
+                 // c={theme.other.virilisGreen}
+                //  className="mainColor"
+                className="mainColor"
+                  >Моя семья </HomeCardTitle>
 
                   <HomeCardText>
                     <b>Добавляйте детей и бабушек! </b>{' '}

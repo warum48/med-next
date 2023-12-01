@@ -29,6 +29,7 @@ import { TreatmentHistory } from '@/components/_medicalcard/CardHistory/History'
 import { PostponedPayments } from '@/components/_payments/Postponed/PostponedPayments';
 import { MyAbonements } from '@/components/_abonement/MyAbonements';
 import { AllAbonements } from '@/components/_abonement/AllAbonements';
+import { SpaceYMain } from '@/components/Spacers/Spacers';
 
 export default function MedicalCard() {
   const changeInfo = useCallback((text: string, fieldId: string) => {
@@ -122,11 +123,11 @@ export default function MedicalCard() {
   return (
     <InnerPageContainer>
       <Title1_main>Комплексный продукт (Абонемент)</Title1_main>
-      <Space h="md" />
+      <SpaceYMain />
       <Title2_second>Мои абонементы</Title2_second>
       <Space h="xs" />
       <MyAbonements />
-      <Space h="md" />
+      <SpaceYMain />
       <Title2_second>Доступные абонементы</Title2_second>
       <Space h="xs" />
       <AllAbonements />
