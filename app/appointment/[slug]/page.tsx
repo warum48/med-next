@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { OperationVariables, QueryResult, useQuery } from '@apollo/client';
 import {
   Stepper,
@@ -21,16 +21,17 @@ import { useForm } from '@mantine/form';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { InnerPageContainer } from '@/components/Containers/InnerPageContainer';
 
+
 import {
-//GetMedicalCenters,
+  //GetMedicalCenters,
   //GetServicesDirectionsQuery,
   //ServiceDirection,
-  MedicalCenterResult
+  MedicalCenterResult,
 } from '@/__generated__/graphql';
 //import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
 import { GET_SERVICES } from '@/apollo/queries/main/getServices';
-//import { 
-  //GET_SERVICES_DIRECTIONS, 
+//import {
+//GET_SERVICES_DIRECTIONS,
 //  GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesDirections';
 import { RoutesTypes } from '@/global/ROUTES';
 import { Title1_main, Title2_second, TitleLabel } from '@/components/TextBlocks/TextBlocks';
@@ -47,8 +48,13 @@ import { SwitchWithText } from '@/components/Switch/Switch';
 import { SwitchWithTextMantine } from '@/components/Switch/SwitchMantine';
 import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
 import { GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesTypes';
+import { Step2 } from '@/components/_appointment/Step2';
+import { Calendar } from '@mantine/dates';
+import { Step3 } from '@/components/_appointment/Step3';
+import { Layout } from '@/components/_appointment/Layout';
 
-export default function Appointment({ params }: { params: { slug: string } }) {
+//export default 
+function Page({ params }: { params: { slug: string } }) {
   const theme = useMantineTheme();
   const router = useRouter();
   const stepId = params.slug;
@@ -75,10 +81,7 @@ export default function Appointment({ params }: { params: { slug: string } }) {
     data: data_services_directions,
     loading: loading_services_directions,
     error: error_services_directions,
-  } = useQuery(
-    GET_SERVICES_TYPES,
-    { context: { clientName: 'main' } }
-  );
+  } = useQuery(GET_SERVICES_TYPES, { context: { clientName: 'main' } });
 
   //TODO write a useQuery for getServices
   const [active, setActive] = useState(stepId ? Number(stepId) - 1 : 0); //0
@@ -129,10 +132,10 @@ export default function Appointment({ params }: { params: { slug: string } }) {
           email: /^\S+@\S+$/.test(values.email) ? null : 'Некорректный email',
           // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           //password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
-         //!! age:
-         //!!   values.age.trim().length < 8 || values.age.trim().includes('_')
-         //!!     ? 'Это поле обязательно'
-         //!!     : null,
+          //!! age:
+          //!!   values.age.trim().length < 8 || values.age.trim().includes('_')
+          //!!     ? 'Это поле обязательно'
+          //!!     : null,
         };
       }
 
@@ -190,7 +193,6 @@ export default function Appointment({ params }: { params: { slug: string } }) {
 
   return (
     <InnerPageContainer className="appointment">
-      {/*<h4> Записаться на прием </h4>*/}
       <Title1_main>Записаться на прием</Title1_main>
       <SpaceYMain />
 
@@ -260,67 +262,19 @@ export default function Appointment({ params }: { params: { slug: string } }) {
           description="Данные о приеме"
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          <Box>
-            <SpaceYMain />
-            <Title2_second>Выбор специалиста / услуги</Title2_second>
-            <SpaceYMain />
-            <Stack>
-              <TextInput
-                radius="xl"
-                size="md"
-                placeholder="Search questions"
-                rightSectionWidth={42}
-                leftSection={
-                  <IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-                }
-                rightSection={
-                  <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
-                    <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-                  </ActionIcon>
-                }
-              />
-              <Space h="xxs" />
-              <TitleLabel>
-                По специальности ( <u>популярные</u> / <u>все</u> )
-              </TitleLabel>
-
-              <Group>
-                {profAr.map((item: string, index: number) => (
-                  <Button variant="outline" key={'profAr' + index}>
-                    {item}
-                  </Button>
-                ))}
-              </Group>
-              <Space h="xxs" />
-              <TitleLabel>
-                По услугам ( <u>популярные</u> / <u>все</u> )
-              </TitleLabel>
-
-           {/*   <Group gap="xs">
-                {data_services_directions?.getServicesDirections?.data?.map(
-                  (item: any
-                    //ServiceDirection
-                    , index: number) => (
-                    <Button
-                      variant="default"
-                      size="compact_xs"
-                      style={{ fontWeight: 300 }}
-                      key={'b_uslAr' + index}
-                    >
-                      {item.name}
-                    </Button>
-                  )
-                )}
-              </Group>
-                    <Space h="xxs" /> */}
-
-              <DoctorChooser />
-            </Stack>
-          </Box>
+          <Step2/>
         </Stepper.Step>
 
         <Stepper.Step
           label="Шаг 3"
+          description="Время приема"
+          allowStepSelect={shouldAllowSelectStep(2)}
+        >
+          <Step3/>
+        </Stepper.Step>
+
+        <Stepper.Step
+          label="Шаг 4"
           description="Персональная информация"
           allowStepSelect={shouldAllowSelectStep(2)}
         >
@@ -369,3 +323,17 @@ export default function Appointment({ params }: { params: { slug: string } }) {
     </InnerPageContainer>
   );
 }
+
+/*
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
+  )
+}
+
+*/
+ 
+export default Page

@@ -36,7 +36,8 @@ export const DoctorConfirm = ({
         mt="xl"
         p="md"
         // bga={theme.colors.oceanBlue[0]}
-        style={{ backgroundColor: theme.colors.oceanBlue[0] }}
+        //style={{ backgroundColor: theme.colors.oceanBlue[0] }}
+        className="gray_highlight"
       >
         {/*<TitleLabel>Информация о приеме:</TitleLabel> */}
         <Stack>

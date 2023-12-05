@@ -261,8 +261,10 @@ export default function CalendarPage() {
                 />
               ))}
             </SimpleGrid>
-          </Grid.Col>
-          <Grid.Col span={12}>
+            </Grid.Col>
+        </Grid>
+          
+            <Space h="xl" />
             <Space h="xl" />
             <Box
               key={'index' + cookieToken}
@@ -335,8 +337,7 @@ export default function CalendarPage() {
                 <Box>Нет записей</Box>
               )}
             </Box>
-          </Grid.Col>
-        </Grid>
+          
       </Box>
       {/*JSON.stringify(calendarFiltersVar_re)*/}
       {/*
