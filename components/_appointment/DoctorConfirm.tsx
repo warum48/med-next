@@ -33,7 +33,7 @@ export const DoctorConfirm = ({
         //mx="auto"
         mx={'0.25rem'}
         w={'100%'}
-        mt="xl"
+       // mt="xl"
         p="md"
         // bga={theme.colors.oceanBlue[0]}
         //style={{ backgroundColor: theme.colors.oceanBlue[0] }}
@@ -68,23 +68,7 @@ export const DoctorConfirm = ({
         <div></div>
       </Box>
 
-      <Box
-        mx={'0.25rem'}
-        w={'100%'}
-        mb="xl"
-       // p="md"
-        // bga={theme.colors.oceanBlue[0]}
-        //sx={{backgroundColor:theme.colors.oceanBlue[0]}}
-      >
-         <Space h='md'/>
-        <Checkbox
-      label="Согласен на обработку персональных данных"
-    />
-    <Space h='xl'/>
-        <Center>
-          <StyledButton appearence="main_second">Оплатить</StyledButton>
-        </Center>
-      </Box>
+      
     </>
   );
 };

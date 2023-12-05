@@ -15,6 +15,7 @@ import { Title2_second, TitleLabel } from '../TextBlocks/TextBlocks';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { profAr } from './mockdata';
 import { DoctorChooser } from './DoctorChooser';
+import { elementMaxWidth } from '@/global/CONSTS';
 
 export const Step2 = () => {
   const theme = useMantineTheme();
@@ -34,6 +35,7 @@ export const Step2 = () => {
           <SpaceYMain />
           <Stack gap="xl">
             <TextInput
+            maw={elementMaxWidth}
               radius="xl"
               size="md"
               placeholder="ФИО Врача"
@@ -64,6 +66,7 @@ export const Step2 = () => {
           <SpaceYMain />
           <Stack gap="xl">
             <TextInput
+            maw={elementMaxWidth}
               radius="xl"
               size="md"
               placeholder="Специальность"
@@ -88,6 +91,7 @@ export const Step2 = () => {
           <SpaceYMain />
           <Stack gap="xl">
             <TextInput
+            maw={elementMaxWidth}
               radius="xl"
               size="md"
               placeholder="Услуга"

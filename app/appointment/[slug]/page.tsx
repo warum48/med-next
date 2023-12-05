@@ -16,6 +16,8 @@ import {
   ActionIcon,
   Space,
   Grid,
+  Checkbox,
+  Center,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
@@ -291,7 +293,25 @@ function Page({ params }: { params: { slug: string } }) {
               // xs={12} lg={6}
               span={{ base: 12, lg: 6 }}
             >
+              <Space h='xl' />
               <DoctorConfirm {...mockDoctor} />
+              <Box
+        mx={'0.25rem'}
+        w={'100%'}
+        mb="xl"
+       // p="md"
+        // bga={theme.colors.oceanBlue[0]}
+        //sx={{backgroundColor:theme.colors.oceanBlue[0]}}
+      >
+         <Space h='md'/>
+        <Checkbox
+      label="Согласен на обработку персональных данных"
+    />
+    <Space h='xl'/>
+        <Center>
+          <StyledButton appearence="main_second">Оплатить</StyledButton>
+        </Center>
+      </Box>
             </Grid.Col>
           </Grid>
         </Stepper.Step>
