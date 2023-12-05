@@ -21,7 +21,6 @@ import { useForm } from '@mantine/form';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { InnerPageContainer } from '@/components/Containers/InnerPageContainer';
 
-
 import {
   //GetMedicalCenters,
   //GetServicesDirectionsQuery,
@@ -53,7 +52,7 @@ import { Calendar } from '@mantine/dates';
 import { Step3 } from '@/components/_appointment/Step3';
 import { Layout } from '@/components/_appointment/Layout';
 
-//export default 
+//export default
 function Page({ params }: { params: { slug: string } }) {
   const theme = useMantineTheme();
   const router = useRouter();
@@ -192,9 +191,11 @@ function Page({ params }: { params: { slug: string } }) {
   }, [stepId]);
 
   return (
+    <>
+      {/*
     <InnerPageContainer className="appointment">
       <Title1_main>Записаться на прием</Title1_main>
-      <SpaceYMain />
+  <SpaceYMain /> */}
 
       <Stepper
         active={active}
@@ -262,7 +263,7 @@ function Page({ params }: { params: { slug: string } }) {
           description="Данные о приеме"
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          <Step2/>
+          <Step2 />
         </Stepper.Step>
 
         <Stepper.Step
@@ -270,7 +271,7 @@ function Page({ params }: { params: { slug: string } }) {
           description="Время приема"
           allowStepSelect={shouldAllowSelectStep(2)}
         >
-          <Step3/>
+          <Step3 />
         </Stepper.Step>
 
         <Stepper.Step
@@ -320,7 +321,9 @@ function Page({ params }: { params: { slug: string } }) {
           </>
         )}
       </Group>
-    </InnerPageContainer>
+      {/*
+    </InnerPageContainer> */}
+    </>
   );
 }
 
@@ -335,5 +338,5 @@ Page.getLayout = function getLayout(page: ReactElement) {
 }
 
 */
- 
-export default Page
+
+export default Page;
