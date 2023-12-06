@@ -13,12 +13,18 @@ export const Step3 = () => {
     return(
         <>
         <SpaceYMain />
-          <Title2_second>Время приема</Title2_second>
+          <Title2_second>Выберите дату и время приема</Title2_second>
           <SpaceYMain />
           <Grid>
+          <Grid.Col
+              // xs={12} lg={6}
+              span={{ base: 12, lg: 5 }}
+            >
+              <DoctorConfirm {...mockDoctor} />
+            </Grid.Col>
             <Grid.Col
               //xs={12} lg={6}
-              span={{ base: 12, lg: 6.4 }}
+              span={{ base: 12, lg: 7 }}
               style={{display:'flex'}}
             >
                <DatePicker 
@@ -26,12 +32,7 @@ export const Step3 = () => {
                value={value} onChange={setValue} locale='ru' excludeDate={(date) => date.getDay() === 6 || date.getDay() === 0 || date < new Date() }/>
                <TimeSelector/>
             </Grid.Col>
-            <Grid.Col
-              // xs={12} lg={6}
-              span={{ base: 12, lg: 5.6 }}
-            >
-              <DoctorConfirm {...mockDoctor} />
-            </Grid.Col>
+            
           </Grid>
           </>
     )

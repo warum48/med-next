@@ -33,17 +33,15 @@ export const DoctorConfirm = ({
         //mx="auto"
         mx={'0.25rem'}
         w={'100%'}
-       // mt="xl"
+        // mt="xl"
         p="md"
         // bga={theme.colors.oceanBlue[0]}
         //style={{ backgroundColor: theme.colors.oceanBlue[0] }}
         className="gray_highlight"
       >
         {/*<TitleLabel>Информация о приеме:</TitleLabel> */}
-        <Stack>
-          <Group 
-         wrap="nowrap"
-          >
+        <Stack gap={4}>
+          <Group wrap="nowrap">
             <Avatar src={avatar} size={80} radius="md" />
             <Box>
               {' '}
@@ -51,24 +49,22 @@ export const DoctorConfirm = ({
               <Card_title>Иван Иванович Ивановский</Card_title>
             </Box>
           </Group>
-          <Group>
+          <Group className="body_highlight" px="md" py="4" mt="xs">
             <TitleLabel>Направление:</TitleLabel> <TextInfo>Консультация педиатра</TextInfo>
           </Group>
-          <Group>
+          <Group px="md" py="4">
             <TitleLabel>Адрес:</TitleLabel>{' '}
             <TextInfo>ДМЦ «Мамарада», Большевиков пр.,д.7, корп.3</TextInfo>
           </Group>
-          <Group>
+          <Group px="md" py="4" className="body_highlight">
             <TitleLabel>Время и дата:</TitleLabel> <TextInfo>10:30, 4 августа, пятница</TextInfo>
           </Group>
-          <Group>
+          <Group px="md" py="4">
             <TitleLabel>Стоимость:</TitleLabel> <TextInfo>2300 ₽</TextInfo>
           </Group>
         </Stack>
         <div></div>
       </Box>
-
-      
     </>
   );
 };

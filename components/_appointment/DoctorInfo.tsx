@@ -20,7 +20,7 @@ import { IconPhoneCall, IconAt } from '@tabler/icons-react';
 import { useState } from 'react';
 import 'dayjs/locale/ru';
 //import * as dayjs from 'dayjs'
-import { TextInfo, Title4_second, TitleLabel } from '../TextBlocks/TextBlocks';
+import { TextHighlighted, TextInfo, Title4_second, TitleLabel } from '../TextBlocks/TextBlocks';
 //import { Doctor } from '@/__generated__/graphql';
 //import { GET_DOCTORS_SERVICES } from '../../../_apollo/queries/main/getDoctorsServices';
 import { useQuery, useLazyQuery } from '@apollo/client';
@@ -30,6 +30,8 @@ import { CardContainer } from '../Card/CardContainer';
 import { CardExpandButton } from '../Card/CardExpandButton';
 import { innerPageMaxWidth } from '@/global/CONSTS';
 import { GET_DOCTORS_MSPECIALITIES } from '@/apollo/queries/main/getDoctorsMspecialities';
+import classes from './DoctorChooser.module.css';
+import { TimeSelector } from './TimeSelector';
 
 /*const useStyles = createStyles((theme) => ({
   icon: {
@@ -79,31 +81,34 @@ export function DoctorInfo({
   //},[data_services])
 
   return (
-    <CardContainer
-      expanded={expanded}
+    <Paper
+    shadow="0"
+      p={expanded ? { base: 'xs', md: 'xl' }  : 'xs'}
+      withBorder
+      //expanded={expanded}
       // miw={expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -40) }//448}
+      className={`${classes.gridItem} ${ expanded? classes.expanded : ''}`}
     >
       <CardExpandButton expanded={expanded} setExpanded={setExpanded} />
       <Grid>
         <Grid.Col span="auto" maw="100%">
-          <Group wrap="nowrap">
-            <Avatar src={photo} size={expanded ? 150 : 80} radius="md" />
+          <Group wrap="nowrap" align="flex-start">
+            <Avatar src={photo} size={expanded ? 130 : 80} radius="md" />
             <div>
               <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
-                {description}
+                {description || 'Хирург'}
               </Text>
 
               <Text fz="lg" fw={500} pr="xl">
-                {fio}
+                {fio || 'Иванов Иван Иванович'}
               </Text>
 
-              <Text fz="xs" fw={500}>
-                Есть запись: сегодня, завтра, 10.07, 12.07, 14.07
-              </Text>
+              <TitleLabel>Есть запись:</TitleLabel> <TextInfo>сегодня, завтра, 10.07, 12.07, 14.07</TextInfo>
+              <br/>
 
-              <Text fz="xs" fw={500}>
-                Стомость приемв: от 5000 р.
-              </Text>
+              <TitleLabel>
+                Стомость приемa:</TitleLabel><TextHighlighted> от 5000 р.</TextHighlighted>
+              
 
               {/*
           <Group noWrap spacing={10} mt={3}>
@@ -141,16 +146,16 @@ export function DoctorInfo({
         </Grid.Col>
         {expanded && (
           <Grid.Col span="content">
-            <Box>
+          {/*  <Box>
               <Title4_second>Записатьcя на прием</Title4_second>
               <Divider my="sm" />
               <DatePicker hideWeekdays locale="ru" mx="-sm" />
               <Divider my="sm" />
-              <Box>даты</Box>
-            </Box>
+              <TimeSelector />
+        </Box> */}
           </Grid.Col>
         )}
       </Grid>
-    </CardContainer>
+    </Paper>
   );
 }

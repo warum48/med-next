@@ -1,6 +1,6 @@
 //351
 
-import { Title, Text, Grid, Group, SimpleGrid } from '@mantine/core';
+import { Title, Text, Grid, Group, SimpleGrid, Skeleton } from '@mantine/core';
 //import { UserInfoIcons } from './userInfoIcons';
 //import { useHeadersStyles } from '../../../_styles/headers';
 //import { mockDoctor } from '../mock/data';
@@ -10,6 +10,7 @@ import { useQuery } from '@apollo/client';
 import { DoctorInfo } from './DoctorInfo';
 import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
+import classes from './DoctorChooser.module.css';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
@@ -22,8 +23,9 @@ export const DoctorChooser = () => {
 
   return (
     <>
-      
-      <TitleLabel>Наши врачи  ( <u>популярные</u> / <u>все</u> )</TitleLabel>
+      <TitleLabel>
+        Наши врачи ( <u>популярные</u> / <u>все</u> )
+      </TitleLabel>
       {/*<Group 
             grow
             >
@@ -31,16 +33,27 @@ export const DoctorChooser = () => {
           <DoctorInfo key={'uii' + index} {...item} />
         ))}
         </Group>*/}
-        <SimpleGrid
-           // grow
-           cols={{ base: 1, lg: 2 }}
-            spacing={{ base: 'md', sm: 'md' }}
-      verticalSpacing={{ base: 'md', sm: 'md' }}
-            >
+
+      {/*
+      <SimpleGrid
+        // grow
+        cols={{ base: 1, lg: 2 }}
+        spacing={{ base: 'md', sm: 'md' }}
+        verticalSpacing={{ base: 'md', sm: 'md' }}
+      >
         {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
           <DoctorInfo key={'uii' + index} {...item} />
         ))}
       </SimpleGrid>
+        */}
+      <div className={classes.container}>
+        {Array.from({ length: 5 }).map((_, index) => (
+         <>
+            <DoctorInfo  key={'doctor' + index} />
+           {/*} <div className={classes.gridItem} key={'doctor' + index}> </div> */}
+           </>
+        ))}
+      </div>
     </>
   );
 };

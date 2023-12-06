@@ -5,7 +5,9 @@ import classes from './TimeSelector.module.css';
 
 export const TimeSelector = () => {
   return (
-    <Paper withBorder w="100%" ml="md" p="md" pt="2" shadow="0"
+    <Paper 
+   // withBorder 
+    w="100%" ml="md" p="md" pt="2" shadow="0"
      //!! mah={320} -- good for design, bad for usability
      >
         <ScrollArea h='100%'>

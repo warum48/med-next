@@ -34,6 +34,9 @@ a.decoration_none:hover {
 .gray_highlight {
   background-color: var(--mantine-color-virilis-gray-highlight);
 }
+.body_highlight {
+  background-color: var(--mantine-color-body);
+}
 
 /*-----tw-like utils--*/
 .cursor-pointer {
