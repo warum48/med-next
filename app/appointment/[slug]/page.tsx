@@ -55,9 +55,9 @@ import { Step3Doctor } from '@/components/_appointment/Step3Doctor';
 import { Layout } from '@/components/_appointment/Layout';
 import { Step3Speciality } from '@/components/_appointment/Step3Speciality';
 import { TAppointmentType } from '@/types/types';
-import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
+import { appointmentTypeVar } from '@/apollo/appstate/globalvars';
 import { GlobalContext } from '@/context/ContextGlobal';
-
+import { Step1 } from '@/components/_appointment/Step1';
 
 //export default
 function Page({ params }: { params: { slug: string } }) {
@@ -68,18 +68,8 @@ function Page({ params }: { params: { slug: string } }) {
   const appointmentTypeVar_re = useReactiveVar(appointmentTypeVar);
   const { isMobile } = React.useContext(GlobalContext);
 
-  
   //console.log('params.slug', params.slug);
   // console.log('params', stepId);
-  const {
-    data: data_medcenter,
-    loading: loading_mc,
-    error: error_mc,
-    refetch: refetch_mc,
-    networkStatus: networkStatus_mc,
-  } = useQuery(GET_MEDICAL_CENTERS, {
-    context: { clientName: 'main' },
-  });
 
   /*
   const {
@@ -210,89 +200,40 @@ function Page({ params }: { params: { slug: string } }) {
   <SpaceYMain /> */}
 
       <Stepper
-      size={isMobile?"xs":'md'}
+        size={isMobile ? 'xs' : 'md'}
         active={active}
         //!!breakpoint="sm"
         onStepClick={setActive}
       >
         <Stepper.Step
-          label={isMobile? undefined : "Шаг 1"}
-          description={isMobile? undefined : "Вводные данные"}
+          label={isMobile ? undefined : 'Шаг 1'}
+          description={isMobile ? undefined : 'Вводные данные'}
           allowStepSelect={shouldAllowSelectStep(0)}
         >
-          <SpaceYMain />
-          <Title2_second>Вводные данные</Title2_second>
-          <SpaceYMain />
-          <Box mb="xl">
-            <Stack mb="xl">
-              <Radio.Group
-                name="appointment"
-                label="Тип приема"
-                {...form.getInputProps('appointmentType')}
-                //value={valueType}
-                //onChange={setValueType}
-                // description="This is anonymous"
-                // withAsterisk
-              >
-                <Group mt="xs">
-                  <Radio value="apt0" label="В медцентре" />
-                  <Radio disabled value="apt1" label="Телемедицина" />
-                  <Radio disabled value="apt2" label="Вызов врача на дом" />
-                  <Radio disabled value="apt3" label="Забор анализов" />
-                </Group>
-              </Radio.Group>
-
-              <Space h="xxs" />
-              {/*<SwitchWithText
-        leftText="Ребенок"
-        rightText="Взрослый"
-        label="Возраст пациента"
-        //checked={checked}
-        //handleChange={handleChange}
-  /> */}
-              <SwitchWithTextMantine
-                leftText="Обычная запись"
-                rightText="По полису дмс"
-                label="Форма оплаты"
-                {...form.getInputProps('paymentType', { type: 'checkbox' })}
-              />
-              <AgeChooser form={form} />
-
-              <Space h="xxs" />
-              <MedCenterChooser
-                form={form}
-                data_medcenter={data_medcenter}
-                refetch_mc={refetch_mc}
-                networkStatus_mc={networkStatus_mc}
-                loading_mc={loading_mc}
-                error_mc={error_mc}
-              />
-            </Stack>
-          </Box>
+          <Step1 form={form} />
         </Stepper.Step>
 
         <Stepper.Step
-          label={isMobile? undefined : "Шаг 2"}
-          description={isMobile? undefined : "Данные о приеме"}
+          label={isMobile ? undefined : 'Шаг 2'}
+          description={isMobile ? undefined : 'Данные о приеме'}
           allowStepSelect={shouldAllowSelectStep(1)}
         >
           {/*appointmentType*/}
-          <Step2 setAppointmentType={setAppointmentType}/>
+          <Step2 setAppointmentType={setAppointmentType} />
         </Stepper.Step>
 
         <Stepper.Step
-          label={isMobile? undefined : "Шаг 3"}
-          description={isMobile? undefined : "Время приема"}
+          label={isMobile ? undefined : 'Шаг 3'}
+          description={isMobile ? undefined : 'Время приема'}
           allowStepSelect={shouldAllowSelectStep(2)}
         >
           {/*appointmentTypeVar_re*/}
-          {appointmentTypeVar_re === 'doctor' ? <Step3Doctor /> :
-          <Step3Speciality /> }
+          {appointmentTypeVar_re === 'doctor' ? <Step3Doctor /> : <Step3Speciality />}
         </Stepper.Step>
 
         <Stepper.Step
-          label={isMobile? undefined : "Шаг 4"}
-          description={isMobile? undefined : "Персональная информация"}
+          label={isMobile ? undefined : 'Шаг 4'}
+          description={isMobile ? undefined : 'Персональная информация'}
           allowStepSelect={shouldAllowSelectStep(2)}
         >
           <Grid>
@@ -307,25 +248,23 @@ function Page({ params }: { params: { slug: string } }) {
               // xs={12} lg={6}
               span={{ base: 12, lg: 6 }}
             >
-              <Space h='xl' />
+              <Space h="xl" />
               <DoctorConfirm {...mockDoctor} />
               <Box
-        mx={'0.25rem'}
-        w={'100%'}
-        mb="xl"
-       // p="md"
-        // bga={theme.colors.oceanBlue[0]}
-        //sx={{backgroundColor:theme.colors.oceanBlue[0]}}
-      >
-         <Space h='md'/>
-        <Checkbox
-      label="Согласен на обработку персональных данных"
-    />
-    <Space h='xl'/>
-        <Center>
-          <StyledButton appearence="main_second">Оплатить</StyledButton>
-        </Center>
-      </Box>
+                mx={'0.25rem'}
+                w={'100%'}
+                mb="xl"
+                // p="md"
+                // bga={theme.colors.oceanBlue[0]}
+                //sx={{backgroundColor:theme.colors.oceanBlue[0]}}
+              >
+                <Space h="md" />
+                <Checkbox label="Согласен на обработку персональных данных" />
+                <Space h="xl" />
+                <Center>
+                  <StyledButton appearence="main_second">Оплатить</StyledButton>
+                </Center>
+              </Box>
             </Grid.Col>
           </Grid>
         </Stepper.Step>

@@ -1,0 +1,17 @@
+@keyframes moveRightBack {
+    0% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(20px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .moving_box {
+    position:relative;
+    opacity: .2;
+    animation: moveRightBack 2s infinite;
+  }

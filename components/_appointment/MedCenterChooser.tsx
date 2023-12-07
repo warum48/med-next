@@ -21,31 +21,41 @@ import {
   Checkbox,
 } from '@mantine/core';
 import { TextInfo, TitleLabel } from '../TextBlocks/TextBlocks';
-import { ApolloError, NetworkStatus } from '@apollo/client';
+import { ApolloError, NetworkStatus, useQuery } from '@apollo/client';
 //import { ErrorMessage } from '../../../components/Errors/ErrorMessage';
 import { GetMedicalCentersQuery } from '@/__generated__/graphql';
 import { ErrorMessage } from '../Errors/ErrorMessage';
 import classes from './MedCenterChooser.module.css';
+import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
 //import { MedicalCenterResult } from '@/-__generated__/graphql';
 
 type TProps = {
   form: any;
-  data_medcenter: any;//MedicalCenterResult;//GetMedicalCentersQuery | undefined; //any;
-  loading_mc: boolean;
-  error_mc: ApolloError | undefined;
-  refetch_mc: () => void;
-  networkStatus_mc: NetworkStatus;
+  //data_medcenter: any;//MedicalCenterResult;//GetMedicalCentersQuery | undefined; //any;
+  //loading_mc: boolean;
+  //error_mc: ApolloError | undefined;
+  //refetch_mc: () => void;
+  //networkStatus_mc: NetworkStatus;
 };
 
 export const MedCenterChooser = ({
   form,
-  data_medcenter,
-  loading_mc,
-  error_mc,
-  refetch_mc,
-  networkStatus_mc,
+  //data_medcenter,
+  //loading_mc,
+  //error_mc,
+  //refetch_mc,
+  //networkStatus_mc,
 }: TProps) => {
   //  const { classes, theme } = useHeadersStyles();
+  const {
+    data: data_medcenter,
+    loading: loading_mc,
+    error: error_mc,
+    refetch: refetch_mc,
+    networkStatus: networkStatus_mc,
+  } = useQuery(GET_MEDICAL_CENTERS, {
+    context: { clientName: 'main' },
+  });
   return (
     <>
       <TitleLabel>Выберите медцентр:</TitleLabel>

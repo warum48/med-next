@@ -1,9 +1,10 @@
-import { Group, Radio, RangeSlider, Slider, Title, rem, useMantineTheme } from '@mantine/core';
+import { Box, Group, Radio, RangeSlider, Slider, Title, rem, useMantineTheme } from '@mantine/core';
 import { ChangeEvent, useState } from 'react';
 // TODO remove from yarn import Switch from "react-switch";
 import { SwitchWithText } from '../Switch/Switch';
-import { IconGripVertical, IconHeart, IconPoint } from '@tabler/icons-react';
+import { IconArrowRightCircle, IconArrowRightRhombus, IconGripVertical, IconHeart, IconPoint } from '@tabler/icons-react';
 import classes from './SliderMarks.module.css';
+import arrowclasses from './AgeChooser.module.css'
 import React from 'react';
 type TProps = {
   form: any;
@@ -185,9 +186,19 @@ export const AgeChooser = ({ form }: TProps) => {
 
       {!checked && (
         <>
-          <Title order={6} mb="0" c={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}>
+        <Group gap='4px' align='flex-start'>
+          <Title order={6} mb="0" 
+          //c={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}
+          >
+            
             {value != undefined ? marks[value].hint : 'Выберите возраст'}
           </Title>
+          {!sliderTouched &&
+          <Box 
+          //mt="sm" pb='0' 
+        className={arrowclasses.moving_box}><IconArrowRightCircle style={{position:'absolute', top: 0}}/></Box> }
+          </Group>
+          
           <Slider
             onMouseUpCapture={() => console.log('click')}
             ml="xs"
