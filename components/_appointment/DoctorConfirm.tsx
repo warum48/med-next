@@ -31,7 +31,7 @@ export const DoctorConfirm = ({
       <Box
         //maw={400}
         //mx="auto"
-        mx={'0.25rem'}
+        //mx={'0.25rem'}
         w={'100%'}
         // mt="xl"
         p="md"

@@ -56,6 +56,8 @@ import { Layout } from '@/components/_appointment/Layout';
 import { Step3Speciality } from '@/components/_appointment/Step3Speciality';
 import { TAppointmentType } from '@/types/types';
 import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
+import { GlobalContext } from '@/context/ContextGlobal';
+
 
 //export default
 function Page({ params }: { params: { slug: string } }) {
@@ -64,6 +66,7 @@ function Page({ params }: { params: { slug: string } }) {
   const stepId = params.slug;
   const [appointmentType, setAppointmentType] = useState<TAppointmentType>('doctor'); //TODO remove
   const appointmentTypeVar_re = useReactiveVar(appointmentTypeVar);
+  const { isMobile } = React.useContext(GlobalContext);
 
   
   //console.log('params.slug', params.slug);
@@ -207,13 +210,14 @@ function Page({ params }: { params: { slug: string } }) {
   <SpaceYMain /> */}
 
       <Stepper
+      size={isMobile?"xs":'md'}
         active={active}
         //!!breakpoint="sm"
         onStepClick={setActive}
       >
         <Stepper.Step
-          label="Шаг 1"
-          description="Вводные данные"
+          label={isMobile? undefined : "Шаг 1"}
+          description={isMobile? undefined : "Вводные данные"}
           allowStepSelect={shouldAllowSelectStep(0)}
         >
           <SpaceYMain />
@@ -268,8 +272,8 @@ function Page({ params }: { params: { slug: string } }) {
         </Stepper.Step>
 
         <Stepper.Step
-          label="Шаг 2"
-          description="Данные о приеме"
+          label={isMobile? undefined : "Шаг 2"}
+          description={isMobile? undefined : "Данные о приеме"}
           allowStepSelect={shouldAllowSelectStep(1)}
         >
           {/*appointmentType*/}
@@ -277,8 +281,8 @@ function Page({ params }: { params: { slug: string } }) {
         </Stepper.Step>
 
         <Stepper.Step
-          label="Шаг 3"
-          description="Время приема"
+          label={isMobile? undefined : "Шаг 3"}
+          description={isMobile? undefined : "Время приема"}
           allowStepSelect={shouldAllowSelectStep(2)}
         >
           {/*appointmentTypeVar_re*/}
@@ -287,8 +291,8 @@ function Page({ params }: { params: { slug: string } }) {
         </Stepper.Step>
 
         <Stepper.Step
-          label="Шаг 4"
-          description="Персональная информация"
+          label={isMobile? undefined : "Шаг 4"}
+          description={isMobile? undefined : "Персональная информация"}
           allowStepSelect={shouldAllowSelectStep(2)}
         >
           <Grid>
