@@ -49,17 +49,21 @@ export const MedCenterChooser = ({
   return (
     <>
       <TitleLabel>Выберите медцентр:</TitleLabel>
-      {error_mc ? (
+      {
+      
+      /*error_mc ? (
         <ErrorMessage refetch={refetch_mc} />
-      ) : (
+      ) : ( */
         <Checkbox.Group
           //value={valueAdress} onChange={setValueAdress}
           {...form.getInputProps('address')}
         >
           <div className={classes.medcontainer} >
             <Stack gap="xs">
-              {data_medcenter?.getMedicalCenters?.data
-                ?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
+              {
+             // data_medcenter?.getMedicalCenters?.data
+             Array.from({ length: 3 })
+               // ?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
                 .map((item: any, index: number) => (
                   <Checkbox
                     key={'adrcb' + index}
@@ -67,9 +71,9 @@ export const MedCenterChooser = ({
                     //label={item}
                     label={
                       <>
-                        <TitleLabel>{item.name}</TitleLabel>
+                        <TitleLabel>{item?.name || 'ДМЦ «Мамарада»'}</TitleLabel>
                         <Space h="xs" />
-                        <TextInfo>{item.address}</TextInfo>
+                        <TextInfo>{item?.address || 'Большевиков пр.,д.7, корп.3'}</TextInfo>
                         <Space h="xs" />
                       </>
                     }
@@ -77,20 +81,22 @@ export const MedCenterChooser = ({
                 ))}
             </Stack>
             <Stack gap="xs">
-              {data_medcenter?.getMedicalCenters?.data
-                ?.slice(
-                  Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2),
-                  Math.floor(data_medcenter?.getMedicalCenters?.data?.length)
-                )
+              {
+              //data_medcenter?.getMedicalCenters?.data
+              Array.from({ length: 3 })
+                //?.slice(
+                //  Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2),
+                //  Math.floor(data_medcenter?.getMedicalCenters?.data?.length)
+                //)
                 .map((item: any, index: number) => (
                   <Checkbox
                     key={'adrcb' + index + 50}
                     value={'ad' + (index + 50)}
                     label={
                       <>
-                        <TitleLabel>{item.name}</TitleLabel>
+                        <TitleLabel>{item?.name || 'ДМЦ «Мамарада»'}</TitleLabel>
                         <Space h="xs" />
-                        <TextInfo>{item.address}</TextInfo>
+                        <TextInfo>{item?.address || 'Большевиков пр.,д.7, корп.3'}</TextInfo>
                         <Space h="xs" />
                       </>
                     }
@@ -99,7 +105,9 @@ export const MedCenterChooser = ({
             </Stack>
           </div>
         </Checkbox.Group>
-      )}
+      /*)*/
+      
+      }
     </>
   );
 };
