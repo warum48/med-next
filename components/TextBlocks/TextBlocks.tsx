@@ -56,6 +56,7 @@ export const TitleLabel = ({ children, ...props }: TChildren & TAnyFields) => {
    
       <span className={classes.title3} 
       //{...props}
+      style={{color: props.c}}
       >
         {children}
       </span>

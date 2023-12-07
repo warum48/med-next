@@ -6,6 +6,7 @@ import { IconArrowRightCircle, IconArrowRightRhombus, IconGripVertical, IconHear
 import classes from './SliderMarks.module.css';
 import arrowclasses from './AgeChooser.module.css'
 import React from 'react';
+import { TitleLabel } from '../TextBlocks/TextBlocks';
 type TProps = {
   form: any;
 };
@@ -187,12 +188,13 @@ export const AgeChooser = ({ form }: TProps) => {
       {!checked && (
         <>
         <Group gap='4px' align='flex-start'>
-          <Title order={6} mb="0" 
-          //c={sliderTouched ? theme.colors.oceanBlue[9] : 'gray'}
+          <TitleLabel 
+          //order={6} mb="0" 
+          c={sliderTouched ? theme.colors.oceanBlue[9] : 'var(--mantine-color-text)'}
           >
             
             {value != undefined ? marks[value].hint : 'Выберите возраст'}
-          </Title>
+          </TitleLabel>
           {!sliderTouched &&
           <Box 
           //mt="sm" pb='0' 
