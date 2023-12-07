@@ -27,11 +27,18 @@ type TProps = {
 
 export const Step2 = ({setAppointmentType}: TProps) => {
   const theme = useMantineTheme();
+  //!!we need these objects to make an adaptor between mantine tab onChange funtion type ,that is 'string | null' and custom union TAppointmentType , that is more precise
   const tabMatch = {
     doctor: 'type1',
     speciality: 'type2',
     service: 'type3'
   }
+  const matchOb = {
+    type1: 'doctor',
+    type2: 'speciality',//'specialization',
+    type3: 'service'
+  }
+
   const [activeTab, setActiveTab] = useState<string | null>(tabMatch[appointmentTypeVar()]);//('type1');
 
   type TTab = 'type1' | 'type2' | 'type3';
@@ -39,12 +46,7 @@ export const Step2 = ({setAppointmentType}: TProps) => {
     return ['type1', 'type2', 'type3'].indexOf(ty) !== -1; //'doctor' , 'speciality' , 'service'
   }
 
-  const matchOb = {
-    type1: 'doctor',
-    type2: 'speciality',//'specialization',
-    type3: 'service'
-  }
-
+  
   useEffect(() => {
     //const typ = isTAppointmentType(activeTab) ? matchOb[activeTab] : 'doctor';
     //setAppointmentType(typ)
