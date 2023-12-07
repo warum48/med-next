@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import { OperationVariables, QueryResult, useQuery } from '@apollo/client';
+import { OperationVariables, QueryResult, useQuery, useReactiveVar } from '@apollo/client';
 import {
   Stepper,
   Button,
@@ -51,14 +51,21 @@ import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
 import { GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesTypes';
 import { Step2 } from '@/components/_appointment/Step2';
 import { Calendar } from '@mantine/dates';
-import { Step3 } from '@/components/_appointment/Step3';
+import { Step3Doctor } from '@/components/_appointment/Step3Doctor';
 import { Layout } from '@/components/_appointment/Layout';
+import { Step3Speciality } from '@/components/_appointment/Step3Speciality';
+import { TAppointmentType } from '@/types/types';
+import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
 
 //export default
 function Page({ params }: { params: { slug: string } }) {
   const theme = useMantineTheme();
   const router = useRouter();
   const stepId = params.slug;
+  const [appointmentType, setAppointmentType] = useState<TAppointmentType>('doctor'); //TODO remove
+  const appointmentTypeVar_re = useReactiveVar(appointmentTypeVar);
+
+  
   //console.log('params.slug', params.slug);
   // console.log('params', stepId);
   const {
@@ -265,7 +272,8 @@ function Page({ params }: { params: { slug: string } }) {
           description="Данные о приеме"
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          <Step2 />
+          {/*appointmentType*/}
+          <Step2 setAppointmentType={setAppointmentType}/>
         </Stepper.Step>
 
         <Stepper.Step
@@ -273,7 +281,9 @@ function Page({ params }: { params: { slug: string } }) {
           description="Время приема"
           allowStepSelect={shouldAllowSelectStep(2)}
         >
-          <Step3 />
+          {/*appointmentTypeVar_re*/}
+          {appointmentTypeVar_re === 'doctor' ? <Step3Doctor /> :
+          <Step3Speciality /> }
         </Stepper.Step>
 
         <Stepper.Step

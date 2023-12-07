@@ -22,11 +22,11 @@ export const DoctorChooser = () => {
   } = useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
 
   return (
-    <>
+    <> {/*
       <TitleLabel>
         Наши врачи ( <u>популярные</u> / <u>все</u> )
       </TitleLabel>
-      {/*<Group 
+     <Group 
             grow
             >
         {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
@@ -46,7 +46,9 @@ export const DoctorChooser = () => {
         ))}
       </SimpleGrid>
         */}
-      <div className={classes.container}>
+      <div 
+      className={classes.container}
+      >
         {Array.from({ length: 5 }).map((_, index) => (
          <>
             <DoctorInfo  key={'doctor' + index} />

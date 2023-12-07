@@ -16,15 +16,57 @@ import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { profAr } from './mockdata';
 import { DoctorChooser } from './DoctorChooser';
 import { elementMaxWidth } from '@/global/CONSTS';
+import { SpecialityChooser } from './SpecialityChooser';
+import { useEffect, useState } from 'react';
+import { TAppointmentType } from '@/types/types';
+import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
 
-export const Step2 = () => {
+type TProps = {
+  setAppointmentType: React.Dispatch<React.SetStateAction<TAppointmentType>>;
+}
+
+export const Step2 = ({setAppointmentType}: TProps) => {
   const theme = useMantineTheme();
+  const tabMatch = {
+    doctor: 'type1',
+    speciality: 'type2',
+    service: 'type3'
+  }
+  const [activeTab, setActiveTab] = useState<string | null>(tabMatch[appointmentTypeVar()]);//('type1');
+
+  type TTab = 'type1' | 'type2' | 'type3';
+  function isTTab(ty: any): ty is TTab{
+    return ['type1', 'type2', 'type3'].indexOf(ty) !== -1; //'doctor' , 'speciality' , 'service'
+  }
+
+  const matchOb = {
+    type1: 'doctor',
+    type2: 'speciality',//'specialization',
+    type3: 'service'
+  }
+
+  useEffect(() => {
+    //const typ = isTAppointmentType(activeTab) ? matchOb[activeTab] : 'doctor';
+    //setAppointmentType(typ)
+    console.log('activeTab', activeTab);
+    
+    if (isTTab(activeTab)){
+    console.log(matchOb[activeTab]);
+    setAppointmentType(matchOb[activeTab] as TAppointmentType);
+    appointmentTypeVar(matchOb[activeTab] as TAppointmentType);
+    //setAppointmentType(matchOb[activeTab]!);
+    }
+  }, [activeTab])
+
+ 
   return (
     <>
       <SpaceYMain />
       <Title2_second>Выбор специалиста / услуги</Title2_second>
       <SpaceYMain />
-      <Tabs defaultValue="type1">
+      <Tabs 
+      //defaultValue="type1" 
+      value={activeTab} onChange={setActiveTab}>
         <Tabs.List>
           <Tabs.Tab value="type1">ВРАЧ</Tabs.Tab>
           <Tabs.Tab value="type2">СПЕЦИАЛИЗАЦИЯ</Tabs.Tab>
@@ -78,13 +120,8 @@ export const Step2 = () => {
                 </ActionIcon>
               }
             />
-            <Group>
-              {profAr.map((item: string, index: number) => (
-                <Button variant="outline" key={'profAr' + index}>
-                  {item}
-                </Button>
-              ))}
-            </Group>
+            <SpecialityChooser/>
+            
           </Stack>
         </Tabs.Panel>
         <Tabs.Panel value="type3" pt="xs">
@@ -103,6 +140,13 @@ export const Step2 = () => {
                 </ActionIcon>
               }
             />
+            <Group>
+              {profAr.map((item: string, index: number) => (
+                <Button variant="outline" key={'profAr' + index}>
+                  {item}
+                </Button>
+              ))}
+            </Group>
             {/*   <Group gap="xs">
                 {data_services_directions?.getServicesDirections?.data?.map(
                   (item: any

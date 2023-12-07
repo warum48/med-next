@@ -14,9 +14,7 @@ a.decoration_none:hover {
 .mantine-Avatar-image {
   object-position: center top;
 }
-.mantine-Tabs-tabLabel {
-  font-size: var(--mantine-font-size-xs); /*0.875rem;*/
-}
+
 
 .mainColor {
   color: var(--mantine-color-main);
@@ -36,6 +34,18 @@ a.decoration_none:hover {
 }
 .body_highlight {
   background-color: var(--mantine-color-body);
+}
+.hover_card{
+  cursor:pointer;
+}
+.hover_card:hover {
+  border-color: var(--mantine-color-main);
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .mantine-Tabs-tabLabel {
+    font-size: var(--mantine-font-size-xs); /*0.875rem;*/
+  }
 }
 
 /*-----tw-like utils--*/
