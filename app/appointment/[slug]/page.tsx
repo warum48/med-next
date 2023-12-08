@@ -18,6 +18,7 @@ import {
   Grid,
   Checkbox,
   Center,
+  Modal,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
@@ -58,6 +59,8 @@ import { TAppointmentType } from '@/types/types';
 import { appointmentTypeVar } from '@/apollo/appstate/globalvars';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { Step1 } from '@/components/_appointment/Step1';
+import { useDisclosure } from '@mantine/hooks';
+import { PopupAlertIntro } from '@/components/_appointment/PopupAlertIntro';
 
 //export default
 function Page({ params }: { params: { slug: string } }) {
@@ -87,6 +90,7 @@ function Page({ params }: { params: { slug: string } }) {
   //TODO write a useQuery for getServices
   const [active, setActive] = useState(stepId ? Number(stepId) - 1 : 0); //0
   const [highestStepVisited, setHighestStepVisited] = useState(active);
+  const [opened, { open, close }] = useDisclosure(true);
 
   const form = useForm({
     initialValues: {
@@ -192,13 +196,24 @@ function Page({ params }: { params: { slug: string } }) {
     }
   }, [stepId]);
 
+  const [curPopup, setCurPopup] = useState( <PopupAlertIntro close={close}/>); //curPopup =
+
   return (
     <>
+    <Modal opened={opened} onClose={close} centered withCloseButton={false} closeOnClickOutside={false}
+    size="auto"
+    maw={500}
+    >
+        {/* Modal content 
+        <PopupAlertIntro close={close}/>
+        */}
+        {curPopup}
+      </Modal>
       {/*
     <InnerPageContainer className="appointment">
       <Title1_main>Записаться на прием</Title1_main>
-  <SpaceYMain /> */}
-
+  <SpaceYMain /> 
+<Box onClick={open}>*/}
       <Stepper
         size={isMobile ? 'xs' : 'md'}
         active={active}
@@ -295,7 +310,8 @@ function Page({ params }: { params: { slug: string } }) {
         )}
       </Group>
       {/*
-    </InnerPageContainer> */}
+    </InnerPageContainer> 
+    </Box>*/}
     </>
   );
 }
