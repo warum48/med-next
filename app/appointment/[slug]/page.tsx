@@ -56,7 +56,7 @@ import { Step3Doctor } from '@/components/_appointment/Step3Doctor';
 import { Layout } from '@/components/_appointment/Layout';
 import { Step3Speciality } from '@/components/_appointment/Step3Speciality';
 import { TAppointmentType } from '@/types/types';
-import { appointmentTypeVar } from '@/apollo/appstate/globalvars';
+import { appointmentTypeVar, medCenterInitWarningShownVar } from '@/apollo/appstate/globalvars';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { Step1 } from '@/components/_appointment/Step1';
 import { useDisclosure } from '@mantine/hooks';
@@ -69,6 +69,8 @@ function Page({ params }: { params: { slug: string } }) {
   const stepId = params.slug;
   const [appointmentType, setAppointmentType] = useState<TAppointmentType>('doctor'); //TODO remove
   const appointmentTypeVar_re = useReactiveVar(appointmentTypeVar);
+  const medCenterInitWarningShownVar_re = useReactiveVar(medCenterInitWarningShownVar);
+  
   const { isMobile } = React.useContext(GlobalContext);
 
   //console.log('params.slug', params.slug);
@@ -90,7 +92,27 @@ function Page({ params }: { params: { slug: string } }) {
   //TODO write a useQuery for getServices
   const [active, setActive] = useState(stepId ? Number(stepId) - 1 : 0); //0
   const [highestStepVisited, setHighestStepVisited] = useState(active);
-  const [opened, { open, close }] = useDisclosure(true);
+  //const [opened, { open, close }] = useDisclosure(true);
+  const [opened, setOpened] = useState(false);
+
+  function disableWarningPopup() {
+    
+    close();
+  }
+
+  function open(){
+     setOpened(true);
+  }
+
+  function closeIntroWarning() {
+    medCenterInitWarningShownVar(true);
+    close();
+  }
+
+  function close() {
+    //medCenterInitWarningShownVar(true);
+    setOpened(false);
+  }
 
   const form = useForm({
     initialValues: {
@@ -196,7 +218,7 @@ function Page({ params }: { params: { slug: string } }) {
     }
   }, [stepId]);
 
-  const [curPopup, setCurPopup] = useState( <PopupAlertIntro close={close}/>); //curPopup =
+  const [curPopup, setCurPopup] = useState( <PopupAlertIntro close={closeIntroWarning}/>); //curPopup =
 
   return (
     <>
@@ -212,8 +234,10 @@ function Page({ params }: { params: { slug: string } }) {
       {/*
     <InnerPageContainer className="appointment">
       <Title1_main>Записаться на прием</Title1_main>
-  <SpaceYMain /> 
-<Box onClick={open}>*/}
+  <SpaceYMain /> */}
+<Box onClick={() => {if(!medCenterInitWarningShownVar_re){
+open();
+}}}>
       <Stepper
         size={isMobile ? 'xs' : 'md'}
         active={active}
@@ -310,8 +334,8 @@ function Page({ params }: { params: { slug: string } }) {
         )}
       </Group>
       {/*
-    </InnerPageContainer> 
-    </Box>*/}
+    </InnerPageContainer> */}
+    </Box>
     </>
   );
 }

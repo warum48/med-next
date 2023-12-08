@@ -12,6 +12,8 @@ interface IContext {
   isAuthenticated: boolean,
         //, user, login, loading: isLoading, logout
         checkAuth: () =>void
+        isLoggedIn: boolean;
+        setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext({} as IContext);
@@ -22,6 +24,8 @@ export const AuthProvider = ({ children }: any) => {
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  //const {setIsLoggedIn} = useContext(AuthContext);
 
   function checkAuth() {
     //if (!user) {
@@ -29,8 +33,10 @@ export const AuthProvider = ({ children }: any) => {
       console.log('NET USERA');
       // router.push('/');
       // setIsLoading(false);
+      setIsLoggedIn(false);
     } else {
       console.log('-=-=-=-=user');
+      setIsLoggedIn(true);
       if (pathname == RoutesTypes.Auth) {
         //!!!router.push(RoutesTypes.Home);
         console.log('redirect to auth')
@@ -94,7 +100,9 @@ export const AuthProvider = ({ children }: any) => {
       value={{
         isAuthenticated: !!cookiesToken,//!!user,
         //, user, login, loading: isLoading, logout
-        checkAuth: checkAuth
+        checkAuth: checkAuth,
+        isLoggedIn,
+    setIsLoggedIn,
       }}
     >
       {!isLoading ? <>loading</> : children}

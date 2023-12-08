@@ -22,6 +22,7 @@ interface IContext {
   isDebug: boolean;
   DesignService: TDesignService;
   isMobile?: boolean;
+ 
   /*  SearchParamsService: TSearchParamsService;  //много функций
   
   UpdatingQueryService: any;
@@ -47,6 +48,7 @@ export const GlobalProvider = ({ children }: Props) => {
   const [asideOpen, setAsideOpen] = React.useState(false);
   const [isDebug, setIsDebug] = useState<boolean>(false);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
+  
   //const location = useLocation();
   const { DesignService } = useDesign();
   //console.log('location', location);
@@ -77,7 +79,8 @@ export const GlobalProvider = ({ children }: Props) => {
     pathtoserver,
     isDebug,
     DesignService,
-    isMobile
+    isMobile,
+    
     /* setIsDebug,
     
     SearchParamsService,

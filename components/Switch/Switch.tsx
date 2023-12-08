@@ -2,7 +2,8 @@
 
 import React, { useState, ChangeEvent } from 'react';
 import styles from './Switch.module.css';
-import { TitleLabel } from '../TextBlocks/TextBlocks';
+import { Card_pretitle, FormItemLabel, TitleLabel } from '../TextBlocks/TextBlocks';
+import { Space } from '@mantine/core';
 
 
 type SwitchWithTextProps = {
@@ -28,9 +29,10 @@ export const SwitchWithText: React.FC<SwitchWithTextProps> = ({
 
   return (
     <>
-      <TitleLabel>
+      <FormItemLabel>
         {label}
-      </TitleLabel>
+      </FormItemLabel>
+      <Space h='sm'/>
       <div className={styles.toggle_slider} id="toggler">
         <div className={styles.texts}>
           <div className={ `${styles.text} ${styles.text_left} ${ checked ? styles.selected : ''}`}>{leftText}</div>

@@ -4,7 +4,7 @@ import { Title, Text, rem, TitleProps, Anchor, Group, useMantineTheme, TextProps
 import classes from './TextBlocks.module.css';
 
 import React from 'react';
-import { IconNotes } from '@tabler/icons-react';
+import { IconArrowBadgeRight, IconChevronRight, IconNotes, IconSquareArrowRight, IconSquareArrowRightFilled } from '@tabler/icons-react';
 import { alegreya, alegreya_bold } from '@/global/Fonts';
 //const { DesignService, asideOpen, setAsideOpen } = React.useContext(GlobalContext);
 
@@ -30,13 +30,34 @@ export const ActionLink = ({ children, ...props }: any) => {
   );
 };
 
-export const Card_pretitle = ({ children }: TChildren) => {
+export const Card_pretitle = ({ children, c }: TChildren & TAnyFields) => {
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+    <Text fz="xs" tt="uppercase" fw={700} c={c || "dimmed"}>
       {children}
     </Text>
+  );
+};
+
+export const FormItemLabel = ({ children, c, withBullet=true }: TChildren & TAnyFields) => {
+  //const { classes, theme } = useHeadersStyles();
+
+  return (
+    <Group gap={1} ml='-4'>
+      {withBullet &&
+      <IconArrowBadgeRight size={'26'} 
+     
+     // color='pink' 
+      color="var(--mantine-color-virilis-pink)"
+    //  fill='pink'
+    style={{opacity:.8}}
+    />
+      }
+    <Text fz={13} tt="uppercase" fw={700} c={c || "dimmed"} mt={2}>
+      {children}
+    </Text>
+    </Group>
   );
 };
 

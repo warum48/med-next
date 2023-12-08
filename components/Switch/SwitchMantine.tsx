@@ -2,8 +2,9 @@
 
 import React, { useState, ChangeEvent } from 'react';
 import styles from './Switch.module.css';
-import { TitleLabel } from '../TextBlocks/TextBlocks';
-import { Checkbox, CheckboxProps } from '@mantine/core';
+import { Card_pretitle, FormItemLabel, TitleLabel } from '../TextBlocks/TextBlocks';
+import { Box, Checkbox, CheckboxProps, Space } from '@mantine/core';
+import { SpaceYMain } from '../Spacers/Spacers';
 
 
 type SwitchWithTextProps = {
@@ -36,10 +37,11 @@ React.useEffect(() => {
 },[props])
 
   return (
-    <>
-      <TitleLabel>
+    <Box>
+      <FormItemLabel>
         {label}
-      </TitleLabel>
+      </FormItemLabel>
+      <Space h='sm'/>
       <div className={styles.toggle_slider} id={"toggler"+label}
      //  key={"chb"+label+props.checked}
        >
@@ -61,7 +63,7 @@ React.useEffect(() => {
         />
         
       </div>
-    </>
+    </Box>
   );
 };
 
