@@ -1,0 +1,14 @@
+.medcontainer {
+    align-items: var(--group-align,center);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: var(--group-wrap,wrap);
+    gap: var(--group-gap,var(--mantine-spacing-xl));
+    justify-content: var(--group-justify,flex-start);
+
+    @media (max-width: $mantine-breakpoint-lg) {
+        flex-direction: column;
+        gap:0;
+        align-items: flex-start;
+    }
+  }

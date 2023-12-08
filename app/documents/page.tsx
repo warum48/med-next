@@ -41,6 +41,8 @@ import { DatePicker, DatePickerInput } from '@mantine/dates';
 import { FromTo } from '../../components/Dates/FromTo';
 import { Title1_main } from '@/components/TextBlocks/TextBlocks';
 import { useMediaQuery } from '@mantine/hooks';
+import { MedCenterChooser } from '@/components/_appointment/MedCenterChooser';
+import { MedCenterSelector } from '@/components/MedCenterSelector/MedCenterSelector';
 
 export default function Documents() {
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
@@ -181,6 +183,8 @@ export default function Documents() {
                     <Radio label="По электронной почте" value="r1_2" />
                   </Group>
                 </Radio.Group>
+               
+                <MedCenterSelector form={form}/>
 
                 <Space h="xs" />
                 <Center>

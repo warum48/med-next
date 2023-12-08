@@ -73,18 +73,21 @@ TProps) => {
       ) : ( */}
 
       {isLoggedIn && (
+        <Group gap={"0px 16px"}><img src='/images/onni_1_logo.png' style={{height:'80px'}}/>
         <Box>
           <TitleLabel>{'ДМЦ «Мамарада»'}</TitleLabel>
           <Space h="1" />
           <TextInfo>{'Большевиков пр.,д.7, корп.3'}</TextInfo>
           <Space h="1" />
         </Box>
+        </Group>
       )}
 
       {(!isLoggedIn || isExpanded) && (
         <>
           <Collapse in={isExpanded} 
           //p={'md'} my={'md'}
+          mt='xl'
           >
             <Checkbox.Group
               //value={valueAdress} onChange={setValueAdress}

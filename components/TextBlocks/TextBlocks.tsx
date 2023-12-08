@@ -44,7 +44,7 @@ export const FormItemLabel = ({ children, c, withBullet=true }: TChildren & TAny
   //const { classes, theme } = useHeadersStyles();
 
   return (
-    <Group gap={1} ml='-4'>
+    <Group gap={1} ml='-4' mb={withBullet ? 0 : 4}>
       {withBullet &&
       <IconArrowBadgeRight size={'26'} 
      
