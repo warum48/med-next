@@ -1,0 +1,20 @@
+.container {
+    display: grid;
+    gap:16px;
+    width:100%;
+    padding: 16px;
+    border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+   /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  center last row doesn't work grid-template-rows: repeat(auto-fill, minmax(1fr, 80px));
+    justify-content: center;*/
+}
+
+
+
+.container > * {
+    position: relative;
+    min-width: 250px;
+    max-width: 100%;
+    flex: 1;
+  
+}

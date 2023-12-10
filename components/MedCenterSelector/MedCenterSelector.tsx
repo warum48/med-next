@@ -30,6 +30,7 @@ import {
   import { GET_MEDICAL_CENTERS } from '@/apollo/queries/main/getMedicalCenters';
   import React from 'react';
   import { AuthContext } from '@/context/AuthContext';
+import { GroupStretcher } from './GroupStretcher';
   
   //import { MedicalCenterResult } from '@/-__generated__/graphql';
   
@@ -87,14 +88,14 @@ import {
           <>
             <Collapse in={isExpanded} 
             //p={'md'} my={'md'}
-            mt='xl'
+           // mt='xl'
             >
               <Checkbox.Group
                 //value={valueAdress} onChange={setValueAdress}
                 {...form.getInputProps('address')}
               >
-                <div className={classes.medcontainer}>
-                  <Stack gap="xs">
+               
+                  <GroupStretcher>
                     {
                       // data_medcenter?.getMedicalCenters?.data
                       Array.from({ length: 6 })
@@ -115,9 +116,9 @@ import {
                           />
                         ))
                     }
-                  </Stack>
+                  </GroupStretcher>
                   
-                </div>
+                
               </Checkbox.Group>
             </Collapse>
           </>

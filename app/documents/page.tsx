@@ -43,6 +43,7 @@ import { Title1_main } from '@/components/TextBlocks/TextBlocks';
 import { useMediaQuery } from '@mantine/hooks';
 import { MedCenterChooser } from '@/components/_appointment/MedCenterChooser';
 import { MedCenterSelector } from '@/components/MedCenterSelector/MedCenterSelector';
+import classes from "./page.module.css"
 
 export default function Documents() {
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
@@ -112,7 +113,7 @@ export default function Documents() {
         <Tabs.Panel value="type1" pt="xs">
           <Box>
             <Space h="xl" />
-            <Group align="top" gap="xl">
+            <div className={classes.container}>
               <Radio.Group
                 name="age"
                 label="Выберите документ:"
@@ -121,6 +122,7 @@ export default function Documents() {
                 //onChange={setValueAge}
                 // description="This is anonymous"
                 // withAsterisk
+               className={classes.first_column}
               >
                 <Stack mt="md">
                   {docsAr.map((item, index) => (
@@ -134,7 +136,7 @@ export default function Documents() {
                   ))}
                 </Stack>
               </Radio.Group>
-              <Space w="xl" />
+             
               {/*}  <Paper
                   shadow="md"
                   p="md"
@@ -155,8 +157,11 @@ export default function Documents() {
                     />
                   </Group>
                         </Paper> */}
-
-              <Stack>
+<Box  className={classes.second_column}>
+              <Stack 
+            
+             // style={{flex:1, maxWidth:'100%'}}
+             >
                 <FromTo />
                 <Select
                   maw={420}
@@ -191,7 +196,8 @@ export default function Documents() {
                   <StyledButton appearence="main_second">Запросить</StyledButton>
                 </Center>
               </Stack>
-            </Group>
+              </Box>
+            </div>
           </Box>
         </Tabs.Panel>
 
