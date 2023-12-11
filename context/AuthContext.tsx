@@ -14,17 +14,35 @@ interface IContext {
         checkAuth: () =>void
         isLoggedIn: boolean;
         setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+        switchLogIn: () => void;
 }
 
 export const AuthContext = createContext({} as IContext);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(false);
-  const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
+  const [cookiesToken, setCookieToken, removeCookieToken] = useCookies(["mednekot"]);
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  //const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
+  //console.log('---cookieToken', cookieToken.mednekot);
+  // const [checked, setChecked] = useState(cookieToken ? true : false);//false);
+  // const [cookies, setCookie] = useCookies(["mednekot"]);
+
+  const switchLogIn = () => {
+    console.log('cookieToken', cookiesToken.mednekot);
+    if (!cookiesToken.mednekot) {
+      demoLogin()
+     
+    } else {
+      removeCookieToken('mednekot', { path: '/' });
+      setIsLoggedIn(false);
+    }
+  };
   //const {setIsLoggedIn} = useContext(AuthContext);
 
   function checkAuth() {
@@ -42,6 +60,15 @@ export const AuthProvider = ({ children }: any) => {
         console.log('redirect to auth')
       }
     }
+  }
+
+  function demoLogin(){
+    var d = new Date();
+    d.setFullYear(d.getFullYear() + 100);
+    setCookieToken('mednekot',     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIyODA0MDUsInN1YiI6eyJsb2dpbiI6Ijc5MjExMTExMTExIiwicGFzc3dvcmQiOiIkMmIkMTIkdk5TUWZ2UEk3cFhCcmRGMklJbmdSLjl2WE4yVHM3V25DVzFUdDRzYWFrUmJ0Nmt6OFNham0ifX0.aEarsVo7_jwB8Wjkn03pUGmRs39JC839kesAjDgl57Q'
+    , { path: '/', expires: d });
+    // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
+    setIsLoggedIn(true);
   }
 
   React.useEffect(() => {
@@ -103,6 +130,7 @@ export const AuthProvider = ({ children }: any) => {
         checkAuth: checkAuth,
         isLoggedIn,
     setIsLoggedIn,
+    switchLogIn
       }}
     >
       {!isLoading ? <>loading</> : children}

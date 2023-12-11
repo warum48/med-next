@@ -16,12 +16,12 @@ type TProps = {
 
 export function DemoLogIn({ suppressHydrationWarning = true }: TProps): React.ReactElement {
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
-  const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, switchLogIn } = React.useContext(AuthContext);
   console.log('---cookieToken', cookieToken.mednekot);
   // const [checked, setChecked] = useState(cookieToken ? true : false);//false);
   // const [cookies, setCookie] = useCookies(["mednekot"]);
 
-  const switchLogIn = () => {
+ /* const switchLogIn = () => {
     console.log('cookieToken', cookieToken.mednekot);
     if (!cookieToken.mednekot) {
       var d = new Date();
@@ -33,7 +33,7 @@ export function DemoLogIn({ suppressHydrationWarning = true }: TProps): React.Re
       removeCookieToken('mednekot', { path: '/' });
       setIsLoggedIn(false);
     }
-  };
+  }; */
 
   /*
   useEffect(()=>{

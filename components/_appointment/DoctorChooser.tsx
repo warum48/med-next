@@ -11,6 +11,7 @@ import { DoctorInfo } from './DoctorInfo';
 import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
+import { profAr } from './mockdata';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
@@ -49,9 +50,23 @@ export const DoctorChooser = () => {
       <div 
       className={classes.container}
       >
-        {Array.from({ length: 5 }).map((_, index) => (
+       {[
+  'Терапевт',
+  'Терапевт',
+  'Терапевт',
+  'Педиатр',
+  'Педиатр',
+  'Семейный врач',
+  'Хирург',
+  'Хирург',
+  'Травматолог-ортопед',
+  'Стоматолог',
+  'Стоматолог',
+  'Стоматолог',
+  'Стоматолог-терапевт',
+].map((item: string, index: number) => (
          <>
-            <DoctorInfo  key={'doctor' + index} />
+            <DoctorInfo  key={'doctor' + index} description={item}/>
            {/*} <div className={classes.gridItem} key={'doctor' + index}> </div> */}
            </>
         ))}

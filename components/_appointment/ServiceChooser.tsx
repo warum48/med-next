@@ -12,7 +12,6 @@ import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
 import { SpecialityInfo } from './SpecialityInfo';
-import { profAr } from './mockdata';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const SpecialityChooser = () => {
@@ -26,9 +25,9 @@ export const SpecialityChooser = () => {
   return (
     <> 
       <div className={classes.container}>
-      {profAr.map((item: string, index: number) => (
+        {Array.from({ length: 7 }).map((_, index) => (
         
-            <SpecialityInfo  key={'doctor' + index} name={item}/>
+            <SpecialityInfo  key={'doctor' + index} />
           
            
         ))}

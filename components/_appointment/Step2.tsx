@@ -143,11 +143,12 @@ export const Step2 = ({setAppointmentType}: TProps) => {
               }
             />
             <Group>
-              {profAr.map((item: string, index: number) => (
+раздел в стадии разработки
+              {/*profAr.map((item: string, index: number) => (
                 <Button variant="outline" key={'profAr' + index}>
                   {item}
                 </Button>
-              ))}
+              ))*/}
             </Group>
             {/*   <Group gap="xs">
                 {data_services_directions?.getServicesDirections?.data?.map(

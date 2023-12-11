@@ -4,21 +4,105 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
+type AccessTicket {
+  id: Int!
+  clientId: Int
+  doctorMcentersId: Int!
+  userId: Int!
+  ticketDatetime: DateTime!
+  ticketDuration: Int
+  ticketRoom: String
+  status: Boolean
+  firststatus: Boolean
+  blStatus: Int
+  isActive: Boolean
+  isReserv: Boolean
+  expireDate: DateTime
+  fromInternetStatus: Boolean
+  doctorMcenters: DoctorMedicalCenter
+  user: User
+}
+
+input AccessTicketIn {
+  clientId: Int = null
+  doctorMcentersId: Int = null
+  userId: Int = null
+  ticketDatetime: Date = null
+  ticketDuration: Int = null
+  ticketRoom: String = null
+  status: Boolean = null
+  firststatus: Boolean = null
+  blStatus: Int = null
+  isActive: Boolean = null
+  isReserv: Boolean = null
+  expireDate: Date = null
+  fromInternetStatus: Boolean = null
+}
+
+input AccessTicketInput {
+  clientId: Int = null
+  doctorMcentersId: Int = null
+  userId: Int = null
+  ticketDatetime: Date = null
+  ticketDuration: Int = null
+  ticketRoom: String = null
+  status: Boolean = null
+  firststatus: Boolean = null
+  blStatus: Int = null
+  isActive: Boolean = null
+  isReserv: Boolean = null
+  expireDate: Date = null
+  fromInternetStatus: Boolean = null
+  doctorMcenters: DoctorMedicalCenterIn
+  user: UserIn
+}
+
+type AccessTicketResult {
+  data: [AccessTicket!]
+  statusCode: Int
+  details: String
+}
+
+type AddressMisKladrTable {
+  id: Int!
+  clientId: Int
+  clientUserId: Int
+  tag: Int
+  luid: Int
+  region: String
+  regionCode: String
+  area: String
+  areaCode: String
+  city: String
+  cityCode: String
+  town: String
+  townCode: String
+  street: String
+  streetCode: String
+  house: String
+  corp: String
+  flat: String
+  note: String
+  status: Int
+  livesLuId: Int
+  houseCode: String
+}
+
 type City {
   id: Int!
-  clientCityId: Int
+  clientId: Int
   name: String!
   isActive: Boolean
 }
 
 input CityIn {
-  clientCityId: Int = null
+  clientId: Int = null
   name: String = null
   isActive: Boolean = null
 }
 
 input CityInput {
-  clientCityId: Int = null
+  clientId: Int = null
   name: String = null
   isActive: Boolean = null
   id: Int = null
@@ -66,7 +150,7 @@ type ComplexServiceItem {
 }
 
 input ComplexServiceItemInput {
-  complexServiceId: Int = null
+  complexId: Int = null
   serviceId: Int = null
   comment: String = null
   price: Float = null
@@ -98,7 +182,7 @@ scalar DateTime
 
 type Doctor {
   id: Int!
-  clientDoctorId: Int
+  clientId: Int
   firstName: String!
   lastName: String!
   patronymic: String
@@ -115,21 +199,21 @@ type Doctor {
 
 type DoctorCategory {
   id: Int!
-  clientDcategoryId: Int
+  clientId: Int
   name: String!
   description: String
   isActive: Boolean
 }
 
 input DoctorCategoryIn {
-  clientDcategoryId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
 }
 
 input DoctorCategoryInput {
-  clientDcategoryId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
@@ -143,7 +227,7 @@ type DoctorCategoryResult {
 }
 
 input DoctorIn {
-  clientDoctorId: Int = null
+  clientId: Int = null
   firstName: String = null
   lastName: String = null
   patronymic: String = null
@@ -158,7 +242,7 @@ input DoctorIn {
 }
 
 input DoctorInput {
-  clientDoctorId: Int = null
+  clientId: Int = null
   firstName: String = null
   lastName: String = null
   patronymic: String = null
@@ -176,7 +260,7 @@ input DoctorInput {
 
 type DoctorMedicalCenter {
   id: Int!
-  clientDoctorMcenterId: Int
+  clientId: Int
   doctorId: Int!
   medicalSpecialityId: Int!
   medicalCenterId: Int!
@@ -194,7 +278,7 @@ type DoctorMedicalCenter {
 }
 
 input DoctorMedicalCenterIn {
-  clientDoctorMcenterId: Int = null
+  clientId: Int = null
   doctorId: Int = null
   medicalSpecialityId: Int = null
   medicalCenterId: Int = null
@@ -207,7 +291,7 @@ input DoctorMedicalCenterIn {
 }
 
 input DoctorMedicalCenterInput {
-  clientDoctorMcenterId: Int = null
+  clientId: Int = null
   doctorId: Int = null
   medicalSpecialityId: Int = null
   medicalCenterId: Int = null
@@ -255,7 +339,7 @@ type DoctorMspecialityResult {
 
 type DoctorPatientType {
   id: Int!
-  clientDpatientTypeId: Int
+  clientId: Int
   doctorMedicalCenterId: Int!
   patientTypeId: Int!
   startDate: DateTime!
@@ -266,7 +350,7 @@ type DoctorPatientType {
 }
 
 input DoctorPatientTypeInput {
-  clientDpatientTypeId: Int = null
+  clientId: Int = null
   doctorMedicalCenterId: Int = null
   patientTypeId: Int = null
   startDate: Date = null
@@ -285,7 +369,7 @@ type DoctorPatientTypeResult {
 
 type DoctorReplacement {
   id: Int!
-  clientDoctorReplacementId: Int
+  clientId: Int
   doctorId: Int!
   startDate: DateTime!
   endDate: DateTime!
@@ -295,7 +379,7 @@ type DoctorReplacement {
 }
 
 input DoctorReplacementIn {
-  clientDoctorReplacementId: Int = null
+  clientId: Int = null
   doctorId: Int = null
   startDate: Date = null
   endDate: Date = null
@@ -304,7 +388,7 @@ input DoctorReplacementIn {
 }
 
 input DoctorReplacementInput {
-  clientDoctorReplacementId: Int = null
+  clientId: Int = null
   doctorId: Int = null
   startDate: Date = null
   endDate: Date = null
@@ -354,21 +438,21 @@ type DoctorStatusResult {
 
 type DoctorStatusType {
   id: Int!
-  clientDstatusTypeId: Int
+  clientId: Int
   name: String!
   description: String
   isActive: Boolean
 }
 
 input DoctorStatusTypeIn {
-  clientDstatusTypeId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
 }
 
 input DoctorStatusTypeInput {
-  clientDstatusTypeId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
@@ -382,7 +466,7 @@ type DoctorStatusTypeResult {
 }
 
 type FinancialType {
-  clientFinancialTypeId: Int
+  clientId: Int
   name: String!
   id: Int!
   description: String
@@ -393,14 +477,14 @@ input FinancialTypeIn {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientFinancialTypeId: Int = null
+  clientId: Int = null
 }
 
 input FinancialTypeInput {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientFinancialTypeId: Int = null
+  clientId: Int = null
   id: Int = null
 }
 
@@ -408,6 +492,14 @@ type FinancialTypeResult {
   data: [FinancialType!]
   statusCode: Int
   details: String
+}
+
+type InformationWay {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
 }
 
 input IntFilteringInterval {
@@ -418,7 +510,7 @@ input IntFilteringInterval {
 
 type MedicalCenter {
   id: Int!
-  clientMcenterId: Int
+  clientId: Int
   cityId: Int!
   name: String!
   address: String!
@@ -442,7 +534,7 @@ type MedicalCenter {
 }
 
 input MedicalCenterIn {
-  clientMcenterId: Int = null
+  clientId: Int = null
   cityId: Int = null
   name: String = null
   address: String = null
@@ -465,7 +557,7 @@ input MedicalCenterIn {
 }
 
 input MedicalCenterInput {
-  clientMcenterId: Int = null
+  clientId: Int = null
   cityId: Int = null
   name: String = null
   address: String = null
@@ -497,7 +589,7 @@ type MedicalCenterResult {
 
 type MedicalPosition {
   id: Int!
-  clientDoctorSpecialityId: Int
+  clientId: Int
   viewName: String!
   searchName: String!
   viewDescription: String
@@ -506,7 +598,7 @@ type MedicalPosition {
 }
 
 input MedicalPositionIn {
-  clientDoctorSpecialityId: Int = null
+  clientId: Int = null
   viewName: String = null
   searchName: String = null
   viewDescription: String = null
@@ -515,7 +607,7 @@ input MedicalPositionIn {
 }
 
 input MedicalPositionInput {
-  clientDoctorSpecialityId: Int = null
+  clientId: Int = null
   viewName: String = null
   searchName: String = null
   viewDescription: String = null
@@ -532,7 +624,7 @@ type MedicalPositionResult {
 
 type MedicalSpeciality {
   id: Int!
-  clientDoctorSpecialityId: Int
+  clientId: Int
   viewName: String!
   searchName: String!
   viewDescription: String
@@ -541,7 +633,7 @@ type MedicalSpeciality {
 }
 
 input MedicalSpecialityIn {
-  clientDoctorSpecialityId: Int = null
+  clientId: Int = null
   viewName: String = null
   searchName: String = null
   viewDescription: String = null
@@ -550,7 +642,7 @@ input MedicalSpecialityIn {
 }
 
 input MedicalSpecialityInput {
-  clientDoctorSpecialityId: Int = null
+  clientId: Int = null
   viewName: String = null
   searchName: String = null
   viewDescription: String = null
@@ -571,7 +663,7 @@ type Mutation {
 }
 
 type PackType {
-  clientPackTypeId: Int
+  clientId: Int
   name: String!
   id: Int!
   description: String
@@ -582,14 +674,14 @@ input PackTypeIn {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientPackTypeId: Int = null
+  clientId: Int = null
 }
 
 input PackTypeInput {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientPackTypeId: Int = null
+  clientId: Int = null
   id: Int = null
 }
 
@@ -601,7 +693,7 @@ type PackTypeResult {
 
 type PatientType {
   id: Int!
-  clientPatientTypeId: Int
+  clientId: Int
   name: String!
   description: String
   isActive: Boolean
@@ -611,14 +703,14 @@ input PatientTypeIn {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientPatientTypeId: Int = null
+  clientId: Int = null
 }
 
 input PatientTypeInput {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientPatientTypeId: Int = null
+  clientId: Int = null
   id: Int = null
 }
 
@@ -628,9 +720,38 @@ type PatientTypeResult {
   details: String
 }
 
+type PaymentType {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
+}
+
+input PaymentTypeIn {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input PaymentTypeInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  id: Int = null
+}
+
+type PaymentTypeResult {
+  data: [PaymentType!]
+  statusCode: Int
+  details: String
+}
+
 type Policy {
   id: Int!
-  clientPolycyId: Int
+  clientId: Int
   userId: Int!
   shifrId: Int!
   startDate: DateTime!
@@ -650,7 +771,7 @@ type Policy {
 }
 
 input PolicyIn {
-  clientPolycyId: Int = null
+  clientId: Int = null
   userId: Int = null
   shifrId: Int = null
   startDate: Date = null
@@ -668,7 +789,7 @@ input PolicyIn {
 }
 
 input PolicyInput {
-  clientPolycyId: Int = null
+  clientId: Int = null
   userId: Int = null
   shifrId: Int = null
   startDate: Date = null
@@ -690,6 +811,96 @@ input PolicyInput {
 
 type PolicyResult {
   data: [Policy!]
+  statusCode: Int
+  details: String
+}
+
+type Price {
+  id: Int!
+  clientId: Int
+  serviceId: Int!
+  pricePeriodId: Int
+  priceNameId: Int!
+  priceBeznal: Float
+  priceNal: Float
+  service: Service
+  pricePeriod: PricePeriod
+  priceName: PriceName
+}
+
+input PriceInput {
+  clientId: Int = null
+  serviceId: Int = null
+  pricePeriodId: Int = null
+  priceNameId: Int = null
+  priceBeznal: IntFilteringInterval = null
+  priceNal: IntFilteringInterval = null
+  id: Int = null
+  service: ServiceIn
+  pricePeriod: PricePeriodIn
+  priceName: PriceNameIn
+}
+
+type PriceName {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
+}
+
+input PriceNameIn {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input PriceNameInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  id: Int = null
+}
+
+type PriceNameResult {
+  data: [PriceName!]
+  statusCode: Int
+  details: String
+}
+
+type PricePeriod {
+  id: Int!
+  clientId: Int
+  startDate: DateTime!
+  endDate: DateTime!
+  isActive: Boolean
+}
+
+input PricePeriodIn {
+  clientId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  isActive: Boolean = null
+}
+
+input PricePeriodInput {
+  clientId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  isActive: Boolean = null
+  id: Int = null
+}
+
+type PricePeriodResult {
+  data: [PricePeriod!]
+  statusCode: Int
+  details: String
+}
+
+type PriceResult {
+  data: [Price!]
   statusCode: Int
   details: String
 }
@@ -724,8 +935,47 @@ type Query {
   getSubscribeSpackRecord(filteringAttrs: SubscribeSpackRecordInput = null, orderingAttrs: SubscribeSpackRecordInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): SubscribeSpackRecordResult!
   getShifrDiscountPeriod(filteringAttrs: ShifrDiscountPeriodInput = null, orderingAttrs: ShifrDiscountPeriodInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): ShifrDiscountPeriodResult!
   getShifrDiscount(filteringAttrs: ShifrDiscountInput = null, orderingAttrs: ShifrDiscountInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): ShifrDiscountResult!
-  getServiceGroup(name: String = null): ServiceGroupResult1!
+  getServiceGroup(name: String = null): ServiceGroupResult!
   getUsersPurchases(filteringAttrs: UserPurchaseInput = null, orderingAttrs: UserPurchaseInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserPurchaseResult!
+  getPricePeriod(filteringAttrs: PricePeriodInput = null, orderingAttrs: PricePeriodInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): PricePeriodResult!
+  getPriceName(filteringAttrs: PriceNameInput = null, orderingAttrs: PriceNameInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): PriceNameResult!
+  getPrice(filteringAttrs: PriceInput = null, orderingAttrs: PriceInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): PriceResult!
+  getPaymentType(filteringAttrs: PaymentTypeInput = null, orderingAttrs: PaymentTypeInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): PaymentTypeResult!
+  getUserPayment(filteringAttrs: UserPaymentInput = null, orderingAttrs: UserPaymentInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserPaymentResult!
+  getUserPurchaseReturn(filteringAttrs: UserPurchaseReturnInput = null, orderingAttrs: UserPurchaseReturnInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserPurchaseReturnResult!
+  getRefuseReason(filteringAttrs: RefuseReasonInput = null, orderingAttrs: RefuseReasonInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): RefuseReasonResult!
+  getUserServiceCart(filteringAttrs: UserServiceCartInput = null, orderingAttrs: UserServiceCartInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserServiceCartResult!
+  getUserServicePlan(filteringAttrs: UserServicePlanInput = null, orderingAttrs: UserServicePlanInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserServicePlanResult!
+  getAccessTicket(filteringAttrs: AccessTicketInput = null, orderingAttrs: AccessTicketInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): AccessTicketResult!
+}
+
+type RefuseReason {
+  id: Int!
+  clientId: Int
+  text: String!
+  description: String
+  isActive: Boolean
+}
+
+input RefuseReasonIn {
+  clientId: Int = null
+  text: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input RefuseReasonInput {
+  clientId: Int = null
+  text: String = null
+  description: String = null
+  isActive: Boolean = null
+  id: Int = null
+}
+
+type RefuseReasonResult {
+  data: [RefuseReason!]
+  statusCode: Int
+  details: String
 }
 
 type RequestResult {
@@ -736,7 +986,7 @@ type RequestResult {
 
 type Service {
   id: Int!
-  clientServiceId: Int
+  clientId: Int
   serviceTypeId: Int!
   serviceGroupId: Int!
   nameForStaff: String!
@@ -750,8 +1000,8 @@ type Service {
   mzCode: String
   executionTime: Int
   nursesExecutionTime: Int
-  minimalAge: Int!
-  maximalAge: Int!
+  minimalAge: Int
+  maximalAge: Int
   gender: String
   isUrgent: Boolean
   isForHomeOnly: Boolean
@@ -765,7 +1015,7 @@ type Service {
 
 type ServiceGroup {
   id: Int!
-  clientServiceGroupId: Int
+  clientId: Int
   name: String!
   viewName: String
   description: String
@@ -777,7 +1027,7 @@ type ServiceGroup {
 }
 
 input ServiceGroupIn {
-  clientServiceGroupId: Int = null
+  clientId: Int = null
   name: String = null
   viewName: String = null
   description: String = null
@@ -787,14 +1037,14 @@ input ServiceGroupIn {
   isActive: Boolean = null
 }
 
-type ServiceGroupResult1 {
+type ServiceGroupResult {
   data: [ServiceGroup!]
   statusCode: Int
   details: String
 }
 
 input ServiceIn {
-  clientServiceId: Int = null
+  clientId: Int = null
   serviceTypeId: Int = null
   serviceGroupId: Int = null
   nameForStaff: String = null
@@ -820,7 +1070,7 @@ input ServiceIn {
 }
 
 input ServiceInput {
-  clientServiceId: Int = null
+  clientId: Int = null
   serviceTypeId: Int = null
   serviceGroupId: Int = null
   nameForStaff: String = null
@@ -879,14 +1129,14 @@ type ServiceResult {
 
 type ServiceType {
   id: Int!
-  clientServiceTypeId: Int
+  clientId: Int
   name: String!
   description: String
   isActive: Boolean
 }
 
 input ServiceTypeInput {
-  clientStypeId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
@@ -901,13 +1151,12 @@ type ServiceTypeResult {
 
 type Shifr {
   id: Int!
-  clientShifrId: Int
+  clientId: Int
   code: String
   name: String
   companyName: String
   startDate: DateTime!
   endDate: DateTime!
-  status: Int!
   financialTypeId: Int!
   isActive: Boolean
   financialType: FinancialType
@@ -915,7 +1164,7 @@ type Shifr {
 
 type ShifrDiscount {
   id: Int!
-  clientShifrDiscountId: Int
+  clientId: Int
   shiftDiscountPeriodId: Int
   serviceGroupId: Int!
   serviceId: Int!
@@ -930,7 +1179,7 @@ type ShifrDiscount {
 }
 
 input ShifrDiscountInput {
-  clientShifrDiscountId: Int = null
+  clientId: Int = null
   shiftDiscountPeriodId: Int = null
   serviceGroupId: Int = null
   serviceId: Int = null
@@ -947,19 +1196,20 @@ input ShifrDiscountInput {
 
 type ShifrDiscountPeriod {
   id: Int!
-  clientShifrDiscountPeriodId: Int
+  clientId: Int
   startDate: DateTime!
   endDate: DateTime!
+  isActive: Boolean
 }
 
 input ShifrDiscountPeriodIn {
-  clientShifrDiscountPeriodId: Int = null
+  clientId: Int = null
   startDate: Date = null
   endDate: Date = null
 }
 
 input ShifrDiscountPeriodInput {
-  clientShifrDiscountPeriodId: Int = null
+  clientId: Int = null
   startDate: Date = null
   endDate: Date = null
   id: Int = null
@@ -978,7 +1228,7 @@ type ShifrDiscountResult {
 }
 
 input ShifrIn {
-  clientShifrId: Int = null
+  clientId: Int = null
   code: String = null
   name: String = null
   companyName: String = null
@@ -990,7 +1240,7 @@ input ShifrIn {
 }
 
 input ShifrInput {
-  clientShifrId: Int = null
+  clientId: Int = null
   code: String = null
   name: String = null
   companyName: String = null
@@ -1011,21 +1261,21 @@ type ShifrResult {
 
 type StaffType {
   id: Int!
-  clientStaffTypeId: Int
+  clientId: Int
   name: String!
   description: String
   isActive: Boolean
 }
 
 input StaffTypeIn {
-  clientStaffTypeId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
 }
 
 input StaffTypeInput {
-  clientStaffTypeId: Int = null
+  clientId: Int = null
   name: String = null
   description: String = null
   isActive: Boolean = null
@@ -1040,7 +1290,7 @@ type StaffTypeResult {
 
 type SubscribeDoctor {
   id: Int!
-  clientSubscribeDoctorId: Int
+  clientId: Int
   userSubscribeId: Int!
   doctorId: Int!
   description: String
@@ -1055,7 +1305,7 @@ type SubscribeDoctor {
 }
 
 input SubscribeDoctorInput {
-  clientSubscribeDoctorId: Int = null
+  clientId: Int = null
   userSubscribeId: Int = null
   doctorId: Int = null
   description: String = null
@@ -1078,7 +1328,7 @@ type SubscribeDoctorResult {
 
 type SubscribeServicePack {
   id: Int!
-  clientSubscribeServicePackId: Int
+  clientId: Int
   userSubscribeId: Int!
   code: String
   packTypeId: Int!
@@ -1093,7 +1343,7 @@ type SubscribeServicePack {
 }
 
 input SubscribeServicePackIn {
-  clientSubscribeServicePackId: Int = null
+  clientId: Int = null
   userSubscribeId: Int = null
   code: String = null
   packTypeId: Int = null
@@ -1103,7 +1353,7 @@ input SubscribeServicePackIn {
 }
 
 input SubscribeServicePackInput {
-  clientSubscribeServicePackId: Int = null
+  clientId: Int = null
   userSubscribeId: Int = null
   code: String = null
   packTypeId: Int = null
@@ -1123,7 +1373,7 @@ type SubscribeServicePackResult {
 
 type SubscribeSpackRecord {
   id: Int!
-  clientSubscribesSpacksRecordsId: Int
+  clientId: Int
   subscribeServicesPackId: Int!
   serviceId: Int!
   serviceGroupId: Int!
@@ -1136,7 +1386,7 @@ type SubscribeSpackRecord {
 }
 
 input SubscribeSpackRecordInput {
-  clientSubscribesSpacksRecordsId: Int = null
+  clientId: Int = null
   subscribeServicesPackId: Int = null
   serviceId: Int = null
   serviceGroupId: Int = null
@@ -1155,28 +1405,52 @@ type SubscribeSpackRecordResult {
   details: String
 }
 
+"""Time (isoformat)"""
+scalar Time
+
 type User {
   id: Int!
-  clientUserId: Int
-  clientCardId: Int
-  clientPersonalAreaId: Int
-  firstName: String
-  lastName: String
+  clientId: Int
+  firstName: String!
+  lastName: String!
   patronymic: String
   birthDate: Date
   gender: String
-  email: String
+  email: String!
   phoneNumber: String!
   additionalPhoneNumber: String
-  isActive: Boolean
+  docType: Int
+  docSeries: String
+  docNumber: String
+  docGivingDepName: String
+  docGivingDepCode: String
+  docDate: DateTime
+  docRegAddress: String
+  snils: String
+  inn: String
+  cityId: Int
+  addressFull: String
+  addressMisKladrId: Int
+  longitude: Float
+  latitude: Float
+  zoneNumber: Int
+  defaultMedicalCenterId: Int
+  loginPhoneNumber: String!
   isVerified: Boolean
+  infoWayId: Int
+  notificationTime: Time
+  prefNotificationContactId: Int
+  isActive: Boolean
   created: DateTime
-  lastLogin: DateTime
-  lastVisit: DateTime
+  city: City
+  defaultMedicalCenter: MedicalCenter
+  infoWay: InformationWay
+  prefNotificationContact: User
+  addressMisKladr: AddressMisKladrTable
 }
 
 input UserIn {
-  clientUserId: Int = null
+  clientId: Int = null
   clientCardId: Int = null
   clientPersonalAreaId: Int = null
   firstName: String = null
@@ -1195,9 +1469,99 @@ input UserIn {
   lastVisit: Date = null
 }
 
+type UserPayment {
+  id: Int!
+  clientId: Int
+  userId: Int!
+  policyId: Int
+  shifrId: Int
+  paymentTypeId: Int
+  linkedUserPaymentId: Int
+  avanceStatus: Int
+  paymentDate: DateTime!
+  paymentStatus: Int
+  amount: Float!
+  fullAmount: Float
+  discountAmount: Float
+  usedAmount: Float
+  avanceAmount: Float
+  cardAmount: Float
+  sbpAmount: Float
+  debtAmount: Float
+  editNowStatus: Boolean
+  lpuId: Int
+  cashierId: Int
+  transactionCode: String
+  user: User
+  policy: Policy
+  shifr: Shifr
+  paymentType: PaymentType
+  linkedUserPayment: UserPayment
+}
+
+input UserPaymentIn {
+  clientId: Int = null
+  userId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  paymentTypeId: Int = null
+  linkedUserPaymentId: Int = null
+  avanceStatus: Int = null
+  paymentDate: Date = null
+  paymentStatus: Int = null
+  amount: Float = null
+  fullAmount: Float = null
+  discountAmount: Float = null
+  usedAmount: Float = null
+  avanceAmount: Float = null
+  cardAmount: Float = null
+  sbpAmount: Float = null
+  debtAmount: Float = null
+  editNowStatus: Boolean = null
+  lpuId: Int = null
+  cashierId: Int = null
+  transactionCode: String = null
+}
+
+input UserPaymentInput {
+  clientId: Int = null
+  userId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  paymentTypeId: Int = null
+  linkedUserPaymentId: Int = null
+  avanceStatus: Int = null
+  paymentDate: Date = null
+  paymentStatus: Int = null
+  amount: Float = null
+  fullAmount: Float = null
+  discountAmount: Float = null
+  usedAmount: Float = null
+  avanceAmount: Float = null
+  cardAmount: Float = null
+  sbpAmount: Float = null
+  debtAmount: Float = null
+  editNowStatus: Boolean = null
+  lpuId: Int = null
+  cashierId: Int = null
+  transactionCode: String = null
+  id: Int = null
+  user: UserIn
+  policy: PolicyIn
+  shifr: ShifrIn
+  paymentType: PaymentTypeIn
+  linkedUserPayment: UserPaymentInput
+}
+
+type UserPaymentResult {
+  data: [UserPayment!]
+  statusCode: Int
+  details: String
+}
+
 type UserPurchase {
   id: Int!
-  clientUserPurchaseId: Int
+  clientId: Int
   userId: Int!
   policyId: Int
   shifrId: Int
@@ -1206,7 +1570,7 @@ type UserPurchase {
   doctorNurseId: Int
   paymentDate: DateTime
   serviceId: Int!
-  serviceQuantity: Int!
+  serviceQuantity: Int
   price: Float
   discount: Float
   discountKoef: Float
@@ -1219,13 +1583,30 @@ type UserPurchase {
   service: Service
 }
 
+input UserPurchaseIn {
+  clientId: Int = null
+  userId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  userPaymentId: Int = null
+  doctorExecId: Int = null
+  doctorNurseId: Int = null
+  paymentDate: DateTime = null
+  serviceId: Int = null
+  serviceQuantity: Int = null
+  price: Float = null
+  discount: Float = null
+  discountKoef: Float = null
+  amount: Float = null
+}
+
 input UserPurchaseInMut {
   serviceId: Int = null
   serviceQuantity: Int = null
 }
 
 input UserPurchaseInput {
-  clientUserPurchaseId: Int = null
+  clientId: Int = null
   userId: Int = null
   policyId: Int = null
   shifrId: Int = null
@@ -1254,9 +1635,223 @@ type UserPurchaseResult {
   details: String
 }
 
+type UserPurchaseReturn {
+  id: Int!
+  clientId: Int
+  userPurchaseId: Int!
+  userPaymentsId: Int!
+  quantity: Int
+  sum: Float!
+  sumCard: Float
+  sumSbp: Float
+  sumAvance: Float
+  userPurchase: UserPurchase
+  userPayments: UserPayment
+}
+
+input UserPurchaseReturnInput {
+  clientId: Int = null
+  userPurchaseId: Int = null
+  userPaymentsId: Int = null
+  quantity: Int = null
+  sum: Float = null
+  sumCard: Float = null
+  sumSbp: Float = null
+  sumAvance: Float = null
+  id: Int = null
+  userPurchase: UserPurchaseIn
+  userPayments: UserPaymentIn
+}
+
+type UserPurchaseReturnResult {
+  data: [UserPurchaseReturn!]
+  statusCode: Int
+  details: String
+}
+
+type UserServiceCart {
+  id: Int!
+  clientId: Int
+  serviceId: Int!
+  userId: Int!
+  shifrId: Int
+  policyId: Int
+  medicalCenterId: Int!
+  accessTicketId: Int
+  doctorId: Int
+  doctorExecId: Int
+  doctorSendId: Int
+  doctorNurseId: Int
+  doctorParamedicId: Int
+  startDate: DateTime
+  endDate: DateTime
+  complexServiceId: Int
+  complexServiceStatus: Int
+  serviceStatus: Int
+  quantity: Int
+  stacSatus: Boolean
+  citoStatus: Boolean
+  refuseDate: DateTime
+  refuseReasonId: Int
+  description: String
+  discount: Float
+  discountCoefficient: Float
+  userPurchaseId: Int
+  service: Service
+  user: User
+  shifr: Shifr
+  policy: Policy
+  medicalCenter: MedicalCenter
+  accessTicket: AccessTicket
+  doctor: DoctorMedicalCenter
+  doctorExec: DoctorMedicalCenter
+  doctorSend: DoctorMedicalCenter
+  doctorNurse: DoctorMedicalCenter
+  doctorParamedic: DoctorMedicalCenter
+  complexService: ComplexService
+  userPurchase: UserPurchase
+  refuseReason: RefuseReason
+}
+
+input UserServiceCartIn {
+  clientId: Int = null
+  serviceId: Int = null
+  userId: Int = null
+  shifrId: Int = null
+  policyId: Int = null
+  medicalCenterId: Int = null
+  accessTicketId: Int = null
+  doctorId: Int = null
+  doctorExecId: Int = null
+  doctorSendId: Int = null
+  doctorNurseId: Int = null
+  doctorParamedicId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  complexServiceId: Int = null
+  complexServiceStatus: Int = null
+  serviceStatus: Int = null
+  quantity: Int = null
+  stacSatus: Boolean = null
+  citoStatus: Boolean = null
+  refuseDate: Date = null
+  refuseReasonId: Int = null
+  description: String = null
+  discount: Float = null
+  discountCoefficient: Float = null
+  userPurchaseId: Int = null
+}
+
+input UserServiceCartInput {
+  clientId: Int = null
+  serviceId: Int = null
+  userId: Int = null
+  shifrId: Int = null
+  policyId: Int = null
+  medicalCenterId: Int = null
+  accessTicketId: Int = null
+  doctorId: Int = null
+  doctorExecId: Int = null
+  doctorSendId: Int = null
+  doctorNurseId: Int = null
+  doctorParamedicId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  complexServiceId: Int = null
+  complexServiceStatus: Int = null
+  serviceStatus: Int = null
+  quantity: Int = null
+  stacSatus: Boolean = null
+  citoStatus: Boolean = null
+  refuseDate: Date = null
+  refuseReasonId: Int = null
+  description: String = null
+  discount: Float = null
+  discountCoefficient: Float = null
+  userPurchaseId: Int = null
+  id: Int = null
+  service: ServiceIn
+  user: UserIn
+  shifr: ShifrIn
+  policy: PolicyIn
+  medicalCenter: MedicalCenterIn
+  accessTicket: AccessTicketIn
+  doctor: DoctorMedicalCenterIn
+  doctorExe: DoctorMedicalCenterIn
+  doctorSend: DoctorMedicalCenterIn
+  doctorNurse: DoctorMedicalCenterIn
+  doctorParamedic: DoctorMedicalCenterIn
+  complexService: ComplexServiceIn
+  userPurchase: UserPurchaseIn
+  refuseReason: RefuseReasonIn
+}
+
+type UserServiceCartResult {
+  data: [UserServiceCart!]
+  statusCode: Int
+  details: String
+}
+
+type UserServicePlan {
+  id: Int!
+  clientId: Int
+  userId: Int!
+  serviceId: Int!
+  policyId: Int
+  shifrId: Int
+  quantity: Int
+  planDate: DateTime!
+  description: String
+  doctorSendId: Int
+  medicalCenterId: Int!
+  status: Int
+  refuseReasonId: Int
+  refuseDate: DateTime
+  userServiceCartId: Int
+  service: Service
+  user: User
+  shifr: Shifr
+  policy: Policy
+  doctorSend: DoctorMedicalCenter
+  medicalCenter: MedicalCenter
+  refuseReason: RefuseReason
+}
+
+input UserServicePlanInput {
+  clientId: Int = null
+  userId: Int = null
+  serviceId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  quantity: Int = null
+  planDate: Date = null
+  description: String = null
+  doctorSendId: Int = null
+  medicalCenterId: Int = null
+  status: Int = null
+  refuseReasonId: Int = null
+  refuseDate: Date = null
+  userServiceCartId: Int = null
+  id: Int = null
+  service: ServiceIn
+  user: UserIn
+  shifr: ShifrIn
+  policy: PolicyIn
+  doctorSend: DoctorMedicalCenterIn
+  medicalCenter: MedicalCenterIn
+  refuseReason: RefuseReasonIn
+  userServiceCart: UserServiceCartIn
+}
+
+type UserServicePlanResult {
+  data: [UserServicePlan!]
+  statusCode: Int
+  details: String
+}
+
 type UserSubscribe {
   id: Int!
-  clientUserSubscribeId: Int
+  clientId: Int
   policyId: Int!
   serviceId: Int!
   name: String!
@@ -1270,7 +1865,7 @@ input UserSubscribeIn {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientUserSubscribeId: Int = null
+  clientId: Int = null
   policyId: Int = null
   serviceId: Int = null
 }
@@ -1279,7 +1874,7 @@ input UserSubscribeInput {
   name: String = null
   description: String = null
   isActive: Boolean = null
-  clientUserSubscribeId: Int = null
+  clientId: Int = null
   policyId: Int = null
   serviceId: Int = null
   id: Int = null

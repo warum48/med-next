@@ -53,6 +53,7 @@ import { TimeSelector } from './TimeSelector';
   })); */
 
 export function SpecialityInfo({
+  name,
   id,
   clientDoctorId,
   medicalCenterId,
@@ -90,7 +91,7 @@ export function SpecialityInfo({
       className={`hover_card ${classes.gridItem} `}
     >
       <Stack>
-        <Card_title>{description || 'Терапевт'}</Card_title>
+        <Card_title>{name || 'Терапевт'}</Card_title>
 
         <Group>
           <TitleLabel>Стомость приемa:</TitleLabel>
