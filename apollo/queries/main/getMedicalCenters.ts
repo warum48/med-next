@@ -54,7 +54,7 @@ query getMedicalCenters($filteringAttrs: MedicalCenterInput, $orderingAttrs: Med
   getMedicalCenters(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit, descSorting: $descSorting){
       data{
           id
-          clientMcenterId
+          clientId
           cityId
           name
           address
@@ -76,7 +76,7 @@ query getMedicalCenters($filteringAttrs: MedicalCenterInput, $orderingAttrs: Med
           vaccinationTime
           city{
               id
-              clientCityId
+              clientId
               name
               isActive
           }

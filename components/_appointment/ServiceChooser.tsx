@@ -12,25 +12,53 @@ import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
 import { SpecialityInfo } from './SpecialityInfo';
+import { ServiceItem } from './ServiceItem';
+import { GET_SERVICE_GROUP } from '@/apollo/queries/main/getServicesGroup';
+import React from 'react';
+import { cU } from '@fullcalendar/core/internal-common';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
-export const SpecialityChooser = () => {
+export const ServiceChooser = () => {
   //const { classes, theme } = useHeadersStyles();
   const {
-    data: data_doctors, //DoctorResult
-    loading: loading_doctors,
-    error: error_doctors,
-  } = useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
+    data, //DoctorResult
+    loading,
+    error,
+  } = useQuery(GET_SERVICE_GROUP, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
+
+  const [curNestingPath, setCurNestingPath] = React.useState<any>(null); // apollo
+
+  React.useEffect(() => {
+    console.log('data', data);
+    if (data) {
+      setCurNestingPath([data?.getServiceGroup?.data[0].xmembers]);
+      //  setCurNestingPath(data?.getServiceGroup?.data[0].xmembers)
+    }
+  }, [data]);
 
   return (
-    <> 
-      <div className={classes.container}>
-        {Array.from({ length: 7 }).map((_, index) => (
-        
-            <SpecialityInfo  key={'doctor' + index} />
-          
-           
+    <>
+    <Group>
+        { curNestingPath && curNestingPath.map((item: any, index: number) => (
+            <button onClick={()=>{setCurNestingPath(curNestingPath.slice(0,index+1))}}>  level {index} [debug] {item.name}</button>
         ))}
+    </Group>
+      <div className={classes.container}>
+       
+        {curNestingPath &&
+          curNestingPath[curNestingPath.length - 1].map((item: any, index: number) => (
+            <ServiceItem
+              key={'doctor' + index}
+              name={item.name}
+              xmembers={item.xmembers}
+              //onClick={()=> console.log('click')}
+              onClick={() => {
+                console.log('item.xmembers', item.xmembers);
+                setCurNestingPath([...curNestingPath, item.xmembers]);
+              }}
+            />
+          ))}
+        
       </div>
     </>
   );

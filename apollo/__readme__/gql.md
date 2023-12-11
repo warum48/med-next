@@ -3,6 +3,9 @@ gqlg --schemaFilePath ./schema.graphql --destDirPath ./example/output --depthLim
 
 gqlg --schemaFilePath ./main.graphql --destDirPath ./example/main --depthLimit 5
 
+
+
+
 gqlg --schemaFilePath ./schema.graphql --destDirPath ./__gqlsrc__/output --depthLimit 5
 
 gqlg --schemaFilePath ./main.graphql --destDirPath ./__gqlsrc__/main --depthLimit 5

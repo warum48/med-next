@@ -2,15 +2,15 @@
 import { gql } from "../../../__generated__/gql";
 
 export const PATIENT_LOGIN_BY_PHONE = gql(`
-query PatientLoginByPhone ($phoneNumber:String!){
-    patientLoginByPhone(phoneNumber: $phoneNumber) {
-      data {
-        token
+query patientLoginByPhone($loginPhoneNumber: String!){
+  patientLoginByPhone(loginPhoneNumber: $loginPhoneNumber){
+      data{
+          token
       }
-      details
       statusCode
-    }
+      details
   }
+}
   `)
 
   /*

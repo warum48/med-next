@@ -10,7 +10,7 @@ query getDoctorsMspecialities($filteringAttrs: DoctorMspecialityInput, $ordering
             isActive
             doctor{
                 id
-                clientDoctorId
+                clientId
                 firstName
                 lastName
                 patronymic
@@ -24,7 +24,7 @@ query getDoctorsMspecialities($filteringAttrs: DoctorMspecialityInput, $ordering
                 isActive
                 doctorCategory{
                     id
-                    clientDcategoryId
+                    clientId
                     name
                     description
                     isActive
@@ -32,7 +32,7 @@ query getDoctorsMspecialities($filteringAttrs: DoctorMspecialityInput, $ordering
             }
             mspeciality{
                 id
-                clientDoctorSpecialityId
+                clientId
                 viewName
                 searchName
                 viewDescription

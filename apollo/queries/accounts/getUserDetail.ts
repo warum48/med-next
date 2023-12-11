@@ -6,23 +6,23 @@ query GetUserData {
       details
       statusCode
       data {
-        additionalPhoneNumber
-        birthDate
-        clientCardId
-        clientPersonalAreaId
-        clientUserId
-        created
-        email
-        firstName
-        gender
         id
-        isActive
-        isVerified
-        lastLogin
+        clientId
+        firstName
         lastName
-        lastVisit
         patronymic
+        birthDate
+        gender
+        email
         phoneNumber
+        additionalPhoneNumber
+        docType
+        docSeries
+        docNumber
+        docGivingDepName
+        docGivingDepCode
+        docDate
+        docRegAddress
       }
     }
   }`

@@ -1,16 +1,16 @@
 import { gql } from "../../../__generated__/gql";
 
 export const GET_CITIES = gql(`
-  query GetCities {
-    getCities {
-        details
-        statusCode
-        data {
-          clientCityId
+query getCities($filteringAttrs: CityInput, $orderingAttrs: CityInput, $skip: Int, $limit: Int, $descSorting: Boolean){
+  getCities(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit, descSorting: $descSorting){
+      data{
           id
-          isActive
+          clientId
           name
-        }
+          isActive
       }
+      statusCode
+      details
   }
+}
 `);

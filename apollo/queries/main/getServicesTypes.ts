@@ -5,7 +5,6 @@ query getServicesTypes($filteringAttrs: ServiceTypeInput, $orderingAttrs: Servic
   getServicesTypes(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit, descSorting: $descSorting){
       data{
           id
-          clientServiceTypeId
           name
           description
           isActive

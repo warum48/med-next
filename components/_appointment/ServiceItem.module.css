@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    gap: 36px 24px;
+  }
+  
+  .first_column {
+    flex-grow: 1; /* Grow to fill available space */
+    min-width: 100px;/* auto; Allow content to determine minimum width */
+    max-width: 100%; /* Limit maximum width */
+  }
+  
+  .second_column {
+    flex-grow: 0; 
+   /* max-width: 100%;*/
+  }

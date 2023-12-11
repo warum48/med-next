@@ -4,10 +4,10 @@ import * as React from 'react';
 
 type TProps = { children: React.ReactNode; 
   className?: string;
-   expanded?: boolean; miw?: string | number };
+   expanded?: boolean; miw?: string | number, onClick?: () => void};
 
 export const CardContainer = ({ children, expanded = false,
-  className = '',
+  className = '', onClick
   // miw="100%" 
   }: TProps & TAnyFields) => {
   //React.PropsWithChildren
@@ -19,6 +19,8 @@ export const CardContainer = ({ children, expanded = false,
       p={expanded ? { base: 'xs', md: 'xl' }  : 'xs'}
       withBorder
       className={className}
+      onClick={onClick}
+      //component='button'
      // miw={miw} //{expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -32) }//448}
     >
       {/*className*/}

@@ -7,7 +7,7 @@ query getDoctors($filteringAttrs: DoctorInput, $orderingAttrs: DoctorInput, $ski
     getDoctors(filteringAttrs: $filteringAttrs, orderingAttrs: $orderingAttrs, skip: $skip, limit: $limit, descSorting: $descSorting){
         data{
             id
-            clientDoctorId
+            clientId
             firstName
             lastName
             patronymic
@@ -21,7 +21,7 @@ query getDoctors($filteringAttrs: DoctorInput, $orderingAttrs: DoctorInput, $ski
             isActive
             doctorCategory{
                 id
-                clientDcategoryId
+                clientId
                 name
                 description
                 isActive

@@ -4,6 +4,38 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
+type AddressMisKladrTable {
+  id: Int!
+  clientId: Int
+  clientUserId: Int
+  tag: Int
+  luid: Int
+  region: String
+  regionCode: String
+  area: String
+  areaCode: String
+  city: String
+  cityCode: String
+  town: String
+  townCode: String
+  street: String
+  streetCode: String
+  house: String
+  corp: String
+  flat: String
+  note: String
+  status: Int
+  livesLuId: Int
+  houseCode: String
+}
+
+type City {
+  id: Int!
+  clientId: Int
+  name: String!
+  isActive: Boolean
+}
+
 """Date (isoformat)"""
 scalar Date
 
@@ -11,8 +43,16 @@ scalar Date
 scalar DateTime
 
 input FlashCallCode {
-  phoneNumber: String!
+  loginPhoneNumber: String!
   code: String!
+}
+
+type InformationWay {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
 }
 
 type LoginResult {
@@ -21,12 +61,37 @@ type LoginResult {
   details: String
 }
 
+type MedicalCenter {
+  id: Int!
+  clientId: Int
+  cityId: Int!
+  name: String!
+  address: String!
+  longitude: Float
+  latitude: Float
+  description: String
+  inn: String!
+  bankBic: String!
+  settlementAccount: String!
+  correspondentAccount: String!
+  kpp: String!
+  isActive: Boolean
+  logo: String
+  websiteUrl: String
+  phoneFax: String!
+  dmsPhone: String
+  workTime: String!
+  collectionTestsTime: String
+  vaccinationTime: String
+  city: City
+}
+
 type Mutation {
   patientRegistration(patient: PatientRegistration!): RequestResult!
   registrationFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
   changePasswordByPhone(newPassword: String!): RequestResult!
   changePasswordFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
-  changePhoneByPhone(oldPhoneNumber: String!, newPhoneNumber: String!): RequestResult!
+  changeLoginPhoneByPhone(oldPhoneNumber: String!, newPhoneNumber: String!): RequestResult!
   changePhoneFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
 }
 
@@ -39,14 +104,34 @@ input PatientRegistration {
   email: String!
   phoneNumber: String!
   additionalPhoneNumber: String = null
-  password: String!
+  docType: String = null
+  docSeries: String = null
+  docNumber: String = null
+  docGivingDepName: String = null
+  docGivingDepCode: String = null
+  docDate: DateTime = null
+  docRegAddress: String = null
+  snils: String = null
+  inn: String = null
+  cityId: Int = null
+  addressMisKladrId: Int = null
+  longitude: Float = null
+  latitude: Float = null
+  zoneNumber: Int = null
+  defaultMedicalCenterId: Int = null
+  loginPhoneNumber: String = null
+  password: String = null
+  infoWayId: Int = null
+  notificationTime: Time = null
+  prefNotificationContactId: Int = null
 }
 
 type Query {
-  patienLoginByPassword(phoneNumber: String!, password: String!): LoginResult!
-  patientLoginByPhone(phoneNumber: String!): LoginResult!
+  patienLoginByPassword(loginPhoneNumber: String!, password: String!): LoginResult!
+  patientLoginByPhone(loginPhoneNumber: String!): LoginResult!
   loginFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
   getUserData: UserData!
+  guestLogin: LoginResult!
 }
 
 type RequestResult {
@@ -55,28 +140,52 @@ type RequestResult {
   details: String
 }
 
+"""Time (isoformat)"""
+scalar Time
+
 type Token {
   token: String!
 }
 
 type User {
   id: Int!
-  clientUserId: Int
-  clientCardId: Int
-  clientPersonalAreaId: Int
-  firstName: String
-  lastName: String
+  clientId: Int
+  firstName: String!
+  lastName: String!
   patronymic: String
   birthDate: Date
   gender: String
-  email: String
+  email: String!
   phoneNumber: String!
   additionalPhoneNumber: String
-  isActive: Boolean
+  docType: Int
+  docSeries: String
+  docNumber: String
+  docGivingDepName: String
+  docGivingDepCode: String
+  docDate: DateTime
+  docRegAddress: String
+  snils: String
+  inn: String
+  cityId: Int
+  addressFull: String
+  addressMisKladrId: Int
+  longitude: Float
+  latitude: Float
+  zoneNumber: Int
+  defaultMedicalCenterId: Int
+  loginPhoneNumber: String!
   isVerified: Boolean
+  infoWayId: Int
+  notificationTime: Time
+  prefNotificationContactId: Int
+  isActive: Boolean
   created: DateTime
-  lastLogin: DateTime
-  lastVisit: DateTime
+  city: City
+  defaultMedicalCenter: MedicalCenter
+  infoWay: InformationWay
+  prefNotificationContact: User
+  addressMisKladr: AddressMisKladrTable
 }
 
 type UserData {

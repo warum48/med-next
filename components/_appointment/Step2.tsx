@@ -20,6 +20,7 @@ import { SpecialityChooser } from './SpecialityChooser';
 import { useEffect, useState } from 'react';
 import { TAppointmentType } from '@/types/types';
 import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
+import { ServiceChooser } from './ServiceChooser';
 
 type TProps = {
   setAppointmentType: React.Dispatch<React.SetStateAction<TAppointmentType>>;
@@ -142,14 +143,15 @@ export const Step2 = ({setAppointmentType}: TProps) => {
                 </ActionIcon>
               }
             />
-            <Group>
-раздел в стадии разработки
+           
+
               {/*profAr.map((item: string, index: number) => (
                 <Button variant="outline" key={'profAr' + index}>
                   {item}
                 </Button>
               ))*/}
-            </Group>
+              <ServiceChooser />
+            
             {/*   <Group gap="xs">
                 {data_services_directions?.getServicesDirections?.data?.map(
                   (item: any
