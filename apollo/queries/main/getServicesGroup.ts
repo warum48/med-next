@@ -59,7 +59,29 @@ query getServiceGroup($name: String){
                                 clientServiceGroupCode
                                 levelSortingCode
                                 isActive
-                                
+                                xmembers{
+                                    id
+                                    clientId
+                                    name
+                                    viewName
+                                    description
+                                    clientServiceGroupCode
+                                    levelSortingCode
+                                    isActive
+                                    xmembers{
+                                        id
+                                        clientId
+                                        name
+                                        viewName
+                                        description
+                                        clientServiceGroupCode
+                                        levelSortingCode
+                                        isActive
+                                        
+                                        path
+                                    }
+                                    path
+                                }
                                 path
                             }
                             path
