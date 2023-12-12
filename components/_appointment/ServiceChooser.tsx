@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client';
 //import { GetDoctorsQuery } from '../../../__generated__/graphql';
 //import { GET_DOCTORS } from '../../../_apollo/queries/main/getDoctors';
 import { DoctorInfo } from './DoctorInfo';
-import { TitleLabel } from '../TextBlocks/TextBlocks';
+import { ActionLink, TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
 import { SpecialityInfo } from './SpecialityInfo';
@@ -26,7 +26,8 @@ export const ServiceChooser = () => {
     error,
   } = useQuery(GET_SERVICE_GROUP, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
 
-  const [curNestingPath, setCurNestingPath] = React.useState<any>(null); // apollo
+  const [curNestingPath, setCurNestingPath] = React.useState<any>(null); // apollo querri part
+  const [nestingLevelsNames, setNestingLevelsNames] = React.useState<string[]>(['Все услуги']);
 
   React.useEffect(() => {
     console.log('data', data);
@@ -38,27 +39,36 @@ export const ServiceChooser = () => {
 
   return (
     <>
-    <Group>
-        { curNestingPath && curNestingPath.map((item: any, index: number) => (
-            <button onClick={()=>{setCurNestingPath(curNestingPath.slice(0,index+1))}}>  level {index} [debug] {item.name}</button>
-        ))}
-    </Group>
+      <Group>
+        {curNestingPath &&
+          curNestingPath.map((item: any, index: number) => (
+            <ActionLink
+              onClick={() => {
+                setCurNestingPath(curNestingPath.slice(0, index + 1));
+                setNestingLevelsNames(nestingLevelsNames.slice(0, index + 1));
+              }}
+            >
+              
+              {nestingLevelsNames[index]}
+              </ActionLink>
+          ))}
+      </Group>
       <div className={classes.container}>
-       
         {curNestingPath &&
           curNestingPath[curNestingPath.length - 1].map((item: any, index: number) => (
             <ServiceItem
               key={'doctor' + index}
-              name={item.name}
+              name={item.viewName ?? item.name}
               xmembers={item.xmembers}
               //onClick={()=> console.log('click')}
               onClick={() => {
                 console.log('item.xmembers', item.xmembers);
+                console.log('item.name', item.name);
                 setCurNestingPath([...curNestingPath, item.xmembers]);
+                setNestingLevelsNames([...nestingLevelsNames, item.viewName ?? item.name]);
               }}
             />
           ))}
-        
       </div>
     </>
   );
