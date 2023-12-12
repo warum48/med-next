@@ -62,15 +62,26 @@ export function ServiceItem({
   fio,
   description,
   photo,
-  onClick
+  onClick,
 }: any) {
   return (
-    <CardContainer className={`hover_card`}  onClick={xmembers.length ? onClick : ()=>console.log('no xmembers')}>
+    <CardContainer
+      className={`hover_card`}
+      onClick={xmembers.length ? onClick : () => console.log('no xmembers')}
+    >
       <div className={classes.container}>
         <div className={classes.first_column}>
-          <Card_title>{name || 'Услуга'} {' (' + xmembers.length+ ')'}</Card_title>
+          <Card_title>
+            {name || 'Услуга'}
+            {/*xmembers.length != 0 &&  (' (' + xmembers.length+ ')') */}
+          </Card_title>
         </div>
-        <IconChevronRight className={classes.second_column} />
+        {xmembers.length != 0 && (
+          <Group wrap="nowrap" gap="xs">
+            {xmembers.length != 0 && <Card_pretitle> {xmembers.length} </Card_pretitle>}
+            <IconChevronRight className={classes.second_column} />
+          </Group>
+        )}
       </div>
     </CardContainer>
   );
