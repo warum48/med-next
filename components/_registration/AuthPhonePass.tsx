@@ -71,7 +71,7 @@ export function AuthPhonePass() {
 
   const [doAuth, { loading, error, data }] = useLazyQuery(PATIENT_LOGIN_BY_PASSWORD, {
     variables: {
-      phoneNumber:  phoneNumberVar_re ,
+      loginPhoneNumber:  phoneNumberVar_re ,
       password: form.values.password
     }});
 

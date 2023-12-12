@@ -40,9 +40,14 @@ export const patientRegistrationInitValue = {
   patronymic: undefined, //optional
   phoneNumber: '',
 }
-export const flashCallCodeInitValue:FlashCallCode = {
-  phoneNumber: '',
+export const flashCallCodeInitValue:any = {
+  //TODO fix it phoneNumber: '',
+  //code:''
+  loginPhoneNumber: '' , 
   code:''
+     // password: form.values.password
+     //code:''loginPhoneNumber: phoneNumberVar_re , 
+     //password: form.values.password
 }
   //getYesterday()); //"2222-09-01";
 

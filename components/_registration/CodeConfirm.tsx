@@ -43,7 +43,7 @@ type TCodeConfirmProps = {
 export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
   const { setCookieToken } = React.useContext(ApolloSettingsContext);
 
-  const phoneNumber = useReactiveVar(phoneNumberVar);
+  const loginPhoneNumber = useReactiveVar(phoneNumberVar);
   const confirmationCode = useReactiveVar(confirmationCodeVar);
   const flashCallCode = useReactiveVar(flashCallCodeVar);
 
@@ -74,7 +74,9 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
   React.useEffect(() => {
     flashCallCodeVar({
       ...form.values,
-      phoneNumber,
+      //phoneNumber,
+      loginPhoneNumber
+     // loginPhoneNumber
     });
   }, [form.values]);
 
