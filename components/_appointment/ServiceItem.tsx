@@ -68,7 +68,8 @@ export function ServiceItem({
   return (
     <CardContainer
       className={`hover_card`}
-      onClick={xmembers.length ? onClick : () => console.log('no xmembers')}
+      //onClick={xmembers.length ? onClick : () => console.log('no xmembers')}
+      onClick={onClick}
     >
       <div className={classes.container}>
         <div className={classes.first_column}>

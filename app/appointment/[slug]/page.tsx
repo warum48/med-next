@@ -209,6 +209,7 @@ function Page({ params }: { params: { slug: string } }) {
     };
     //navigate(options, { replace: false });
     router.push(options.pathname);
+    //window.scrollTo(0, 0);
   }, [active]);
 
   useEffect(() => {
@@ -216,29 +217,29 @@ function Page({ params }: { params: { slug: string } }) {
       setActive(parseFloat(stepId[0]) - 1);
       console.log('---stepId', stepId);
     }
+    console.log('STEP ID', stepId);
+    //window.scrollTo(0, 0);
   }, [stepId]);
 
   const [curPopup, setCurPopup] = useState( <PopupAlertIntro close={closeIntroWarning}/>); //curPopup =
 
   return (
     <>
-    <Modal opened={opened} onClose={close} centered withCloseButton={false} closeOnClickOutside={false}
+   {/* <Modal opened={opened} onClose={close} centered withCloseButton={false} closeOnClickOutside={false}
     size="auto"
     maw={500}
     >
-        {/* Modal content 
-        <PopupAlertIntro close={close}/>
-        */}
+        
         {curPopup}
-      </Modal>
-      {/*
-    <InnerPageContainer className="appointment">
-      <Title1_main>Записаться на прием</Title1_main>
-  <SpaceYMain /> */}
-<Box onClick={() => {if(!medCenterInitWarningShownVar_re){
-open();
-}}}>
-      <Stepper
+  </Modal> */}
+      
+<Box 
+//onClick={() => {if(!medCenterInitWarningShownVar_re){
+//open();
+//}}}
+>
+ {/*   <Box style={{height:'900px',backgroundColor:'red'}}>box</Box> */}
+     <Stepper
         size={isMobile ? 'xs' : 'md'}
         active={active}
         //!!breakpoint="sm"
@@ -249,7 +250,8 @@ open();
           description={isMobile ? undefined : 'Вводные данные'}
           allowStepSelect={shouldAllowSelectStep(0)}
         >
-          <Step1 form={form} />
+          
+         <Step1 form={form} /> 
         </Stepper.Step>
 
         <Stepper.Step
@@ -257,8 +259,8 @@ open();
           description={isMobile ? undefined : 'Данные о приеме'}
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          {/*appointmentType*/}
-          <Step2 setAppointmentType={setAppointmentType} />
+         
+          <Step2 setAppointmentType={setAppointmentType} nextStep={nextStep}/>
         </Stepper.Step>
 
         <Stepper.Step
@@ -266,7 +268,7 @@ open();
           description={isMobile ? undefined : 'Время приема'}
           allowStepSelect={shouldAllowSelectStep(2)}
         >
-          {/*appointmentTypeVar_re*/}
+         
           {appointmentTypeVar_re === 'doctor' ? <Step3Doctor /> : <Step3Speciality />}
         </Stepper.Step>
 
@@ -314,7 +316,9 @@ open();
             {JSON.stringify(form.values, null, 2)}
           </Code>
         </Stepper.Completed>
-      </Stepper>
+
+      </Stepper> 
+
 
       <Group justify="center" mt="xl">
         {active !== 0 && (
@@ -333,8 +337,7 @@ open();
           </>
         )}
       </Group>
-      {/*
-    </InnerPageContainer> */}
+       
     </Box>
     </>
   );

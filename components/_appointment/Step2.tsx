@@ -2,6 +2,7 @@ import {
   ActionIcon,
   Box,
   Button,
+  Divider,
   Group,
   Space,
   Stack,
@@ -24,9 +25,10 @@ import { ServiceChooser } from './ServiceChooser';
 
 type TProps = {
   setAppointmentType: React.Dispatch<React.SetStateAction<TAppointmentType>>;
+  nextStep: () => void;
 }
 
-export const Step2 = ({setAppointmentType}: TProps) => {
+export const Step2 = ({setAppointmentType, nextStep}: TProps) => {
   const theme = useMantineTheme();
   //!!we need these objects to make an adaptor between mantine tab onChange funtion type ,that is 'string | null' and custom union TAppointmentType , that is more precise
   const tabMatch = {
@@ -59,6 +61,8 @@ export const Step2 = ({setAppointmentType}: TProps) => {
     appointmentTypeVar(matchOb[activeTab] as TAppointmentType);
     //setAppointmentType(matchOb[activeTab]!);
     }
+   // window.scrollTo(0, 0);
+    console.log('======scrolla')
   }, [activeTab])
 
  
@@ -105,6 +109,7 @@ export const Step2 = ({setAppointmentType}: TProps) => {
             </TitleLabel> */}
 
             <DoctorChooser />
+
           </Stack>
         </Tabs.Panel>
         <Tabs.Panel value="type2" pt="xs">
@@ -123,6 +128,19 @@ export const Step2 = ({setAppointmentType}: TProps) => {
                 </ActionIcon>
               }
             />
+            <Box>
+<Group>
+{profAr.map((item: string, index: number) => (
+                <Button variant="outline" key={'profAr' + index}>
+                  {item}
+                </Button>
+              ))}</Group>
+<SpaceYMain/>
+?или? 
+<Divider />
+              
+              </Box>
+
             <SpecialityChooser/>
             
           </Stack>
@@ -145,12 +163,8 @@ export const Step2 = ({setAppointmentType}: TProps) => {
             />
            
 
-              {/*profAr.map((item: string, index: number) => (
-                <Button variant="outline" key={'profAr' + index}>
-                  {item}
-                </Button>
-              ))*/}
-              <ServiceChooser />
+              
+              <ServiceChooser nextStep={nextStep}/>
             
             {/*   <Group gap="xs">
                 {data_services_directions?.getServicesDirections?.data?.map(

@@ -103,9 +103,10 @@ import {
                 {fio || 'Иванов Иван Иванович'}
               </Card_title>
               <br/>
+              {/*
               <TitleLabel>Клиники:</TitleLabel> <TextInfo>ДМЦ «Мамарада», Большевиков пр.,д.7, корп.3</TextInfo>
-                <br/>
-                <TitleLabel>Есть запись:</TitleLabel> <TextInfo>сегодня, завтра, 10.07, 12.07, 14.07</TextInfo>
+                <br/>*/}
+                <TitleLabel>Ближайшая запись:</TitleLabel> <TextInfo>сегодня, завтра, 10.07, 12.07, 14.07</TextInfo>
                 <br/>
   
                 <TitleLabel>

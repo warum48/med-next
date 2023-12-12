@@ -18,7 +18,11 @@ import React from 'react';
 import { cU } from '@fullcalendar/core/internal-common';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
-export const ServiceChooser = () => {
+type TProps = {
+    nextStep: () => void;
+}
+
+export const ServiceChooser = ({nextStep}: TProps) => {
   //const { classes, theme } = useHeadersStyles();
   const {
     data, //DoctorResult
@@ -69,8 +73,12 @@ export const ServiceChooser = () => {
               onClick={() => {
                 console.log('item.xmembers', item.xmembers);
                 console.log('item.name', item.name);
+                if(item.xmembers.length > 0){
                 setCurNestingPath([...curNestingPath, item.xmembers]);
                 setNestingLevelsNames([...nestingLevelsNames, item.viewName ?? item.name]);
+                }else{
+                    nextStep();
+                }
               }}
             />
           ))}

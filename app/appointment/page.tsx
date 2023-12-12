@@ -17,6 +17,7 @@ export default function Appointment() {
     };
     //navigate(options, { replace: false });
     router.replace(options.pathname)
+    
   }, [])
 
 

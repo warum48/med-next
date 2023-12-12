@@ -1,23 +1,58 @@
-import { Box, Group, Radio, Space, Stack } from '@mantine/core';
+import { Box, Group, Modal, Radio, Space, Stack } from '@mantine/core';
 import { SpaceYMain } from '../Spacers/Spacers';
 import { Card_pretitle, FormItemLabel, Title2_second } from '../TextBlocks/TextBlocks';
 import { SwitchWithTextMantine } from '../Switch/SwitchMantine';
 import { AgeChooser } from './AgeChooser';
 import { MedCenterChooser } from './MedCenterChooser';
+import { useState } from 'react';
+import { PopupAlertIntro } from './PopupAlertIntro';
+import { medCenterInitWarningShownVar } from '@/apollo/appstate/globalvars';
+import { useReactiveVar } from '@apollo/client';
 
 type TProps = {
   form: any;
 };
 
 export const Step1 = ({ form }: TProps) => {
+  const [opened, setOpened] = useState(false);
+  const [curPopup, setCurPopup] = useState( <PopupAlertIntro close={closeIntroWarning}/>); 
+  const medCenterInitWarningShownVar_re = useReactiveVar(medCenterInitWarningShownVar);
+  function open(){
+    setOpened(true);
+ }
+
+ function close() {
+  //medCenterInitWarningShownVar(true);
+  setOpened(false);
+}
+
+ function closeIntroWarning() {
+   medCenterInitWarningShownVar(true);
+   close();
+ }
+
+ 
   return (
     <>
+    <Modal opened={opened} onClose={close} centered withCloseButton={false} closeOnClickOutside={false}
+    size="auto"
+    maw={500}
+    >
+        
+        {curPopup}
+  </Modal>
+
+  
       <SpaceYMain />
       <Title2_second>Вводные данные</Title2_second>
       <SpaceYMain />
       <Box mb="xl">
         <Stack mb="xl" gap="xl">
-          <Box>
+          <Box
+          onClick={() => {if(!medCenterInitWarningShownVar_re){
+            open();
+            }}}
+          >
             <FormItemLabel>Тип приема</FormItemLabel>
             <Space h="sm" />
 

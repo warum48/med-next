@@ -60,6 +60,7 @@ export const AuthProvider = ({ children }: any) => {
         console.log('redirect to auth')
       }
     }
+   // window.scrollTo(0, 0); //TODO remove it from here
   }
 
   function demoLogin(){
