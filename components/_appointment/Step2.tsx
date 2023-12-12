@@ -22,6 +22,7 @@ import { useEffect, useState } from 'react';
 import { TAppointmentType } from '@/types/types';
 import {appointmentTypeVar} from '@/apollo/appstate/globalvars';
 import { ServiceChooser } from './ServiceChooser';
+import { ServiceChooserTree } from './ServiceChooserTree';
 
 type TProps = {
   setAppointmentType: React.Dispatch<React.SetStateAction<TAppointmentType>>;
@@ -79,6 +80,7 @@ export const Step2 = ({setAppointmentType, nextStep}: TProps) => {
           <Tabs.Tab value="type2">СПЕЦИАЛИЗАЦИЯ</Tabs.Tab>
 
           <Tabs.Tab value="type3">УСЛУГА</Tabs.Tab>
+          <Tabs.Tab value="type4">У-3</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="type1" pt="xs">
           <SpaceYMain />
@@ -164,25 +166,38 @@ export const Step2 = ({setAppointmentType, nextStep}: TProps) => {
            
 
               
-              <ServiceChooser nextStep={nextStep}/>
+            <ServiceChooser nextStep={nextStep}/>
+
+           
             
-            {/*   <Group gap="xs">
-                {data_services_directions?.getServicesDirections?.data?.map(
-                  (item: any
-                    //ServiceDirection
-                    , index: number) => (
-                    <Button
-                      variant="default"
-                      size="compact_xs"
-                      style={{ fontWeight: 300 }}
-                      key={'b_uslAr' + index}
-                    >
-                      {item.name}
-                    </Button>
-                  )
-                )}
-              </Group>
-                    <Space h="xxs" /> */}
+            
+          </Stack>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="type4" pt="xs">
+          <SpaceYMain />
+          <Stack gap="xl">
+            <TextInput
+            maw={elementMaxWidth}
+              radius="xl"
+              size="md"
+              placeholder="Услуга"
+              rightSectionWidth={42}
+              leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+              rightSection={
+                <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+                  <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+                </ActionIcon>
+              }
+            />
+           
+
+              
+            {/*  <ServiceChooser nextStep={nextStep}/> */}
+
+            <ServiceChooserTree nextStep={nextStep}/>
+            
+            
           </Stack>
         </Tabs.Panel>
       </Tabs>

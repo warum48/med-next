@@ -1,0 +1,18 @@
+.expanded {
+    max-height: 1999px;
+    transition: max-height .9s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .expanded > * {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+  }
+  .collapsed {
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .collapsed > * {
+    opacity: 0;
+  }

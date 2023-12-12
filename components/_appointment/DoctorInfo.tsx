@@ -32,6 +32,7 @@ import {
   import { GET_DOCTORS_MSPECIALITIES } from '@/apollo/queries/main/getDoctorsMspecialities';
   import classes from './DoctorChooser.module.css';
   import { TimeSelector } from './TimeSelector';
+import { GlobalContext } from '@/context/ContextGlobal';
   
   /*const useStyles = createStyles((theme) => ({
     icon: {
@@ -58,6 +59,7 @@ import {
     // const { classes } = useStyles();
     //const { classes: headerClasses } = useHeadersStyles();
     const [expanded, setExpanded] = useState(false);
+    const { isMobile } = React.useContext(GlobalContext);
   
     //const data_services = undefined;//{ getDoctorsServices: { data: undefined } };
   
@@ -93,7 +95,7 @@ import {
         <Grid>
           <Grid.Col span="auto" maw="100%">
             <Group wrap="nowrap" align="flex-start">
-              <Avatar src={photo} size={expanded ? 130 : 80} radius="md" />
+              <Avatar src={photo} size={(expanded && !isMobile) ? 130 : 80} radius="md" />
               <div>
               <Card_pretitle>
                 {description || 'Хирург'}
