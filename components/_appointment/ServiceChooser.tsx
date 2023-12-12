@@ -1,6 +1,6 @@
 //351
 
-import { Title, Text, Grid, Group, SimpleGrid, Skeleton } from '@mantine/core';
+import { Title, Text, Grid, Group, SimpleGrid, Skeleton, Box } from '@mantine/core';
 //import { UserInfoIcons } from './userInfoIcons';
 //import { useHeadersStyles } from '../../../_styles/headers';
 //import { mockDoctor } from '../mock/data';
@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client';
 //import { GetDoctorsQuery } from '../../../__generated__/graphql';
 //import { GET_DOCTORS } from '../../../_apollo/queries/main/getDoctors';
 import { DoctorInfo } from './DoctorInfo';
-import { ActionLink, TitleLabel } from '../TextBlocks/TextBlocks';
+import { ActionLink, Card_pretitle, TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
 import { SpecialityInfo } from './SpecialityInfo';
@@ -42,6 +42,10 @@ export const ServiceChooser = () => {
       <Group>
         {curNestingPath &&
           curNestingPath.map((item: any, index: number) => (
+            <Group>
+                {index > 0 && (
+                    <Card_pretitle>/ {' '}</Card_pretitle>
+                )}
             <ActionLink
               onClick={() => {
                 setCurNestingPath(curNestingPath.slice(0, index + 1));
@@ -51,6 +55,7 @@ export const ServiceChooser = () => {
               
               {nestingLevelsNames[index]}
               </ActionLink>
+              </Group>
           ))}
       </Group>
       <div className={classes.container}>

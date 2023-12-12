@@ -16,7 +16,7 @@ import {
 
 import { Calendar } from '@mantine/dates';
 import { DatePicker } from '@mantine/dates';
-import { IconPhoneCall, IconAt, IconChevronRight } from '@tabler/icons-react';
+import { IconPhoneCall, IconAt, IconChevronRight, IconCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import 'dayjs/locale/ru';
 //import * as dayjs from 'dayjs'
@@ -39,6 +39,7 @@ import { innerPageMaxWidth } from '@/global/CONSTS';
 import { GET_DOCTORS_MSPECIALITIES } from '@/apollo/queries/main/getDoctorsMspecialities';
 import classes from './ServiceItem.module.css';
 import { TimeSelector } from './TimeSelector';
+import { StyledButton } from '../Buttons/StyledButton';
 
 /*const useStyles = createStyles((theme) => ({
       icon: {
@@ -76,13 +77,17 @@ export function ServiceItem({
             {/*xmembers.length != 0 &&  (' (' + xmembers.length+ ')') */}
           </Card_title>
         </div>
-        {xmembers.length != 0 && (
+        {xmembers.length != 0 ?(
           <Group wrap="nowrap" gap="xs">
             {xmembers.length != 0 && <Card_pretitle> {xmembers.length} </Card_pretitle>}
             <IconChevronRight className={classes.second_column} />
           </Group>
-        )}
+        ):
+        <IconCheck/>
+        }
+        <div className={classes.fulloverlay}></div>
       </div>
+      
     </CardContainer>
   );
 }
