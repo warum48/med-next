@@ -16,3 +16,12 @@
   .collapsed > * {
     opacity: 0;
   }
+
+ .item svg{
+   opacity: .3;
+   transition: all .5s;
+ }
+
+ .item:hover svg{
+    opacity: 1;
+  }

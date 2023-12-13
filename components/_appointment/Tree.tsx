@@ -22,13 +22,13 @@ const TreeItem: React.FC<TreeItemProps> = ({ xmembers, name, nextStep }) => {
       <Box onClick={xmembers.length > 0 ? toggleExpand : nextStep} my={4} style={{ cursor:
          //xmembers.length > 0 ? 'pointer' : 'default' 
          'pointer'
-         }}>
-        <Group align="center" gap="xs" wrap='nowrap'>
+         }} className={classes.item}>
+        <Group align="center" gap="xs" wrap='nowrap' >
           {xmembers.length > 0 ? (
             <IconCircleChevronRight
               style={{
                 transform: `rotate(${isExpanded ? '90deg' : '0deg'})`,
-                transition: 'transform 0.3s ease-in-out',
+                transition: 'all 0.3s ease-in-out',
               }}
             />
           ): <IconCheck/>}
