@@ -16,7 +16,9 @@ export default function Appointment() {
       pathname: RoutesTypes.Appointment + '/' + 1,
     };
     //navigate(options, { replace: false });
+    console.log('ROOT APP PAGE');
     router.replace(options.pathname)
+   
     
   }, [])
 

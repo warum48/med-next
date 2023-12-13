@@ -208,7 +208,10 @@ function Page({ params }: { params: { slug: string } }) {
       pathname: RoutesTypes.Appointment + '/' + (active + 1),
     };
     //navigate(options, { replace: false });
+    console.log('PUSH NEW ROUTE IN PAGE');
+    if ((active + 1) != parseFloat(stepId)){
     router.push(options.pathname);
+    }
     //window.scrollTo(0, 0);
   }, [active]);
 
