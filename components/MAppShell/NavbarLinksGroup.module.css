@@ -30,6 +30,13 @@
     
   }
 
+  @media(max-width: $mantine-breakpoint-xs) {
+    .control {
+      //margin-left: 0;
+      padding: 4px var(--mantine-spacing-md);
+    }
+  }
+
   .level1link{
     text-decoration: none;
   }

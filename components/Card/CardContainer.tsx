@@ -14,7 +14,7 @@ export const CardContainer = ({ children, expanded = false,
 
   return (
     <Paper
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', alignSelf: 'start'  }} //!!align-self used to make div not to take 100% height in grid cell
       shadow="0"
       p={expanded ? { base: 'xs', md: 'xl' }  : 'xs'}
       withBorder

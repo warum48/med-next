@@ -8,3 +8,20 @@
       background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
     }
   }
+
+  .active button  {
+    font-weight: 700;
+    color: var(--mantine-color-virilis-green) !important;
+    pointer-events: none;
+    border-right: 3px solid var(--mantine-color-second-4) !important;
+  }
+
+  .active:hover{
+    text-decoration: none;
+    cursor: default;
+  }
+
+  .active :global(.mantine-ThemeIcon-root){
+    color: var(--mantine-color-second-4);
+    background-color:var(--mantine-color-second-0);
+  }
