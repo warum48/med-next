@@ -12,7 +12,7 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { SpaceYMain } from '../Spacers/Spacers';
-import { Title2_second, TitleLabel } from '../TextBlocks/TextBlocks';
+import { FormItemLabel, Title2_second, TitleLabel } from '../TextBlocks/TextBlocks';
 import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { profAr } from './mockdata';
 import { DoctorChooser } from './DoctorChooser';
@@ -24,7 +24,7 @@ import { appointmentTypeVar } from '@/apollo/appstate/globalvars';
 import { ServiceChooser } from './ServiceChooser';
 import { ServiceChooserTree } from './ServiceChooserTree';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type TProps = {
   setAppointmentType: React.Dispatch<React.SetStateAction<TAppointmentType>>;
@@ -33,25 +33,27 @@ type TProps = {
 
 export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
   const theme = useMantineTheme();
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const searchTab = searchParams.get('tab')
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const searchTab = searchParams.get('tab');
   //!!we need these objects to make an adaptor between mantine tab onChange funtion type ,that is 'string | null' and custom union TAppointmentType , that is more precise
   const tabMatch = {
-    doctor: 'type1',
-    speciality: 'type2',
+    doctor: 'type2',
+    speciality: 'type1',
     service: 'type3',
   };
   const matchOb = {
-    type1: 'doctor',
-    type2: 'speciality', //'specialization',
+    type2: 'doctor',
+    type1: 'speciality', //'specialization',
     type3: 'service',
   };
 
- // const search = searchParams.get('search')
+  // const search = searchParams.get('search')
 
-  const [activeTab, setActiveTab] = useState<string | null>(searchTab || tabMatch[appointmentTypeVar()]); //('type1');
+  const [activeTab, setActiveTab] = useState<string | null>(
+    searchTab || tabMatch[appointmentTypeVar()]
+  ); //('type1');
 
   type TTab = 'type1' | 'type2' | 'type3';
   function isTTab(ty: any): ty is TTab {
@@ -60,13 +62,13 @@ export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams)
-      params.set(name, value)
- 
-      return params.toString()
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
     },
     [searchParams]
-  )
+  );
 
   useEffect(() => {
     //const typ = isTAppointmentType(activeTab) ? matchOb[activeTab] : 'doctor';
@@ -80,15 +82,14 @@ export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
       //setAppointmentType(matchOb[activeTab]!);
     }
     // window.scrollTo(0, 0);
-   /* console.log('active Tab', activeTab);
+    /* console.log('active Tab', activeTab);
     const params = new URLSearchParams(searchParams)
     if (activeTab){
     params.set('tab', activeTab)
     }*/
-    if (activeTab){
-    router.push(pathname + '?' + createQueryString('tab', activeTab))
-    }else{
-
+    if (activeTab) {
+      router.push(pathname + '?' + createQueryString('tab', activeTab));
+    } else {
     }
   }, [activeTab]);
 
@@ -103,13 +104,49 @@ export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
         onChange={setActiveTab}
       >
         <Tabs.List>
-          <Tabs.Tab value="type1">ВРАЧ</Tabs.Tab>
-          <Tabs.Tab value="type2">СПЕЦИАЛИЗАЦИЯ</Tabs.Tab>
+          <Tabs.Tab value="type1">СПЕЦИАЛИЗАЦИЯ</Tabs.Tab>
+          <Tabs.Tab value="type2">ВРАЧ</Tabs.Tab>
 
           <Tabs.Tab value="type3">УСЛУГА</Tabs.Tab>
           <Tabs.Tab value="type4">У-3</Tabs.Tab>
         </Tabs.List>
+
         <Tabs.Panel value="type1" pt="xs">
+          <SpaceYMain />
+          <Stack gap="xl">
+            <TextInput
+              maw={elementMaxWidth}
+              radius="xl"
+              size="md"
+              placeholder="Специальность"
+              rightSectionWidth={42}
+              leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+              rightSection={
+                <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+                  <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+                </ActionIcon>
+              }
+            />
+            <Box>
+              <FormItemLabel>Популярные:</FormItemLabel>
+              <Space h="sm" />
+              <Group>
+                {profAr.map((item: string, index: number) => (
+                  <Button variant="outline" key={'profAr' + index}>
+                    {item}
+                  </Button>
+                ))}
+              </Group>
+             
+            </Box>
+            <Box>
+              <FormItemLabel>Все:</FormItemLabel>
+              <Space h="sm" />
+              <SpecialityChooser />
+            </Box>
+          </Stack>
+        </Tabs.Panel>
+        <Tabs.Panel value="type2" pt="xs">
           <SpaceYMain />
           <Stack gap="xl">
             <TextInput
@@ -138,38 +175,6 @@ export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
             </TitleLabel> */}
 
             <DoctorChooser />
-          </Stack>
-        </Tabs.Panel>
-        <Tabs.Panel value="type2" pt="xs">
-          <SpaceYMain />
-          <Stack gap="xl">
-            <TextInput
-              maw={elementMaxWidth}
-              radius="xl"
-              size="md"
-              placeholder="Специальность"
-              rightSectionWidth={42}
-              leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
-              rightSection={
-                <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
-                  <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-                </ActionIcon>
-              }
-            />
-            <Box>
-              <Group>
-                {profAr.map((item: string, index: number) => (
-                  <Button variant="outline" key={'profAr' + index}>
-                    {item}
-                  </Button>
-                ))}
-              </Group>
-              <SpaceYMain />
-              ?или?
-              <Divider />
-            </Box>
-
-            <SpecialityChooser />
           </Stack>
         </Tabs.Panel>
         <Tabs.Panel value="type3" pt="xs">

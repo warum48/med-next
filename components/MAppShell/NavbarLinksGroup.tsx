@@ -43,7 +43,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
             <ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'}>
             <Icon style={{ width: rem(18), height: rem(18) }} />
             </ThemeIcon>
-            <Box ml="md">{label}</Box>
+            <Box ml="md" style={{textDecoration: 'none !important'}}>{label}</Box>
           </Box>
           {hasLinks && (
             <IconChevronRight

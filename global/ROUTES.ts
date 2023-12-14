@@ -72,16 +72,32 @@ export enum RoutesTypes {
       link: RoutesTypes.Calendar,
     },
     {
-      label: 'Запросить документы', //TODO review
-      icon: IconFiles,
-      link: RoutesTypes.Documents,
+      label: 'Медицинская карта',
+      icon: IconNotes,
+      link: RoutesTypes.MedicalCard,
     },
-  
     {
       label: 'Платежи',
       icon: IconCurrencyRubel,
       link: RoutesTypes.Payments,
     },
+    {
+      label: 'Абонемент',
+      icon: IconTicket,
+      link: RoutesTypes.Abonement,
+    },
+    {
+      label: 'Моя семья',
+      icon: IconUsersGroup,
+      link: RoutesTypes.Family,
+    },
+    {
+      label: 'Запросить документы', //TODO review
+      icon: IconFiles,
+      link: RoutesTypes.Documents,
+    },
+  
+    
   
   /*  {
       label: 'Профиль',
@@ -90,23 +106,11 @@ export enum RoutesTypes {
     },
     */
   
-    {
-      label: 'Моя семья',
-      icon: IconUsersGroup,
-      link: RoutesTypes.Family,
-    },
+    
   
-    {
-      label: 'Медицинская карта',
-      icon: IconNotes,
-      link: RoutesTypes.MedicalCard,
-    },
+    
 
-    {
-      label: 'Абонемент',
-      icon: IconTicket,
-      link: RoutesTypes.Abonement,
-    },
+    
   
     {
       label: 'Обратная связь',

@@ -64,6 +64,7 @@ import { GroupStretcher } from './GroupStretcher';
   
     const { isLoggedIn } = React.useContext(AuthContext);
     const [isExpanded, setIsExpanded] = React.useState(false);
+    const showClinicLogo = false;
   
     return (
       <Box w='100%'>
@@ -74,7 +75,8 @@ import { GroupStretcher } from './GroupStretcher';
         ) : ( */}
   
         
-          <Group gap={"0px 16px"}><img src='/images/onni_1_logo.png' style={{height:'80px'}}/>
+          <Group gap={"0px 16px"}>
+            { showClinicLogo &&<img src='/images/onni_1_logo.png' style={{height:'80px'}}/> }
           <Box>
             <TitleLabel>{'ДМЦ «Мамарада»'}</TitleLabel>
             <Space h="1" />

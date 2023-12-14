@@ -21,7 +21,13 @@ import {
   Checkbox,
   Collapse,
 } from '@mantine/core';
-import { ActionLink, Card_pretitle, FormItemLabel, TextInfo, TitleLabel } from '../TextBlocks/TextBlocks';
+import {
+  ActionLink,
+  Card_pretitle,
+  FormItemLabel,
+  TextInfo,
+  TitleLabel,
+} from '../TextBlocks/TextBlocks';
 import { ApolloError, NetworkStatus, useQuery } from '@apollo/client';
 //import { ErrorMessage } from '../../../components/Errors/ErrorMessage';
 import { GetMedicalCentersQuery } from '@/__generated__/graphql';
@@ -63,31 +69,34 @@ TProps) => {
 
   const { isLoggedIn } = React.useContext(AuthContext);
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const showClinicLogo = false;
 
   return (
-    <Box w='100%'>
+    <Box w="100%">
       <FormItemLabel>{isLoggedIn ? 'Мой медцентр' : 'Выберите медцентр'}</FormItemLabel>
-      <Space h='sm'/>
+      <Space h="sm" />
       {/*error_mc ? (
         <ErrorMessage refetch={refetch_mc} />
       ) : ( */}
 
       {isLoggedIn && (
-        <Group gap={"0px 16px"}><img src='/images/onni_1_logo.png' style={{height:'80px'}}/>
-        <Box>
-          <TitleLabel>{'ДМЦ «Мамарада»'}</TitleLabel>
-          <Space h="1" />
-          <TextInfo>{'Большевиков пр.,д.7, корп.3'}</TextInfo>
-          <Space h="1" />
-        </Box>
+        <Group gap={'0px 16px'}>
+          {showClinicLogo && <img src="/images/onni_1_logo.png" style={{ height: '80px' }} />}
+          <Box>
+            <TitleLabel>{'ДМЦ «Мамарада»'}</TitleLabel>
+            <Space h="1" />
+            <TextInfo>{'Большевиков пр.,д.7, корп.3'}</TextInfo>
+            <Space h="1" />
+          </Box>
         </Group>
       )}
 
       {(!isLoggedIn || isExpanded) && (
         <>
-          <Collapse in={isExpanded} 
-          //p={'md'} my={'md'}
-          mt='xl'
+          <Collapse
+            in={isExpanded}
+            //p={'md'} my={'md'}
+            mt="xl"
           >
             <Checkbox.Group
               //value={valueAdress} onChange={setValueAdress}
