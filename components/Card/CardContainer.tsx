@@ -3,10 +3,11 @@ import { Paper } from '@mantine/core';
 import * as React from 'react';
 
 type TProps = { children: React.ReactNode; 
+  fitCell?: boolean;
   className?: string;
    expanded?: boolean; miw?: string | number, onClick?: () => void};
 
-export const CardContainer = ({ children, expanded = false,
+export const CardContainer = ({ children, expanded = false, fitCell = true,
   className = '', onClick
   // miw="100%" 
   }: TProps & TAnyFields) => {
@@ -14,7 +15,7 @@ export const CardContainer = ({ children, expanded = false,
 
   return (
     <Paper
-      style={{ position: 'relative', alignSelf: 'start'  }} //!!align-self used to make div not to take 100% height in grid cell
+      style={{ position: 'relative', alignSelf: fitCell ? 'stretch' : 'start'  }} //!!align-self used to make div not to take 100% height in grid cell
       shadow="0"
       p={expanded ? { base: 'xs', md: 'xl' }  : 'xs'}
       withBorder

@@ -75,10 +75,51 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
     }, 
   });
 
+  const adminLink = new HttpLink({
+    uri: 'https://med.shop-survey.ru/admin/graphql',//'/graphql',
+    fetchOptions: {
+      mode: "cors", // no-cors, *cors, same-origin //'*cors'//
+    },
+    headers: {
+      Authorization: "Bearer " + cookiesToken.mednekot, //token,
+      "Access-Control-Allow-Origin": "*",
+    }, 
+  });
+
+  /*
+  !! 2links:
   let jointLink = ApolloLink.split(
     operation => operation.getContext().clientName === "main",
     dbLink, // <= apollo will send to this if clientName is "dbLink"
     authLink // <= otherwise will send to this
+  )
+  */
+
+  /*
+  let jointLink = 
+  //ApolloLink.split(
+  //  operation => operation.getContext().clientName === "main",
+  //  dbLink, // <= apollo will send to this if clientName is "dbLink"
+   ApolloLink.split(
+    operation => operation.getContext().clientName === "admin",
+    adminLink, // <= apollo will send to this if clientName is "dbLink"
+    authLink // <= otherwise will send to this
+  )
+ // )
+ */
+
+ let jointLink = 
+  
+   ApolloLink.split(
+    operation => operation.getContext().clientName === "admin",
+    adminLink, // <= apollo will send to this if clientName is "dbLink"
+    //dbLink
+    //authLink // <= otherwise will send to this
+    ApolloLink.split(
+      operation => operation.getContext().clientName === "main",
+      dbLink, // <= apollo will send to this if clientName is "dbLink"
+      authLink
+  )
   )
 
   const client = new ApolloClient({

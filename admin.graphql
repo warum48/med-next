@@ -1,0 +1,544 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+input AccessTicketInput {
+  clientId: Int = null
+  doctorMcentersId: Int = null
+  userId: Int = null
+  ticketDatetime: Date = null
+  ticketDuration: Int = null
+  ticketRoom: String = null
+  status: Boolean = null
+  firststatus: Boolean = null
+  blStatus: Int = null
+  isActive: Boolean = null
+  isReserv: Boolean = null
+  expireDate: Date = null
+  fromInternetStatus: Boolean = null
+}
+
+input CityInput {
+  clientId: Int = null
+  name: String!
+  isActive: Boolean = true
+}
+
+input ComplexServiceInput {
+  serviceId: Int = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input ComplexServiceItemInput {
+  complexId: Int = null
+  serviceId: Int = null
+  comment: String = null
+  price: Float = null
+  quantity: Int = null
+  coefficientToPrice: Float = null
+  isActive: Boolean = null
+}
+
+"""Date (isoformat)"""
+scalar Date
+
+input DoctorCategoryInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = true
+}
+
+input DoctorInput {
+  clientId: Int = null
+  firstName: String!
+  lastName: String!
+  patronymic: String = null
+  birthDate: Date = null
+  photo: String = null
+  doctorCategoryId: Int = null
+  privatePhone: String = null
+  workPhone: String = null
+  email: String = null
+  commonExperience: Int = null
+  isActive: Boolean = true
+}
+
+input DoctorMedicalCenterInput {
+  clientId: Int = null
+  doctorId: Int = null
+  medicalSpecialityId: Int = null
+  medicalCenterId: Int = null
+  medicalPositionId: Int = null
+  staffTypeId: Int = null
+  showInLk: Boolean = null
+  minimalAge: Int = null
+  maximalAge: Int = null
+  isActive: Boolean = null
+}
+
+input DoctorMspecialityInput {
+  doctorId: Int = null
+  mspecialityId: Int = null
+  isActive: Boolean = null
+}
+
+input DoctorPatientTypeInput {
+  clientId: Int = null
+  doctorMedicalCenterId: Int = null
+  patientTypeId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  isActive: Boolean = null
+}
+
+input DoctorReplacementInput {
+  clientId: Int = null
+  doctorId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input DoctorStatusInput {
+  doctorId: Int = null
+  statusTypeId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+}
+
+input DoctorStatusTypeInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = true
+}
+
+input FinancialTypeInput {
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  clientId: Int = null
+}
+
+input MedicalCenterInput {
+  clientId: Int = null
+  cityId: Int!
+  name: String!
+  address: String!
+  longitude: Float = null
+  latitude: Float = null
+  description: String = null
+  inn: String!
+  bankBic: String!
+  settlementAccount: String!
+  correspondentAccount: String!
+  kpp: String!
+  isActive: Boolean = null
+  logo: String = null
+  websiteUrl: String = null
+  phoneFax: String!
+  dmsPhone: String = null
+  collectionTestsTime: String = null
+  workTime: String!
+  vaccinationTime: String = null
+}
+
+input MedicalPositionInput {
+  clientId: Int = null
+  viewName: String = null
+  searchName: String = null
+  viewDescription: String = null
+  searchDescription: String = null
+  isActive: Boolean = true
+}
+
+input MedicalSpecialityInput {
+  clientId: Int = null
+  viewName: String!
+  searchName: String!
+  viewDescription: String = null
+  searchDescription: String = null
+  isActive: Boolean = null
+}
+
+type Mutation {
+  guestRegistration: RequestResult!
+  addUpdateCity(city: CityInput!, cityId: Int = null): RequestResult!
+  deleteCity(cityId: Int!): RequestResult!
+  addUpdateMedicalCenter(medicalCenter: MedicalCenterInput!, medicalCenterId: Int = null): RequestResult!
+  deleteMedicalCenter(medicalCenterId: Int!): RequestResult!
+  addUpdateServiceType(serviceType: ServiceTypeInput!, serviceTypeId: Int = null): RequestResult!
+  deleteServiceType(serviceTypeId: Int!): RequestResult!
+  addUpdateMedicalPosition(medicalPosition: MedicalPositionInput!, medicalPositionId: Int = null): RequestResult!
+  deleteMedicalPosition(medicalPositionId: Int!): RequestResult!
+  addUpdateSevice(service: ServiceInput!, serviceId: Int = null): RequestResult!
+  deleteService(serviceId: Int!): RequestResult!
+  addUpdateMedicalSpeciality(medicalSpeciality: MedicalSpecialityInput!, medicalSpecialityId: Int = null): RequestResult!
+  deleteMedicalSpeciality(medicalSpecialityId: Int!): RequestResult!
+  addUpdateDoctor(doctor: DoctorInput!, doctorId: Int = null): RequestResult!
+  deleteDoctor(doctorId: Int!): RequestResult!
+  addUpdateDoctorMspecialities(doctorMspeciality: DoctorMspecialityInput!, doctorMspecialityId: Int = null): RequestResult!
+  deleteDoctorMspeciality(doctorMspecialityId: Int!): RequestResult!
+  addUpdateStaffType(staffType: StaffTypeInput!, staffTypeId: Int = null): RequestResult!
+  deleteStaffType(staffTypeId: Int!): RequestResult!
+  addUpdateDoctorCategory(doctorCategory: DoctorCategoryInput!, doctorCategoryId: Int = null): RequestResult!
+  deleteDoctorCategory(doctorCategoryId: Int!): RequestResult!
+  addUpdateDoctorStatusType(doctorStatusType: DoctorStatusTypeInput!, doctorStatusTypeId: Int = null): RequestResult!
+  deleteDoctorStatusType(doctorStatusTypeId: Int!): RequestResult!
+  addUpdateDoctorStatus(doctorStatus: DoctorStatusInput!, doctorStatusId: Int = null): RequestResult!
+  deleteDoctorStatus(doctorStatusId: Int!): RequestResult!
+  addUpdatePatientType(patientType: PatientTypeInput!, patientTypeId: Int = null): RequestResult!
+  deletePatientType(patientTypeId: Int!): RequestResult!
+  addUpdateDoctorMedicalCenter(doctorMedicalCenter: DoctorMedicalCenterInput!, doctorMedicalCenterId: Int = null): RequestResult!
+  deleteDoctorMedicalCenter(doctorMedicalCenterId: Int!): RequestResult!
+  addUpdateDoctorPatientType(doctorPatientType: DoctorPatientTypeInput!, doctorPatientTypeId: Int = null): RequestResult!
+  deleteDoctorPatientType(doctorPatientTypeId: Int!): RequestResult!
+  addUpdateServiceMedicalSpeciality(serviceMedicalSpeciality: ServiceMedicalSpecialityInput!, serviceMedicalSpecialityId: Int = null): RequestResult!
+  deleteServiceMedicalSpeciality(serviceMedicalSpecialityId: Int!): RequestResult!
+  addUpdateComplexService(complexService: ComplexServiceInput!, complexServiceId: Int = null): RequestResult!
+  deleteComplexService(complexServiceId: Int!): RequestResult!
+  addUpdateComplexServiceItem(complexServiceItem: ComplexServiceItemInput!, complexServiceItemId: Int = null): RequestResult!
+  deleteComplexServiceItem(complexServiceItemId: Int!): RequestResult!
+  addUpdateFinancialType(financialType: FinancialTypeInput!, financialTypeId: Int = null): RequestResult!
+  deleteFinancialType(financialTypeId: Int!): RequestResult!
+  addUpdateShifr(shifr: ShifrInput!, shifrId: Int = null): RequestResult!
+  deleteShifr(shifrId: Int!): RequestResult!
+  addUpdatePolicy(policy: PolicyInput!, policyId: Int = null): RequestResult!
+  deletePolicy(policyId: Int!): RequestResult!
+  addUpdateUserSuscribe(userSubscribe: UserSubscribeInput!, userSubscribeId: Int = null): RequestResult!
+  deleteUserSubscribe(userSubscribeId: Int!): RequestResult!
+  addUpdateDoctorReplacement(doctorReplacement: DoctorReplacementInput!, doctorReplacementId: Int = null): RequestResult!
+  deleteDoctorReplacement(doctorReplacementId: Int!): RequestResult!
+  addUpdateSubscribeDoctor(subscribeDoctor: SubscribeDoctorInput!, subscribeDoctorId: Int = null): RequestResult!
+  deleteSubscribeDoctor(subscribeDoctorId: Int!): RequestResult!
+  addUpdatePackType(packType: PackTypeInput!, packTypeId: Int = null): RequestResult!
+  deletePackType(packTypeId: Int!): RequestResult!
+  addUpdateSubscribeServicePack(subscribeServicePack: SubscribeServicePackInput!, subscribeServicePackId: Int = null): RequestResult!
+  deleteSubscribeServicePack(subscribeServicePackId: Int!): RequestResult!
+  addUpdateSubscribeSpackRecord(subscribeSpackRecord: SubscribeSpackRecordInput!, subscribeSpackRecordId: Int = null): RequestResult!
+  deleteSubscribeSpackRecord(subscribeSpackRecordId: Int!): RequestResult!
+  addUpdateShifrDiscouontPeriod(shifrDiscountPeriod: ShifrDiscountPeriodInput!, shifrDiscountPeriodId: Int = null): RequestResult!
+  deleteShifrDiscouontPeriod(shifrDiscouontPeriodId: Int!): RequestResult!
+  addUpdateShifrDiscouont(shifrDiscount: ShifrDiscountInput!, shifrDiscountId: Int = null): RequestResult!
+  deleteShifrDiscouont(shifrDiscouontId: Int!): RequestResult!
+  addUpdatePricePeriod(pricePeriod: PricePeriodInput!, pricePeriodId: Int = null): RequestResult!
+  deletePricePeriod(pricePeriodId: Int!): RequestResult!
+  addUpdatePriceName(priceName: PriceNameInput!, priceNameId: Int = null): RequestResult!
+  deletePriceName(priceNameId: Int!): RequestResult!
+  addUpdatePrice(price: PriceInput!, priceId: Int = null): RequestResult!
+  deletePrice(priceId: Int!): RequestResult!
+  addUpdatePaymentType(paymentType: PaymentTypeInput!, paymentTypeId: Int = null): RequestResult!
+  deletePaymentType(paymentTypeId: Int!): RequestResult!
+  addUpdateUserPayment(userPayment: UserPaymentInput!, userPaymentId: Int = null): RequestResult!
+  deleteUserPayment(userPaymentId: Int!): RequestResult!
+  addUpdateUserPurchaseReturn(userPurchaseReturn: UserPurchaseReturnInput!, userPurchaseReturnId: Int = null): RequestResult!
+  deleteUserPurchaseReturn(userPurchaseReturnId: Int!): RequestResult!
+  addUpdateRefuseReason(refuseReason: RefuseReasonInput!, refuseReasonId: Int = null): RequestResult!
+  deleteRefuseReason(refuseReasonId: Int!): RequestResult!
+  addUpdateUserServiceCart(userServiceCart: UserServiceCartInput!, userServiceCartId: Int = null): RequestResult!
+  deleteUserServiceCart(userServiceCartId: Int!): RequestResult!
+  addUpdateUserServicePlan(userServicePlan: UserServicePlanInput!, userServicePlanId: Int = null): RequestResult!
+  deleteUserServicePlan(userServicePlanId: Int!): RequestResult!
+  addUpdateAccessTicket(accessTicket: AccessTicketInput!, accessTicketId: Int = null): RequestResult!
+  deleteAccessTicket(accessTicketId: Int!): RequestResult!
+}
+
+input PackTypeInput {
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  clientId: Int = null
+}
+
+input PatientTypeInput {
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  clientId: Int = null
+}
+
+input PaymentTypeInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input PolicyInput {
+  clientId: Int = null
+  userId: Int = null
+  shifrId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  status: Int = null
+  series: String = null
+  number: String = null
+  contractDate: Date = null
+  price: Float = null
+  discount: Float = null
+  discoumtCoefficien: Float = null
+  amount: Float = null
+  currentPaid: Float = null
+  isActive: Boolean = null
+}
+
+input PriceInput {
+  clientId: Int = null
+  serviceId: Int = null
+  pricePeriodId: Int = null
+  priceNameId: Int = null
+  priceBeznal: Float = null
+  priceNal: Float = null
+}
+
+input PriceNameInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input PricePeriodInput {
+  clientId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  isActive: Boolean = null
+}
+
+type Query {
+  getTest: RequestResult!
+  getUserAdminInfo(filteringAttrs: UserAdminInput = null, orderingAttrs: UserAdminInput = null, skip: Int = 0, limit: Int = 10, descSorting: Boolean = null): UserAdminResult!
+}
+
+input RefuseReasonInput {
+  clientId: Int = null
+  text: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+type RequestResult {
+  data: String
+  statusCode: Int
+  details: String
+}
+
+input ServiceInput {
+  clientId: Int = null
+  serviceTypeId: Int = null
+  serviceGroupId: Int = null
+  nameForStaff: String = null
+  nameForMz: String = null
+  nameForLk: String = null
+  fullDescription: String = null
+  appliedMethod: String = null
+  preparationRules: String = null
+  shortDescription: String = null
+  comment: String = null
+  mzCode: String = null
+  executionTime: Int = null
+  nursesExecutionTime: Int = null
+  minimalAge: Int = null
+  maximalAge: Int = null
+  gender: String = null
+  isUrgent: Boolean = null
+  isForHomeOnly: Boolean = null
+  selectedServiceNotification: String = null
+  isComplexService: Boolean = null
+  clientServiceCode: String = null
+  isActive: Boolean = null
+}
+
+input ServiceMedicalSpecialityInput {
+  serviceId: Int = null
+  medicalSpecialityId: Int = null
+  isActive: Boolean = null
+}
+
+input ServiceTypeInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+}
+
+input ShifrDiscountInput {
+  clientId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+}
+
+input ShifrDiscountPeriodInput {
+  clientId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+}
+
+input ShifrInput {
+  clientId: Int = null
+  code: String = null
+  name: String = null
+  companyName: String = null
+  startDate: Date = null
+  endDate: Date = null
+  status: Int = null
+  financialTypeId: Int = null
+  isActive: Boolean = null
+}
+
+input StaffTypeInput {
+  clientId: Int = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = true
+}
+
+input SubscribeDoctorInput {
+  clientId: Int = null
+  userSubscribeId: Int = null
+  doctorId: Int = null
+  description: String = null
+  startDate: Date = null
+  endDate: Date = null
+  roleId: Int = null
+  doctorReplacementId: Int = null
+  isActive: Boolean = null
+}
+
+input SubscribeServicePackInput {
+  clientId: Int = null
+  userSubscribeId: Int = null
+  code: String = null
+  packTypeId: Int = null
+  packTag: Int = null
+  minQuantity: Int = null
+  maxQuantity: Int = null
+}
+
+input SubscribeSpackRecordInput {
+  clientId: Int = null
+  subscribeServicesPackId: Int = null
+  serviceId: Int = null
+  serviceGroupId: Int = null
+  quantity: Int = null
+  status: Int = null
+  isActive: Boolean = null
+}
+
+type UserAdmin {
+  id: Int!
+  clientId: Int
+  userId: Int
+  registrationVisibleFields: String
+  registrationRequiredFields: String
+}
+
+input UserAdminInput {
+  clientId: Int = null
+  userId: Int = null
+  registrationVisibleFields: String = null
+  registrationRequiredFields: String = null
+  id: Int = null
+}
+
+type UserAdminResult {
+  data: [UserAdmin!]
+  statusCode: Int
+  details: String
+}
+
+input UserPaymentInput {
+  clientId: Int = null
+  userId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  paymentTypeId: Int = null
+  linkedUserPaymentId: Int = null
+  avanceStatus: Int = null
+  paymentDate: Date = null
+  paymentStatus: Int = null
+  amount: Float = null
+  fullAmount: Float = null
+  discountAmount: Float = null
+  usedAmount: Float = null
+  avanceAmount: Float = null
+  cardAmount: Float = null
+  sbpAmount: Float = null
+  debtAmount: Float = null
+  editNowStatus: Boolean = null
+  lpuId: Int = null
+  cashierId: Int = null
+  transactionCode: String = null
+}
+
+input UserPurchaseReturnInput {
+  clientId: Int = null
+  userPurchaseId: Int = null
+  userPaymentsId: Int = null
+  quantity: Int = null
+  sum: Float = null
+  sumCard: Float = null
+  sumSbp: Float = null
+  sumAvance: Float = null
+}
+
+input UserServiceCartInput {
+  clientId: Int = null
+  serviceId: Int = null
+  userId: Int = null
+  shifrId: Int = null
+  policyId: Int = null
+  medicalCenterId: Int = null
+  accessTicketId: Int = null
+  doctorId: Int = null
+  doctorExecId: Int = null
+  doctorSendId: Int = null
+  doctorNurseId: Int = null
+  doctorParamedicId: Int = null
+  startDate: Date = null
+  endDate: Date = null
+  complexServiceId: Int = null
+  complexServiceStatus: Int = null
+  serviceStatus: Int = null
+  quantity: Int = null
+  stacSatus: Boolean = null
+  citoStatus: Boolean = null
+  refuseDate: Date = null
+  refuseReasonId: Int = null
+  description: String = null
+  discount: Float = null
+  discountCoefficient: Float = null
+  userPurchaseId: Int = null
+}
+
+input UserServicePlanInput {
+  clientId: Int = null
+  userId: Int = null
+  serviceId: Int = null
+  policyId: Int = null
+  shifrId: Int = null
+  quantity: Int = null
+  planDate: Date = null
+  description: String = null
+  doctorSendId: Int = null
+  medicalCenterId: Int = null
+  status: Int = null
+  refuseReasonId: Int = null
+  refuseDate: Date = null
+  userServiceCartId: Int = null
+}
+
+input UserSubscribeInput {
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  clientId: Int = null
+  policyId: Int = null
+  serviceId: Int = null
+}
+

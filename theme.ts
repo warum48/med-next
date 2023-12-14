@@ -79,4 +79,21 @@ export const theme = createTheme({
   //primaryColor: myTheme.colors?.oceanBlue//'ocean-blue'
   // myTheme.primaryColor
 //}}
+/*
+components: {
+  Button: {
+    // Subscribe to theme and component params
+    styles: (theme:any, params:any) => ({
+      root: {
+        backgroundColor:
+          params.variant === 'filled'
+            ? theme.colors[params.color || theme.primaryColor][9]
+            : undefined,
+        '&:hover': { backgroundColor: params.variant === 'filled'
+            ?'#ddd':'transparent'
+          }
+      },
+    }),
+  },
+},*/
 });

@@ -14,8 +14,9 @@ import { exportImagesZipFileNameVar } from "_apollo/state/Export_Images";
 import { exportImagesZipLinkVar } from "_apollo/state/Export_Images";*/
 
 interface IContext {
-  token: string; //авторизация
-  setToken: React.Dispatch<React.SetStateAction<string>>;
+  isDemo: boolean;
+  //token: string; //авторизация
+  //setToken: React.Dispatch<React.SetStateAction<string>>;
   asideOpen: boolean;
   setAsideOpen: React.Dispatch<React.SetStateAction<boolean>>;
   pathtoserver: string;
@@ -39,12 +40,7 @@ type Props = {
 //--------------component-----------
 
 export const GlobalProvider = ({ children }: Props) => {
-  try{
-  console.log('+++window'); //, window
-  }catch(e){
-    console.log(e);
-  }
-  const [token, setToken] = React.useState('');
+const isDemo = false;
   const [asideOpen, setAsideOpen] = React.useState(false);
   const [isDebug, setIsDebug] = useState<boolean>(false);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
@@ -72,8 +68,9 @@ export const GlobalProvider = ({ children }: Props) => {
   }, []);
 
   const value = {
-    token,
-    setToken,
+    //token,
+    //setToken,
+    isDemo,
     asideOpen,
     setAsideOpen,
     pathtoserver,

@@ -1411,12 +1411,12 @@ scalar Time
 type User {
   id: Int!
   clientId: Int
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   patronymic: String
   birthDate: Date
   gender: String
-  email: String!
+  email: String
   phoneNumber: String!
   additionalPhoneNumber: String
   docType: Int
@@ -1435,7 +1435,7 @@ type User {
   latitude: Float
   zoneNumber: Int
   defaultMedicalCenterId: Int
-  loginPhoneNumber: String!
+  loginPhoneNumber: String
   isVerified: Boolean
   infoWayId: Int
   notificationTime: Time
