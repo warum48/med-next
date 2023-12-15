@@ -1,14 +1,15 @@
 'use client';
 import * as React from 'react';
-import { Button, ButtonProps, rem } from '@mantine/core';
+import { Box, Button, ButtonProps, rem } from '@mantine/core';
 import { TChildren } from '../Containers/InnerPageContainer';
 import { ReactHTMLElement } from 'react';
 import { GlobalContext } from '@/context/ContextGlobal';
 //import { GlobalContext } from '../../_context';
 import classes from './StyledButton.module.css';
+import { IconInfoSmall } from '@tabler/icons-react';
 
 type TProps = {
-  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small' | 'main_gradient' | 'main_second_outlined';
+  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small' | 'main_gradient' | 'main_second_outlined' | 'info_circle' | 'close';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
@@ -190,6 +191,47 @@ export const StyledButton = ({
       </Button>
     );
   }
+
+  if (appearence == 'info_circle') {
+    return (
+      <Button
+      m={0}
+        size="compact-xs"
+        className={classes.main_small}
+        radius={'xl'}
+        w= '18px'
+        h='18px'
+        style={{top:0}}
+        //!!compact
+        // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
+        // sx={{marginLeft:'auto'}}
+        onClick={onClick}
+        {...props}
+      >
+       <Box ml='-xs'> <IconInfoSmall style={{position:'absolute', top: '-8px', left:'-7px'}} size={30}/> </Box>
+      </Button>
+    );
+  }
+
+  if (appearence == 'close') {
+    return (
+  <Button
+    p={0}
+          size="compact-xs"
+          variant="light"
+          w='30px'
+          h='30px'
+          radius={'100px'}
+        //  style={{ position: 'absolute', top: '4px', right: '4px', borderRadius:'100px', width:'30px', height:'30px' }}
+          //onClick={() => setExpanded(!expanded)}
+          onClick={onClick}
+        >
+           ✕
+        </Button>
+  );
+  
+}
+
 
   return <Button>{children}</Button>;
 };

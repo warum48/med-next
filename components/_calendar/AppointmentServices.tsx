@@ -1,22 +1,21 @@
-import { Space, Table } from '@mantine/core';
+import { Group, Space, Table } from '@mantine/core';
 import { Title4_second } from '../TextBlocks/TextBlocks';
-import { appointmentData } from '../___mockdata/mockdata';
+import { appointmentData, serviceDescription } from '../___mockdata/mockdata';
+import { StyledButton } from '../Buttons/StyledButton';
+import { IconInfoCircle, IconInfoSmall } from '@tabler/icons-react';
+import React from 'react';
+import { AppointmentServiceList } from '../AppointmentServiceList/AppointmentServiceList';
 
 export const AppointmentServices = () => {
+  const [openInfoIndex, setOpenInfoIndex] = React.useState<number | null>(null);
+
   return (
     <>
       <Title4_second>Услуги на приеме:</Title4_second>
       <Space h="xs" />
-      <Table>
-        <Table.Tbody>
-          {appointmentData.map((element, index) => (
-            <Table.Tr key={element.name}>
-              <Table.Td pl={0}>{element.process}</Table.Td>
-              <Table.Td>{element.price}</Table.Td>
-            </Table.Tr>
-          ))}
-        </Table.Tbody>
-      </Table>
+    
+    <AppointmentServiceList/>
+      
     </>
   );
 };

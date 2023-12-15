@@ -33,6 +33,9 @@ import {
   import classes from './DoctorChooser.module.css';
   import { TimeSelector } from './TimeSelector';
 import { GlobalContext } from '@/context/ContextGlobal';
+import { AppointmentServiceList } from '../AppointmentServiceList/AppointmentServiceList';
+import { SpaceYMain } from '../Spacers/Spacers';
+import { doctorInfo } from '../___mockdata/mockdata';
   
   /*const useStyles = createStyles((theme) => ({
     icon: {
@@ -133,9 +136,16 @@ import { GlobalContext } from '@/context/ContextGlobal';
             </Group>
             {expanded && (
               <>
-                <Divider mt="xl" mr="xl" mb="sm" />
-                <TitleLabel>Cписок услуг: </TitleLabel>
+               {/* <Divider mt="xl" mr="xl" mb="sm" />
+               <TitleLabel>Cписок услуг: </TitleLabel> */}
                 {/*data_services?.getDoctorsServices?.data?.length*/}
+                <SpaceYMain/>
+{doctorInfo}
+                <SpaceYMain/>
+                <Title4_second>Cписок услуг:</Title4_second>
+      <Space h="xs" />
+    
+    <AppointmentServiceList/>
                 <Space h="xxs" />
                 <List pr="xl">
                   {data_services?.getDoctorsMspecialities?.data?.map((item: any, index: number) => (
