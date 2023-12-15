@@ -21,7 +21,7 @@ export function ErrorMessage({ detail='', code = -1, refetch, networkStatus }: T
         <Text size="xs"  color='dimmed'
        // ta="center"
         >
-        Ошибка загрузки,  проверьте соединени с&nbsp;интернетом
+        Ошибка загрузки,  проверьте соединениe с&nbsp;интернетом
          и&nbsp;повторите попытку
         </Text>
           {refetch && (

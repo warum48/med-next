@@ -16,6 +16,7 @@ import { ServiceItem } from './ServiceItem';
 import { GET_SERVICE_GROUP } from '@/apollo/queries/main/getServicesGroup';
 import React from 'react';
 import { cU } from '@fullcalendar/core/internal-common';
+import { Preloader } from '../Preloader/Preloader';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 type TProps = {
@@ -83,6 +84,7 @@ export const ServiceChooser = ({nextStep}: TProps) => {
             />
           ))}
       </div>
+      {loading  && <Preloader/>}
     </>
   );
 };

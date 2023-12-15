@@ -17,6 +17,7 @@ import { GET_SERVICE_GROUP } from '@/apollo/queries/main/getServicesGroup';
 import React from 'react';
 import { cU } from '@fullcalendar/core/internal-common';
 import { Tree } from './Tree';
+import { Preloader } from '../Preloader/Preloader';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 type TProps = {
@@ -47,6 +48,7 @@ export const ServiceChooserTree = ({nextStep}: TProps) => {
     {data && 
     <Tree data={data?.getServiceGroup?.data[0].xmembers} nextStep={nextStep}/>
 }
+{loading  && <Preloader/>}
     {/*
       <Group>
         {curNestingPath &&
