@@ -52,6 +52,7 @@ export enum RoutesTypes {
     Appointment = "/appointment"
   }
 
+  //!! pages are moving to 'global' folder (usePages.tsx) because we have to load external data to get some inner pages
   export const pages = [
     { label: 'Главная', icon: IconHome, link: '/' },
     {
@@ -84,7 +85,12 @@ export enum RoutesTypes {
     {
       label: 'Комплексный продукт',
       icon: IconTicket,
-      link: RoutesTypes.Abonement,
+     // link: RoutesTypes.Abonement,
+      links: [
+        { label: 'Upcoming releases', link: '/' },
+        { label: 'Previous releases', link: '/' },
+        { label: 'Releases schedule', link: '/' },
+      ]
     },
     {
       label: 'Моя семья',

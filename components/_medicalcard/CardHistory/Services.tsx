@@ -46,6 +46,7 @@ import { appointmentData } from '@/components/___mockdata/mockdata';
       >
         <Table.Td>{element.date}</Table.Td>
         <Table.Td>{element.process}</Table.Td>
+        <Table.Td>{element.code}</Table.Td>
         <Table.Td>{element.name}</Table.Td>
         <Table.Td>{element.status}</Table.Td>
         {/*<Table.Td>{element.process}</Table.Td>*/}
@@ -66,7 +67,7 @@ import { appointmentData } from '@/components/___mockdata/mockdata';
             <Table.Tr>
               <Table.Th>Дата</Table.Th>
               <Table.Th>Услуга</Table.Th>
-              
+              <Table.Th>Шифр услуги</Table.Th>
               <Table.Th>ФИО врача</Table.Th>
               <Table.Th>Статус</Table.Th>
             </Table.Tr>

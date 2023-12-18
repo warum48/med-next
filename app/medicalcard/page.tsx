@@ -34,15 +34,6 @@ export default function MedicalCard() {
       <Space h="xl" />
       <Tabs
         defaultValue="type1"
-       // classNames={classes}
-        //styles={(theme) => ({
-        //  tab: {
-        //    ...theme.fn.focusStyles(),
-        //    '&[data-active]': {
-        //      backgroundColor: theme.colors.oceanBlue[0],
-        //    },
-        //  },
-        //})}
       >
         <Tabs.List>
           <Tabs.Tab value="type1">ИСТОРИЯ ЛЕЧЕНИЯ</Tabs.Tab>

@@ -37,6 +37,7 @@ export const appointmentData = [
     process: 'Общий анализ крови ',
     status: 'Оказана',
     price: '5000',
+    code: 'xxxx-xx'
   },
   {
     date: '01.02.2023',
@@ -45,6 +46,7 @@ export const appointmentData = [
     process: 'Общий анализ крови ',
     status: 'Оказана',
     price: '150000',
+    code: 'xxxx-xx'
   },
   {
     date: '01.03.2023',
@@ -53,6 +55,7 @@ export const appointmentData = [
     process: 'Полный анализ крови анализ',
     status: 'Оказана',
     price: '5000',
+    code: 'xxxx-xx'
   },
   {
     date: '01.04.2023',
@@ -61,6 +64,7 @@ export const appointmentData = [
     process: 'Общий анализ крови ',
     status: 'Оказана',
     price: '5000',
+    code: 'xxxx-xx'
   },
   {
     date: '01.05.2023',
@@ -69,6 +73,7 @@ export const appointmentData = [
     process: 'Общий анализ крови ',
     status: 'Оказана',
     price: '5000',
+    code: 'xxxx-xx'
   },
 ];
 

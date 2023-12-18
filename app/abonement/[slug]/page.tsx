@@ -130,8 +130,20 @@ export default function MedicalCard() {
   return (
     <InnerPageContainer>
       <Title1_main>Абонемент 1</Title1_main>
-      <Space h="md" />
+      <Space h="xl" />
+      <Tabs
+        defaultValue="type1"
+      >
+        <Tabs.List>
+          <Tabs.Tab value="type1">ИСТОРИЯ ЛЕЧЕНИЯ</Tabs.Tab>
+          <Tabs.Tab value="type2">ИСТОРИЯ ПОСЕЩЕНИЙ</Tabs.Tab>
+        </Tabs.List>
+        <Space h="xl" />
+        <Tabs.Panel value="type1" pt="xs">
+      
       {/*<Title2_second>Описание</Title2_second> */}
+      <Title2_second>Общая информация</Title2_second>
+      <Space h="xs" />
       <TextInfo>
         6 профилактических осмотров доверенным педиатром на дому: еженедельно до месяца, далее
         ежемесячно, от 8 профилактических осмотров врачами-специалистами на дому
@@ -163,12 +175,17 @@ export default function MedicalCard() {
       <Space h="xs" />
 
       <Space h="md" />
+      </Tabs.Panel>
+        <Tabs.Panel value="type2" pt="xs">
       <Title2_second>Услуги</Title2_second>
       <Space h="xs" />
       <ServicesGrouped/>
-     
+      <Space h="xs" />
       <TextInfo>Подробнее об оказанных услугах в разделе </TextInfo>
       <Anchor component={Link} href={RoutesTypes.MedicalCard}>медицинская карта</Anchor>
+
+      </Tabs.Panel>
+      </Tabs>
             
       {/*<AllAbonements />*/}
     </InnerPageContainer>

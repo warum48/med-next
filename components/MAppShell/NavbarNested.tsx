@@ -7,24 +7,38 @@ import {
   IconFileAnalytics,
   IconAdjustments,
   IconLock,
+  TablerIconsProps,
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
 //import { Logo } from './Logo';
 import classes from './NavbarNested.module.css';
-import { pages } from '@/global/ROUTES';
+//import { pages } from '@/global/ROUTES';
 import { demoPages } from '@/global/ROUTES';
 import { useCookies } from 'react-cookie';
 import React from 'react';
+import { usePages } from '@/context/usePages';
+
+type PageItem =  {
+  label: string;
+  icon: (props: TablerIconsProps) => JSX.Element;
+  link?: string ;
+  links?: any //{ label: string; link: string; }[] | unknown;//unknown; //  any//
+}
+
+//TODO remove any for links, fix type
+/*
+Type 'unknown' is not assignable to type '{ label: string; link: string; }[] | undefined' */
 
 type TProps = {
   setOpened: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function NavbarNested({setOpened}:TProps) {
+  const {pages} = usePages();
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   //const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
-  const links = pages.map((item) => <LinksGroup {...item} key={item.label} setOpened={setOpened}/>);
+  const links = pages.map((item:PageItem) => <LinksGroup {...item } key={item.label} setOpened={setOpened}/>);
   const demolinks = demoPages.map((item) => <LinksGroup {...item} key={item.label} setOpened={setOpened}/>);
 
   return (

@@ -24,15 +24,15 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
   const pathname = usePathname();
 
   const items = (hasLinks ? links : []).map((link) => (
-    <Text<'a'>
-      component="a"
+    <Link
+   // ml='xl'
       className={classes.link}
       href={link.link}
       key={link.label}
-      onClick={(event) => event.preventDefault()}
+     // onClick={(event) => event.preventDefault()}
     >
-      ++{link.label}
-    </Text>
+      <Box ml='md'>{link.label}</Box>
+      </Link>
   ));
 
   const Item = (
@@ -58,7 +58,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
           )}
         </Group>
       </UnstyledButton>
-      {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+      {hasLinks ? <Collapse in={opened} ml='md'>{items}</Collapse> : null}
     </>
   );
 
@@ -70,7 +70,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
 
   return (
     <>
-      {link ? (
+      { link ? (
         <Link
         onClick={() =>setMenuOpened(false)}
           href={link}
@@ -78,7 +78,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
             //!!pathname == link 
            // pathname.replace('/','').includes(link.replace('/','')) 
            pathname == link || pathname.substring(1, pathname.length).includes(link.substring(1, link.length)) && link.substring(1, link.length) != ''
-            ? classes.active + ' ' + classes.level1link : classes.level1link
+            ? classes.active_with_link + ' ' + classes.level1link : classes.level1link
           }
         >
           {Item}

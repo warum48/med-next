@@ -19,10 +19,10 @@ export default function Payments() {
 
   return (
     <InnerPageContainer>
-      <Title1_main>Платежи</Title1_main>
+      <Title1_main>Мои платежи</Title1_main>
       <SpaceYMain/>
       <Group>
-        <Title2_second>Остаток по депозиту: <b className="mainColor">4800 ₽</b></Title2_second>
+        <Title2_second>Остаток на счету: <b className="mainColor">4800 ₽</b></Title2_second>
        
         
       </Group>
@@ -32,7 +32,7 @@ export default function Payments() {
       <Space h="md" />
       <Group>
         {/*<TitleLabel>Внести оплату:</TitleLabel>*/}
-        <StyledButton appearence="main_first">Внести оплату</StyledButton>
+        <StyledButton appearence="main_first">Пополнить счет</StyledButton>
       </Group>
       <SpaceYMain/>
       <Debt/>
