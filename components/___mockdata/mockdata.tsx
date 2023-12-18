@@ -72,6 +72,74 @@ export const appointmentData = [
   },
 ];
 
+export const userInfo = [
+  {
+    field: 'secondName',
+    name: 'Фамилия',
+    mock: 'Антонова',
+    required: true,
+    newValue: '',
+    value: '',
+  },
+  { field: 'firstdName', name: 'Имя', mock: 'Анна', required: true, newValue: '', value: '' },
+  {
+    field: 'middleName',
+    name: 'Отчество',
+    mock: 'Антоновка',
+    required: false,
+    newValue: '',
+    value: '',
+  },
+  {
+    field: 'phone',
+    name: 'Телефон',
+    mock: '+71234567890',
+    required: true,
+    newValue: '',
+    value: '',
+    mask: '',
+  },
+  {
+    field: 'email',
+    name: 'Email',
+    mock: 'mail@gmail.com',
+    required: true,
+    newValue: '',
+    value: '',
+    mask: '',
+  },
+  {
+    field: 'birthday',
+    name: 'Дата рождения',
+    mock: '01.01.2001',
+    required: true,
+    newValue: '',
+    value: '',
+    mask: '',
+  },
+  {
+    field: 'city',
+    name: 'Город',
+    mock: 'Санкт-Петербург',
+    required: true,
+    newValue: '',
+    value: '',
+    mask: '',
+  },
+  {
+    field: 'address',
+    name: 'Адрес',
+    mock: 'Цветочный бульварб д.8 кв.88',
+    required: true,
+    newValue: '',
+    value: '',
+    mask: '',
+    autosize: true,
+  },
+  { field: 'inn', name: 'ИНН', mock: '', required: false, newValue: '', value: '', mask: '' },
+  { field: 'snils', name: 'Снилс', mock: '', required: false, newValue: '', value: '', mask: '' },
+];
+
 export const doctorInfo = <>Родился 28&nbsp;марта 1971&nbsp;г.<br/>Образование: 1989&ndash;1995&nbsp;гг. Военно-Медицинская Академия им. С.М. Кирова, 1999&nbsp;г. &mdash;&nbsp;Государственный Институт Усовершенствования Врачей МО&nbsp;РФ&nbsp;&mdash; защита диссертации на&nbsp;соискание степени кандидата медицинских наук, тема: &laquo;Влияние общего охлаждения на&nbsp;реологические показатели крови и&nbsp;их&nbsp;коррекция с&nbsp;помощью полиэтиленоксидов с&nbsp;молекулярной массой 400 и&nbsp;1500&raquo;, 2000&nbsp;г. &mdash;&nbsp;Российская Медицинская Академия Постдипломного Образования, специализация &laquo;Эндоскопия&raquo;, 2005&nbsp;г. &mdash;&nbsp;Российская Медицинская Академия Постдипломного Образования, профессиональная переподготовка &laquo;Организация здравоохранения и&nbsp;общественное здоровье&raquo;, 2010&nbsp;г. &mdash;&nbsp;Российская Медицинская Академия Постдипломного Образования, повышение квалификации на&nbsp;кафедре Организация здравоохранения и&nbsp;общественное здоровье.</>
 
 export const serviceDescription =

@@ -22,96 +22,12 @@ import { FromTo } from '../../components/Dates/FromTo';
 import { TextInfo, Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import {  TreatmentHistory } from '@/components/_medicalcard/CardHistory/History';
 import classes from "./page.module.css";
+import { TreatmentServices } from '@/components/_medicalcard/CardHistory/Services';
 
 export default function MedicalCard() {
-  const changeInfo = useCallback((text: string, fieldId: string) => {
-    setUserInfo(
-      produce((draft) => {
-        const item = draft.find((item) => item.field === fieldId);
-        if (item) {
-          item.newValue = text;
-        }
-      })
-    );
-  }, []);
+  
 
-  const resetChanges = () => {
-    setUserInfo(
-      produce((draft) => {
-        draft.forEach((item) => {
-          item.newValue = '';
-        });
-      })
-    );
-  };
-
-  const [userInfo, setUserInfo] = useState([
-    {
-      field: 'secondName',
-      name: 'Фамилия',
-      mock: 'Антонова',
-      required: true,
-      newValue: '',
-      value: '',
-    },
-    { field: 'firstdName', name: 'Имя', mock: 'Анна', required: true, newValue: '', value: '' },
-    {
-      field: 'middleName',
-      name: 'Отчество',
-      mock: 'Антоновка',
-      required: false,
-      newValue: '',
-      value: '',
-    },
-    {
-      field: 'phone',
-      name: 'Телефон',
-      mock: '+71234567890',
-      required: true,
-      newValue: '',
-      value: '',
-      mask: '',
-    },
-    {
-      field: 'email',
-      name: 'Email',
-      mock: 'mail@gmail.com',
-      required: true,
-      newValue: '',
-      value: '',
-      mask: '',
-    },
-    {
-      field: 'birthday',
-      name: 'Дата рождения',
-      mock: '01.01.2001',
-      required: true,
-      newValue: '',
-      value: '',
-      mask: '',
-    },
-    {
-      field: 'city',
-      name: 'Город',
-      mock: 'Санкт-Петербург',
-      required: true,
-      newValue: '',
-      value: '',
-      mask: '',
-    },
-    {
-      field: 'address',
-      name: 'Адрес',
-      mock: 'Цветочный бульварб д.8 кв.88',
-      required: true,
-      newValue: '',
-      value: '',
-      mask: '',
-      autosize: true,
-    },
-    { field: 'inn', name: 'ИНН', mock: '', required: false, newValue: '', value: '', mask: '' },
-    { field: 'snils', name: 'Снилс', mock: '', required: false, newValue: '', value: '', mask: '' },
-  ]);
+ 
   return (
     <InnerPageContainer>
       <Title1_main>Медицинская карта</Title1_main>
@@ -168,28 +84,9 @@ export default function MedicalCard() {
           //maw={320}
           >
             <FromTo />
-            {/*
-            <Space h="xl" />
-            <Group gap={0} grow={true}>
-              <Box style={{flexGrow:0}}>lala</Box>
-            <Divider orientation="horizontal" style={{maxWidth: '100%'}}/>
-            </Group>
             
-            {[1,2].map((item, index) => (
-              <Stack key={'uinf' + index}>
-              <Group >
-                <TitleLabel>Название услуги:</TitleLabel>
-                <TextInfo>услуга</TextInfo>
-              </Group>
-              <Group >
-                <TitleLabel>Название услуги:</TitleLabel>
-                <TextInfo>услуга</TextInfo>
-              </Group>
-              </Stack>
-            ))}
-            */}
             <Space h="xs" />
-            <TreatmentHistory/>
+            <TreatmentServices/>
 
           </Stack>{' '}
           

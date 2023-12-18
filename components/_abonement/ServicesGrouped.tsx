@@ -83,7 +83,7 @@ import {
             <Table.Tr>
               
               <Table.Th>Услуга</Table.Th>
-              <Table.Th>Кол-во</Table.Th>
+              <Table.Th>Выполнено услуг</Table.Th>
               
             </Table.Tr>
           </Table.Thead>

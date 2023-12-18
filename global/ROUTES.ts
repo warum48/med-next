@@ -82,7 +82,7 @@ export enum RoutesTypes {
       link: RoutesTypes.Payments,
     },
     {
-      label: 'Абонемент',
+      label: 'Комплексный продукт',
       icon: IconTicket,
       link: RoutesTypes.Abonement,
     },

@@ -37,18 +37,19 @@ export function MyAbonements({}: TProps) {
   const [curItem, setCurItem] = useState(0);
   const router = useRouter();
   const elements = [
+    
     {
       start: '01.01.2023',
       end: '04.01.2023',
       name: 'Абонемент 1',
-      status: 'Деактивирован',
+      status: 'Активен',
     },
     {
       start: '01.01.2023',
       end: '04.01.2023',
       name: 'Абонемент 2',
-      status: 'Активен',
-    }
+      status: 'Закрыт',
+    },
   ];
 
   const rows = elements.map((element, index) => (

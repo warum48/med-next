@@ -29,7 +29,7 @@ import { appointmentData } from '@/components/___mockdata/mockdata';
   
   interface TProps {}
   
-  export function Services({}: TProps) {
+  export function TreatmentServices({}: TProps) {
     const theme = useMantineTheme();
     //const {classes : headerClasses } = useHeadersStyles();
     const [expanded, setExpanded] = useState(false);
@@ -66,6 +66,7 @@ import { appointmentData } from '@/components/___mockdata/mockdata';
             <Table.Tr>
               <Table.Th>Дата</Table.Th>
               <Table.Th>Услуга</Table.Th>
+              
               <Table.Th>ФИО врача</Table.Th>
               <Table.Th>Статус</Table.Th>
             </Table.Tr>
