@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from '@mantine/form';
 
-import { Container, Group, Button, useMantineTheme, Loader } from '@mantine/core';
+import { Container, Group, Button, useMantineTheme, Loader, Center } from '@mantine/core';
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
@@ -63,7 +63,7 @@ export function RegForm({ setStep }: TRegFormProps) {
         birthDate:
           !!values.birthDate && values.birthDate.includes('_') ? 'Заполнено не верно' : null,
         // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-        //password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
+        password:  !!values.password && values.password.length < 8 ? 'Пароль должен содержать хотя бы 8 знаков' : null,
         // age:
         //   values.age.trim().length < 8 || values.age.trim().includes('_')
         //     ? 'Это поле обязательно'
@@ -120,15 +120,15 @@ export function RegForm({ setStep }: TRegFormProps) {
 
   return (
     <Container size={500} mb={40} pt={{ base: 'xl', md: '0' }}>
-      <Group grow>
-        {' '}
+      <Center>
         <Title1_main
           //align="center"
           ta="center"
         >
           Регистрация
         </Title1_main>
-      </Group>
+        </Center>
+      
 
       <FormPaper>
         {formConfig && formConfig?.registrationVisibleFields && (

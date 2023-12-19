@@ -23,10 +23,20 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
   const router = useRouter();
   const pathname = usePathname();
 
+  console.log('pathname.substring(1, pathname.length)', pathname.substring(1, pathname.length));
+
   const items = (hasLinks ? links : []).map((link) => (
     <Link
    // ml='xl'
-      className={classes.link}
+      //className={classes.link}
+      className={
+        //!!pathname == link 
+       // pathname.replace('/','').includes(link.replace('/','')) 
+       pathname == link.link 
+      // || link.link.substring(1, link.link.length).includes(pathname.substring(1, pathname.length)) 
+       && link.link.substring(1, link.link.length) != ''
+        ? classes.active_with_link + ' ' + classes.link : classes.link
+      }
       href={link.link}
       key={link.label}
      // onClick={(event) => event.preventDefault()}

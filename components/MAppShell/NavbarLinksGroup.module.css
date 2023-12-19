@@ -2,7 +2,8 @@
     font-weight: 500;
     display: block;
     width: 100%;
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-xl);
+    padding: 6px var(--mantine-spacing-xl);
+    /*padding: var(--mantine-spacing-xs) var(--mantine-spacing-xl); */
     color: var(--mantine-color-text);
     font-size: var(--mantine-font-size-sm);
   
@@ -16,7 +17,8 @@
     font-weight: 500;
     display: block;
     text-decoration: none;
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    /*padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);*/
+    padding: 6px var(--mantine-spacing-md);
     padding-left: var(--mantine-spacing-md);
     margin-left: var(--mantine-spacing-xl);
     font-size: var(--mantine-font-size-sm);
@@ -49,6 +51,13 @@
   }
 
   .active_with_link button  {
+    font-weight: 700;
+    color: var(--mantine-color-virilis-green) !important;
+    
+    border-right: 3px solid var(--mantine-color-second-4) !important;
+  }
+
+  .link.active_with_link  {
     font-weight: 700;
     color: var(--mantine-color-virilis-green) !important;
     

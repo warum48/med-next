@@ -190,7 +190,7 @@ export const AgeChooser = ({ form }: TProps) => {
         <>
          <SpaceYMain/>
         <Group gap='4px' align='flex-start'>
-          <FormItemLabel
+          <TitleLabel
           withBullet={value == undefined}
           //order={6} mb="0" 
           c={sliderTouched ? theme.colors.oceanBlue[9] : 
@@ -200,7 +200,7 @@ export const AgeChooser = ({ form }: TProps) => {
           >
             
             {value != undefined ? "Возраст: " +  marks[value].hint : 'Выберите возраст'}
-          </FormItemLabel>
+          </TitleLabel>
           
           {!sliderTouched &&
           <Box 

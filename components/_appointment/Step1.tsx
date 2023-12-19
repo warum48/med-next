@@ -1,4 +1,4 @@
-import { Box, Group, Modal, Radio, Space, Stack } from '@mantine/core';
+import { Box, Divider, Group, Modal, Radio, Space, Stack } from '@mantine/core';
 import { SpaceYMain } from '../Spacers/Spacers';
 import { Card_pretitle, FormItemLabel, Title2_second } from '../TextBlocks/TextBlocks';
 import { SwitchWithTextMantine } from '../Switch/SwitchMantine';
@@ -75,6 +75,7 @@ export const Step1 = ({ form }: TProps) => {
               </Group>
             </Radio.Group>
           </Box>
+          <Divider/>
 
           <MedCenterChooser
             form={form}
@@ -84,6 +85,7 @@ export const Step1 = ({ form }: TProps) => {
             //loading_mc={loading_mc}
             //error_mc={error_mc}
           />
+          <Divider/>
 
           <SwitchWithTextMantine
             leftText="Обычная запись"
@@ -91,6 +93,7 @@ export const Step1 = ({ form }: TProps) => {
             label="Форма оплаты"
             {...form.getInputProps('paymentType', { type: 'checkbox' })}
           />
+          <Divider/>
           <AgeChooser form={form} />
         </Stack>
       </Box>

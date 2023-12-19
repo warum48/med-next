@@ -43,12 +43,16 @@ export function MyAbonements({}: TProps) {
       end: '04.01.2023',
       name: 'Абонемент 1',
       status: 'Активен',
+      fio_pediatr:'Иванов Иван Иванович',
+      fio_manager:'Иванов Иван Иванович',
     },
     {
       start: '01.01.2023',
       end: '04.01.2023',
       name: 'Абонемент 2',
       status: 'Закрыт',
+      fio_pediatr:'Иванов Иван Иванович',
+      fio_manager:'Иванов Иван Иванович',
     },
   ];
 
@@ -64,7 +68,8 @@ export function MyAbonements({}: TProps) {
       <Table.Td>{element.status}</Table.Td>
       <Table.Td>{element.start}</Table.Td>
       <Table.Td>{element.end}</Table.Td>
-      {/*<Table.Td>{element.process}</Table.Td>*/}
+      <Table.Td>{element.fio_manager}</Table.Td>
+      <Table.Td>{element.fio_pediatr}</Table.Td>
     </Table.Tr>
   ));
 
@@ -84,6 +89,8 @@ export function MyAbonements({}: TProps) {
             <Table.Th>Статус</Table.Th>
             <Table.Th>Начало действия</Table.Th>
             <Table.Th>Окончание действия</Table.Th>
+            <Table.Th>ФИО сервисного менеджера</Table.Th>
+            <Table.Th>ФИО доверенного педиатра</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <tbody>{rows}</tbody>

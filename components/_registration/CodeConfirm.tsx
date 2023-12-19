@@ -7,6 +7,7 @@ import {
   Container,
   Group,
   Button,
+  Center,
 } from '@mantine/core';
 import { ErrorMessage } from '../../components/Errors/ErrorMessage';
 import { useMutation, useReactiveVar } from '@apollo/client';
@@ -98,9 +99,9 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
   return (
     <>
       <Container size={360} my={40}>
-      <Group grow><Title1_main ta="center"
-        //align="center"
-        >Введите код подтверждения</Title1_main></Group>
+      <Center><Title1_main ta="center"
+        
+        >Введите код подтверждения</Title1_main></Center>
 
         <FormPaper>
           <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
