@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem } from '@mantine/core';
+import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem, Tooltip } from '@mantine/core';
 import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react';
 
 import classes from './NavbarLinksGroup.module.css';
@@ -7,6 +7,8 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation'; //'next/router';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { GlobalContext } from '@/context/ContextGlobal';
+import React from 'react';
 
 interface LinksGroupProps {
   icon: React.FC<any>;
@@ -22,10 +24,12 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
   const [opened, setOpened] = useState(initiallyOpened || false);
   const router = useRouter();
   const pathname = usePathname();
+  const {navBarCollapsed} = React.useContext(GlobalContext);
 
   console.log('pathname.substring(1, pathname.length)', pathname.substring(1, pathname.length));
 
   const items = (hasLinks ? links : []).map((link) => (
+    <Tooltip label={link.label} disabled={!navBarCollapsed} offset={-5} transitionProps={{ transition: 'pop', duration: 300 }}>
     <Link
    // ml='xl'
       //className={classes.link}
@@ -40,36 +44,47 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
       href={link.link}
       key={link.label}
      // onClick={(event) => event.preventDefault()}
+    // onClick={() => setOpened((o) => !o)}
+    onClick={() => { setMenuOpened(false);
+      setOpened((o) => !o)
+    }}
     >
+      {!navBarCollapsed ?
       <Box ml='md'>{link.label}</Box>
+      : <div className={classes.green_dot} />}
       </Link>
+      </Tooltip>
   ));
 
   const Item = (
     <>
+    <Tooltip label={label} disabled={!navBarCollapsed}  offset={-5} transitionProps={{ transition: 'pop', duration: 300 }}>
       <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
-        <Group justify="space-between" gap={0}>
+        <Group justify="space-between" gap={0} wrap='nowrap' className='relative'>
           <Box style={{ display: 'flex', alignItems: 'center' }}>
             <ThemeIcon variant="light" size={30} radius="xl" p={'0.1rem'}>
             <Icon style={{ width: rem(18), height: rem(18) }} />
             </ThemeIcon>
+            {! navBarCollapsed && 
             <Box ml="md" style={{textDecoration: 'none !important'}}>{label}</Box>
+}
           </Box>
           {hasLinks && (
             <IconChevronRight
-              className={classes.chevron}
+              className={ navBarCollapsed ? classes.chevron_collapsed : classes.chevron}
               stroke={1.5}
               style={{
                 width: rem(16),
                 height: rem(16),
-                transform: opened ? 'rotate(-90deg)' : 'none',
+                transform: opened ? 'rotate(90deg)' : 'none',
               }}
             />
           )}
         </Group>
       </UnstyledButton>
+      </Tooltip>
       {hasLinks ? <Collapse in={opened} ml='md'>{items}</Collapse> : null}
-    </>
+      </>
   );
 
   //asPath

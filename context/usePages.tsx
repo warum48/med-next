@@ -54,7 +54,7 @@ export const usePages = () => {
     {
       label: 'Комплексный продукт',
       icon: IconTicket,
-     //  link: RoutesTypes.Abonement,
+    //   link: RoutesTypes.Abonement,
      /* links: [
         { label: 'Upcoming releases', link: '/' },
         { label: 'Previous releases', link: '/' },

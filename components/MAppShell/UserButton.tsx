@@ -1,14 +1,17 @@
-import { UnstyledButton, Group, Avatar, Text, rem, ThemeIcon, Box } from '@mantine/core';
+import { UnstyledButton, Group, Avatar, Text, rem, ThemeIcon, Box, Tooltip } from '@mantine/core';
 import { IconChevronRight, IconUserCircle } from '@tabler/icons-react';
 import classes from './UserButton.module.css';
 import { RoutesTypes } from '@/global/ROUTES';
 //import router from 'next/router';
 import { usePathname, useRouter } from 'next/navigation';
+import { GlobalContext } from '@/context/ContextGlobal';
+import React from 'react';
 
 export function UserButton() {
   const router = useRouter();
   const pathname = usePathname();
   const hasPhoto = false;
+  const {navBarCollapsed} = React.useContext(GlobalContext);
   return (
     <Box className={
       //!!pathname == link 
@@ -17,6 +20,7 @@ export function UserButton() {
      //|| pathname.substring(1, pathname.length).includes(link.substring(1, link.length)) && link.substring(1, link.length) != ''
       ? classes.active + ' ' + classes.level1link : classes.level1link
     }>
+      <Tooltip label={"Профиль"} disabled={!navBarCollapsed}  offset={-5} transitionProps={{ transition: 'pop', duration: 300 }}>
     <UnstyledButton
       className={`active ${classes.user}`}
       
@@ -36,6 +40,7 @@ export function UserButton() {
             <IconUserCircle />
           </ThemeIcon>
         )}
+        {!navBarCollapsed &&
         <div style={{ flex: 1 }}>
           <Text size="sm" fw={500}>
             Мария Ивановна
@@ -49,10 +54,12 @@ export function UserButton() {
             +7(925)987-65-43
           </Text>
         </div>
+}
 
         {/* <IconChevronRight style={{ width: rem(14), height: rem(14) }} stroke={1.5} /> */}
       </Group>
     </UnstyledButton>
+    </Tooltip>
     </Box>
   );
 }

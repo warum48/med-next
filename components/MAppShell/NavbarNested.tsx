@@ -18,6 +18,8 @@ import { demoPages } from '@/global/ROUTES';
 import { useCookies } from 'react-cookie';
 import React from 'react';
 import { usePages } from '@/context/usePages';
+import { GlobalContext } from '@/context/ContextGlobal';
+import { CollapseButton } from './CollapseButton';
 
 type PageItem =  {
   label: string;
@@ -37,24 +39,31 @@ type TProps = {
 export function NavbarNested({setOpened}:TProps) {
   const {pages} = usePages();
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  const {navBarCollapsed, isMobile} = React.useContext(GlobalContext);
   //const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
   const links = pages.map((item:PageItem) => <LinksGroup {...item } key={item.label} setOpened={setOpened}/>);
   const demolinks = demoPages.map((item) => <LinksGroup {...item} key={item.label} setOpened={setOpened}/>);
 
   return (
-    <nav className={classes.navbar}>
+    <nav className={`${classes.navbar} ${navBarCollapsed? classes.collapsed : ''}`}>
      {cookieToken.mednekot &&
       <div className={classes.header}>
         <UserButton />
+        { !isMobile && <CollapseButton />}
+        
       </div>
 }
+
+
 
       <ScrollArea className={classes.links}>
         <div className={classes.linksInner}>{links}</div>
        
       
         <Divider my="sm" mt='-sm'/>
+        { !navBarCollapsed && 
        <Text size='xs' pl='xl' >демо ссылки:</Text>
+        }
         <div className={classes.linksInner}>{demolinks}</div> 
       </ScrollArea>
 

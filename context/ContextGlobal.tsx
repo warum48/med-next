@@ -23,6 +23,8 @@ interface IContext {
   isDebug: boolean;
   DesignService: TDesignService;
   isMobile?: boolean;
+  navBarCollapsed: boolean;
+  setNavBarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
  
   /*  SearchParamsService: TSearchParamsService;  //много функций
   
@@ -42,6 +44,7 @@ type Props = {
 export const GlobalProvider = ({ children }: Props) => {
 const isDemo = false;
   const [asideOpen, setAsideOpen] = React.useState(false);
+  const [navBarCollapsed, setNavBarCollapsed] = React.useState(true); //TODO make persistent
   const [isDebug, setIsDebug] = useState<boolean>(false);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   
@@ -65,6 +68,17 @@ const isDemo = false;
     // if(window?.location?.origin?.includes('localhost')){
     //  setIsDebug(true);
     // }
+    const handleResize = () => {
+      if (isMobile) {
+        setNavBarCollapsed(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const value = {
@@ -77,6 +91,8 @@ const isDemo = false;
     isDebug,
     DesignService,
     isMobile,
+    navBarCollapsed,
+    setNavBarCollapsed
     
     /* setIsDebug,
     

@@ -46,6 +46,7 @@ export function MAppShell({ children }: any) {
   const { DesignService, asideOpen, setAsideOpen } = React.useContext(GlobalContext);
   // const [opened, { toggle }] = useDisclosure();
   const [opened, setOpened] = useState(false);
+  const {navBarCollapsed} = React.useContext(GlobalContext);
   //const location = useLocation();
   const headerProps = { opened, setOpened, asideOpen, setAsideOpen };
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
@@ -58,7 +59,7 @@ export function MAppShell({ children }: any) {
       header={{ height: { base: 60, md: 70, lg: 80 } }}
       navbar={{
         width: {
-          base: cookieToken.mednekot ? 320 : 1, //320
+          base: cookieToken.mednekot ? (navBarCollapsed? 98 : 320) : 1, //320
           // md: 300, lg: 400
         },
         breakpoint: 'md',

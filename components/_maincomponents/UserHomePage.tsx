@@ -61,7 +61,7 @@ export const UserHomePage = () => {
   const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - ${theme.spacing.md} / 2)`;
 
   return (
-    <>
+    <Center className="ccc">
       <Box
         p={{ base: 'sm', md: 0 }}
         mt={{
@@ -193,6 +193,6 @@ export const UserHomePage = () => {
           <CarouselMain />
         </Container>
       </Box>
-    </>
+    </Center>
   );
 };

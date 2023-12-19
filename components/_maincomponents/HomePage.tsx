@@ -48,8 +48,9 @@ import { CarouselMain } from './Carousel';
 
 
     return (
-      <>
+      <Center className="ccc">
         <Box
+        className="bbb"
           //my="-0.125rem"
           mt="-xs" 
          maw={1350}
@@ -137,7 +138,7 @@ import { CarouselMain } from './Carousel';
         </Box>
   
        {/* <FastCommentBlock /> */}
-      </>
+      </Center>
     );
   };
   

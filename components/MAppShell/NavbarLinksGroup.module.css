@@ -91,6 +91,21 @@
   .chevron {
     transition: transform 200ms ease;
   }
+
+  .chevron_collapsed {
+    transition: transform 200ms ease;
+    position: absolute;
+    top: 7px;
+    left: 40px;
+  }
+
+  .green_dot{
+width: 5px;
+height:5px;
+border-radius: 10px;
+background-color: var(--mantine-color-virilis-green);
+margin: 10px 0;
+  }
   
 
   /*
