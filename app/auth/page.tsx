@@ -18,6 +18,7 @@ import {
   Box,
   useMantineTheme,
   Center,
+  Switch,
 } from '@mantine/core';
 import { ApolloSettingsContext } from '@/apollo/context';
 import { phoneNumberVar } from '@/apollo/state/Registration';
@@ -46,6 +47,7 @@ import { AuthContext } from '@/context/AuthContext';
 export default function AuthPhonePass() {
   console.log('AuthPhonePass()')
   const theme = useMantineTheme();
+  const [callCodeAuth, setCallCodeAuth] = React.useState<boolean>(false); // !! or by password
   const {setCookieToken} = React.useContext(ApolloSettingsContext);
   //const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
   const phoneNumberVar_re = useReactiveVar(phoneNumberVar);
@@ -101,9 +103,11 @@ export default function AuthPhonePass() {
         <Center><Box>
         <Title1_main 
         //align="center"
+        ta="center"
         >Добро пожаловать!</Title1_main>
         <Text c="dimmed" size="sm"
-        // align="center" 
+         //align="center" 
+         ta="center"
          mt={5}>
           Нет аккаунта?{' '}
           <Link href={RoutesTypes.Registration}>
@@ -116,6 +120,12 @@ export default function AuthPhonePass() {
         </Center>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        <Switch
+      //defaultChecked
+      label="Вход без пароля"
+      checked={callCodeAuth}
+      onChange={(event) => setCallCodeAuth(event.currentTarget.checked)}
+    />
         <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
           <FloatingLabelInputMask
             label="Телефон"
@@ -128,7 +138,9 @@ export default function AuthPhonePass() {
             name="phone"
             id="phone"
   />
-          
+
+  {! callCodeAuth && 
+          <>
           <FloatingLabelInput
             label="Пароль"
             form={form}
@@ -145,6 +157,9 @@ export default function AuthPhonePass() {
               Забыли пароль?
             </Anchor>
           </Group>
+          </>
+}
+
           <Button fullWidth mt="xl" type='submit'>
             Войти
           </Button>
