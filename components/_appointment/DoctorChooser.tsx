@@ -14,15 +14,20 @@ import classes from './DoctorChooser.module.css';
 import { profAr } from './mockdata';
 import { Doctor } from '@/__generated__/graphql';
 import { Preloader } from '../Preloader/Preloader';
+import { useFetch } from '@/services/useFetch';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
   //const { classes, theme } = useHeadersStyles();
+  const isDemo = false;
   const {
     data: data_doctors, //DoctorResult
     loading: loading_doctors,
     error: error_doctors,
-  } = useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
+  } = isDemo
+    ? useFetch('/mock/getDoctors.json')
+    : useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
+  //const {data: dataAbonement, loading: loadingAbonement, error: errorAbonement} = useFetch("/mock/abonements.json");
 
   /*[
   'Терапевт',
@@ -66,13 +71,13 @@ export const DoctorChooser = () => {
         ))}
       </SimpleGrid>
         */}
+       
       {data_doctors && (
         <div className={classes.container}>
           {data_doctors?.getDoctors?.data?.map((item: Doctor, index: number) => (
-            <>
+            
               <DoctorInfo key={'doctor' + index} {...item} />
-              {/*} <div className={classes.gridItem} key={'doctor' + index}> </div> */}
-            </>
+             
           ))}
         </div>
       )}

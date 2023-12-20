@@ -47,7 +47,7 @@ export const ServiceChooser = ({nextStep}: TProps) => {
       <Group>
         {curNestingPath &&
           curNestingPath.map((item: any, index: number) => (
-            <Group>
+            <Group key={"group_serv"+index}>
                 {index > 0 && (
                     <Card_pretitle>/ {' '}</Card_pretitle>
                 )}

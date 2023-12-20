@@ -105,9 +105,8 @@ TProps) => {
               <div className={classes.medcontainer}>
                 <Stack gap="xs">
                   {
-                    // data_medcenter?.getMedicalCenters?.data
-                    Array.from({ length: 3 })
-                      // ?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
+                    //Array.from({ length: 3 })
+                     data_medcenter?.getMedicalCenters?.data?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
                       .map((item: any, index: number) => (
                         <Checkbox
                           key={'adrcb' + index}
@@ -127,12 +126,12 @@ TProps) => {
                 </Stack>
                 <Stack gap="xs">
                   {
-                    //data_medcenter?.getMedicalCenters?.data
-                    Array.from({ length: 3 })
-                      //?.slice(
-                      //  Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2),
-                      //  Math.floor(data_medcenter?.getMedicalCenters?.data?.length)
-                      //)
+                    //
+                    //Array.from({ length: 3 })
+                    data_medcenter?.getMedicalCenters?.data?.slice(
+                        Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2),
+                        Math.floor(data_medcenter?.getMedicalCenters?.data?.length)
+                      )
                       .map((item: any, index: number) => (
                         <Checkbox
                           key={'adrcb' + index + 50}

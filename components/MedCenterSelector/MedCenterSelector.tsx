@@ -99,10 +99,8 @@ import { GroupStretcher } from './GroupStretcher';
                
                   <GroupStretcher>
                     {
-                      // data_medcenter?.getMedicalCenters?.data
-                      Array.from({ length: 6 })
-                        // ?.slice(0, Math.floor(data_medcenter?.getMedicalCenters?.data?.length / 2))
-                        .map((item: any, index: number) => (
+                       //Array.from({ length: 6 }).map((item: any, index: number) => (
+                       data_medcenter?.getMedicalCenters?.data?.map((item: any, index: number) => (
                           <Checkbox
                             key={'adrcb' + index}
                             value={'ad' + index}

@@ -18,6 +18,7 @@ export const useFetch = <T,>(url: string) => {
       try {
         const response = await fetch(url);
         const jsonData: T = await response.json();
+        console.log('---data---', jsonData);
         setFetchState({
           loading: false,
           error: null,

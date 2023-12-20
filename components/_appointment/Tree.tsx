@@ -38,7 +38,7 @@ const TreeItem: React.FC<TreeItemProps> = ({ xmembers, name, nextStep }) => {
       </Box>
       <div className={isExpanded ? classes.expanded : classes.collapsed}>
         {xmembers.map((item, index) => (
-          <Box ml={36}>
+          <Box ml={36} key={'item-tree'+index}>
             <TreeItem key={index} xmembers={item.xmembers} name={item.name} nextStep={nextStep}/>
           </Box>
         ))}

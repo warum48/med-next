@@ -28,8 +28,8 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, se
 
   console.log('pathname.substring(1, pathname.length)', pathname.substring(1, pathname.length));
 
-  const items = (hasLinks ? links : []).map((link) => (
-    <Tooltip label={link.label} disabled={!navBarCollapsed} offset={-5} transitionProps={{ transition: 'pop', duration: 300 }}>
+  const items = (hasLinks ? links : []).map((link, index) => (
+    <Tooltip label={link.label} disabled={!navBarCollapsed} offset={-5} transitionProps={{ transition: 'pop', duration: 300 }} key={"tooltip_menu-l-g"+index}>
     <Link
    // ml='xl'
       //className={classes.link}
