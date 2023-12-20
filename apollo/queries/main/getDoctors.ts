@@ -14,9 +14,9 @@ query getDoctors($filteringAttrs: DoctorInput, $orderingAttrs: DoctorInput, $ski
             birthDate
             photo
             doctorCategoryId
-            privatePhone
-            workPhone
-            email
+            
+            
+            
             commonExperience
             isActive
             doctorCategory{

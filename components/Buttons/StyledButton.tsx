@@ -9,7 +9,16 @@ import classes from './StyledButton.module.css';
 import { IconInfoSmall } from '@tabler/icons-react';
 
 type TProps = {
-  appearence?: 'intro_second' | 'main_second' | 'main_first' | 'main_cancel' | 'main_small' | 'main_gradient' | 'main_second_outlined' | 'info_circle' | 'close';
+  appearence?:
+    | 'intro_second'
+    | 'main_second'
+    | 'main_first'
+    | 'main_cancel'
+    | 'main_small'
+    | 'main_gradient'
+    | 'main_second_outlined'
+    | 'info_circle'
+    | 'close';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
@@ -37,8 +46,7 @@ export const StyledButton = ({
         //gradient={{ from: 'pink', to: 'DeepPink' }}
         size="xl"
         className={classes.intro_second}
-
-       // className={classes.main_second}
+        // className={classes.main_second}
         mt={40}
         //style={{
         //  borderRadius:
@@ -56,9 +64,9 @@ export const StyledButton = ({
   if (appearence == 'main_second') {
     return (
       <Button
-       // variant="gradient"
+        // variant="gradient"
         // gradient={{ from: 'pink', to: '#ff3ebb' }}
-      //  gradient={{ from: 'pink', to: '#fd55d0' }}
+        //  gradient={{ from: 'pink', to: '#fd55d0' }}
         size="md" //"sm"
         //className={classes.control}
         className={classes.main_second}
@@ -195,43 +203,42 @@ export const StyledButton = ({
   if (appearence == 'info_circle') {
     return (
       <Button
-      m={0}
+        m={0}
         size="compact-xs"
         className={classes.main_small}
         radius={'xl'}
-        w= '18px'
-        h='18px'
-        style={{top:0}}
-        //!!compact
-        // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
-        // sx={{marginLeft:'auto'}}
+        w="18px"
+        h="18px"
+        //style={{ top: 0 }}
         onClick={onClick}
         {...props}
       >
-       <Box ml='-xs'> <IconInfoSmall style={{position:'absolute', top: '-8px', left:'-7px'}} size={30}/> </Box>
+        <Box ml="-xs">
+          {' '}
+          <IconInfoSmall
+            style={{ position: 'absolute', top: '-8px', left: '-7px' }}
+            size={30}
+          />{' '}
+        </Box>
       </Button>
     );
   }
 
   if (appearence == 'close') {
     return (
-  <Button
-    p={0}
-          size="compact-xs"
-          variant="light"
-          w='30px'
-          h='30px'
-          radius={'100px'}
-        //  style={{ position: 'absolute', top: '4px', right: '4px', borderRadius:'100px', width:'30px', height:'30px' }}
-          //onClick={() => setExpanded(!expanded)}
-          onClick={onClick}
-        >
-           ✕
-        </Button>
-  );
-  
-}
-
+      <Button
+        p={0}
+        size="compact-xs"
+        variant="light"
+        w="30px"
+        h="30px"
+        radius={'100px'}
+        onClick={onClick}
+      >
+        ✕
+      </Button>
+    );
+  }
 
   return <Button>{children}</Button>;
 };

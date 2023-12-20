@@ -22,7 +22,7 @@ interface IContext {
   pathtoserver: string;
   isDebug: boolean;
   DesignService: TDesignService;
-  isMobile?: boolean;
+  isMobile: boolean | undefined;
   navBarCollapsed: boolean;
   setNavBarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
  

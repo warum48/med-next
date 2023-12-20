@@ -12,6 +12,8 @@ import { TitleLabel } from '../TextBlocks/TextBlocks';
 import { GET_DOCTORS } from '@/apollo/queries/main/getDoctors';
 import classes from './DoctorChooser.module.css';
 import { profAr } from './mockdata';
+import { Doctor } from '@/__generated__/graphql';
+import { Preloader } from '../Preloader/Preloader';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
@@ -22,35 +24,7 @@ export const DoctorChooser = () => {
     error: error_doctors,
   } = useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
 
-  return (
-    <> {/*
-      <TitleLabel>
-        Наши врачи ( <u>популярные</u> / <u>все</u> )
-      </TitleLabel>
-     <Group 
-            grow
-            >
-        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
-          <DoctorInfo key={'uii' + index} {...item} />
-        ))}
-        </Group>*/}
-
-      {/*
-      <SimpleGrid
-        // grow
-        cols={{ base: 1, lg: 2 }}
-        spacing={{ base: 'md', sm: 'md' }}
-        verticalSpacing={{ base: 'md', sm: 'md' }}
-      >
-        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
-          <DoctorInfo key={'uii' + index} {...item} />
-        ))}
-      </SimpleGrid>
-        */}
-      <div 
-      className={classes.container}
-      >
-       {[
+  /*[
   'Терапевт',
   'Терапевт',
   'Терапевт',
@@ -64,13 +38,45 @@ export const DoctorChooser = () => {
   'Стоматолог',
   'Стоматолог',
   'Стоматолог-терапевт',
-].map((item: string, index: number) => (
-         <>
-            <DoctorInfo  key={'doctor' + index} description={item}/>
-           {/*} <div className={classes.gridItem} key={'doctor' + index}> </div> */}
-           </>
+]*/
+
+  return (
+    <>
+      {' '}
+      {/*
+      <TitleLabel>
+        Наши врачи ( <u>популярные</u> / <u>все</u> )
+      </TitleLabel>
+     <Group 
+            grow
+            >
+        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
+          <DoctorInfo key={'uii' + index} {...item} />
         ))}
-      </div>
+        </Group>*/}
+      {/*
+      <SimpleGrid
+        // grow
+        cols={{ base: 1, lg: 2 }}
+        spacing={{ base: 'md', sm: 'md' }}
+        verticalSpacing={{ base: 'md', sm: 'md' }}
+      >
+        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
+          <DoctorInfo key={'uii' + index} {...item} />
+        ))}
+      </SimpleGrid>
+        */}
+      {data_doctors && (
+        <div className={classes.container}>
+          {data_doctors?.getDoctors?.data?.map((item: Doctor, index: number) => (
+            <>
+              <DoctorInfo key={'doctor' + index} {...item} />
+              {/*} <div className={classes.gridItem} key={'doctor' + index}> </div> */}
+            </>
+          ))}
+        </div>
+      )}
+      {loading_doctors && <Preloader />}
     </>
   );
 };
