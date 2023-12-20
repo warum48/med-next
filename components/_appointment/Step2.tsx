@@ -130,19 +130,20 @@ export const Step2 = ({ setAppointmentType, nextStep }: TProps) => {
             <Box>
               <FormItemLabel>Популярные:</FormItemLabel>
               <Space h="sm" />
-              <Group>
+            {/*}  <Group>
                 {profAr.map((item: string, index: number) => (
                   <Button variant="outline" key={'profAr' + index}>
                     {item}
                   </Button>
                 ))}
-              </Group>
+                </Group> */}
+                <SpecialityChooser type='popular'/>
              
             </Box>
             <Box>
               <FormItemLabel>Все:</FormItemLabel>
               <Space h="sm" />
-              <SpecialityChooser />
+              <SpecialityChooser type='all'/>
             </Box>
           </Stack>
         </Tabs.Panel>

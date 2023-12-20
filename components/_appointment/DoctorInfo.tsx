@@ -115,7 +115,7 @@ export function DoctorInfo({
             {/*<Avatar src={photo} size={expanded && !isMobile ? 130 : 80} radius="md" />*/}
             <DoctorAvatarContainer photo={photo} expanded={expanded} isMobile={isMobile}  setExpanded={setExpanded} />
             <div>
-              <Card_pretitle>{id || 'Хирург'}</Card_pretitle>
+              <Card_pretitle>{id || 'Доктор'}</Card_pretitle>
               <Card_title>{lastName + ' ' + firstName + ' ' + patronymic || 'Иванов Иван Иванович'}</Card_title>
               <br />
               {/*

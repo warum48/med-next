@@ -83,11 +83,7 @@ function Page({ params }: { params: { slug: string } }) {
     error: servicesError,
   } = useQuery(GET_SERVICES, { context: { clientName: 'main' } });*/
 
-  const {
-    data: data_services_directions,
-    loading: loading_services_directions,
-    error: error_services_directions,
-  } = useQuery(GET_SERVICES_TYPES, { context: { clientName: 'main' } });
+ 
 
   //TODO write a useQuery for getServices
   const [active, setActive] = useState(stepId ? Number(stepId) - 1 : 0); //0

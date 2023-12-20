@@ -120,5 +120,5 @@ export function SpecialityInfo({
     </Group> */}
       </Stack>
     </CardContainer>
-  );
+  ) ;
 }
