@@ -3,7 +3,7 @@ import { IconInfoSmall } from '@tabler/icons-react';
 import * as React from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
-type TProps = {  expanded: boolean; showWhenCollapsed: boolean; setExpanded: Dispatch<SetStateAction<boolean>> };
+type TProps = {  expanded: boolean; showWhenCollapsed?: boolean; setExpanded: Dispatch<SetStateAction<boolean>> };
 
 export const CardExpandButton = ({  expanded = false, setExpanded, showWhenCollapsed=true }: TProps) => {
 
