@@ -116,6 +116,7 @@ type CityResult {
 
 type ComplexService {
   id: Int!
+  clientId: Int
   serviceId: Int!
   description: String
   isActive: Boolean

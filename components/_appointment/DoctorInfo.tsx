@@ -70,8 +70,9 @@ export function DoctorInfo({
   lastName,
   patronymic,
   photo,
-  birthDate
-}: Doctor) {
+  birthDate,
+  viewName
+}: any) {
   //Doctor
   // const { classes } = useStyles();
   //const { classes: headerClasses } = useHeadersStyles();
@@ -115,7 +116,7 @@ export function DoctorInfo({
             {/*<Avatar src={photo} size={expanded && !isMobile ? 130 : 80} radius="md" />*/}
             <DoctorAvatarContainer photo={photo} expanded={expanded} isMobile={isMobile}  setExpanded={setExpanded} />
             <div>
-              <Card_pretitle>{id || 'Доктор'}</Card_pretitle>
+              <Card_pretitle>{viewName|| 'Доктор'}</Card_pretitle>
               <Card_title>{lastName + ' ' + firstName + ' ' + patronymic || 'Иванов Иван Иванович'}</Card_title>
               <br />
               {/*
