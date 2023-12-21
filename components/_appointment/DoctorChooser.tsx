@@ -48,31 +48,7 @@ export const DoctorChooser = () => {
 
   return (
     <>
-      {' '}
-      {/*
-      <TitleLabel>
-        Наши врачи ( <u>популярные</u> / <u>все</u> )
-      </TitleLabel>
-     <Group 
-            grow
-            >
-        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
-          <DoctorInfo key={'uii' + index} {...item} />
-        ))}
-        </Group>*/}
-      {/*
-      <SimpleGrid
-        // grow
-        cols={{ base: 1, lg: 2 }}
-        spacing={{ base: 'md', sm: 'md' }}
-        verticalSpacing={{ base: 'md', sm: 'md' }}
-      >
-        {data_doctors?.getDoctors?.data?.map((item: any, index: number) => (
-          <DoctorInfo key={'uii' + index} {...item} />
-        ))}
-      </SimpleGrid>
-        */}
-       
+      
       {data_doctors && (
         <div className={classes.container}>
           {//data_doctors?.getDoctors?.data?.map((item: Doctor, index: number) => (

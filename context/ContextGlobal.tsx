@@ -44,7 +44,7 @@ type Props = {
 export const GlobalProvider = ({ children }: Props) => {
 const isDemo = false;
   const [asideOpen, setAsideOpen] = React.useState(false);
-  const [navBarCollapsed, setNavBarCollapsed] = React.useState(true); //TODO make persistent
+  const [navBarCollapsed, setNavBarCollapsed] = React.useState(false); //TODO make persistent
   const [isDebug, setIsDebug] = useState<boolean>(false);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   

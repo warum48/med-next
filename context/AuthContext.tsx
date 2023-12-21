@@ -27,6 +27,8 @@ export const AuthProvider = ({ children }: any) => {
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
+  
+
   //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   //const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
   //console.log('---cookieToken', cookieToken.mednekot);

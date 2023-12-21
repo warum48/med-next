@@ -7,6 +7,7 @@ import { AuthProvider } from '@/context/AuthContext';
 //import { ApolloWrapper } from '@/apollo/apollo-wrapper';
 import { ApolloSettingsProvider } from '@/apollo';
 import dynamic from 'next/dynamic';
+import { UserProvider } from '@/context/UserContext';
 
 const MAppShell=  dynamic(() => import('@/components/MAppShell/MAppShell').then((mod) => mod.MAppShell) , {
   ssr: false,
@@ -61,9 +62,11 @@ export const ProvidersWrapper = ({ children }: any) => {
     <ApolloSettingsProvider>
     <GlobalProvider>
       <AuthProvider>
+      <UserProvider>
         <MantineProvider theme={{ ...addColors, ...theme}} cssVariablesResolver={resolver}>
           <MAppShell>{children}</MAppShell>
         </MantineProvider>
+        </UserProvider>
       </AuthProvider>
     </GlobalProvider>
     </ApolloSettingsProvider>

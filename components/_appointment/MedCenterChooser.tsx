@@ -41,6 +41,7 @@ import { AuthContext } from '@/context/AuthContext';
 
 type TProps = {
   form: any;
+ // labelType
   //data_medcenter: any;//MedicalCenterResult;//GetMedicalCentersQuery | undefined; //any;
   //loading_mc: boolean;
   //error_mc: ApolloError | undefined;

@@ -39,7 +39,7 @@ import { InnerPageContainer } from '../../components/Containers/InnerPageContain
 import { StyledButton } from '../../components/Buttons/StyledButton';
 import { DatePicker, DatePickerInput } from '@mantine/dates';
 import { FromTo } from '../../components/Dates/FromTo';
-import { Title1_main } from '@/components/TextBlocks/TextBlocks';
+import { Title1_main, TitleLabel } from '@/components/TextBlocks/TextBlocks';
 import { useMediaQuery } from '@mantine/hooks';
 import { MedCenterChooser } from '@/components/_appointment/MedCenterChooser';
 import { MedCenterSelector } from '@/components/MedCenterSelector/MedCenterSelector';
@@ -189,7 +189,7 @@ export default function Documents() {
                   </Group>
                 </Radio.Group>
                
-                <MedCenterSelector form={form}/>
+                <MedCenterSelector form={form} Label={TitleLabel}/>
 
                 <Space h="xs" />
                 <Center>

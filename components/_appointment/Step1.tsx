@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { PopupAlertIntro } from './PopupAlertIntro';
 import { medCenterInitWarningShownVar } from '@/apollo/appstate/globalvars';
 import { useReactiveVar } from '@apollo/client';
+import { MedCenterSelector } from '../MedCenterSelector/MedCenterSelector';
+import { GroupStretcher } from '../MedCenterSelector/GroupStretcher';
 
 type TProps = {
   form: any;
@@ -77,14 +79,17 @@ export const Step1 = ({ form }: TProps) => {
           </Box>
           <Divider/>
 
-          <MedCenterChooser
+        {/* <MedCenterChooser
             form={form}
             //data_medcenter={data_medcenter}
             //refetch_mc={refetch_mc}
             //networkStatus_mc={networkStatus_mc}
             //loading_mc={loading_mc}
             //error_mc={error_mc}
-          />
+          /> */}
+<Box w='100%'>
+          <MedCenterSelector form={form} />
+          </Box>
           <Divider/>
 
           <SwitchWithTextMantine
