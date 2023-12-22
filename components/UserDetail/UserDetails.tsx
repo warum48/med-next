@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import * as React from 'react';
 //import { GET_USER_DATA } from '../../_apollo/queries/accounts/getUserDetail';
 import { Box, Text } from '@mantine/core';
-import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserDetail';
+import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
 
 export const UserDetails = () => {
   console.log('UserDetails ');
