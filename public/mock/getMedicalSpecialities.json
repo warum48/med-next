@@ -1,0 +1,109 @@
+{
+        "getMedicalSpecialities": {
+            "data": [
+                {
+                    "id": 73,
+                    "clientId": 26635,
+                    "viewName": "\u0413\u0435\u043c\u0430\u0442\u043e\u043b\u043e\u0433\u0438\u044f",
+                    "searchName": "\u0413\u0435\u043c\u0430\u0442\u043e\u043b\u043e\u0433",
+                    "viewDescription": "\u0432\u0440\u0430\u0447-\u0433\u0435\u043c\u0430\u0442\u043e\u043b\u043e\u0433",
+                    "searchDescription": "\u0432\u0440\u0430\u0447-\u0433\u0435\u043c\u0430\u0442\u043e\u043b\u043e\u0433",
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 85,
+                    "clientId": 85169,
+                    "viewName": "\u0414\u0435\u0442\u0441\u043a\u0430\u044f \u0445\u0438\u0440\u0443\u0440\u0433\u0438\u044f",
+                    "searchName": "\u0425\u0438\u0440\u0443\u0440\u0433",
+                    "viewDescription": "\u0432\u0440\u0430\u0447-\u0434\u0435\u0442\u0441\u043a\u0438\u0439 \u0445\u0438\u0440\u0443\u0440\u0433",
+                    "searchDescription": "\u0432\u0440\u0430\u0447-\u0434\u0435\u0442\u0441\u043a\u0438\u0439 \u0445\u0438\u0440\u0443\u0440\u0433",
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 90,
+                    "clientId": 85174,
+                    "viewName": "\u042d\u043d\u0434\u043e\u043a\u0440\u0438\u043d\u043e\u043b\u043e\u0433, \u043f\u0435\u0434\u0438\u0430\u0442\u0440",
+                    "searchName": "\u042d\u043d\u0434\u043e\u043a\u0440\u0438\u043d\u043e\u043b\u043e\u0433, \u043f\u0435\u0434\u0438\u0430\u0442\u0440",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 91,
+                    "clientId": 88923000,
+                    "viewName": "\u0410\u0443\u0434\u0438\u043e\u043b\u043e\u0433",
+                    "searchName": "\u0410\u0443\u0434\u0438\u043e\u043b\u043e\u0433",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 92,
+                    "clientId": 89194000,
+                    "viewName": "\u041c\u0435\u0434\u0441\u0435\u0441\u0442\u0440\u0430 \u043f\u043e \u0424\u0422\u041b",
+                    "searchName": "\u041c\u0435\u0434\u0441\u0435\u0441\u0442\u0440\u0430 \u043f\u043e \u0424\u0422\u041b",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 94,
+                    "clientId": 89244000,
+                    "viewName": "\u041b\u043e\u0433\u043e\u043f\u0435\u0434-\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433",
+                    "searchName": "\u041b\u043e\u0433\u043e\u043f\u0435\u0434-\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 95,
+                    "clientId": 27118,
+                    "viewName": "\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0430\u044f \u0441\u0435\u0441\u0442\u0440\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u043d\u043e\u0439",
+                    "searchName": "\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0430\u044f \u0441\u0435\u0441\u0442\u0440\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u043d\u043e\u0439",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 97,
+                    "clientId": 89191000,
+                    "viewName": "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u043f\u043e \u043f\u043b\u0430\u0432\u0430\u043d\u0438\u044e",
+                    "searchName": "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u043f\u043e \u043f\u043b\u0430\u0432\u0430\u043d\u0438\u044e",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 115,
+                    "clientId": 89004000,
+                    "viewName": "\u0410\u0433\u0435\u043d\u0442",
+                    "searchName": "\u0410\u0433\u0435\u043d\u0442",
+                    "viewDescription": null,
+                    "searchDescription": null,
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                },
+                {
+                    "id": 117,
+                    "clientId": 89021000,
+                    "viewName": "\u041e\u0441\u0442\u0435\u043e\u043f\u0430\u0442\u0438\u044f",
+                    "searchName": "\u041e\u0441\u0442\u0435\u043e\u043f\u0430\u0442",
+                    "viewDescription": "\u0432\u0440\u0430\u0447-\u043e\u0441\u0442\u0435\u043e\u043f\u0430\u0442",
+                    "searchDescription": "\u0432\u0440\u0430\u0447-\u043e\u0441\u0442\u0435\u043e\u043f\u0430\u0442",
+                    "isActive": true,
+                    "__typename": "MedicalSpeciality"
+                }
+            ],
+            "statusCode": 200,
+            "details": "Ok",
+            "__typename": "MedicalSpecialityResult"
+        }
+    }

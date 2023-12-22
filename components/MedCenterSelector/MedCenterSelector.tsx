@@ -57,7 +57,7 @@ import { useFetch } from '@/services/useFetch';
   //networkStatus_mc,
   TProps) => {
     //  const { classes, theme } = useHeadersStyles();
-    const isDemo = React.useContext(GlobalContext);
+    const {isDemo} = React.useContext(GlobalContext);
     const {
       data: data_medcenter,
       loading: loading_mc,

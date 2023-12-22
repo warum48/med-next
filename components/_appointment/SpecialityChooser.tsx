@@ -15,15 +15,25 @@ import { SpecialityInfo } from './SpecialityInfo';
 import { profAr } from './mockdata';
 import { GET_SERVICES_TYPES } from '@/apollo/queries/main/getServicesTypes';
 import { Preloader } from '../Preloader/Preloader';
+import { GET_MEDICAL_SPECIALITIES } from '@/apollo/queries/main/getMedicalSpecialities';
+import React from 'react';
+import { GlobalContext } from '@/context/ContextGlobal';
+import { useFetch } from '@/services/useFetch';
+import { GetMedicalSpecialitiesQuery } from '@/__generated__/graphql';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const SpecialityChooser = ({ type = 'all' }: { type?: string }) => {
   //const { classes, theme } = useHeadersStyles();
+  const { isDemo } = React.useContext(GlobalContext);
   const {
     data: data_services_types,
     loading: loading_services_typess,
     error: error_services_types,
-  } = useQuery(GET_SERVICES_TYPES, { context: { clientName: 'main' } });
+  } = 
+    isDemo
+    ? useFetch<GetMedicalSpecialitiesQuery>('/mock/getMedicalSpecialities.json')
+    : 
+    useQuery(GET_MEDICAL_SPECIALITIES, { context: { clientName: 'main' } });
 
   return (
     <>
@@ -31,16 +41,16 @@ export const SpecialityChooser = ({ type = 'all' }: { type?: string }) => {
         <div className={classes.container}>
           {
             //profAr
-            data_services_types?.getServicesTypes?.data?.map((item: any, index: number) =>  (
-               <SpecialityInfo key={'doctor' + index} {...item} /> 
+            data_services_types?.getMedicalSpecialities?.data?.map((item: any, index: number) => (
+              <SpecialityInfo key={'doctor' + index} {...item} />
             ))
           }
         </div>
       ) : (
         <Group>
-          {data_services_types?.getServicesTypes?.data?.map((item: any, index: number) => (
+          {data_services_types?.getMedicalSpecialities?.data?.map((item: any, index: number) => (
             <Button variant="outline" key={'profAr' + index}>
-              {item.name}
+              {item.viewName}
             </Button>
           ))}
         </Group>

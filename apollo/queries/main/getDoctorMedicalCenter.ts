@@ -24,8 +24,7 @@ query getDoctorMedicalCenter($filteringAttrs: DoctorMedicalCenterInput, $orderin
                 birthDate
                 photo
                 doctorCategoryId
-                privatePhone
-                workPhone
+               
                 email
                 commonExperience
                 isActive
@@ -55,16 +54,7 @@ query getDoctorMedicalCenter($filteringAttrs: DoctorMedicalCenterInput, $orderin
                 longitude
                 latitude
                 description
-                inn
-                bankBic
-                settlementAccount
-                correspondentAccount
-                kpp
-                isActive
-                logo
-                websiteUrl
-                phoneFax
-                dmsPhone
+                
                 workTime
                 collectionTestsTime
                 vaccinationTime

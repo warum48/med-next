@@ -73,7 +73,7 @@ export function RegForm({ setStep }: TRegFormProps) {
       };
     },
   });
-  const isDemo = React.useContext(GlobalContext);
+  const {isDemo} = React.useContext(GlobalContext);
 
   const {
     data: data_config, //DoctorResult

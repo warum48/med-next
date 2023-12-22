@@ -62,7 +62,7 @@ export function NavbarNested({setOpened}:TProps) {
       
         <Divider my="sm" mt='-sm'/>
         { !navBarCollapsed && 
-       <Text size='xs' pl='xl' >демо ссылки:</Text>
+       <Text size='xs' pl='xl' >демо авторизация:</Text>
         }
         <div className={classes.linksInner}>{demolinks}</div> 
       </ScrollArea>

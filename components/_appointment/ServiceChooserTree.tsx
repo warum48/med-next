@@ -28,7 +28,7 @@ type TProps = {
 
 export const ServiceChooserTree = ({nextStep}: TProps) => {
   //const { classes, theme } = useHeadersStyles();
-  const isDemo = React.useContext(GlobalContext);
+  const {isDemo} = React.useContext(GlobalContext);
   const {
     data, //DoctorResult
     loading,

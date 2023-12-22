@@ -23,13 +23,13 @@ import { GlobalContext } from '@/context/ContextGlobal';
 export const DoctorChooser = () => {
   //const { classes, theme } = useHeadersStyles();
   //const isDemo = false;
-  const isDemo = React.useContext(GlobalContext);
+  const {isDemo} = React.useContext(GlobalContext);
   const {
     data: data_doctors, //DoctorResult
     loading: loading_doctors,
     error: error_doctors,
   } = isDemo
-    ? useFetch('/mock/getDoctors.json')
+    ? useFetch('/mock/getDoctorMedicalCenter.json')
     : useQuery(GET_DOCTOR_MEDICAL_CENTER, { context: { clientName: 'main' } }); //useQuery(GET_DOCTORS, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
   //const {data: dataAbonement, loading: loadingAbonement, error: errorAbonement} = useFetch("/mock/abonements.json");
 
@@ -51,7 +51,7 @@ export const DoctorChooser = () => {
 
   return (
     <>
-      
+      {/*JSON.stringify(data_doctors)*/} 
       {data_doctors && (
         <div className={classes.container}>
           {//data_doctors?.getDoctors?.data?.map((item: Doctor, index: number) => (

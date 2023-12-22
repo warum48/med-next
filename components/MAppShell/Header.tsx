@@ -21,7 +21,7 @@ import { GlobalContext } from '@/context/ContextGlobal';
 
 export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) => {
   const theme = useMantineTheme();
-  const isDemo = React.useContext(GlobalContext);
+  const {isDemo} = React.useContext(GlobalContext);
   const largeScreen = useMediaQuery('(min-width: 88em)');
   const midUpScreen = useMediaQuery('(min-width: 75em)');
   const [showSettings, setShowSettings] = React.useState(false);
@@ -38,6 +38,7 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
         className={styles.burger}
       />
       <Box className={styles.logoContainer}>
+     
         {!isDemo ? (
           <Image className={styles.logo} fit="contain" src="/images/logo.svg" height={40} />
         ) : (
