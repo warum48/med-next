@@ -1,0 +1,17 @@
+{
+        "getUserAdminInfo": {
+            "data": [
+                {
+                    "id": 1,
+                    "clientId": null,
+                    "userId": null,
+                    "registrationVisibleFields": "first_name, last_name, patronymic, email, gender, phone_number, birth_date, additional_phone_number, password",
+                    "registrationRequiredFields": "first_name, last_name, email, phone_number, birth_date, password",
+                    "__typename": "UserAdmin"
+                }
+            ],
+            "statusCode": 200,
+            "details": "Ok",
+            "__typename": "UserAdminResult"
+        }
+    }

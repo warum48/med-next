@@ -16,11 +16,14 @@ import { Doctor } from '@/__generated__/graphql';
 import { Preloader } from '../Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
 import { GET_DOCTOR_MEDICAL_CENTER } from '@/apollo/queries/main/getDoctorMedicalCenter';
+import React from 'react';
+import { GlobalContext } from '@/context/ContextGlobal';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 export const DoctorChooser = () => {
   //const { classes, theme } = useHeadersStyles();
-  const isDemo = false;
+  //const isDemo = false;
+  const isDemo = React.useContext(GlobalContext);
   const {
     data: data_doctors, //DoctorResult
     loading: loading_doctors,

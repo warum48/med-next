@@ -32,6 +32,8 @@ import {
   import { AuthContext } from '@/context/AuthContext';
 import { GroupStretcher } from './GroupStretcher';
 import { UserContext } from '@/context/UserContext';
+import { GlobalContext } from '@/context/ContextGlobal';
+import { useFetch } from '@/services/useFetch';
   
   //import { MedicalCenterResult } from '@/-__generated__/graphql';
   
@@ -55,13 +57,18 @@ import { UserContext } from '@/context/UserContext';
   //networkStatus_mc,
   TProps) => {
     //  const { classes, theme } = useHeadersStyles();
+    const isDemo = React.useContext(GlobalContext);
     const {
       data: data_medcenter,
       loading: loading_mc,
       error: error_mc,
       refetch: refetch_mc,
       networkStatus: networkStatus_mc,
-    } = useQuery(GET_MEDICAL_CENTERS, {
+    } = 
+    isDemo
+  ? useFetch<GetMedicalCentersQuery>('/mock/getMedicalCenters.json')
+  :
+    useQuery(GET_MEDICAL_CENTERS, {
       context: { clientName: 'main' },
     });
   

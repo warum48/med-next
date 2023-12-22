@@ -5,7 +5,7 @@ import { Container, Group, Button, useMantineTheme, Loader, Center } from '@mant
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
-import { PatientRegistration, UserAdminInputAdm } from '../../__generated__/graphql';
+import { GetUserAdminInfoQuery, PatientRegistration, UserAdminInputAdm } from '../../__generated__/graphql';
 import { ErrorMessage } from '../../components/Errors/ErrorMessage';
 import { formatDateRuToNormal } from '../../utils/dateRuToNormal';
 import { Title1_main, TitleLabel } from '../TextBlocks/TextBlocks';
@@ -20,6 +20,8 @@ import { FloatingLabelSelect } from '../Inputs/FloatingLabelSelect';
 import { FormPaper } from '../Containers/FormPaper';
 import { GET_USER_ADMIN_INFO } from '@/apollo/queries/admin/getUserAdminInfo';
 import { Preloader } from '../Preloader/Preloader';
+import { useFetch } from '@/services/useFetch';
+import { GlobalContext } from '@/context/ContextGlobal';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -71,6 +73,7 @@ export function RegForm({ setStep }: TRegFormProps) {
       };
     },
   });
+  const isDemo = React.useContext(GlobalContext);
 
   const {
     data: data_config, //DoctorResult
@@ -78,14 +81,20 @@ export function RegForm({ setStep }: TRegFormProps) {
     error: error_config,
     refetch: refetch_config,
     networkStatus: networkStatus_config,
-  } = useQuery(GET_USER_ADMIN_INFO, {
+  } = 
+  isDemo
+  ? useFetch<GetUserAdminInfoQuery>('/mock/getUserAdminInfo.json')
+  : 
+  useQuery(GET_USER_ADMIN_INFO, {
     context: { clientName: 'admin' },
     notifyOnNetworkStatusChange: true,
   }); //<GetDoctorsQuery>
 
   React.useEffect(() => {
-    console.log('data_config?.getUserAdminInfo?.data', data_config?.getUserAdminInfo?.data);
+   // console.log('data_config?.getUserAdminInfo?.data', data_config?.getUserAdminInfo?.data);
+   if( data_config?.getUserAdminInfo) {
     setFromConfig(data_config?.getUserAdminInfo?.data?.[0]);
+   }
   }, [data_config]);
 
   const [doReg, { loading: loading_reg, error: error_reg, data: data_reg }] = useMutation(

@@ -18,6 +18,8 @@ import React from 'react';
 import { cU } from '@fullcalendar/core/internal-common';
 import { Tree } from './Tree';
 import { Preloader } from '../Preloader/Preloader';
+import { useFetch } from '@/services/useFetch';
+import { GlobalContext } from '@/context/ContextGlobal';
 //import { GetDoctorsQuery } from '@/__generated__/graphql';
 
 type TProps = {
@@ -26,11 +28,16 @@ type TProps = {
 
 export const ServiceChooserTree = ({nextStep}: TProps) => {
   //const { classes, theme } = useHeadersStyles();
+  const isDemo = React.useContext(GlobalContext);
   const {
     data, //DoctorResult
     loading,
     error,
-  } = useQuery(GET_SERVICE_GROUP, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
+  } =
+  isDemo
+  ? useFetch('/mock/getServiceGroup.json')
+  :
+   useQuery(GET_SERVICE_GROUP, { context: { clientName: 'main' } }); //<GetDoctorsQuery>
 
   const [curNestingPath, setCurNestingPath] = React.useState<any>(null); // apollo querri part
   const [nestingLevelsNames, setNestingLevelsNames] = React.useState<string[]>(['Все услуги']);
