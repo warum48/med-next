@@ -42,7 +42,7 @@ type Props = {
 //--------------component-----------
 
 export const GlobalProvider = ({ children }: Props) => {
-const isDemo = true;
+const isDemo = false;
   const [asideOpen, setAsideOpen] = React.useState(false);
   const [navBarCollapsed, setNavBarCollapsed] = React.useState(false); //TODO make persistent
   const [isDebug, setIsDebug] = useState<boolean>(false);
