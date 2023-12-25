@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './GroupStretcher.module.css';
-export const GroupStretcher = ({children}:{children:React.ReactNode}) => {
+export const GridStretcher = ({children}:{children:React.ReactNode}) => {
 
 
     return (

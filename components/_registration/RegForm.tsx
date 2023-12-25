@@ -5,7 +5,11 @@ import { Container, Group, Button, useMantineTheme, Loader, Center } from '@mant
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
-import { GetUserAdminInfoQuery, PatientRegistration, UserAdminInputAdm } from '../../__generated__/graphql';
+import {
+  GetUserAdminInfoQuery,
+  PatientRegistration,
+  UserAdminInputAdm,
+} from '../../__generated__/graphql';
 import { ErrorMessage } from '../../components/Errors/ErrorMessage';
 import { formatDateRuToNormal } from '../../utils/dateRuToNormal';
 import { Title1_main, TitleLabel } from '../TextBlocks/TextBlocks';
@@ -22,6 +26,7 @@ import { GET_USER_ADMIN_INFO } from '@/apollo/queries/admin/getUserAdminInfo';
 import { Preloader } from '../Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
 import { GlobalContext } from '@/context/ContextGlobal';
+import { innerPageMaxWidth } from '@/global/CONSTS';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -65,7 +70,10 @@ export function RegForm({ setStep }: TRegFormProps) {
         birthDate:
           !!values.birthDate && values.birthDate.includes('_') ? 'Заполнено не верно' : null,
         // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-        password:  !!values.password && values.password.length < 8 ? 'Пароль должен содержать хотя бы 8 знаков' : null,
+        password:
+          !!values.password && values.password.length < 8
+            ? 'Пароль должен содержать хотя бы 8 знаков'
+            : null,
         // age:
         //   values.age.trim().length < 8 || values.age.trim().includes('_')
         //     ? 'Это поле обязательно'
@@ -73,7 +81,7 @@ export function RegForm({ setStep }: TRegFormProps) {
       };
     },
   });
-  const {isDemo} = React.useContext(GlobalContext);
+  const { isDemo } = React.useContext(GlobalContext);
 
   const {
     data: data_config, //DoctorResult
@@ -81,20 +89,18 @@ export function RegForm({ setStep }: TRegFormProps) {
     error: error_config,
     refetch: refetch_config,
     networkStatus: networkStatus_config,
-  } = 
-  isDemo
-  ? useFetch<GetUserAdminInfoQuery>('/mock/getUserAdminInfo.json')
-  : 
-  useQuery(GET_USER_ADMIN_INFO, {
-    context: { clientName: 'admin' },
-    notifyOnNetworkStatusChange: true,
-  }); //<GetDoctorsQuery>
+  } = isDemo
+    ? useFetch<GetUserAdminInfoQuery>('/mock/getUserAdminInfo.json')
+    : useQuery(GET_USER_ADMIN_INFO, {
+        context: { clientName: 'admin' },
+        notifyOnNetworkStatusChange: true,
+      }); //<GetDoctorsQuery>
 
   React.useEffect(() => {
-   // console.log('data_config?.getUserAdminInfo?.data', data_config?.getUserAdminInfo?.data);
-   if( data_config?.getUserAdminInfo) {
-    setFromConfig(data_config?.getUserAdminInfo?.data?.[0]);
-   }
+    // console.log('data_config?.getUserAdminInfo?.data', data_config?.getUserAdminInfo?.data);
+    if (data_config?.getUserAdminInfo) {
+      setFromConfig(data_config?.getUserAdminInfo?.data?.[0]);
+    }
   }, [data_config]);
 
   const [doReg, { loading: loading_reg, error: error_reg, data: data_reg }] = useMutation(
@@ -136,8 +142,7 @@ export function RegForm({ setStep }: TRegFormProps) {
         >
           Регистрация
         </Title1_main>
-        </Center>
-      
+      </Center>
 
       <FormPaper>
         {formConfig && formConfig?.registrationVisibleFields && (
@@ -241,7 +246,7 @@ export function RegForm({ setStep }: TRegFormProps) {
           </form>
         )}
         {/* <Text>{data_reg?.patientRegistration?.detail}</Text> */}
-        {loading_config  && <Preloader/>}
+        {loading_config && <Preloader />}
         {error_config && (
           <ErrorMessage
             detail={data_config?.getUserAdminInfo?.details}

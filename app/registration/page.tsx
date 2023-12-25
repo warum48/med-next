@@ -1,6 +1,7 @@
 'use client';
 import { CodeConfirm } from '@/components/_registration/CodeConfirm';
 import { RegForm } from '@/components/_registration/RegForm';
+import { RegFormMax } from '@/components/_registration/RegFormMax';
 import { RegSuccess } from '@/components/_registration/RegSuccess';
 import * as React from 'react';
 
@@ -16,7 +17,7 @@ export default function Registration() {
 
   return (
     <>
-      {step == 'regForm' && <RegForm setStep={setStep}/>}  
+      {step == 'regForm' && <RegFormMax setStep={setStep}/>}  
       {step == 'confirmCode' && <CodeConfirm setStep={setStep}/>}
       {step == 'success' && <RegSuccess/>}
       {/*<FastCommentBlock /> */}
