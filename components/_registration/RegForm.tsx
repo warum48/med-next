@@ -27,6 +27,7 @@ import { Preloader } from '../Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { innerPageMaxWidth } from '@/global/CONSTS';
+import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -45,6 +46,9 @@ export function RegForm({ setStep }: TRegFormProps) {
   const onSubmit = (values: PatientRegistration) => {
     doReg();
   };
+
+  const {isDemo} = React.useContext(GlobalContext);
+
 
   const form = useForm<PatientRegistration>({
     initialValues: patientRegistrationInitValue, //initialValues,
@@ -81,7 +85,21 @@ export function RegForm({ setStep }: TRegFormProps) {
       };
     },
   });
-  const { isDemo } = React.useContext(GlobalContext);
+ // const { isDemo } = React.useContext(GlobalContext);
+
+ const {
+  data: data_profile,
+  loading: loading_profile,
+  error: error_profile,
+  refetch: refetch_profile,
+  networkStatus: networkStatus_profile,
+} = 
+//    isDemo
+//  ? useFetch<GetMedicalCentersQuery>('/mock/getMedicalCenters.json')
+//  :
+useQuery( GET_PROFILE_FORM_DATA, {
+  context: { clientName: 'main' },
+});
 
   const {
     data: data_config, //DoctorResult

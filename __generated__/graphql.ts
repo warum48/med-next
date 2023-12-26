@@ -34,7 +34,6 @@ export type AccessTicket = {
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   isReserv?: Maybe<Scalars['Boolean']['output']>;
-  status?: Maybe<Scalars['Boolean']['output']>;
   ticketDatetime: Scalars['DateTime']['output'];
   ticketDuration?: Maybe<Scalars['Int']['output']>;
   ticketRoom?: Maybe<Scalars['String']['output']>;
@@ -96,6 +95,8 @@ export type AccessTicketResult = {
   __typename?: 'AccessTicketResult';
   data?: Maybe<Array<AccessTicket>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -156,6 +157,8 @@ export type CityResult = {
   __typename?: 'CityResult';
   data?: Maybe<Array<City>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -230,6 +233,8 @@ export type ComplexServiceItemResult = {
   __typename?: 'ComplexServiceItemResult';
   data?: Maybe<Array<ComplexServiceItem>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -237,6 +242,8 @@ export type ComplexServiceResult = {
   __typename?: 'ComplexServiceResult';
   data?: Maybe<Array<ComplexService>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -293,6 +300,8 @@ export type DoctorCategoryResult = {
   __typename?: 'DoctorCategoryResult';
   data?: Maybe<Array<DoctorCategory>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -412,6 +421,8 @@ export type DoctorMedicalCenterResult = {
   __typename?: 'DoctorMedicalCenterResult';
   data?: Maybe<Array<DoctorMedicalCenter>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -442,6 +453,8 @@ export type DoctorMspecialityResult = {
   __typename?: 'DoctorMspecialityResult';
   data?: Maybe<Array<DoctorMspeciality>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -483,6 +496,8 @@ export type DoctorPatientTypeResult = {
   __typename?: 'DoctorPatientTypeResult';
   data?: Maybe<Array<DoctorPatientType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -531,6 +546,8 @@ export type DoctorReplacementResult = {
   __typename?: 'DoctorReplacementResult';
   data?: Maybe<Array<DoctorReplacement>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -538,6 +555,8 @@ export type DoctorResult = {
   __typename?: 'DoctorResult';
   data?: Maybe<Array<Doctor>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -573,6 +592,8 @@ export type DoctorStatusResult = {
   __typename?: 'DoctorStatusResult';
   data?: Maybe<Array<DoctorStatus>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -611,6 +632,8 @@ export type DoctorStatusTypeResult = {
   __typename?: 'DoctorStatusTypeResult';
   data?: Maybe<Array<DoctorStatusType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -649,6 +672,8 @@ export type FinancialTypeResult = {
   __typename?: 'FinancialTypeResult';
   data?: Maybe<Array<FinancialType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -676,6 +701,8 @@ export type LoginResult = {
   __typename?: 'LoginResult';
   data?: Maybe<Token>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -780,6 +807,8 @@ export type MedicalCenterResult = {
   __typename?: 'MedicalCenterResult';
   data?: Maybe<Array<MedicalCenter>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -826,6 +855,8 @@ export type MedicalPositionResult = {
   __typename?: 'MedicalPositionResult';
   data?: Maybe<Array<MedicalPosition>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -872,11 +903,14 @@ export type MedicalSpecialityResult = {
   __typename?: 'MedicalSpecialityResult';
   data?: Maybe<Array<MedicalSpeciality>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addRelatives: LoginResult;
   addUpdateAccessTicket: RequestResult;
   addUpdateCity: RequestResult;
   addUpdateComplexService: RequestResult;
@@ -964,6 +998,12 @@ export type Mutation = {
   guestRegistration: RequestResult;
   patientRegistration: RequestResult;
   registrationFlashCallCode: LoginResult;
+};
+
+
+export type MutationAddRelativesArgs = {
+  patient: PatientRegistration;
+  relationshipDegreeId: Scalars['Int']['input'];
 };
 
 
@@ -1477,6 +1517,8 @@ export type PackTypeResult = {
   __typename?: 'PackTypeResult';
   data?: Maybe<Array<PackType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1549,6 +1591,8 @@ export type PatientTypeResult = {
   __typename?: 'PatientTypeResult';
   data?: Maybe<Array<PatientType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1587,6 +1631,8 @@ export type PaymentTypeResult = {
   __typename?: 'PaymentTypeResult';
   data?: Maybe<Array<PaymentType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1673,6 +1719,8 @@ export type PolicyResult = {
   __typename?: 'PolicyResult';
   data?: Maybe<Array<Policy>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1747,6 +1795,8 @@ export type PriceNameResult = {
   __typename?: 'PriceNameResult';
   data?: Maybe<Array<PriceName>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1785,6 +1835,8 @@ export type PricePeriodResult = {
   __typename?: 'PricePeriodResult';
   data?: Maybe<Array<PricePeriod>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1792,6 +1844,8 @@ export type PriceResult = {
   __typename?: 'PriceResult';
   data?: Maybe<Array<Price>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2279,6 +2333,8 @@ export type RefuseReasonResult = {
   __typename?: 'RefuseReasonResult';
   data?: Maybe<Array<RefuseReason>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2286,6 +2342,8 @@ export type RequestResult = {
   __typename?: 'RequestResult';
   data?: Maybe<Scalars['String']['output']>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2348,6 +2406,8 @@ export type ServiceGroupResult = {
   __typename?: 'ServiceGroupResult';
   data?: Maybe<Array<ServiceGroup>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2433,6 +2493,7 @@ export type ServiceInputAdm = {
 
 export type ServiceMedicalSpeciality = {
   __typename?: 'ServiceMedicalSpeciality';
+  clientId?: Maybe<Scalars['Int']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   medicalSpeciality?: Maybe<MedicalSpeciality>;
@@ -2460,6 +2521,8 @@ export type ServiceMedicalSpecialityResult = {
   __typename?: 'ServiceMedicalSpecialityResult';
   data?: Maybe<Array<ServiceMedicalSpeciality>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2467,6 +2530,8 @@ export type ServiceResult = {
   __typename?: 'ServiceResult';
   data?: Maybe<Array<Service>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2498,6 +2563,8 @@ export type ServiceTypeResult = {
   __typename?: 'ServiceTypeResult';
   data?: Maybe<Array<ServiceType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2586,6 +2653,8 @@ export type ShifrDiscountPeriodResult = {
   __typename?: 'ShifrDiscountPeriodResult';
   data?: Maybe<Array<ShifrDiscountPeriod>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2593,6 +2662,8 @@ export type ShifrDiscountResult = {
   __typename?: 'ShifrDiscountResult';
   data?: Maybe<Array<ShifrDiscount>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2638,6 +2709,8 @@ export type ShifrResult = {
   __typename?: 'ShifrResult';
   data?: Maybe<Array<Shifr>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2676,6 +2749,8 @@ export type StaffTypeResult = {
   __typename?: 'StaffTypeResult';
   data?: Maybe<Array<StaffType>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2728,6 +2803,8 @@ export type SubscribeDoctorResult = {
   __typename?: 'SubscribeDoctorResult';
   data?: Maybe<Array<SubscribeDoctor>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2785,6 +2862,8 @@ export type SubscribeServicePackResult = {
   __typename?: 'SubscribeServicePackResult';
   data?: Maybe<Array<SubscribeServicePack>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2831,6 +2910,8 @@ export type SubscribeSpackRecordResult = {
   __typename?: 'SubscribeSpackRecordResult';
   data?: Maybe<Array<SubscribeSpackRecord>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2902,6 +2983,8 @@ export type UserAdminResult = {
   __typename?: 'UserAdminResult';
   data?: Maybe<Array<UserAdmin>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -2909,27 +2992,46 @@ export type UserData = {
   __typename?: 'UserData';
   data?: Maybe<User>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
 export type UserIn = {
   additionalPhoneNumber?: InputMaybe<Scalars['String']['input']>;
+  addressFull?: InputMaybe<Scalars['String']['input']>;
+  addressMisKladrId?: InputMaybe<Scalars['Int']['input']>;
   birthDate?: InputMaybe<Scalars['Date']['input']>;
-  clientCardId?: InputMaybe<Scalars['Int']['input']>;
+  cityId?: InputMaybe<Scalars['Int']['input']>;
   clientId?: InputMaybe<Scalars['Int']['input']>;
-  clientPersonalAreaId?: InputMaybe<Scalars['Int']['input']>;
   created?: InputMaybe<Scalars['Date']['input']>;
+  defaultMedicalCenterId?: InputMaybe<Scalars['Int']['input']>;
+  docDate?: InputMaybe<Scalars['Date']['input']>;
+  docGivingDepCode?: InputMaybe<Scalars['String']['input']>;
+  docGivingDepName?: InputMaybe<Scalars['String']['input']>;
+  docNumber?: InputMaybe<Scalars['String']['input']>;
+  docRegAddress?: InputMaybe<Scalars['String']['input']>;
+  docSeries?: InputMaybe<Scalars['String']['input']>;
+  docType?: InputMaybe<Scalars['Int']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   firstName?: InputMaybe<Scalars['String']['input']>;
   gender?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  infoWayId?: InputMaybe<Scalars['Int']['input']>;
+  inn?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
-  lastLogin?: InputMaybe<Scalars['Date']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
-  lastVisit?: InputMaybe<Scalars['Date']['input']>;
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  loginPhoneNumber?: InputMaybe<Scalars['String']['input']>;
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  notificationTime?: InputMaybe<Scalars['Time']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
   patronymic?: InputMaybe<Scalars['String']['input']>;
   phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  prefNotificationContactId?: InputMaybe<Scalars['Int']['input']>;
+  snils?: InputMaybe<Scalars['String']['input']>;
+  zoneNumber?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type UserPayment = {
@@ -3045,6 +3147,8 @@ export type UserPaymentResult = {
   __typename?: 'UserPaymentResult';
   data?: Maybe<Array<UserPayment>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3123,6 +3227,8 @@ export type UserPurchaseResult = {
   __typename?: 'UserPurchaseResult';
   data?: Maybe<Array<UserPurchase>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3170,6 +3276,8 @@ export type UserPurchaseReturnResult = {
   __typename?: 'UserPurchaseReturnResult';
   data?: Maybe<Array<UserPurchaseReturn>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3324,6 +3432,8 @@ export type UserServiceCartResult = {
   __typename?: 'UserServiceCartResult';
   data?: Maybe<Array<UserServiceCart>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3400,6 +3510,8 @@ export type UserServicePlanResult = {
   __typename?: 'UserServicePlanResult';
   data?: Maybe<Array<UserServicePlan>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3450,6 +3562,8 @@ export type UserSubscribeResult = {
   __typename?: 'UserSubscribeResult';
   data?: Maybe<Array<UserSubscribe>>;
   details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -3512,6 +3626,22 @@ export type GetUserAdminInfoQueryVariables = Exact<{
 
 
 export type GetUserAdminInfoQuery = { __typename?: 'Query', getUserAdminInfo: { __typename?: 'UserAdminResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'UserAdmin', id: number, clientId?: number | null, userId?: number | null, registrationVisibleFields?: string | null, registrationRequiredFields?: string | null }> | null } };
+
+export type GetCentersAndCitiesQueryVariables = Exact<{
+  filteringAttrs_city?: InputMaybe<CityInput>;
+  orderingAttrs_city?: InputMaybe<CityInput>;
+  skip_city?: InputMaybe<Scalars['Int']['input']>;
+  limit_city?: InputMaybe<Scalars['Int']['input']>;
+  descSorting_city?: InputMaybe<Scalars['Boolean']['input']>;
+  filteringAttrs_mcenter?: InputMaybe<MedicalCenterInput>;
+  orderingAttrs_mcenter?: InputMaybe<MedicalCenterInput>;
+  skip_mcenter?: InputMaybe<Scalars['Int']['input']>;
+  limit_mcenter?: InputMaybe<Scalars['Int']['input']>;
+  descSorting_mcenter?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+
+
+export type GetCentersAndCitiesQuery = { __typename?: 'Query', getCities: { __typename?: 'CityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null }> | null }, getMedicalCenters: { __typename?: 'MedicalCenterResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'MedicalCenter', id: number, clientId?: number | null, cityId: number, name: string, address: string, description?: string | null, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null }> | null } };
 
 export type GetCitiesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<CityInput>;
@@ -3617,6 +3747,7 @@ export const RegistrationFlashCallCodeDocument = {"kind":"Document","definitions
 export const PatienLoginByPasswordDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"patienLoginByPassword"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"loginPhoneNumber"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"patienLoginByPassword"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"loginPhoneNumber"},"value":{"kind":"Variable","name":{"kind":"Name","value":"loginPhoneNumber"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<PatienLoginByPasswordQuery, PatienLoginByPasswordQueryVariables>;
 export const PatientLoginByPhoneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"patientLoginByPhone"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"loginPhoneNumber"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"patientLoginByPhone"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"loginPhoneNumber"},"value":{"kind":"Variable","name":{"kind":"Name","value":"loginPhoneNumber"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<PatientLoginByPhoneQuery, PatientLoginByPhoneQueryVariables>;
 export const GetUserAdminInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUserAdminInfo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UserAdminInputAdm"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UserAdminInputAdm"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getUserAdminInfo"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"registrationVisibleFields"}},{"kind":"Field","name":{"kind":"Name","value":"registrationRequiredFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetUserAdminInfoQuery, GetUserAdminInfoQueryVariables>;
+export const GetCentersAndCitiesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCentersAndCities"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs_city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CityInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs_city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CityInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip_city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit_city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting_city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs_mcenter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MedicalCenterInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs_mcenter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MedicalCenterInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip_mcenter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit_mcenter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting_mcenter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCities"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs_city"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs_city"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip_city"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit_city"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting_city"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getMedicalCenters"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs_mcenter"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs_mcenter"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip_mcenter"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit_mcenter"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting_mcenter"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"websiteUrl"}},{"kind":"Field","name":{"kind":"Name","value":"phoneFax"}},{"kind":"Field","name":{"kind":"Name","value":"workTime"}},{"kind":"Field","name":{"kind":"Name","value":"collectionTestsTime"}},{"kind":"Field","name":{"kind":"Name","value":"vaccinationTime"}},{"kind":"Field","name":{"kind":"Name","value":"city"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetCentersAndCitiesQuery, GetCentersAndCitiesQueryVariables>;
 export const GetCitiesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCities"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CityInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CityInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCities"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetCitiesQuery, GetCitiesQueryVariables>;
 export const GetDoctorMedicalCenterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getDoctorMedicalCenter"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DoctorMedicalCenterInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DoctorMedicalCenterInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getDoctorMedicalCenter"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"doctorId"}},{"kind":"Field","name":{"kind":"Name","value":"medicalSpecialityId"}},{"kind":"Field","name":{"kind":"Name","value":"medicalCenterId"}},{"kind":"Field","name":{"kind":"Name","value":"medicalPositionId"}},{"kind":"Field","name":{"kind":"Name","value":"staffTypeId"}},{"kind":"Field","name":{"kind":"Name","value":"showInLk"}},{"kind":"Field","name":{"kind":"Name","value":"minimalAge"}},{"kind":"Field","name":{"kind":"Name","value":"maximalAge"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"doctor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}},{"kind":"Field","name":{"kind":"Name","value":"photo"}},{"kind":"Field","name":{"kind":"Name","value":"doctorCategoryId"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"commonExperience"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"doctorCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"medicalSpeciality"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"viewName"}},{"kind":"Field","name":{"kind":"Name","value":"searchName"}},{"kind":"Field","name":{"kind":"Name","value":"viewDescription"}},{"kind":"Field","name":{"kind":"Name","value":"searchDescription"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"medicalCenter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"workTime"}},{"kind":"Field","name":{"kind":"Name","value":"collectionTestsTime"}},{"kind":"Field","name":{"kind":"Name","value":"vaccinationTime"}},{"kind":"Field","name":{"kind":"Name","value":"city"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"medicalPosition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"viewName"}},{"kind":"Field","name":{"kind":"Name","value":"searchName"}},{"kind":"Field","name":{"kind":"Name","value":"viewDescription"}},{"kind":"Field","name":{"kind":"Name","value":"searchDescription"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"staffType"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetDoctorMedicalCenterQuery, GetDoctorMedicalCenterQueryVariables>;
 export const GetDoctorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getDoctors"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DoctorInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DoctorInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getDoctors"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}},{"kind":"Field","name":{"kind":"Name","value":"photo"}},{"kind":"Field","name":{"kind":"Name","value":"doctorCategoryId"}},{"kind":"Field","name":{"kind":"Name","value":"commonExperience"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"doctorCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetDoctorsQuery, GetDoctorsQueryVariables>;

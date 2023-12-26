@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { useForm } from '@mantine/form';
 
-import { Container, Group, Button, useMantineTheme, Loader, Center, Switch, Box } from '@mantine/core';
+import {
+  Container,
+  Group,
+  Button,
+  useMantineTheme,
+  Loader,
+  Center,
+  Switch,
+  Box,
+} from '@mantine/core';
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
@@ -30,6 +39,7 @@ import { InnerPageContainer } from '../Containers/InnerPageContainer';
 import { innerPageMaxWidth } from '@/global/CONSTS';
 import { GridStretcher } from '../GridStrecher/GridStretcher';
 import { SpaceYMain } from '../Spacers/Spacers';
+import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -47,7 +57,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     registrationRequiredFields: 'first_name, last_name, email, phone_number, birth_date, password',
     registrationVisibleFields:
       'first_name, last_name, patronymic, email, gender, phone_number, birth_date, additional_phone_number, password,' +
-      'inn, snils, city_id, doc_type, doc_series, doc_number, doc_date, doc_reg_address, doc_giving_dep_name, doc_giving_dep_code', 
+      'inn, snils, city_id, doc_type, doc_series, doc_number, doc_date, doc_reg_address, doc_giving_dep_name, doc_giving_dep_code',
   };
   const [formConfig, setFromConfig] = React.useState<UserAdminInputAdm>();
 
@@ -88,11 +98,11 @@ export function RegFormMax({ setStep }: TRegFormProps) {
   const maxfields = {
     phoneNumber: '',
     additionalPhoneNumber: '',
-    
+
     birthDate: '',
     cityId: 10,
-    
-//паспорт
+
+    //паспорт
     docDate: '',
     docGivingDepCode: '',
     docGivingDepName: '',
@@ -149,25 +159,27 @@ export function RegFormMax({ setStep }: TRegFormProps) {
         birthDate:
           !!values.birthDate && values.birthDate.includes('_') ? 'Заполнено не верно' : null,
         // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-        
-        //-------------------------extra---------------------------    
+
+        //-------------------------extra---------------------------
         snils:
-        !!values.snils && values.snils.trim().length < 2
-        ? 'Снилс должен содержать хотя бы 11 цифр'
-        : null,
+          !!values.snils && values.snils.trim().length < 2
+            ? 'Снилс должен содержать хотя бы 11 цифр'
+            : null,
         //Формат СНИЛС: «ХХХ-ХХХ-ХХХ YY», где X,Y — цифры, причём первые девять цифр 'X' — это любые цифры, а последние две 'Y' фактически являются контрольной суммой
         inn:
-        !!values.inn && values.inn.trim().length < 2
-        ? 'ИНН должен содержать хотя бы 10 цифр'
-        : null,
+          !!values.inn && values.inn.trim().length < 2
+            ? 'ИНН должен содержать хотя бы 10 цифр'
+            : null,
         //ИНН физического лица представляет собой последовательность из 12 арабских цифр.
-        docType: !!values.docType && values.docType.trim().length < 1
-    ? 'Поле не должно быть пустым'
-    : null,
-        docSeries: !!values.docSeries && values.docSeries.trim().length < 1
-        ? 'Поле не должно быть пустым'
-        : null,
-    
+        docType:
+          !!values.docType && values.docType.trim().length < 1
+            ? 'Поле не должно быть пустым'
+            : null,
+        docSeries:
+          !!values.docSeries && values.docSeries.trim().length < 1
+            ? 'Поле не должно быть пустым'
+            : null,
+
         //------------------------password---------------------------
         password:
           !!values.password && values.password.length < 8
@@ -181,7 +193,21 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     },
   });
   const { isDemo } = React.useContext(GlobalContext);
-  const [isFormDemo, setisFormDemo]  = React.useState(true);
+  const [isFormDemo, setisFormDemo] = React.useState(true);
+
+  const {
+    data: data_profile,
+    loading: loading_profile,
+    error: error_profile,
+    refetch: refetch_profile,
+    networkStatus: networkStatus_profile,
+  } = 
+  //    isDemo
+  //  ? useFetch<GetMedicalCentersQuery>('/mock/getMedicalCenters.json')
+  //  :
+  useQuery( GET_PROFILE_FORM_DATA, {
+    context: { clientName: 'main' },
+  });
 
   const {
     data: data_config, //DoctorResult
@@ -198,11 +224,12 @@ export function RegFormMax({ setStep }: TRegFormProps) {
 
   React.useEffect(() => {
     // console.log('data_config?.getUserAdminInfo?.data', data_config?.getUserAdminInfo?.data);
-    if (!isFormDemo){
-    if (data_config?.getUserAdminInfo) {
-      setFromConfig(data_config?.getUserAdminInfo?.data?.[0]);
-    }}else{
-        setFromConfig(maxFormConfig);
+    if (!isFormDemo) {
+      if (data_config?.getUserAdminInfo) {
+        setFromConfig(data_config?.getUserAdminInfo?.data?.[0]);
+      }
+    } else {
+      setFromConfig(maxFormConfig);
     }
   }, [data_config, isFormDemo]);
 
@@ -236,7 +263,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     }
   }, [data_reg]);
 
-  const FormContainerComponent = FormPaper //!true ? InnerPageContainer : ;
+  const FormContainerComponent = FormPaper; //!true ? InnerPageContainer : ;
 
   return (
     <Container size={isFormDemo ? innerPageMaxWidth : 800} mb={0} pt={{ base: 'xl', md: '0' }}>
@@ -253,14 +280,18 @@ export function RegFormMax({ setStep }: TRegFormProps) {
         {formConfig && formConfig?.registrationVisibleFields && (
           <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
             {/*<TextInput label="Телефон" placeholder="you@yourmail.ru" required />*/}
-            <Box w='100%' className='flex'>
-            <div  className='flex-1'><TitleLabel>Ваши данные</TitleLabel ></div>
-            <Switch
-      checked={isFormDemo}
-      label='Все поля'
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => setisFormDemo(event.currentTarget.checked)}
-    />
-                </Box>
+            <Box w="100%" className="flex">
+              <div className="flex-1">
+                <TitleLabel>Ваши данные</TitleLabel>
+              </div>
+              <Switch
+                checked={isFormDemo}
+                label="Все поля"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  setisFormDemo(event.currentTarget.checked)
+                }
+              />
+            </Box>
 
             <GridStretcher>
               {formConfig.registrationVisibleFields.includes('first_name') && (
@@ -341,12 +372,23 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   //id="phone"
                 />
               )}
-              {formConfig.registrationVisibleFields.includes('city_id') && (
+
+              {/*formConfig.registrationVisibleFields.includes('city_id') && (
                 <FloatingLabelInput
                   label="Город"
                   form={form}
                   formField="cityId"
                   required={formConfig.registrationRequiredFields?.includes('city_id')}
+                  //data: data_profile?.getCities?.data?.map(({ id, name }: any) => ({ value: id.toString(), label: name }))
+                />
+              )*/}
+              {formConfig.registrationVisibleFields.includes('city_id') && (
+                <FloatingLabelSelect
+                  label="Город"
+                  form={form}
+                  formField="cityId"
+                  required={formConfig.registrationRequiredFields?.includes('city_id')}
+                  data={ data_profile?.getCities?.data?.map(({ id, name }: any) => ({ value: id.toString(), label: name }))}
                 />
               )}
               {formConfig.registrationVisibleFields.includes('snils') && (
@@ -413,11 +455,11 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   required={formConfig.registrationRequiredFields?.includes('doc_reg_address')}
                 />
               )}
-              </GridStretcher>
-              {/*//------------------password ----------*/}
-              <SpaceYMain/>
-              <TitleLabel>Введите пароль (минимум 8 символов)</TitleLabel>
-              <GridStretcher>
+            </GridStretcher>
+            {/*//------------------password ----------*/}
+            <SpaceYMain />
+            <TitleLabel>Введите пароль (минимум 8 символов)</TitleLabel>
+            <GridStretcher>
               {formConfig.registrationVisibleFields.includes('password') && (
                 <FloatingLabelInput
                   label="Пароль"

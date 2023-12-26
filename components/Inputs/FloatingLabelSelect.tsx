@@ -18,13 +18,14 @@ import classes from "./FloatingLabelInput.module.css";
 
 
 type TFloatingInputProps = {
+  data?: any;
   label: string;
   form: any;
   formField: string;
   mask?: string;
   [key: string]: any;
 };
-export function FloatingLabelSelect({ label, form, formField,mask, ...props }: TFloatingInputProps) {
+export function FloatingLabelSelect({ data, label, form, formField,mask, ...props }: TFloatingInputProps) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
   //const { classes } = useStylesInput({
@@ -34,7 +35,7 @@ export function FloatingLabelSelect({ label, form, formField,mask, ...props }: T
   return (
     
         <Select
-        data={['Мужской', 'Женский']} 
+        data= {data || ['Мужской', 'Женский']} 
           label={label}
           // placeholder="OMG, it also has a placeholder"
           //required
