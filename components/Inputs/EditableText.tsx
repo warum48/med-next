@@ -20,29 +20,38 @@ export type TTfOnChange = (
   e: React.ChangeEvent<HTMLInputElement> & React.ChangeEvent<HTMLTextAreaElement>
 ) => void;
 
-export type TTfOnChangeE = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+export type TTfOnChangeE =
+  | React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>;
 
 type TSelectOnChange = (value: string | null) => void;
 
 export type TEditTypes = 'text' | 'select';
 
+type TDifferProps = {
+  text?: string;
+  autosize?: boolean;
+  data?: any;
+  value?: string | null;
+}; //these props can
+
 type TTFProps = {
-  type?: TEditTypes;
+  type?: 'text'; // TEditTypes;
   text: string | undefined; // | null;
-  // value?: string | null;
   onChange?: TTfOnChange; //|  TSelectOnChange;// //any; //any |
   autosize?: boolean;
-  onUpdate:(value: string ) => void
-};
+  onUpdate: (value: string) => void;
+} & //TextInputProps &
+//  TextareaProps &
+TDifferProps;
 
 type TSelectProps = {
-  type?: TEditTypes;
-  // text: string | undefined; // | null;
+  type?: 'select'; //TEditTypes;
   value?: string | null;
   onChange?: TSelectOnChange; // //any; //any |
   data?: any;
-  onUpdate:(value: string ) => void
-};
+  onUpdate: (value: string) => void;
+} & TDifferProps;
 
 /*
 type TProps = {
@@ -55,23 +64,23 @@ type TProps = {
 
 export const EditableText = ({
   type = 'text',
-  text,
+  text = '',
   value,
- // onChange,
+  // onChange,
   onUpdate,
   autosize,
   data,
   ...props
-}: TTFProps & TextInputProps & TextareaProps & TSelectProps) => {
+}: TTFProps | TSelectProps) => {
   //& InputHTMLAttributes<HTMLInputElement>
   const [edit, setEdit] = useState(false);
   const theme = useMantineTheme();
 
-  function onChange(e:  TTfOnChangeE |  TSelectOnChange) {
+  function onChange(e: TTfOnChangeE | TSelectOnChange) {
     //onChange(e);
     var newValue = '';
-    if(type == 'text'){
-    newValue =  (e as TTfOnChangeE).currentTarget.value;
+    if (type == 'text') {
+      newValue = (e as TTfOnChangeE).currentTarget.value;
     }
     onUpdate(newValue);
     setEdit(false);
@@ -83,10 +92,12 @@ export const EditableText = ({
         {!edit ? (
           <>
             <TextInfo>
-            {type == 'text' ? 
-            (text ? text : '-') : 
-            data?.find((d:any) => d.value == value)?.label
-            }</TextInfo>
+              {type == 'text'
+                ? text
+                  ? text
+                  : '-'
+                : data?.find((d: any) => d.value == value)?.label}
+            </TextInfo>
             <Box style={{ cursor: 'pointer' }} onClick={() => setEdit(true)}>
               <IconEdit size={16} color={theme.colors.gray[6]} />
             </Box>
@@ -121,10 +132,10 @@ export const EditableText = ({
               <>
                 <Select
                   data={data}
-                  value={value}
-                  onChange={(e:string|null) => onUpdate(e || '')}//{onChange as TSelectOnChange}
+                  //value={value}
+                  value={value} // as string
+                  onChange={(e: string | null) => onUpdate(e || '')} //{onChange as TSelectOnChange}
                 />
-               
               </>
             )}
 

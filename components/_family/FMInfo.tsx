@@ -253,9 +253,10 @@ export function FMInfo({ expanded, isMain }: TProps) {
                 <EditableText
                   autosize={item.autosize}
                   text={item.newValue || item.mock}
-                  onChange={(
-                    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
-                  ) => changeInfo(e.currentTarget.value, item.field)}
+                  //onChange={(
+                  //  e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+                  //) => changeInfo(e.currentTarget.value, item.field)}
+                  onUpdate ={(newValue:string) => changeInfo(newValue, item.field) }
                 />
               </Group>
             ))}

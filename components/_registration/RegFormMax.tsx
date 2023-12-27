@@ -57,7 +57,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     registrationRequiredFields: 'first_name, last_name, email, phone_number, birth_date, password',
     registrationVisibleFields:
       'first_name, last_name, patronymic, email, gender, phone_number, birth_date, additional_phone_number, password,' +
-      'inn, snils, city_id, doc_type, doc_series, doc_number, doc_date, doc_reg_address, doc_giving_dep_name, doc_giving_dep_code',
+      'inn, snils, city_id, default_medical_center_id, doc_type, doc_series, doc_number, doc_date, doc_reg_address, doc_giving_dep_name, doc_giving_dep_code',
   };
   const [formConfig, setFromConfig] = React.useState<UserAdminInputAdm>();
 
@@ -389,6 +389,15 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   formField="cityId"
                   required={formConfig.registrationRequiredFields?.includes('city_id')}
                   data={ data_profile?.getCities?.data?.map(({ id, name }: any) => ({ value: id.toString(), label: name }))}
+                />
+              )}
+              {formConfig.registrationVisibleFields.includes('default_medical_center_id') && (
+                <FloatingLabelSelect
+                  label="Медцентр"
+                  form={form}
+                  formField="defaultMedicalCenterId"
+                  required={formConfig.registrationRequiredFields?.includes('default_medical_center_id')}
+                  data={ data_profile?.getMedicalCenters?.data?.map(({ id, name }: any) => ({ value: id.toString(), label: name }))}
                 />
               )}
               {formConfig.registrationVisibleFields.includes('snils') && (
