@@ -28,6 +28,7 @@ type TFloatingInputProps = {
 export function FloatingLabelSelect({ data, label, form, formField,mask, ...props }: TFloatingInputProps) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
+  const floating = value.trim().length !== 0 || focused || undefined;
   //const { classes } = useStylesInput({
   //  floating: ( form?.getInputProps(formField)?.value != undefined && form?.getInputProps(formField)?.value?.trim().length !== 0) || focused,
   //});
@@ -48,6 +49,9 @@ export function FloatingLabelSelect({ data, label, form, formField,mask, ...prop
           mt="md"
           //autoComplete="on"//"off"//"no" //nope
           {...props}
+
+          data-floating={floating}
+      labelProps={{ 'data-floating': floating }}
          
           //{...form.getInputProps('firstName')}
         />
