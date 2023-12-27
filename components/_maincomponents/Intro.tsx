@@ -16,13 +16,14 @@ import { alegreya, alegreya_bold } from '@/global/Fonts';
 
 export const Intro = () => {
   const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const darkWithoutPicture = false;
 
   console.log('colorScheme', colorScheme);
 
   return (
     <BackgroundImage
       //src="https://med.shop-survey.ru/images/frame-1-1.jpg"
-       src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : '' }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
+       src={colorScheme === 'light' ? "https://med.shop-survey.ru/images/frame-1-1.jpg" : "https://med.shop-survey.ru/images/frame-1-1.jpg" }//"http://dev.nahab.info/aerovadim/_files/virilis/mainbg_bright.jpg"
       radius="md"
       style={{
         height: 420, //SECONDARY_COL_HEIGHT,
@@ -49,7 +50,7 @@ export const Intro = () => {
             'linear-gradient(114deg, rgb(255, 255, 255) 0%, rgba(255,255,255,0.90) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)', //'white'
         }} 
       ></Box>*/}
-      <Box darkHidden>
+      <Box  className={classes.info_cont}>
       <Title className={classes.title + ' ' + alegreya.className} >
         {' '}
         <Text
@@ -70,7 +71,7 @@ export const Intro = () => {
       <StyledButton appearence="intro_second">Записаться на прием</StyledButton>
       </Box>
 
-      <Center lightHidden>
+      <Center lightHidden darkHidden className={classes.info_cont}>
         <Box>
       <Title className={classes.title + ' ' + alegreya.className} ta='center'>
         {' '}

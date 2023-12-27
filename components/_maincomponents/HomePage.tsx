@@ -28,6 +28,7 @@ import {
   import { StyledButton } from '../Buttons/StyledButton';
   import classes from './HomePage.module.css';
 import { CarouselMain } from './Carousel';
+import { guestHomePageMaxWidth } from '@/global/CONSTS';
   
 
   
@@ -53,7 +54,7 @@ import { CarouselMain } from './Carousel';
         className="bbb"
           //my="-0.125rem"
           mt="-xs" 
-         maw={1350}
+         maw={guestHomePageMaxWidth}
          style={{margin: '0 auto'}}
         >
           <Container my="md" p="0" style={{ maxWidth: '100%' }}>
@@ -72,11 +73,14 @@ import { CarouselMain } from './Carousel';
                 spacing="0" 
                // breakpoints={[{ maxWidth: 'lg', cols: 1 }]}
                 >
+                  <span className="darking_image">
                   <Image
                     src="https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                     height={300}
+                    
                     // width={'50%'}
                   />
+                  </span>
                   <Box p="xl" pt="sm">
                     <Text className={classes.title2} mt="xs" mb="md">
                       ОНЛАЙН
@@ -109,8 +113,8 @@ import { CarouselMain } from './Carousel';
                     radius="md"
                     animate={false}
                     
-                    opacity={1}
-                    style={{ backgroundColor: 'white', '&:after': { backgroundColor: 'white' } ,border:'0.0625rem solid #dee2e6' }}
+                    opacity={.5}
+                 //   style={{ backgroundColor: 'white', '&:after': { backgroundColor: 'white' } ,border:'0.0625rem solid #dee2e633' }}
                   />
                 </Grid.Col>
                 <Grid.Col span={6}>
@@ -118,9 +122,9 @@ import { CarouselMain } from './Carousel';
                     height={SECONDARY_COL_HEIGHT}
                     radius="md"
                     animate={false}
-                    opacity={1}
+                    opacity={.5}
                     color="white"
-                    style={{ backgroundColor: 'white', '&:after': { backgroundColor: 'white' } , border:'0.0625rem solid #dee2e6'}}
+                   // style={{ backgroundColor: 'white', '&:after': { backgroundColor: 'white' } , border:'0.0625rem solid #dee2e633'}}
                   />
                 </Grid.Col>
                 <Grid.Col span={6}>
@@ -128,8 +132,8 @@ import { CarouselMain } from './Carousel';
                     height={SECONDARY_COL_HEIGHT}
                     radius="md"
                     animate={false}
-                    opacity={1}
-                    style={{ backgroundColor: 'white', '&:after': { backgroundColor: 'white' } , border:'0.0625rem solid #dee2e6'}}
+                    opacity={.5}
+                  //  style={{ backgroundColor: 'white', , border:'0.0625rem solid #dee2e633'}}
                   />
                 </Grid.Col>
               </Grid>

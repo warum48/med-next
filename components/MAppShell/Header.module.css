@@ -54,20 +54,23 @@
   display: flex;
   align-items: center;
   height: 100%;
-  width: 100%;
+ /* width: 100%; */
   justify-content: space-between;
+  margin: 0 auto;
+  transition: all .3s;
 }
 
 .logoContainer {
   padding: 75px;
   padding-left: 0;
-  padding-right: 40px;
+  padding-right: 0px;
 }
 
 .logo {
   height: 2.5rem;
   max-width: 400px;
-  margin-right: 1.5rem;
+  /*margin-right: 1.5rem; */
+  margin-left: .5rem;
 }
 
 .title {

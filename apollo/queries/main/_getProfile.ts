@@ -5,9 +5,7 @@ query getCentersAndCities($filteringAttrs_city: CityInput, $orderingAttrs_city: 
   getCities(filteringAttrs: $filteringAttrs_city, orderingAttrs: $orderingAttrs_city, skip: $skip_city, limit: $limit_city, descSorting: $descSorting_city){
       data{
           id
-          clientId
           name
-          isActive
       }
       statusCode
       details
@@ -16,27 +14,8 @@ query getCentersAndCities($filteringAttrs_city: CityInput, $orderingAttrs_city: 
     getMedicalCenters(filteringAttrs: $filteringAttrs_mcenter, orderingAttrs: $orderingAttrs_mcenter, skip: $skip_mcenter, limit: $limit_mcenter, descSorting: $descSorting_mcenter){
         data{
             id
-            clientId
-            cityId
             name
             address
-            
-            description
-           
-            isActive
-            logo
-            websiteUrl
-            phoneFax
-          
-            workTime
-            collectionTestsTime
-            vaccinationTime
-            city{
-                id
-                clientId
-                name
-                isActive
-            }
         }
         statusCode
         details

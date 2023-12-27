@@ -1,4 +1,4 @@
-import { Box, Burger, Image, useMantineTheme, Text, Title, Group } from '@mantine/core';
+import { Box, Burger, Image, useMantineTheme, Text, Title, Group, Center } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconPhone, IconSettings } from '@tabler/icons-react';
 import * as React from 'react';
@@ -18,33 +18,47 @@ type TProps = {
 import styles from './Header.module.css';
 import { ColorSchemeButton } from '../ColorSchemeButton/ColorSchemeButton';
 import { GlobalContext } from '@/context/ContextGlobal';
+import { AuthContext } from '@/context/AuthContext';
+import { guestHomePageMaxWidth } from '@/global/CONSTS';
 
 export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) => {
   const theme = useMantineTheme();
-  const {isDemo} = React.useContext(GlobalContext);
+  const { isDemo } = React.useContext(GlobalContext);
   const largeScreen = useMediaQuery('(min-width: 88em)');
   const midUpScreen = useMediaQuery('(min-width: 75em)');
   const [showSettings, setShowSettings] = React.useState(false);
+  const { isLoggedIn, setIsLoggedIn, switchLogIn } = React.useContext(AuthContext);
+
+  const demoInfo = {
+    phone: '+7 (123) 456-78-90',
+    logo: '/images/demologo.png',
+  };
+
+  const virilisInfo = {
+    phone: '+7 (812) 424-64-74',
+    logo: '/images/logo.svg',
+  };
+
+  const info = isDemo ? demoInfo : virilisInfo;
 
   return (
-    <Box className={styles.container}>
+   
+    <Box className={styles.container} w={isLoggedIn ? '100%' : guestHomePageMaxWidth}>
+      <Group gap='0'>
+
       <Burger
         hiddenFrom="lg"
         opened={opened}
         onClick={() => setOpened((o) => !o)}
         size="sm"
         color={theme.colors.gray[6]}
-        mr="xl"
+        //mr="xl"
         className={styles.burger}
       />
       <Box className={styles.logoContainer}>
-     
-        {!isDemo ? (
-          <Image className={styles.logo} fit="contain" src="/images/logo.svg" height={40} />
-        ) : (
-          <Image className={styles.logo} fit="contain" src="/images/demologo.png" height={40} />
-        )}
+        <Image className={styles.logo} fit="contain" src={info.logo} height={40} />
       </Box>
+      </Group>
       {/*} <Text className={styles.title}>
         <i>ЛИЧНЫЙ КАБИНЕТ ПОЛЬЗОВАТЕЛЯ</i>
   </Text> */}
@@ -53,28 +67,23 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
           <IconPhone size={40} color="#e64980" />
 </Box> */}
       <Box className={styles.contactGroup}>
-      {!isDemo ? (
-        <>
-        <Title order={4}>+7 (812) 424-64-74</Title>
+        <Title order={4}>{info.phone}</Title>
         <Text fw={500} fz="xs" ml={'3px'}>
           Контактный центр 24 часа
         </Text>
-        </>): (<>
-           <Title order={4}>+7 (123) 456-78-90</Title>
-           <Text fw={500} fz="xs" ml={'3px'}>
-             Контактный центр 24 часа
-           </Text>
-           </>
-        )}
       </Box>
       {/*}  </Group> */}
-      <DemoLogIn suppressHydrationWarning={true} />
-      <ColorSchemeButton />
+      <Group gap='0' >
+      <DemoLogIn 
+     // suppressHydrationWarning={true} 
+      />
+      <ColorSchemeButton /></Group>
       {showSettings && (
         <Box className={styles.settingsIcon} onClick={(e) => setAsideOpen(!asideOpen)} m="xs">
           <IconSettings />
         </Box>
       )}
     </Box>
+    
   );
 };

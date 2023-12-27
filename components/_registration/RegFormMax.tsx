@@ -15,6 +15,7 @@ import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInp
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import {
+  GetCentersAndCitiesQuery,
   GetUserAdminInfoQuery,
   PatientRegistration,
   UserAdminInputAdm,
@@ -47,6 +48,8 @@ type TRegFormProps = {
 
 export function RegFormMax({ setStep }: TRegFormProps) {
   const theme = useMantineTheme();
+  const { isDemo } = React.useContext(GlobalContext);
+  const [isFormDemo, setisFormDemo] = React.useState(false); //for 'show all checkbox
   const patientRegistrationVar_re = useReactiveVar(patientRegistrationVar);
   const defaultFormConfig = {
     registrationRequiredFields: 'first_name, last_name, email, phone_number, birth_date, password',
@@ -192,8 +195,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
       };
     },
   });
-  const { isDemo } = React.useContext(GlobalContext);
-  const [isFormDemo, setisFormDemo] = React.useState(true);
+  
 
   const {
     data: data_profile,
@@ -202,9 +204,9 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     refetch: refetch_profile,
     networkStatus: networkStatus_profile,
   } = 
-  //    isDemo
-  //  ? useFetch<GetMedicalCentersQuery>('/mock/getMedicalCenters.json')
-  //  :
+      isDemo
+    ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+    :
   useQuery( GET_PROFILE_FORM_DATA, {
     context: { clientName: 'main' },
   });
@@ -247,6 +249,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     console.log('birth:', form.values?.birthDate);
     //console.log(dayjs(form.values?.birthDate).format('YYYY-MM-DD'));
     // console.log('formatDateRuToNormal', formatDateRuToNormal(form.values?.birthDate));
+   // delete form.values.passwordRepeat
     patientRegistrationVar({
       ...form.values,
       phoneNumber: form.values.phoneNumber.replace(/\D/g, ''),
@@ -332,6 +335,10 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   form={form}
                   formField="gender"
                   required={formConfig.registrationRequiredFields?.includes('gender')}
+                  data={[
+                    { value: 'м', label: 'Мужской' },
+                    { value: 'ж', label: 'Женский' },
+                  ]}
                 />
               )}
               {formConfig.registrationVisibleFields.includes('phone_number') && (
@@ -471,6 +478,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
             <GridStretcher>
               {formConfig.registrationVisibleFields.includes('password') && (
                 <FloatingLabelInput
+                maw={350}
                   label="Пароль"
                   form={form}
                   type="password"
@@ -478,7 +486,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   required={formConfig.registrationRequiredFields?.includes('password')}
                 />
               )}
-              {formConfig.registrationVisibleFields.includes('password') && (
+              {/*formConfig.registrationVisibleFields.includes('password') && (
                 <FloatingLabelInput
                   label="Повторите пароль"
                   form={form}
@@ -486,7 +494,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
                   formField="password_repeat"
                   required={formConfig.registrationRequiredFields?.includes('password')}
                 />
-              )}
+              )*/}
             </GridStretcher>
 
             {/*<PasswordInput placeholder="Повторите пароль" required mt="md" /> */}

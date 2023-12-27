@@ -10,7 +10,7 @@ import { AuthContext } from '@/context/AuthContext';
 //const Button = dynamic(() => import('@mantine/core'), { ssr: false })
 //import { Props } from 'next/script';
 type TProps = {
-  suppressHydrationWarning: boolean;
+  suppressHydrationWarning?: boolean;
   children?: React.ReactNode;
 };
 

@@ -51,6 +51,48 @@ a.decoration_none:hover {
   }
 }
 
+html[data-mantine-color-scheme="dark"] .darking_image {
+  opacity: 1;
+  position: relative;
+  
+  display: block; content: ""; 
+}
+html[data-mantine-color-scheme="dark"] .darking_image::after {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: #000005cc;
+  content: "";
+}
+
+html[data-mantine-color-scheme="dark"] .darking_image:hover::after {
+  background-color: #00000599;
+}
+
+html[data-mantine-color-scheme="dark"] .mantine-BackgroundImage-root{
+  position:relative;
+
+}
+
+html[data-mantine-color-scheme="dark"] .mantine-BackgroundImage-root::after {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index:0;
+  background-color: #000005cc;/* #1e1f20e */
+  content: "";
+
+ 
+}
+
+html[data-mantine-color-scheme="dark"] .mantine-BackgroundImage-root:hover::after {
+  background-color: #000005c0;
+}
+
 /*-----tw-like utils--*/
 .cursor-pointer {
   cursor: pointer;

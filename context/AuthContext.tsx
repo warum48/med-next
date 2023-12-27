@@ -25,7 +25,10 @@ export const AuthProvider = ({ children }: any) => {
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!cookiesToken.mednekot);
+  console.log('cookiesToken', cookiesToken.mednekot);
+  console.log('!!cookiesToken.mednekot', !!cookiesToken.mednekot)
+  console.log('isLoggedIn-init', isLoggedIn)
 
   
 
@@ -81,6 +84,10 @@ export const AuthProvider = ({ children }: any) => {
 
     //router.push("/dashboard");
   }, [pathname]);
+
+  React.useEffect(() => {
+    setIsLoggedIn(!!cookiesToken.mednekot)
+  }, [cookiesToken.mednekot])
   /*
     useEffect(() => {
         async function fetchUserFromCookie() {

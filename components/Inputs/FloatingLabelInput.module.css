@@ -28,7 +28,7 @@
     }
   }
   
-  .input {
+.input {
     height: rem(54);
     padding-top: rem(18);
 
@@ -42,4 +42,8 @@
         color: var(--mantine-color-placeholder);
       }
     }
+  }
+
+  .root :global(.mantine-PasswordInput-input) input {
+    padding-top: rem(18);
   }

@@ -26,6 +26,8 @@ import { useQuery } from '@apollo/client';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { GET_CITIES } from '@/apollo/queries/main/getCities';
 import { Preloader } from '@/components/Preloader/Preloader';
+import { useFetch } from '@/services/useFetch';
+import { GetCentersAndCitiesQuery } from '@/__generated__/graphql';
 
 export default function Profile() {
   const renderCount = React.useRef(0);
@@ -59,9 +61,9 @@ export default function Profile() {
     refetch: refetch_profile,
     networkStatus: networkStatus_profile,
   } = 
-//    isDemo
-//  ? useFetch<GetMedicalCentersQuery>('/mock/getMedicalCenters.json')
-//  :
+    isDemo
+    ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+  :
   useQuery( GET_PROFILE_FORM_DATA, {
     context: { clientName: 'main' },
   });
