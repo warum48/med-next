@@ -39,6 +39,8 @@ import { innerPageMaxWidth } from '@/global/CONSTS';
 import { GET_DOCTORS_MSPECIALITIES } from '@/apollo/queries/main/getDoctorsMspecialities';
 import classes from './DoctorChooser.module.css';
 import { TimeSelector } from './TimeSelector';
+import { docPhotos } from '../___mockdata/mockdata';
+import { GlobalContext } from '@/context/ContextGlobal';
 
 /*const useStyles = createStyles((theme) => ({
     icon: {
@@ -67,6 +69,7 @@ export function SpecialityInfo({
   // const { classes } = useStyles();
   //const { classes: headerClasses } = useHeadersStyles();
   const [expanded, setExpanded] = useState(false);
+  const { isDemo } = React.useContext(GlobalContext);
 
   //const data_services = undefined;//{ getDoctorsServices: { data: undefined } };
 
@@ -86,6 +89,10 @@ export function SpecialityInfo({
   //React.useEffect(()=>{
   //  //console.log()
   //},[data_services])
+  function getPhoto() {
+    var photo = docPhotos[Math.floor(Math.random() * docPhotos.length)];
+    return isDemo ? photo : '';
+  }
 
   return (
     <CardContainer
@@ -99,9 +106,12 @@ export function SpecialityInfo({
           <TextHighlighted>от 5000 р.</TextHighlighted>
         </Group>
         <Avatar.Group>
+          {/*<Avatar src="image.png" />
           <Avatar src="image.png" />
-          <Avatar src="image.png" />
-          <Avatar src="image.png" />
+  <Avatar src="image.png" />*/}
+          <Avatar src={getPhoto()} />
+          <Avatar src={getPhoto()} />
+          <Avatar src={getPhoto()} />
           <Avatar>+5</Avatar>
         </Avatar.Group>
 

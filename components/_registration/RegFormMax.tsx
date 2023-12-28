@@ -18,7 +18,9 @@ import {
   GetCentersAndCitiesQuery,
   GetUserAdminInfoQuery,
   PatientRegistration,
+  UserAdmin,
   UserAdminInputAdm,
+  UserAdminResult,
 } from '../../__generated__/graphql';
 import { ErrorMessage } from '../../components/Errors/ErrorMessage';
 import { formatDateRuToNormal } from '../../utils/dateRuToNormal';
@@ -57,12 +59,13 @@ export function RegFormMax({ setStep }: TRegFormProps) {
       'first_name, last_name, patronymic, email, gender, phone_number, birth_date, additional_phone_number, password',
   };
   const maxFormConfig = {
+    id: 1,
     registrationRequiredFields: 'first_name, last_name, email, phone_number, birth_date, password',
     registrationVisibleFields:
       'first_name, last_name, patronymic, email, gender, phone_number, birth_date, additional_phone_number, password,' +
       'inn, snils, city_id, default_medical_center_id, doc_type, doc_series, doc_number, doc_date, doc_reg_address, doc_giving_dep_name, doc_giving_dep_code',
   };
-  const [formConfig, setFromConfig] = React.useState<UserAdminInputAdm>();
+  const [formConfig, setFromConfig] = React.useState<UserAdmin>(); //<UserAdminInputAdm><UserAdminResult>
 
   const onSubmit = (values: PatientRegistration) => {
     doReg();

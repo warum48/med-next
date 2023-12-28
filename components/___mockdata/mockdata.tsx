@@ -149,3 +149,14 @@ export const doctorInfo = <>Образование: 1989&ndash;1995&nbsp;гг. �
 
 export const serviceDescription =
   <>Кровь для выполнения лабораторных исследований рекомендуется сдавать утром натощак&nbsp;&mdash; между последним приемом пищи и&nbsp;взятием крови должно пройти не&nbsp;менее 8&nbsp;&mdash; 12&nbsp;часов. Вечером предшествующего дня рекомендуется необильный ужин. Желательно за&nbsp;1&nbsp;&mdash; 2&nbsp;дня до&nbsp;обследования исключить из&nbsp;рациона жирное, жареное и&nbsp;алкоголь.</>
+
+
+  export const docPhotos = [
+"https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+"https://images.unsplash.com/photo-1615177393579-5fc7431152c9?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ]

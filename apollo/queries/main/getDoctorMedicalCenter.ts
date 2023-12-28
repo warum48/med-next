@@ -25,7 +25,7 @@ query getDoctorMedicalCenter($filteringAttrs: DoctorMedicalCenterInput, $orderin
                 photo
                 doctorCategoryId
                
-                email
+
                 commonExperience
                 isActive
                 doctorCategory{
