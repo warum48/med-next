@@ -478,7 +478,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
             <GridStretcher>
               {formConfig.registrationVisibleFields.includes('password') && (
                 <FloatingLabelInput
-                maw={350}
+                maw={345}
                   label="Пароль"
                   form={form}
                   type="password"

@@ -25,7 +25,7 @@ interface IContext {
   isMobile: boolean | undefined;
   navBarCollapsed: boolean;
   setNavBarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
- 
+
   /*  SearchParamsService: TSearchParamsService;  //много функций
   
   UpdatingQueryService: any;
@@ -42,12 +42,12 @@ type Props = {
 //--------------component-----------
 
 export const GlobalProvider = ({ children }: Props) => {
-const isDemo = false;
+  const isDemo = false;
   const [asideOpen, setAsideOpen] = React.useState(false);
   const [navBarCollapsed, setNavBarCollapsed] = React.useState(false); //TODO make persistent
   const [isDebug, setIsDebug] = useState<boolean>(false);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-  
+
   //const location = useLocation();
   const { DesignService } = useDesign();
   //console.log('location', location);
@@ -92,8 +92,8 @@ const isDemo = false;
     DesignService,
     isMobile,
     navBarCollapsed,
-    setNavBarCollapsed
-    
+    setNavBarCollapsed,
+
     /* setIsDebug,
     
     SearchParamsService,
