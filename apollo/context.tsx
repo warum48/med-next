@@ -23,6 +23,11 @@ let apolloServer = path + "graphql"; //http://195.19.97.196:8002/ //process.env.
 interface IContext {
   setCookieToken:any
 }
+export const APOLLO_LINKS_CONTEXT = {
+  main: "main",
+  admin: "admin",
+  accounts: "accounts",
+}
 
 export const ApolloSettingsContext = createContext({} as IContext);
 
@@ -107,6 +112,8 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
   )
  // )
  */
+
+
 
  let jointLink = 
   

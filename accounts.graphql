@@ -1,0 +1,304 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type AddressMisKladrTable {
+  id: Int!
+  clientId: Int
+  clientUserId: Int
+  tag: Int
+  luid: Int
+  region: String
+  regionCode: String
+  area: String
+  areaCode: String
+  city: String
+  cityCode: String
+  town: String
+  townCode: String
+  street: String
+  streetCode: String
+  house: String
+  corp: String
+  flat: String
+  note: String
+  status: Int
+  livesLuId: Int
+  houseCode: String
+}
+
+type City {
+  id: Int!
+  clientId: Int
+  name: String!
+  isActive: Boolean
+}
+
+"""Date (isoformat)"""
+scalar Date
+
+"""Date with time (isoformat)"""
+scalar DateTime
+
+input FlashCallCode {
+  loginPhoneNumber: String!
+  code: String!
+}
+
+type InformationWay {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
+}
+
+type LoginResult {
+  data: Token
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
+type MedicalCenter {
+  id: Int!
+  clientId: Int
+  cityId: Int!
+  name: String!
+  address: String!
+  longitude: Float
+  latitude: Float
+  description: String
+  inn: String!
+  bankBic: String!
+  settlementAccount: String!
+  correspondentAccount: String!
+  kpp: String!
+  isActive: Boolean
+  logo: String
+  websiteUrl: String
+  phoneFax: String!
+  dmsPhone: String
+  workTime: String!
+  collectionTestsTime: String
+  vaccinationTime: String
+  city: City
+}
+
+type Mutation {
+  patientRegistration(patient: PatientRegistration!): RequestResult!
+  registrationFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
+  changePasswordByPhone(newPassword: String!): RequestResult!
+  changePasswordFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
+  changeLoginPhoneByPhone(oldPhoneNumber: String!, newPhoneNumber: String!): RequestResult!
+  changePhoneFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
+  addRelatives(relationshipDegreeId: Int!, patient: PatientRegistration!): LoginResult!
+}
+
+input PatientRegistration {
+  clientId: Int = null
+  id: Int = null
+  firstName: String = null
+  lastName: String = null
+  patronymic: String = null
+  birthDate: String = null
+  gender: String = null
+  email: String = null
+  phoneNumber: String!
+  additionalPhoneNumber: String = null
+  docType: String = null
+  docSeries: String = null
+  docNumber: String = null
+  docGivingDepName: String = null
+  docGivingDepCode: String = null
+  docDate: DateTime = null
+  docRegAddress: String = null
+  snils: String = null
+  inn: String = null
+  cityId: Int = null
+  addressMisKladrId: Int = null
+  longitude: Float = null
+  latitude: Float = null
+  defaultMedicalCenterId: Int = null
+  loginPhoneNumber: String = null
+  password: String = null
+  infoWayId: Int = null
+  notificationTime: Time = null
+  prefNotificationContactId: Int = null
+  relativeId: Int = null
+  relativeTypeId: Int = null
+}
+
+type Query {
+  patienLoginByPassword(loginPhoneNumber: String!, password: String!): LoginResult!
+  patientLoginByPhone(loginPhoneNumber: String!): LoginResult!
+  loginFlashCallCode(flashCallCode: FlashCallCode!): LoginResult!
+  getUserData: UserData!
+  guestLogin: LoginResult!
+  adminLoginByPassword(mobile: String!, password: String!): LoginResult!
+  getRelationshipDegrees(filteringAttrs: RelationshipDegreesInput = null, orderingAttrs: RelationshipDegreesInput = null, skip: Int = 1, limit: Int = 10, descSorting: Boolean = null): RelationshipDegreesResult!
+  getUserRelatives(filteringAttrs: UserRelativeInput = null, orderingAttrs: UserRelativeInput = null, skip: Int = 1, limit: Int = 10, descSorting: Boolean = null): UserRelativeResult!
+}
+
+type RelationshipDegrees {
+  id: Int!
+  clientId: Int
+  name: String!
+  description: String
+  isActive: Boolean
+}
+
+input RelationshipDegreesInput {
+  clientId: [Int!] = null
+  name: String = null
+  description: String = null
+  isActive: Boolean = null
+  id: [Int!] = null
+}
+
+type RelationshipDegreesResult {
+  data: [RelationshipDegrees!]
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
+type RequestResult {
+  data: String
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
+"""Time (isoformat)"""
+scalar Time
+
+type Token {
+  token: String!
+}
+
+type User {
+  id: Int!
+  clientId: Int
+  firstName: String
+  lastName: String
+  patronymic: String
+  birthDate: Date
+  gender: String
+  email: String
+  phoneNumber: String!
+  additionalPhoneNumber: String
+  docType: Int
+  docSeries: String
+  docNumber: String
+  docGivingDepName: String
+  docGivingDepCode: String
+  docDate: DateTime
+  docRegAddress: String
+  snils: String
+  inn: String
+  cityId: Int
+  addressFull: String
+  addressMisKladrId: Int
+  longitude: Float
+  latitude: Float
+  zoneNumber: Int
+  defaultMedicalCenterId: Int
+  loginPhoneNumber: String
+  isVerified: Boolean
+  infoWayId: Int
+  notificationTime: Time
+  prefNotificationContactId: Int
+  isActive: Boolean
+  created: DateTime
+  city: City
+  defaultMedicalCenter: MedicalCenter
+  infoWay: InformationWay
+  prefNotificationContact: User
+  addressMisKladr: AddressMisKladrTable
+}
+
+type UserData {
+  data: UserView
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
+type UserRelative {
+  id: Int!
+  userId: Int!
+  clientId: Int
+  relativeId: Int!
+  relationshipDegreeId: Int!
+  extraRights: Boolean
+  blockStatus: Boolean
+  user: User
+  relative: User
+  relationshipDegree: RelationshipDegrees
+}
+
+input UserRelativeInput {
+  userId: [Int!] = null
+  relativeId: [Int!] = null
+  relationshipDegreeId: [Int!] = null
+  extraRights: Boolean = null
+  blockStatus: Boolean = null
+  id: [Int!] = null
+}
+
+type UserRelativeResult {
+  data: [UserRelative!]
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
+type UserView {
+  id: Int!
+  clientId: String
+  firstName: String
+  lastName: String
+  patronymic: String
+  birthDate: Date
+  gender: String
+  email: String
+  phoneNumber: String!
+  additionalPhoneNumber: String
+  docType: Int
+  docSeries: String
+  docNumber: String
+  docGivingDepName: String
+  docGivingDepCode: String
+  docDate: DateTime
+  docRegAddress: String
+  snils: String
+  inn: String
+  cityId: Int
+  addressFull: String
+  addressMisKladrId: Int
+  longitude: Float
+  latitude: Float
+  zoneNumber: Int
+  defaultMedicalCenterId: Int
+  loginPhoneNumber: String
+  isVerified: Boolean
+  infoWayId: Int
+  notificationTime: Time
+  prefNotificationContactId: Int
+  isActive: Boolean
+  created: DateTime
+  city: City
+  defaultMedicalCenter: MedicalCenter
+  infoWay: InformationWay
+  prefNotificationContact: User
+  addressMisKladr: AddressMisKladrTable
+}
+

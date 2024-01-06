@@ -8,6 +8,8 @@ import { GlobalContext } from '@/context/ContextGlobal';
 import classes from './StyledButton.module.css';
 import { IconInfoSmall } from '@tabler/icons-react';
 
+type TButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 type TProps = {
   appearence?:
     | 'intro_second'
@@ -29,7 +31,7 @@ export const StyledButton = ({
   sx = {},
   children,
   ...props
-}: TProps & ButtonProps) => {
+}: TProps & ButtonProps & TButtonProps) => {
   //& TChildren
 
   //const { classes, theme } = useStyles();

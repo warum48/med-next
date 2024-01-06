@@ -7,14 +7,16 @@
 
 #step 1: generate schema
 get-graphql-schema https://med.shop-survey.ru/main/graphql >main.graphql
-get-graphql-schema https://med.shop-survey.ru/accounts/graphql > schema.graphql
+get-graphql-schema https://med.shop-survey.ru/accounts/graphql > accounts.graphql
 get-graphql-schema https://med.shop-survey.ru/admin/graphql > admin.graphql
 
 ##step 2: generate queries
-gqlg --schemaFilePath ./schema.graphql --destDirPath ./__gqlsrc__/output --depthLimit 5
+gqlg --schemaFilePath ./accounts.graphql --destDirPath ./__gqlsrc__/accounts --depthLimit 5
 gqlg --schemaFilePath ./main.graphql --destDirPath ./__gqlsrc__/main --depthLimit 5
 gqlg --schemaFilePath ./admin.graphql --destDirPath ./__gqlsrc__/admin --depthLimit 5
 
-##step3: generate types 
+##step 3: manual copy necessary data to queries
+
+##step4: generate types 
 npm run compile
 

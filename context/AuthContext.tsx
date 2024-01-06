@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: any) => {
   function demoLogin(){
     var d = new Date();
     d.setFullYear(d.getFullYear() + 100);
-    setCookieToken('mednekot',     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIyODA0MDUsInN1YiI6eyJsb2dpbiI6Ijc5MjExMTExMTExIiwicGFzc3dvcmQiOiIkMmIkMTIkdk5TUWZ2UEk3cFhCcmRGMklJbmdSLjl2WE4yVHM3V25DVzFUdDRzYWFrUmJ0Nmt6OFNham0ifX0.aEarsVo7_jwB8Wjkn03pUGmRs39JC839kesAjDgl57Q'
+    setCookieToken('mednekot',     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw'
     , { path: '/', expires: d });
     // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
     setIsLoggedIn(true);

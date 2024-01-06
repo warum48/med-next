@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 
 type FetchState<T> = {
   loading: boolean;
-  error: any;//Error | null;
+  error: any; //Error | null;
   data: T | null;
-  refetch: any,
-    networkStatus: any,
+  refetch: any;
+  networkStatus: any;
 };
 
 export const useFetch = <T,>(url: string) => {
@@ -13,7 +13,7 @@ export const useFetch = <T,>(url: string) => {
     loading: true,
     error: null,
     data: null,
-    refetch: ()=>console.log('refetch'),
+    refetch: () => console.log('refetch'),
     networkStatus: null,
   });
 
@@ -27,16 +27,16 @@ export const useFetch = <T,>(url: string) => {
           loading: false,
           error: null,
           data: jsonData,
-          refetch: ()=>console.log('refetch'),
-    networkStatus: null,
+          refetch: () => console.log('refetch'),
+          networkStatus: null,
         });
       } catch (error: any) {
         setFetchState({
           loading: false,
           error: error,
           data: null,
-          refetch: ()=>console.log('refetch'),
-    networkStatus: null,
+          refetch: () => console.log('refetch'),
+          networkStatus: null,
         });
       }
     };

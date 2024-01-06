@@ -200,6 +200,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
   });
   
 
+  //!!get data for selectors
   const {
     data: data_profile,
     loading: loading_profile,
@@ -214,6 +215,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     context: { clientName: 'main' },
   });
 
+  //!!check what fields are required and visible
   const {
     data: data_config, //DoctorResult
     loading: loading_config,

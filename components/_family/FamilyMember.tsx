@@ -29,9 +29,13 @@ interface UserInfoIconsProps {
   phone: string;
   email: string;
   isMain: boolean;
+  relative: any;
+  relationshipDegree: any;
 }
 
 export function FamilyMember({
+  relative,
+  relationshipDegree,
   avatar,
   name,
   title,
@@ -70,10 +74,12 @@ export function FamilyMember({
         
         <Grid>
           <Grid.Col span="auto" maw={'100%'}>
-           
-            <FMInfo expanded={expanded} isMain={isMain} />
+          
+            <FMInfo expanded={expanded} isMain={isMain} relative={relative}
+  relationshipDegree={relationshipDegree}/>
           </Grid.Col>
         </Grid>
+        {/*JSON.stringify(relative)*/}
       </Paper>
     </Grid.Col>
   );

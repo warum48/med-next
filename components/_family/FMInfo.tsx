@@ -41,8 +41,11 @@ import { SpaceYMain } from '../Spacers/Spacers';
 type TProps = {
   expanded: boolean;
   isMain: boolean;
+  relative: any;
+  relationshipDegree: any;
 };
-export function FMInfo({ expanded, isMain }: TProps) {
+export function FMInfo({ expanded, isMain,   relative,
+  relationshipDegree }: TProps) {
   const theme = useMantineTheme();
   const [photoUpload, setPhotoUpload] = useState<boolean>(false);
   //const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {console.log(e)}
@@ -200,7 +203,9 @@ export function FMInfo({ expanded, isMain }: TProps) {
           <Group w="100%">
             <Card_pretitle>
               {userInfo.find((obj) => obj.field == 'type')?.newValue ||
-                userInfo.find((obj) => obj.field == 'type')?.mock}
+                //userInfo.find((obj) => obj.field == 'type')?.mock
+                relationshipDegree?.name
+                }
             </Card_pretitle>
             <Tooltip
               label={isMain ? 'Главный пользователь' : 'Назначить главным пользователем'}
@@ -217,11 +222,17 @@ export function FMInfo({ expanded, isMain }: TProps) {
 
           <Card_title>
             {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
-              userInfo.find((obj) => obj.field == 'secondName')?.mock}{' '}
+              //userInfo.find((obj) => obj.field == 'secondName')?.mock
+              relative?.firstName
+              }{' '}
             {userInfo.find((obj) => obj.field == 'firstName')?.newValue ||
-              userInfo.find((obj) => obj.field == 'firstName')?.mock}{' '}
+              //userInfo.find((obj) => obj.field == 'firstName')?.mock
+              relative?.patronymic
+              }{' '}
             {userInfo.find((obj) => obj.field == 'middleName')?.newValue ||
-              userInfo.find((obj) => obj.field == 'middleName')?.mock}
+              //userInfo.find((obj) => obj.field == 'middleName')?.mock
+              relative?.lastName
+              }
           </Card_title>
         </div>
       </Group>
