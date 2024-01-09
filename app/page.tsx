@@ -1,8 +1,8 @@
 'use client'
 import { Welcome } from '../components/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Home } from '../components/_maincomponents/HomePage';
-import { UserHomePage } from '@/components/_maincomponents/UserHomePage';
+import { Home } from '../components/_home/HomePage';
+import { UserHomePage } from '@/components/_home/UserHomePage';
 import { useCookies } from 'react-cookie';
 
 export default function HomePage() {

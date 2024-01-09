@@ -28,11 +28,13 @@ export const Intro = () => {
       style={{
         height: 420, //SECONDARY_COL_HEIGHT,
         marginBottom: '1rem',
-        padding: '5rem',
-        paddingTop: '4rem',
+      //  padding: '5rem',
+      //  paddingTop: '4rem',
         overflow: 'hidden',
         position: 'relative',
       }}
+pt='4rem'
+      p={{base: 'xl', xs: '5rem'}} //'5rem'
     >
       {/* <Box
         tyle={{

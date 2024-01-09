@@ -15,6 +15,7 @@ type TProps = {
     | 'intro_second'
     | 'main_second'
     | 'main_first'
+    | 'main_first_outlined'
     | 'main_cancel'
     | 'main_small'
     | 'main_gradient'
@@ -138,22 +139,30 @@ export const StyledButton = ({
     );
   }
 
+  if (appearence == 'main_first_outlined') {
+    return (
+      <Button
+
+        size="md" //"sm"
+
+        className={classes.main_first_outlined}
+
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
   if (appearence == 'main_second_outlined') {
     return (
       <Button
-        //variant="gradient"
-        //gradient={{ from: '#01868a', to: '#0dab5f' }}
+
         size="md" //"sm"
-        // size="xl"
-        className={classes.main_outlined}
-        // mt={40}
-        //style={{
-        //  borderRadius:
-        //    DesignService.sizeAndRadius.buttonRadius[
-        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-        //    ].style,
-        //  ...sx,
-        //}}
+
+        className={classes.main_second_outlined}
+
         onClick={onClick}
         {...props}
       >

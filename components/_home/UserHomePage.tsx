@@ -190,7 +190,8 @@ export const UserHomePage = () => {
               </Grid.Col>
             </Grid>
           </SimpleGrid>
-          <CarouselMain />
+          
+          <CarouselMain /> 
         </Container>
       </Box>
     </Center>

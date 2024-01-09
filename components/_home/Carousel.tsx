@@ -129,7 +129,7 @@ export function CarouselMain() {
             indicator: classes.carouselIndicator,
           }}
         > <Carousel.Slide key='intro' >
-        <Intro />
+       { <Intro /> }
       </Carousel.Slide>
           {slides}
          

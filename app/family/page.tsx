@@ -69,30 +69,29 @@ export default function Family() {
       context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
     });
 
-    const {
-      data: data_relatives,
-      loading: loading_relatives,
-      error: error_relatives,
-      refetch: refetch_relatives,
-      networkStatus: networkStatus_relatives,
-    } =
-      //   isDemo
-      // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
-      // :
-      useQuery<GetUserRelativesQuery>(GET_USER_RELATIVES, {
-        context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
-      });  
+  const {
+    data: data_relatives,
+    loading: loading_relatives,
+    error: error_relatives,
+    refetch: refetch_relatives,
+    networkStatus: networkStatus_relatives,
+  } =
+    //   isDemo
+    // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+    // :
+    useQuery<GetUserRelativesQuery>(GET_USER_RELATIVES, {
+      context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
+    });
 
-  function refreshList(){
+  function refreshList() {
     refetch_relatives();
-  }    
+  }
 
   return (
-   
     <InnerPageContainer>
       <Title1_main>Моя семья</Title1_main>
       <Space h="xl" />
-      {loading_reldergees && <Preloader />}  
+      {loading_reldergees && <Preloader />}
       {error_reldergees && (
         <ErrorMessage
           detail={data_reldergees?.getRelationshipDegrees?.details}
@@ -100,35 +99,36 @@ export default function Family() {
           networkStatus={networkStatus_reldergees}
         />
       )}
-      {(data_reldergees && data_relatives) &&
-      <Grid>
-        {data_relatives?.getUserRelatives?.data?.map((item: any, index: number) => (
-          <FamilyMember {...item} key={'fm' + index} />
-        ))}
-      </Grid>
-}
-
-      {addMemberOpen ? (
-        <AddForm setAddMemberOpen={setAddMemberOpen} relDegrees={data_reldergees?.getRelationshipDegrees?.data} onAdd={refreshList}/>
-      ) : (
+      {data_reldergees && data_relatives && (
         <>
-          <Space h="xl" />
-          {(true || data_reldergees) &&
-          <Center>
-            <StyledButton appearence={'main_second'} onClick={() => setAddMemberOpen(true)}>
-              Добавить родственника
-            </StyledButton>
-          </Center>
-}
+          <Grid>
+            {data_relatives?.getUserRelatives?.data?.map((item: any, index: number) => (
+              <FamilyMember {...item} key={'fm' + index} />
+            ))}
+          </Grid>
+
+          {addMemberOpen ? (
+            <AddForm
+              setAddMemberOpen={setAddMemberOpen}
+              relDegrees={data_reldergees?.getRelationshipDegrees?.data}
+              onAdd={refreshList}
+            />
+          ) : (
+            <>
+              <Space h="xl" />
+              {(true || data_reldergees) && (
+                <Center>
+                  <StyledButton appearence={'main_second'} onClick={() => setAddMemberOpen(true)}>
+                    Добавить родственника
+                  </StyledButton>
+                </Center>
+              )}
+            </>
+          )}
         </>
       )}
 
-
-
-{/*'rel' + JSON.stringify(data_relatives?.getUserRelatives?.data)*/}
-      
+      {/*'rel' + JSON.stringify(data_relatives?.getUserRelatives?.data)*/}
     </InnerPageContainer>
-    
-    
   );
 }

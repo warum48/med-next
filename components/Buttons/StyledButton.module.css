@@ -34,11 +34,23 @@
     background-color: var(--mantine-color-virilis-pink);
   }
 
-  .main_outlined{
+  .main_second_outlined{
     transition: all .4s;
     background-color: var(--mantine-color-body);
     border-color: var(--mantine-color-virilis-pink);
     color: var(--mantine-color-virilis-pink);
+    border-radius: 100px;
+  }
+  .main_first_outlined:hover{
+    border-color: var(--mantine-color-virilis-pink);
+    color: var(--mantine-color-virilis-pink);
+  }
+
+  .main_first_outlined{
+    transition: all .4s;
+    background-color: var(--mantine-color-body);
+    border-color: var(--mantine-color-virilis-green);
+    color: var(--mantine-color-virilis-green);
     border-radius: 100px;
   }
 

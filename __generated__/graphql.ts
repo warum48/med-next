@@ -25,7 +25,7 @@ export type Scalars = {
 export type AccessTicket = {
   __typename?: 'AccessTicket';
   blStatus?: Maybe<Scalars['Int']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   doctorMcenters?: Maybe<DoctorMedicalCenter>;
   doctorMcentersId: Scalars['Int']['output'];
   expireDate?: Maybe<Scalars['DateTime']['output']>;
@@ -45,13 +45,13 @@ export type AccessTicketIn = {
   blStatus?: InputMaybe<Scalars['Int']['input']>;
   clientId?: InputMaybe<Array<Scalars['Int']['input']>>;
   doctorMcentersId?: InputMaybe<Array<Scalars['Int']['input']>>;
-  expireDate?: InputMaybe<Scalars['Date']['input']>;
+  expireDate?: InputMaybe<Scalars['DateTime']['input']>;
   firststatus?: InputMaybe<Scalars['Boolean']['input']>;
   fromInternetStatus?: InputMaybe<Scalars['Boolean']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   isReserv?: InputMaybe<Scalars['Boolean']['input']>;
   status?: InputMaybe<Scalars['Boolean']['input']>;
-  ticketDatetime?: InputMaybe<Scalars['Date']['input']>;
+  ticketDatetime?: InputMaybe<Scalars['DateTime']['input']>;
   ticketDuration?: InputMaybe<Scalars['Int']['input']>;
   ticketRoom?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Array<Scalars['Int']['input']>>;
@@ -62,13 +62,14 @@ export type AccessTicketInput = {
   clientId?: InputMaybe<Array<Scalars['Int']['input']>>;
   doctorMcenters?: InputMaybe<DoctorMedicalCenterIn>;
   doctorMcentersId?: InputMaybe<Array<Scalars['Int']['input']>>;
-  expireDate?: InputMaybe<Scalars['Date']['input']>;
+  expireDate?: InputMaybe<Scalars['DateTime']['input']>;
   firststatus?: InputMaybe<Scalars['Boolean']['input']>;
   fromInternetStatus?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<Scalars['Int']['input']>>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   isReserv?: InputMaybe<Scalars['Boolean']['input']>;
   status?: InputMaybe<Scalars['Boolean']['input']>;
-  ticketDatetime?: InputMaybe<Scalars['Date']['input']>;
+  ticketDatetime?: InputMaybe<Scalars['DateTime']['input']>;
   ticketDuration?: InputMaybe<Scalars['Int']['input']>;
   ticketRoom?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<UserIn>;
@@ -79,13 +80,13 @@ export type AccessTicketInputAdm = {
   blStatus?: InputMaybe<Scalars['Int']['input']>;
   clientId?: InputMaybe<Array<Scalars['Int']['input']>>;
   doctorMcentersId?: InputMaybe<Array<Scalars['Int']['input']>>;
-  expireDate?: InputMaybe<Scalars['Date']['input']>;
+  expireDate?: InputMaybe<Scalars['DateTime']['input']>;
   firststatus?: InputMaybe<Scalars['Boolean']['input']>;
   fromInternetStatus?: InputMaybe<Scalars['Boolean']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   isReserv?: InputMaybe<Scalars['Boolean']['input']>;
   status?: InputMaybe<Scalars['Boolean']['input']>;
-  ticketDatetime?: InputMaybe<Scalars['Date']['input']>;
+  ticketDatetime?: InputMaybe<Scalars['DateTime']['input']>;
   ticketDuration?: InputMaybe<Scalars['Int']['input']>;
   ticketRoom?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Array<Scalars['Int']['input']>>;
@@ -95,6 +96,9 @@ export type AccessTicketResult = {
   __typename?: 'AccessTicketResult';
   data?: Maybe<Array<AccessTicket>>;
   details?: Maybe<Scalars['String']['output']>;
+  doctorMcenterList?: Maybe<Array<DoctorMedicalCenter>>;
+  medicalPositionList?: Maybe<Array<MedicalPosition>>;
+  medicalSpecialityList?: Maybe<Array<MedicalSpeciality>>;
   pagesCount?: Maybe<Scalars['Int']['output']>;
   recordsCount?: Maybe<Scalars['Int']['output']>;
   statusCode?: Maybe<Scalars['Int']['output']>;
@@ -128,7 +132,7 @@ export type AddressMisKladrTable = {
 
 export type City = {
   __typename?: 'City';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   name: Scalars['String']['output'];
@@ -164,7 +168,7 @@ export type CityResult = {
 
 export type ComplexService = {
   __typename?: 'ComplexService';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -250,7 +254,7 @@ export type ComplexServiceResult = {
 export type Doctor = {
   __typename?: 'Doctor';
   birthDate?: Maybe<Scalars['Date']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   commonExperience?: Maybe<Scalars['Int']['output']>;
   doctorCategory?: Maybe<DoctorCategory>;
   doctorCategoryId?: Maybe<Scalars['Int']['output']>;
@@ -267,7 +271,7 @@ export type Doctor = {
 
 export type DoctorCategory = {
   __typename?: 'DoctorCategory';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -354,7 +358,7 @@ export type DoctorInputAdm = {
 
 export type DoctorMedicalCenter = {
   __typename?: 'DoctorMedicalCenter';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
@@ -426,6 +430,46 @@ export type DoctorMedicalCenterResult = {
   statusCode?: Maybe<Scalars['Int']['output']>;
 };
 
+export type DoctorMedicalCenterService = {
+  __typename?: 'DoctorMedicalCenterService';
+  clientId?: Maybe<Scalars['String']['output']>;
+  doctorMcenters?: Maybe<DoctorMedicalCenter>;
+  doctorMcentersId: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
+  isActive?: Maybe<Scalars['Boolean']['output']>;
+  service?: Maybe<Service>;
+  serviceId: Scalars['Int']['output'];
+};
+
+export type DoctorMedicalCenterServiceInput = {
+  clientId?: InputMaybe<Array<Scalars['Int']['input']>>;
+  doctorMcenters?: InputMaybe<DoctorMedicalCenterIn>;
+  doctorMcentersId?: InputMaybe<Array<Scalars['Int']['input']>>;
+  id?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  service?: InputMaybe<ServiceIn>;
+  serviceId?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type DoctorMedicalCenterServiceInputAdm = {
+  clientId?: InputMaybe<Array<Scalars['Int']['input']>>;
+  doctorMcenters?: InputMaybe<DoctorMedicalCenterIn>;
+  doctorMcentersId?: InputMaybe<Array<Scalars['Int']['input']>>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  service?: InputMaybe<ServiceIn>;
+  serviceId?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type DoctorMedicalCenterServiceResult = {
+  __typename?: 'DoctorMedicalCenterServiceResult';
+  data?: Maybe<Array<DoctorMedicalCenterService>>;
+  details?: Maybe<Scalars['String']['output']>;
+  pagesCount?: Maybe<Scalars['Int']['output']>;
+  recordsCount?: Maybe<Scalars['Int']['output']>;
+  statusCode?: Maybe<Scalars['Int']['output']>;
+};
+
 export type DoctorMspeciality = {
   __typename?: 'DoctorMspeciality';
   doctor?: Maybe<Doctor>;
@@ -460,7 +504,7 @@ export type DoctorMspecialityResult = {
 
 export type DoctorPatientType = {
   __typename?: 'DoctorPatientType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   doctorMedicalCenter?: Maybe<DoctorMedicalCenter>;
   doctorMedicalCenterId: Scalars['Int']['output'];
   endDate: Scalars['DateTime']['output'];
@@ -503,7 +547,7 @@ export type DoctorPatientTypeResult = {
 
 export type DoctorReplacement = {
   __typename?: 'DoctorReplacement';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId: Scalars['Int']['output'];
@@ -599,7 +643,7 @@ export type DoctorStatusResult = {
 
 export type DoctorStatusType = {
   __typename?: 'DoctorStatusType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -639,7 +683,7 @@ export type DoctorStatusTypeResult = {
 
 export type FinancialType = {
   __typename?: 'FinancialType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -684,7 +728,7 @@ export type FlashCallCode = {
 
 export type InformationWay = {
   __typename?: 'InformationWay';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -712,7 +756,7 @@ export type MedicalCenter = {
   bankBic: Scalars['String']['output'];
   city?: Maybe<City>;
   cityId: Scalars['Int']['output'];
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   collectionTestsTime?: Maybe<Scalars['String']['output']>;
   correspondentAccount: Scalars['String']['output'];
   description?: Maybe<Scalars['String']['output']>;
@@ -814,7 +858,7 @@ export type MedicalCenterResult = {
 
 export type MedicalPosition = {
   __typename?: 'MedicalPosition';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   searchDescription?: Maybe<Scalars['String']['output']>;
@@ -862,7 +906,7 @@ export type MedicalPositionResult = {
 
 export type MedicalSpeciality = {
   __typename?: 'MedicalSpeciality';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   searchDescription?: Maybe<Scalars['String']['output']>;
@@ -917,6 +961,7 @@ export type Mutation = {
   addUpdateComplexServiceItem: RequestResult;
   addUpdateDoctor: RequestResult;
   addUpdateDoctorCategory: RequestResult;
+  addUpdateDoctorMcenterService: RequestResult;
   addUpdateDoctorMedicalCenter: RequestResult;
   addUpdateDoctorMspecialities: RequestResult;
   addUpdateDoctorPatientType: RequestResult;
@@ -964,6 +1009,7 @@ export type Mutation = {
   deleteComplexServiceItem: RequestResult;
   deleteDoctor: RequestResult;
   deleteDoctorCategory: RequestResult;
+  deleteDoctorMcenterService: RequestResult;
   deleteDoctorMedicalCenter: RequestResult;
   deleteDoctorMspeciality: RequestResult;
   deleteDoctorPatientType: RequestResult;
@@ -1045,6 +1091,12 @@ export type MutationAddUpdateDoctorArgs = {
 export type MutationAddUpdateDoctorCategoryArgs = {
   doctorCategory: DoctorCategoryInputAdm;
   doctorCategoryId?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type MutationAddUpdateDoctorMcenterServiceArgs = {
+  doctorMcenterService: DoctorMedicalCenterServiceInputAdm;
+  doctorMcenterServiceId?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -1325,6 +1377,11 @@ export type MutationDeleteDoctorCategoryArgs = {
 };
 
 
+export type MutationDeleteDoctorMcenterServiceArgs = {
+  doctorMcenterServiceId: Scalars['Int']['input'];
+};
+
+
 export type MutationDeleteDoctorMedicalCenterArgs = {
   doctorMedicalCenterId: Scalars['Int']['input'];
 };
@@ -1516,7 +1573,7 @@ export type MutationRegistrationFlashCallCodeArgs = {
 
 export type PackType = {
   __typename?: 'PackType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -1590,7 +1647,7 @@ export type PatientRegistration = {
 
 export type PatientType = {
   __typename?: 'PatientType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -1630,7 +1687,7 @@ export type PatientTypeResult = {
 
 export type PaymentType = {
   __typename?: 'PaymentType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -1671,7 +1728,7 @@ export type PaymentTypeResult = {
 export type Policy = {
   __typename?: 'Policy';
   amount?: Maybe<Scalars['Float']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   contractDate: Scalars['DateTime']['output'];
   currentPaid?: Maybe<Scalars['Float']['output']>;
   discoumtCoefficient?: Maybe<Scalars['Float']['output']>;
@@ -1758,7 +1815,7 @@ export type PolicyResult = {
 
 export type Price = {
   __typename?: 'Price';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   priceBeznal?: Maybe<Scalars['Float']['output']>;
   priceNal?: Maybe<Scalars['Float']['output']>;
@@ -1794,7 +1851,7 @@ export type PriceInputAdm = {
 
 export type PriceName = {
   __typename?: 'PriceName';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -1834,7 +1891,7 @@ export type PriceNameResult = {
 
 export type PricePeriod = {
   __typename?: 'PricePeriod';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   endDate: Scalars['DateTime']['output'];
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -1889,6 +1946,7 @@ export type Query = {
   getComplexService: ComplexServiceResult;
   getComplexServiceItem: ComplexServiceItemResult;
   getDoctorCategories: DoctorCategoryResult;
+  getDoctorMcenterServices: DoctorMedicalCenterServiceResult;
   getDoctorMedicalCenter: DoctorMedicalCenterResult;
   getDoctorPatientType: DoctorPatientTypeResult;
   getDoctorReplacement: DoctorReplacementResult;
@@ -1985,6 +2043,15 @@ export type QueryGetDoctorCategoriesArgs = {
   filteringAttrs?: InputMaybe<DoctorCategoryInput>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   orderingAttrs?: InputMaybe<DoctorCategoryInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryGetDoctorMcenterServicesArgs = {
+  descSorting?: InputMaybe<Scalars['Boolean']['input']>;
+  filteringAttrs?: InputMaybe<DoctorMedicalCenterServiceInput>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  orderingAttrs?: InputMaybe<DoctorMedicalCenterServiceInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -2362,7 +2429,7 @@ export type QueryPatientLoginByPhoneArgs = {
 
 export type RefuseReason = {
   __typename?: 'RefuseReason';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -2402,7 +2469,7 @@ export type RefuseReasonResult = {
 
 export type RelationshipDegrees = {
   __typename?: 'RelationshipDegrees';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -2453,7 +2520,7 @@ export type RequestResult = {
 export type Service = {
   __typename?: 'Service';
   appliedMethod?: Maybe<Scalars['String']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   clientServiceCode?: Maybe<Scalars['String']['output']>;
   comment?: Maybe<Scalars['String']['output']>;
   executionTime?: Maybe<Scalars['Int']['output']>;
@@ -2482,7 +2549,7 @@ export type Service = {
 
 export type ServiceGroup = {
   __typename?: 'ServiceGroup';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   clientServiceGroupCode?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
@@ -2596,7 +2663,7 @@ export type ServiceInputAdm = {
 
 export type ServiceMedicalSpeciality = {
   __typename?: 'ServiceMedicalSpeciality';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   medicalSpeciality?: Maybe<MedicalSpeciality>;
@@ -2640,7 +2707,7 @@ export type ServiceResult = {
 
 export type ServiceType = {
   __typename?: 'ServiceType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -2673,7 +2740,7 @@ export type ServiceTypeResult = {
 
 export type Shifr = {
   __typename?: 'Shifr';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   companyName?: Maybe<Scalars['String']['output']>;
   endDate: Scalars['DateTime']['output'];
@@ -2687,7 +2754,7 @@ export type Shifr = {
 
 export type ShifrDiscount = {
   __typename?: 'ShifrDiscount';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   comment?: Maybe<Scalars['String']['output']>;
   discountCoefficientA?: Maybe<Scalars['Float']['output']>;
   discountCoefficientS?: Maybe<Scalars['Float']['output']>;
@@ -2726,7 +2793,7 @@ export type ShifrDiscountInputAdm = {
 
 export type ShifrDiscountPeriod = {
   __typename?: 'ShifrDiscountPeriod';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   endDate: Scalars['DateTime']['output'];
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -2819,7 +2886,7 @@ export type ShifrResult = {
 
 export type StaffType = {
   __typename?: 'StaffType';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -2859,7 +2926,7 @@ export type StaffTypeResult = {
 
 export type SubscribeDoctor = {
   __typename?: 'SubscribeDoctor';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId: Scalars['Int']['output'];
@@ -2913,7 +2980,7 @@ export type SubscribeDoctorResult = {
 
 export type SubscribeServicePack = {
   __typename?: 'SubscribeServicePack';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
@@ -2972,7 +3039,7 @@ export type SubscribeServicePackResult = {
 
 export type SubscribeSpackRecord = {
   __typename?: 'SubscribeSpackRecord';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
@@ -3032,7 +3099,7 @@ export type User = {
   birthDate?: Maybe<Scalars['Date']['output']>;
   city?: Maybe<City>;
   cityId?: Maybe<Scalars['Int']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['DateTime']['output']>;
   defaultMedicalCenter?: Maybe<MedicalCenter>;
   defaultMedicalCenterId?: Maybe<Scalars['Int']['output']>;
@@ -3067,7 +3134,7 @@ export type User = {
 
 export type UserAdmin = {
   __typename?: 'UserAdmin';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   registrationRequiredFields?: Maybe<Scalars['String']['output']>;
   registrationVisibleFields?: Maybe<Scalars['String']['output']>;
@@ -3181,7 +3248,7 @@ export type UserPayment = {
   avanceStatus?: Maybe<Scalars['Int']['output']>;
   cardAmount?: Maybe<Scalars['Float']['output']>;
   cashierId?: Maybe<Scalars['Int']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   debtAmount?: Maybe<Scalars['Float']['output']>;
   discountAmount?: Maybe<Scalars['Float']['output']>;
   editNowStatus?: Maybe<Scalars['Boolean']['output']>;
@@ -3295,7 +3362,7 @@ export type UserPaymentResult = {
 export type UserPurchase = {
   __typename?: 'UserPurchase';
   amount?: Maybe<Scalars['Float']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   discount?: Maybe<Scalars['Float']['output']>;
   discountKoef?: Maybe<Scalars['Float']['output']>;
   doctorExec?: Maybe<DoctorMedicalCenter>;
@@ -3374,7 +3441,7 @@ export type UserPurchaseResult = {
 
 export type UserPurchaseReturn = {
   __typename?: 'UserPurchaseReturn';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   quantity?: Maybe<Scalars['Int']['output']>;
   sum: Scalars['Float']['output'];
@@ -3424,7 +3491,7 @@ export type UserPurchaseReturnResult = {
 export type UserRelative = {
   __typename?: 'UserRelative';
   blockStatus?: Maybe<Scalars['Boolean']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   extraRights?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['Int']['output'];
   relationshipDegree?: Maybe<RelationshipDegrees>;
@@ -3488,7 +3555,7 @@ export type UserServiceCart = {
   accessTicket?: Maybe<AccessTicket>;
   accessTicketId?: Maybe<Scalars['Int']['output']>;
   citoStatus?: Maybe<Scalars['Boolean']['output']>;
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   complexService?: Maybe<ComplexService>;
   complexServiceId?: Maybe<Scalars['Int']['output']>;
   complexServiceStatus?: Maybe<Scalars['Int']['output']>;
@@ -3641,7 +3708,7 @@ export type UserServiceCartResult = {
 
 export type UserServicePlan = {
   __typename?: 'UserServicePlan';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   doctorSend?: Maybe<DoctorMedicalCenter>;
   doctorSendId?: Maybe<Scalars['Int']['output']>;
@@ -3719,7 +3786,7 @@ export type UserServicePlanResult = {
 
 export type UserSubscribe = {
   __typename?: 'UserSubscribe';
-  clientId?: Maybe<Scalars['Int']['output']>;
+  clientId?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   isActive?: Maybe<Scalars['Boolean']['output']>;
@@ -3820,12 +3887,12 @@ export type GetRelationshipDegreesQueryVariables = Exact<{
 }>;
 
 
-export type GetRelationshipDegreesQuery = { __typename?: 'Query', getRelationshipDegrees: { __typename?: 'RelationshipDegreesResult', recordsCount?: number | null, pagesCount?: number | null, statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'RelationshipDegrees', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null }> | null } };
+export type GetRelationshipDegreesQuery = { __typename?: 'Query', getRelationshipDegrees: { __typename?: 'RelationshipDegreesResult', recordsCount?: number | null, pagesCount?: number | null, statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'RelationshipDegrees', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null }> | null } };
 
 export type GetUserDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserDataQuery = { __typename?: 'Query', getUserData: { __typename?: 'UserData', statusCode?: number | null, details?: string | null, data?: { __typename?: 'UserView', id: number, clientId?: string | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null, defaultMedicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: number | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null } | null, infoWay?: { __typename?: 'InformationWay', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null, prefNotificationContact?: { __typename?: 'User', id: number, clientId?: number | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null, defaultMedicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: number | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null } | null, infoWay?: { __typename?: 'InformationWay', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null, prefNotificationContact?: { __typename?: 'User', id: number, clientId?: number | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, addressMisKladr?: { __typename?: 'AddressMisKladrTable', id: number, clientId?: number | null, clientUserId?: number | null, tag?: number | null, luid?: number | null, region?: string | null, regionCode?: string | null, area?: string | null, areaCode?: string | null, city?: string | null, cityCode?: string | null, town?: string | null, townCode?: string | null, street?: string | null, streetCode?: string | null, house?: string | null, corp?: string | null, flat?: string | null, note?: string | null, status?: number | null, livesLuId?: number | null, houseCode?: string | null } | null } | null } | null, addressMisKladr?: { __typename?: 'AddressMisKladrTable', id: number, clientId?: number | null, clientUserId?: number | null, tag?: number | null, luid?: number | null, region?: string | null, regionCode?: string | null, area?: string | null, areaCode?: string | null, city?: string | null, cityCode?: string | null, town?: string | null, townCode?: string | null, street?: string | null, streetCode?: string | null, house?: string | null, corp?: string | null, flat?: string | null, note?: string | null, status?: number | null, livesLuId?: number | null, houseCode?: string | null } | null } | null } };
+export type GetUserDataQuery = { __typename?: 'Query', getUserData: { __typename?: 'UserData', statusCode?: number | null, details?: string | null, data?: { __typename?: 'UserView', id: number, clientId?: string | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, city?: { __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null } | null, defaultMedicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: string | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null } | null } | null, infoWay?: { __typename?: 'InformationWay', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null, prefNotificationContact?: { __typename?: 'User', id: number, clientId?: string | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, city?: { __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null } | null, defaultMedicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: string | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null } | null, infoWay?: { __typename?: 'InformationWay', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null, prefNotificationContact?: { __typename?: 'User', id: number, clientId?: string | null, firstName?: string | null, lastName?: string | null, patronymic?: string | null, birthDate?: any | null, gender?: string | null, email?: string | null, phoneNumber: string, additionalPhoneNumber?: string | null, docType?: number | null, docSeries?: string | null, docNumber?: string | null, docGivingDepName?: string | null, docGivingDepCode?: string | null, docDate?: any | null, docRegAddress?: string | null, snils?: string | null, inn?: string | null, cityId?: number | null, addressFull?: string | null, addressMisKladrId?: number | null, longitude?: number | null, latitude?: number | null, zoneNumber?: number | null, defaultMedicalCenterId?: number | null, loginPhoneNumber?: string | null, isVerified?: boolean | null, infoWayId?: number | null, notificationTime?: any | null, prefNotificationContactId?: number | null, isActive?: boolean | null, created?: any | null, addressMisKladr?: { __typename?: 'AddressMisKladrTable', id: number, clientId?: number | null, clientUserId?: number | null, tag?: number | null, luid?: number | null, region?: string | null, regionCode?: string | null, area?: string | null, areaCode?: string | null, city?: string | null, cityCode?: string | null, town?: string | null, townCode?: string | null, street?: string | null, streetCode?: string | null, house?: string | null, corp?: string | null, flat?: string | null, note?: string | null, status?: number | null, livesLuId?: number | null, houseCode?: string | null } | null } | null } | null, addressMisKladr?: { __typename?: 'AddressMisKladrTable', id: number, clientId?: number | null, clientUserId?: number | null, tag?: number | null, luid?: number | null, region?: string | null, regionCode?: string | null, area?: string | null, areaCode?: string | null, city?: string | null, cityCode?: string | null, town?: string | null, townCode?: string | null, street?: string | null, streetCode?: string | null, house?: string | null, corp?: string | null, flat?: string | null, note?: string | null, status?: number | null, livesLuId?: number | null, houseCode?: string | null } | null } | null } };
 
 export type GetUserRelativesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<UserRelativeInput>;
@@ -3836,7 +3903,12 @@ export type GetUserRelativesQueryVariables = Exact<{
 }>;
 
 
-export type GetUserRelativesQuery = { __typename?: 'Query', getUserRelatives: { __typename?: 'UserRelativeResult', data?: Array<{ __typename?: 'UserRelative', relationshipDegreeId: number, id: number, user?: { __typename?: 'User', id: number, phoneNumber: string, firstName?: string | null } | null, relative?: { __typename?: 'User', firstName?: string | null, lastName?: string | null, patronymic?: string | null, phoneNumber: string, birthDate?: any | null } | null, relationshipDegree?: { __typename?: 'RelationshipDegrees', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
+export type GetUserRelativesQuery = { __typename?: 'Query', getUserRelatives: { __typename?: 'UserRelativeResult', data?: Array<{ __typename?: 'UserRelative', relationshipDegreeId: number, id: number, user?: { __typename?: 'User', id: number, phoneNumber: string, firstName?: string | null } | null, relative?: { __typename?: 'User', firstName?: string | null, lastName?: string | null, patronymic?: string | null, phoneNumber: string, birthDate?: any | null } | null, relationshipDegree?: { __typename?: 'RelationshipDegrees', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
+
+export type GuestLoginQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GuestLoginQuery = { __typename?: 'Query', guestLogin: { __typename?: 'LoginResult', recordsCount?: number | null, pagesCount?: number | null, statusCode?: number | null, details?: string | null, data?: { __typename?: 'Token', token: string } | null } };
 
 export type LoginFlashCallCodeQueryVariables = Exact<{
   flashCallCode: FlashCallCode;
@@ -3899,7 +3971,7 @@ export type GetUserAdminInfoQueryVariables = Exact<{
 }>;
 
 
-export type GetUserAdminInfoQuery = { __typename?: 'Query', getUserAdminInfo: { __typename?: 'UserAdminResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'UserAdmin', id: number, clientId?: number | null, userId?: number | null, registrationVisibleFields?: string | null, registrationRequiredFields?: string | null }> | null } };
+export type GetUserAdminInfoQuery = { __typename?: 'Query', getUserAdminInfo: { __typename?: 'UserAdminResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'UserAdmin', id: number, clientId?: string | null, userId?: number | null, registrationVisibleFields?: string | null, registrationRequiredFields?: string | null }> | null } };
 
 export type GetCentersAndCitiesQueryVariables = Exact<{
   filteringAttrs_city?: InputMaybe<CityInput>;
@@ -3926,7 +3998,7 @@ export type GetCitiesQueryVariables = Exact<{
 }>;
 
 
-export type GetCitiesQuery = { __typename?: 'Query', getCities: { __typename?: 'CityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null }> | null } };
+export type GetCitiesQuery = { __typename?: 'Query', getCities: { __typename?: 'CityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null }> | null } };
 
 export type GetDoctorMedicalCenterQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<DoctorMedicalCenterInput>;
@@ -3937,7 +4009,7 @@ export type GetDoctorMedicalCenterQueryVariables = Exact<{
 }>;
 
 
-export type GetDoctorMedicalCenterQuery = { __typename?: 'Query', getDoctorMedicalCenter: { __typename?: 'DoctorMedicalCenterResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'DoctorMedicalCenter', id: number, clientId?: number | null, doctorId: number, medicalSpecialityId: number, medicalCenterId: number, medicalPositionId: number, staffTypeId: number, showInLk?: boolean | null, minimalAge: number, maximalAge: number, isActive?: boolean | null, doctor?: { __typename?: 'Doctor', id: number, clientId?: number | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null } | null, medicalSpeciality?: { __typename?: 'MedicalSpeciality', id: number, clientId?: number | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null, medicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: number | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null } | null, medicalPosition?: { __typename?: 'MedicalPosition', id: number, clientId?: number | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null, staffType?: { __typename?: 'StaffType', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
+export type GetDoctorMedicalCenterQuery = { __typename?: 'Query', getDoctorMedicalCenter: { __typename?: 'DoctorMedicalCenterResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'DoctorMedicalCenter', id: number, clientId?: string | null, doctorId: number, medicalSpecialityId: number, medicalCenterId: number, medicalPositionId: number, staffTypeId: number, showInLk?: boolean | null, minimalAge: number, maximalAge: number, isActive?: boolean | null, doctor?: { __typename?: 'Doctor', id: number, clientId?: string | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null } | null, medicalSpeciality?: { __typename?: 'MedicalSpeciality', id: number, clientId?: string | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null, medicalCenter?: { __typename?: 'MedicalCenter', id: number, clientId?: string | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null } | null } | null, medicalPosition?: { __typename?: 'MedicalPosition', id: number, clientId?: string | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null, staffType?: { __typename?: 'StaffType', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
 
 export type GetDoctorsQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<DoctorInput>;
@@ -3948,7 +4020,7 @@ export type GetDoctorsQueryVariables = Exact<{
 }>;
 
 
-export type GetDoctorsQuery = { __typename?: 'Query', getDoctors: { __typename?: 'DoctorResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'Doctor', id: number, clientId?: number | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
+export type GetDoctorsQuery = { __typename?: 'Query', getDoctors: { __typename?: 'DoctorResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'Doctor', id: number, clientId?: string | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null }> | null } };
 
 export type GetDoctorsMspecialitiesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<DoctorMspecialityInput>;
@@ -3959,7 +4031,7 @@ export type GetDoctorsMspecialitiesQueryVariables = Exact<{
 }>;
 
 
-export type GetDoctorsMspecialitiesQuery = { __typename?: 'Query', getDoctorsMspecialities: { __typename?: 'DoctorMspecialityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'DoctorMspeciality', id: number, doctorId: number, mspecialityId: number, isActive?: boolean | null, doctor?: { __typename?: 'Doctor', id: number, clientId?: number | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, privatePhone?: string | null, workPhone?: string | null, email?: string | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null } | null, mspeciality?: { __typename?: 'MedicalSpeciality', id: number, clientId?: number | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null }> | null } };
+export type GetDoctorsMspecialitiesQuery = { __typename?: 'Query', getDoctorsMspecialities: { __typename?: 'DoctorMspecialityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'DoctorMspeciality', id: number, doctorId: number, mspecialityId: number, isActive?: boolean | null, doctor?: { __typename?: 'Doctor', id: number, clientId?: string | null, firstName: string, lastName: string, patronymic?: string | null, birthDate?: any | null, photo?: string | null, doctorCategoryId?: number | null, privatePhone?: string | null, workPhone?: string | null, email?: string | null, commonExperience?: number | null, isActive?: boolean | null, doctorCategory?: { __typename?: 'DoctorCategory', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null } | null, mspeciality?: { __typename?: 'MedicalSpeciality', id: number, clientId?: string | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null } | null }> | null } };
 
 export type GetMedicalCentersQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<MedicalCenterInput>;
@@ -3970,7 +4042,7 @@ export type GetMedicalCentersQueryVariables = Exact<{
 }>;
 
 
-export type GetMedicalCentersQuery = { __typename?: 'Query', getMedicalCenters: { __typename?: 'MedicalCenterResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'MedicalCenter', id: number, clientId?: number | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: number | null, name: string, isActive?: boolean | null } | null }> | null } };
+export type GetMedicalCentersQuery = { __typename?: 'Query', getMedicalCenters: { __typename?: 'MedicalCenterResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'MedicalCenter', id: number, clientId?: string | null, cityId: number, name: string, address: string, longitude?: number | null, latitude?: number | null, description?: string | null, inn: string, bankBic: string, settlementAccount: string, correspondentAccount: string, kpp: string, isActive?: boolean | null, logo?: string | null, websiteUrl?: string | null, phoneFax: string, dmsPhone?: string | null, workTime: string, collectionTestsTime?: string | null, vaccinationTime?: string | null, city?: { __typename?: 'City', id: number, clientId?: string | null, name: string, isActive?: boolean | null } | null }> | null } };
 
 export type GetMedicalSpecialitiesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<MedicalSpecialityInput>;
@@ -3981,7 +4053,7 @@ export type GetMedicalSpecialitiesQueryVariables = Exact<{
 }>;
 
 
-export type GetMedicalSpecialitiesQuery = { __typename?: 'Query', getMedicalSpecialities: { __typename?: 'MedicalSpecialityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'MedicalSpeciality', id: number, clientId?: number | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null }> | null } };
+export type GetMedicalSpecialitiesQuery = { __typename?: 'Query', getMedicalSpecialities: { __typename?: 'MedicalSpecialityResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'MedicalSpeciality', id: number, clientId?: string | null, viewName: string, searchName: string, viewDescription?: string | null, searchDescription?: string | null, isActive?: boolean | null }> | null } };
 
 export type GetServicesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<ServiceInput>;
@@ -3992,14 +4064,14 @@ export type GetServicesQueryVariables = Exact<{
 }>;
 
 
-export type GetServicesQuery = { __typename?: 'Query', getServices: { __typename?: 'ServiceResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'Service', id: number, clientId?: number | null, serviceTypeId: number, serviceGroupId: number, nameForStaff: string, nameForMz: string, nameForLk: string, fullDescription?: string | null, appliedMethod?: string | null, preparationRules?: string | null, shortDescription?: string | null, comment?: string | null, mzCode?: string | null, executionTime?: number | null, nursesExecutionTime?: number | null, minimalAge?: number | null, maximalAge?: number | null, gender?: string | null, isUrgent?: boolean | null, isForHomeOnly?: boolean | null, selectedServiceNotification?: string | null, isComplexService?: boolean | null, clientServiceCode?: string | null, isActive?: boolean | null, serviceType?: { __typename?: 'ServiceType', id: number, clientId?: number | null, name: string, description?: string | null, isActive?: boolean | null } | null, serviceGroup?: { __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null }> | null }> | null } | null }> | null } };
+export type GetServicesQuery = { __typename?: 'Query', getServices: { __typename?: 'ServiceResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'Service', id: number, clientId?: string | null, serviceTypeId: number, serviceGroupId: number, nameForStaff: string, nameForMz: string, nameForLk: string, fullDescription?: string | null, appliedMethod?: string | null, preparationRules?: string | null, shortDescription?: string | null, comment?: string | null, mzCode?: string | null, executionTime?: number | null, nursesExecutionTime?: number | null, minimalAge?: number | null, maximalAge?: number | null, gender?: string | null, isUrgent?: boolean | null, isForHomeOnly?: boolean | null, selectedServiceNotification?: string | null, isComplexService?: boolean | null, clientServiceCode?: string | null, isActive?: boolean | null, serviceType?: { __typename?: 'ServiceType', id: number, clientId?: string | null, name: string, description?: string | null, isActive?: boolean | null } | null, serviceGroup?: { __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null }> | null }> | null } | null }> | null } };
 
 export type GetServiceGroupQueryVariables = Exact<{
   name?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type GetServiceGroupQuery = { __typename?: 'Query', getServiceGroup: { __typename?: 'ServiceGroupResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: number | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null }> | null }> | null }> | null }> | null }> | null }> | null }> | null }> | null } };
+export type GetServiceGroupQuery = { __typename?: 'Query', getServiceGroup: { __typename?: 'ServiceGroupResult', statusCode?: number | null, details?: string | null, data?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null, xmembers?: Array<{ __typename?: 'ServiceGroup', id: number, clientId?: string | null, name: string, viewName?: string | null, description?: string | null, clientServiceGroupCode?: string | null, levelSortingCode?: number | null, isActive?: boolean | null, path?: Array<string> | null }> | null }> | null }> | null }> | null }> | null }> | null }> | null }> | null } };
 
 export type GetServicesTypesQueryVariables = Exact<{
   filteringAttrs?: InputMaybe<ServiceTypeInput>;
@@ -4016,6 +4088,7 @@ export type GetServicesTypesQuery = { __typename?: 'Query', getServicesTypes: { 
 export const GetRelationshipDegreesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getRelationshipDegrees"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"RelationshipDegreesInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"RelationshipDegreesInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getRelationshipDegrees"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"recordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"pagesCount"}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetRelationshipDegreesQuery, GetRelationshipDegreesQueryVariables>;
 export const GetUserDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUserData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getUserData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"additionalPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docType"}},{"kind":"Field","name":{"kind":"Name","value":"docSeries"}},{"kind":"Field","name":{"kind":"Name","value":"docNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepName"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepCode"}},{"kind":"Field","name":{"kind":"Name","value":"docDate"}},{"kind":"Field","name":{"kind":"Name","value":"docRegAddress"}},{"kind":"Field","name":{"kind":"Name","value":"snils"}},{"kind":"Field","name":{"kind":"Name","value":"inn"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"addressFull"}},{"kind":"Field","name":{"kind":"Name","value":"addressMisKladrId"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"zoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"defaultMedicalCenterId"}},{"kind":"Field","name":{"kind":"Name","value":"loginPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isVerified"}},{"kind":"Field","name":{"kind":"Name","value":"infoWayId"}},{"kind":"Field","name":{"kind":"Name","value":"notificationTime"}},{"kind":"Field","name":{"kind":"Name","value":"prefNotificationContactId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"created"}},{"kind":"Field","name":{"kind":"Name","value":"city"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"defaultMedicalCenter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"inn"}},{"kind":"Field","name":{"kind":"Name","value":"bankBic"}},{"kind":"Field","name":{"kind":"Name","value":"settlementAccount"}},{"kind":"Field","name":{"kind":"Name","value":"correspondentAccount"}},{"kind":"Field","name":{"kind":"Name","value":"kpp"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"websiteUrl"}},{"kind":"Field","name":{"kind":"Name","value":"phoneFax"}},{"kind":"Field","name":{"kind":"Name","value":"dmsPhone"}},{"kind":"Field","name":{"kind":"Name","value":"workTime"}},{"kind":"Field","name":{"kind":"Name","value":"collectionTestsTime"}},{"kind":"Field","name":{"kind":"Name","value":"vaccinationTime"}},{"kind":"Field","name":{"kind":"Name","value":"city"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoWay"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"prefNotificationContact"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"additionalPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docType"}},{"kind":"Field","name":{"kind":"Name","value":"docSeries"}},{"kind":"Field","name":{"kind":"Name","value":"docNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepName"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepCode"}},{"kind":"Field","name":{"kind":"Name","value":"docDate"}},{"kind":"Field","name":{"kind":"Name","value":"docRegAddress"}},{"kind":"Field","name":{"kind":"Name","value":"snils"}},{"kind":"Field","name":{"kind":"Name","value":"inn"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"addressFull"}},{"kind":"Field","name":{"kind":"Name","value":"addressMisKladrId"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"zoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"defaultMedicalCenterId"}},{"kind":"Field","name":{"kind":"Name","value":"loginPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isVerified"}},{"kind":"Field","name":{"kind":"Name","value":"infoWayId"}},{"kind":"Field","name":{"kind":"Name","value":"notificationTime"}},{"kind":"Field","name":{"kind":"Name","value":"prefNotificationContactId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"created"}},{"kind":"Field","name":{"kind":"Name","value":"city"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"defaultMedicalCenter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"inn"}},{"kind":"Field","name":{"kind":"Name","value":"bankBic"}},{"kind":"Field","name":{"kind":"Name","value":"settlementAccount"}},{"kind":"Field","name":{"kind":"Name","value":"correspondentAccount"}},{"kind":"Field","name":{"kind":"Name","value":"kpp"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"websiteUrl"}},{"kind":"Field","name":{"kind":"Name","value":"phoneFax"}},{"kind":"Field","name":{"kind":"Name","value":"dmsPhone"}},{"kind":"Field","name":{"kind":"Name","value":"workTime"}},{"kind":"Field","name":{"kind":"Name","value":"collectionTestsTime"}},{"kind":"Field","name":{"kind":"Name","value":"vaccinationTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoWay"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}},{"kind":"Field","name":{"kind":"Name","value":"prefNotificationContact"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"additionalPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docType"}},{"kind":"Field","name":{"kind":"Name","value":"docSeries"}},{"kind":"Field","name":{"kind":"Name","value":"docNumber"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepName"}},{"kind":"Field","name":{"kind":"Name","value":"docGivingDepCode"}},{"kind":"Field","name":{"kind":"Name","value":"docDate"}},{"kind":"Field","name":{"kind":"Name","value":"docRegAddress"}},{"kind":"Field","name":{"kind":"Name","value":"snils"}},{"kind":"Field","name":{"kind":"Name","value":"inn"}},{"kind":"Field","name":{"kind":"Name","value":"cityId"}},{"kind":"Field","name":{"kind":"Name","value":"addressFull"}},{"kind":"Field","name":{"kind":"Name","value":"addressMisKladrId"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"zoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"defaultMedicalCenterId"}},{"kind":"Field","name":{"kind":"Name","value":"loginPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isVerified"}},{"kind":"Field","name":{"kind":"Name","value":"infoWayId"}},{"kind":"Field","name":{"kind":"Name","value":"notificationTime"}},{"kind":"Field","name":{"kind":"Name","value":"prefNotificationContactId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"created"}},{"kind":"Field","name":{"kind":"Name","value":"addressMisKladr"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"clientUserId"}},{"kind":"Field","name":{"kind":"Name","value":"tag"}},{"kind":"Field","name":{"kind":"Name","value":"luid"}},{"kind":"Field","name":{"kind":"Name","value":"region"}},{"kind":"Field","name":{"kind":"Name","value":"regionCode"}},{"kind":"Field","name":{"kind":"Name","value":"area"}},{"kind":"Field","name":{"kind":"Name","value":"areaCode"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"cityCode"}},{"kind":"Field","name":{"kind":"Name","value":"town"}},{"kind":"Field","name":{"kind":"Name","value":"townCode"}},{"kind":"Field","name":{"kind":"Name","value":"street"}},{"kind":"Field","name":{"kind":"Name","value":"streetCode"}},{"kind":"Field","name":{"kind":"Name","value":"house"}},{"kind":"Field","name":{"kind":"Name","value":"corp"}},{"kind":"Field","name":{"kind":"Name","value":"flat"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"livesLuId"}},{"kind":"Field","name":{"kind":"Name","value":"houseCode"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"addressMisKladr"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"clientUserId"}},{"kind":"Field","name":{"kind":"Name","value":"tag"}},{"kind":"Field","name":{"kind":"Name","value":"luid"}},{"kind":"Field","name":{"kind":"Name","value":"region"}},{"kind":"Field","name":{"kind":"Name","value":"regionCode"}},{"kind":"Field","name":{"kind":"Name","value":"area"}},{"kind":"Field","name":{"kind":"Name","value":"areaCode"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"cityCode"}},{"kind":"Field","name":{"kind":"Name","value":"town"}},{"kind":"Field","name":{"kind":"Name","value":"townCode"}},{"kind":"Field","name":{"kind":"Name","value":"street"}},{"kind":"Field","name":{"kind":"Name","value":"streetCode"}},{"kind":"Field","name":{"kind":"Name","value":"house"}},{"kind":"Field","name":{"kind":"Name","value":"corp"}},{"kind":"Field","name":{"kind":"Name","value":"flat"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"livesLuId"}},{"kind":"Field","name":{"kind":"Name","value":"houseCode"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GetUserDataQuery, GetUserDataQueryVariables>;
 export const GetUserRelativesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUserRelatives"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UserRelativeInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UserRelativeInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getUserRelatives"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filteringAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filteringAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderingAttrs"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderingAttrs"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"descSorting"},"value":{"kind":"Variable","name":{"kind":"Name","value":"descSorting"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"relationshipDegreeId"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}}]}},{"kind":"Field","name":{"kind":"Name","value":"relative"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"patronymic"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"birthDate"}}]}},{"kind":"Field","name":{"kind":"Name","value":"relationshipDegree"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetUserRelativesQuery, GetUserRelativesQueryVariables>;
+export const GuestLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"guestLogin"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guestLogin"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}}]}},{"kind":"Field","name":{"kind":"Name","value":"recordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"pagesCount"}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<GuestLoginQuery, GuestLoginQueryVariables>;
 export const LoginFlashCallCodeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"loginFlashCallCode"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"flashCallCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"FlashCallCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"loginFlashCallCode"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"flashCallCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"flashCallCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}}]}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<LoginFlashCallCodeQuery, LoginFlashCallCodeQueryVariables>;
 export const AddRelativesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"addRelatives"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"relationshipDegreeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"patient"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PatientRegistration"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addRelatives"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"relationshipDegreeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"relationshipDegreeId"}}},{"kind":"Argument","name":{"kind":"Name","value":"patient"},"value":{"kind":"Variable","name":{"kind":"Name","value":"patient"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}}]}},{"kind":"Field","name":{"kind":"Name","value":"recordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"pagesCount"}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<AddRelativesMutation, AddRelativesMutationVariables>;
 export const ChangeLoginPhoneByPhoneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"changeLoginPhoneByPhone"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"oldPhoneNumber"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"newPhoneNumber"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"changeLoginPhoneByPhone"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"oldPhoneNumber"},"value":{"kind":"Variable","name":{"kind":"Name","value":"oldPhoneNumber"}}},{"kind":"Argument","name":{"kind":"Name","value":"newPhoneNumber"},"value":{"kind":"Variable","name":{"kind":"Name","value":"newPhoneNumber"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"statusCode"}},{"kind":"Field","name":{"kind":"Name","value":"details"}}]}}]}}]} as unknown as DocumentNode<ChangeLoginPhoneByPhoneMutation, ChangeLoginPhoneByPhoneMutationVariables>;

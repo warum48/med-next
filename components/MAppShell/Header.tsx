@@ -55,17 +55,11 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
         //mr="xl"
         className={styles.burger}
       />
-      <Box className={styles.logoContainer}>
+     <Box className={styles.logoContainer}>
         <Image className={styles.logo} fit="contain" src={info.logo} height={40} />
-      </Box>
+  </Box> 
       </Group>
-      {/*} <Text className={styles.title}>
-        <i>ЛИЧНЫЙ КАБИНЕТ ПОЛЬЗОВАТЕЛЯ</i>
-  </Text> */}
-      {/* <Group className={styles.contactGroup}>
-        <Box className={styles.contactIcon}>
-          <IconPhone size={40} color="#e64980" />
-</Box> */}
+      
       <Box className={styles.contactGroup}>
         <Title order={4}>{info.phone}</Title>
         <Text fw={500} fz="xs" ml={'3px'}>

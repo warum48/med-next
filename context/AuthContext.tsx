@@ -2,6 +2,9 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { RoutesTypes } from '@/global/ROUTES';
 import { useCookies } from 'react-cookie';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import { APOLLO_LINKS_CONTEXT } from '@/apollo/context';
+import { GUEST_LOGIN } from '@/apollo/queries/accounts/guestLogin';
 //import Cookies from 'js-cookie'
 //import api from './api';
 //import jwt from "jsonwebtoken";
@@ -9,28 +12,28 @@ import { useCookies } from 'react-cookie';
 
 //const JWT_KEY = process.env.JWT_SECRET_KEY;
 interface IContext {
-  isAuthenticated: boolean,
-        //, user, login, loading: isLoading, logout
-        checkAuth: () =>void
-        isLoggedIn: boolean;
-        setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-        switchLogIn: () => void;
+  isAuthenticated: boolean;
+  //, user, login, loading: isLoading, logout
+  checkAuth: () => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  switchLogIn: () => void;
 }
 
 export const AuthContext = createContext({} as IContext);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(false);
-  const [cookiesToken, setCookieToken, removeCookieToken] = useCookies(["mednekot"]);
+  const [cookiesToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!cookiesToken.mednekot);
   console.log('cookiesToken', cookiesToken.mednekot);
-  console.log('!!cookiesToken.mednekot', !!cookiesToken.mednekot)
-  console.log('isLoggedIn-init', isLoggedIn)
+  console.log('!!cookiesToken.mednekot', !!cookiesToken.mednekot);
+  console.log('isLoggedIn-init', isLoggedIn);
 
-  
+  function initCheck() {}
 
   //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   //const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
@@ -41,8 +44,7 @@ export const AuthProvider = ({ children }: any) => {
   const switchLogIn = () => {
     console.log('cookieToken', cookiesToken.mednekot);
     if (!cookiesToken.mednekot) {
-      demoLogin()
-     
+      demoLogin();
     } else {
       removeCookieToken('mednekot', { path: '/' });
       setIsLoggedIn(false);
@@ -51,43 +53,66 @@ export const AuthProvider = ({ children }: any) => {
   //const {setIsLoggedIn} = useContext(AuthContext);
 
   function checkAuth() {
+    console.log('CHECK AUTH', )
     //if (!user) {
-      if (!cookiesToken) {  
+    if (!cookiesToken.mednekot) {
       console.log('NET USERA');
       // router.push('/');
       // setIsLoading(false);
+      router.push(RoutesTypes.Home);
       setIsLoggedIn(false);
     } else {
       console.log('-=-=-=-=user');
       setIsLoggedIn(true);
       if (pathname == RoutesTypes.Auth) {
         //!!!router.push(RoutesTypes.Home);
-        console.log('redirect to auth')
+        console.log('redirect to auth');
       }
     }
-   // window.scrollTo(0, 0); //TODO remove it from here
+    // window.scrollTo(0, 0); //TODO remove it from here
   }
 
-  function demoLogin(){
+  const [
+    getGuestToken,
+    {
+      data: data_reldergees,
+      loading: loading_reldergees,
+      error: error_reldergees,
+      refetch: refetch_reldergees,
+      networkStatus: networkStatus_reldergees,
+    },
+  ] =
+    //   isDemo
+    // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+    // :
+    useLazyQuery(GUEST_LOGIN, {
+      context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
+    });
+
+  function demoLogin() {
     var d = new Date();
     d.setFullYear(d.getFullYear() + 100);
-    setCookieToken('mednekot',     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw'
-    , { path: '/', expires: d });
+    setCookieToken(
+      'mednekot',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw',
+      { path: '/', expires: d }
+    );
     // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
     setIsLoggedIn(true);
   }
 
   React.useEffect(() => {
     console.log('pathname', pathname);
-    checkAuth()
+    checkAuth();
+    console.log('cookiesToken.mednekot', cookiesToken.mednekot);
     // checks if the user is authenticated
 
     //router.push("/dashboard");
-  }, [pathname]);
+  }, [pathname, cookiesToken.mednekot]);
 
   React.useEffect(() => {
-    setIsLoggedIn(!!cookiesToken.mednekot)
-  }, [cookiesToken.mednekot])
+    setIsLoggedIn(!!cookiesToken.mednekot);
+  }, [cookiesToken.mednekot]);
   /*
     useEffect(() => {
         async function fetchUserFromCookie() {
@@ -135,12 +160,12 @@ export const AuthProvider = ({ children }: any) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!cookiesToken,//!!user,
+        isAuthenticated: !!cookiesToken, //!!user,
         //, user, login, loading: isLoading, logout
         checkAuth: checkAuth,
         isLoggedIn,
-    setIsLoggedIn,
-    switchLogIn
+        setIsLoggedIn,
+        switchLogIn,
       }}
     >
       {!isLoading ? <>loading</> : children}

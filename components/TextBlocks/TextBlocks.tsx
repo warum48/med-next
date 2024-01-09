@@ -96,9 +96,9 @@ export const TitleLabel_second = ({ children, ...props }: TChildren & TAnyFields
   );
 };
 
-export const TextInfo = ({ children }: TChildren & TAnyFields) => {
+export const TextInfo = ({ children, ...props }: TChildren & TAnyFields) => {
   return (
-    <span className={classes.basicInfo} >
+    <span className={classes.basicInfo} {...props}>
       {children}
     </span>
   );
