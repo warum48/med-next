@@ -19,6 +19,7 @@ import {
   Radio,
   Space,
   Center,
+  Stack,
 } from '@mantine/core';
 import { Title4_second } from '../TextBlocks/TextBlocks';
 import { FloatingLabelInput } from '../Inputs/FloatingLabelInput';
@@ -30,13 +31,18 @@ import { FloatingLabelSelect } from '../Inputs/FloatingLabelSelect';
 import { formatDateRuToNormal } from '@/utils/dateRuToNormal';
 import { useMutation, useReactiveVar } from '@apollo/client';
 import { ADD_RELATIVES } from '@/apollo/queries/accounts/mutations/addRelatives';
+import { notifications, useNotifications } from '@mantine/notifications';
+import { Preloader } from '../Preloader/Preloader';
+import { SpaceYMain } from '../Spacers/Spacers';
+import { useMutationNotifications } from '@/services/useNotifications';
 
 type TProps = {
   setAddMemberOpen: React.Dispatch<React.SetStateAction<boolean>>;
   relDegrees: RelationshipDegrees[] | undefined | null;
+  onAdd: () => void;
 };
 
-export function AddForm({ setAddMemberOpen, relDegrees }: TProps) {
+export function AddForm({ setAddMemberOpen, relDegrees, onAdd }: TProps) {
   //enticationTitle
   const theme = useMantineTheme();
   const patientRelativeVar_re = useReactiveVar(patientRelativeVar);
@@ -85,6 +91,50 @@ export function AddForm({ setAddMemberOpen, relDegrees }: TProps) {
     }
   );
 
+  function onSuccess() {
+    onAdd();
+    setAddMemberOpen(false);
+  }
+
+  useMutationNotifications({
+    data: data_reg,
+    data_code: data_reg?.addRelatives?.statusCode,
+    data_details: data_reg?.addRelatives?.details,
+    error: error_reg,
+    onSuccess: onSuccess,
+  });
+
+  /*  React.useEffect(() => {
+    if (data_reg) {
+      if (data_reg?.addRelatives?.statusCode == 200) {
+        onSuccess();
+        console.log('added');
+        notifications.show({
+          title: 'Готово',
+          message: 'Родственник добавлен',
+        });
+      } else {
+        notifications.show({
+          color: 'orange',
+          title: 'Ошибка',
+          message: data_reg?.addRelatives?.details || 'Неизвестная ошибка',
+        });
+      }
+    }
+  }, [data_reg]);
+
+  React.useEffect(() => {
+    if (error_reg) {
+      //    onAdd();
+      notifications.show({
+        color: 'red',
+        title: 'Ошибка',
+        message: error_reg?.message || 'Неизвестная ошибка',
+      });
+    }
+  }, [error_reg]);
+  */
+
   React.useEffect(() => {
     // window.localStorage.setItem('user-form', JSON.stringify(form.values));
     console.log('birth:', form.values?.birthDate);
@@ -97,10 +147,18 @@ export function AddForm({ setAddMemberOpen, relDegrees }: TProps) {
       additionalPhoneNumber: form.values?.additionalPhoneNumber?.replace(/\D/g, ''),
       birthDate: formatDateRuToNormal(form.values?.birthDate || ''), //'2012-12-31',
       gender: form.values?.gender?.substring(0, 1).toLowerCase(),
-      relativeTypeId: Number(form.values?.relativeTypeId)
+      relativeTypeId: Number(form.values?.relativeTypeId),
     });
     // phoneNumberVar(form.values.phoneNumber.replace(/\D/g, ''));
   }, [form.values]);
+
+  /*function testNotification() {
+    notifications.show({
+      color: 'red',
+      title: 'Готово',
+      message: 'Родственник добавлен',
+    });
+  }*/
 
   return (
     <>
@@ -213,18 +271,24 @@ export function AddForm({ setAddMemberOpen, relDegrees }: TProps) {
               </Grid.Col>
             </Grid>
             <Center>
-                 <StyledButton
-                appearence={'main_second'}
-                mt="xl"
-                type="submit"
-                // onClick={() => setAddMemberOpen(true)}
-              >
-                Добавить
-                </StyledButton> 
-              {/*  <Button fullWidth maw="350" mt="xl" type="submit">
-                Зарегистрироваться
-              </Button> */}
-             
+              {loading_reg ? (
+                <Stack gap={0}>
+                  <SpaceYMain />
+                  <Preloader />
+                </Stack>
+              ) : (
+                <StyledButton
+                  appearence={'main_second'}
+                  mt="xl"
+                  type="submit"
+                  // onClick={() => setAddMemberOpen(true)}
+                >
+                  Добавить
+                </StyledButton>
+              )}
+              {/*}   <Button fullWidth maw="350" mt="xl" onClick={testNotification}>
+                test notification
+                </Button> */}
             </Center>
           </form>
           {/*JSON.stringify(relDegrees)*/}

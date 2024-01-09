@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 
-import { Box, Center, Grid, Space } from '@mantine/core';
+import { Box, Center, Grid, Space, Notification } from '@mantine/core';
 
 //import { Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
@@ -18,6 +18,7 @@ import { ErrorMessage } from '@/components/Errors/ErrorMessage';
 import { Preloader } from '@/components/Preloader/Preloader';
 import { GetRelationshipDegreesQuery, GetUserRelativesQuery } from '@/__generated__/graphql';
 import { GET_USER_RELATIVES } from '@/apollo/queries/accounts/getUserRelatives';
+import { notifications } from '@mantine/notifications';
 //import { AddForm } from './components/AddForm';
 //import { innerPageMaxWidth } from '../../CONSTS';
 
@@ -82,7 +83,12 @@ export default function Family() {
         context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
       });  
 
+  function refreshList(){
+    refetch_relatives();
+  }    
+
   return (
+   
     <InnerPageContainer>
       <Title1_main>Моя семья</Title1_main>
       <Space h="xl" />
@@ -103,7 +109,7 @@ export default function Family() {
 }
 
       {addMemberOpen ? (
-        <AddForm setAddMemberOpen={setAddMemberOpen} relDegrees={data_reldergees?.getRelationshipDegrees?.data}/>
+        <AddForm setAddMemberOpen={setAddMemberOpen} relDegrees={data_reldergees?.getRelationshipDegrees?.data} onAdd={refreshList}/>
       ) : (
         <>
           <Space h="xl" />
@@ -117,8 +123,12 @@ export default function Family() {
         </>
       )}
 
+
+
 {/*'rel' + JSON.stringify(data_relatives?.getUserRelatives?.data)*/}
       
     </InnerPageContainer>
+    
+    
   );
 }

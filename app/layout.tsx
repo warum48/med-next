@@ -9,6 +9,7 @@ import '@mantine/carousel/styles.css';
 
 import '@mantine/dates/styles.css';
 import '@/styles/index.css';
+import '@mantine/notifications/styles.css';
 import { ProvidersWrapper } from '../global/ProvidersWrapper';
 
 import { Alegreya } from 'next/font/google'
