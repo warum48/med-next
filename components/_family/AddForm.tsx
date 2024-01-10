@@ -28,7 +28,7 @@ import { StyledButton } from '../Buttons/StyledButton';
 import { PatientRegistration, RelationshipDegrees } from '@/__generated__/graphql';
 import { patientRelativeInitValue, patientRelativeVar } from '@/apollo/state/addRelatives';
 import { FloatingLabelSelect } from '../Inputs/FloatingLabelSelect';
-import { formatDateRuToNormal } from '@/utils/dateRuToNormal';
+import { formatDateRuToNormal } from '@/utils/formatDates';
 import { useMutation, useReactiveVar } from '@apollo/client';
 import { ADD_RELATIVES } from '@/apollo/queries/accounts/mutations/addRelatives';
 import { notifications, useNotifications } from '@mantine/notifications';

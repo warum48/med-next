@@ -6,12 +6,28 @@ import { RoutesTypes } from '@/global/ROUTES';
 import { usePathname, useRouter } from 'next/navigation';
 import { GlobalContext } from '@/context/ContextGlobal';
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
+import { formatPhoneNumber } from '@/utils/formatPhone';
 
 export function UserButton() {
   const router = useRouter();
   const pathname = usePathname();
   const hasPhoto = false;
   const {navBarCollapsed} = React.useContext(GlobalContext);
+  const {
+    data: data_user_info,
+    loading: loading_user_info,
+    error: error_user_info,
+    refetch: refetch_user_info,
+    networkStatus: networkStatus_user_info,
+  } =
+    //isDemo
+    //  ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+    //  :
+    useQuery(GET_USER_DATA, {
+      context: { clientName: 'accounts' },
+    });
   return (
     <Box className={
       //!!pathname == link 
@@ -43,15 +59,15 @@ export function UserButton() {
         {!navBarCollapsed &&
         <div style={{ flex: 1 }}>
           <Text size="sm" fw={500}>
-            Мария Ивановна
+            {data_user_info?.getUserData?.data?.firstName}
           </Text>
 
           <Text c="dimmed" size="xs">
-            verylongemaillalala@mail.ru
+          {data_user_info?.getUserData?.data?.email}
           </Text>
 
           <Text c="dimmed" size="xs">
-            +7(925)987-65-43
+          {formatPhoneNumber(data_user_info?.getUserData?.data?.phoneNumber)}
           </Text>
         </div>
 }

@@ -83,7 +83,7 @@ export const EditableText = ({
       newValue = (e as TTfOnChangeE).currentTarget.value;
     }
     onUpdate(newValue);
-    setEdit(false);
+
   }
 
   return (

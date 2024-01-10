@@ -29,6 +29,8 @@ import { Preloader } from '@/components/Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
 import { GetCentersAndCitiesQuery } from '@/__generated__/graphql';
 import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
+import { formatDateNormalToRu } from '@/utils/formatDates';
+import { formatPhoneNumber } from '@/utils/formatPhone';
 
 type TFields = {
   field: string;
@@ -155,7 +157,7 @@ export default function Profile() {
       mock: '+71234567890',
       required: true,
       newValue: '',
-      value: data_user_info?.getUserData?.data?.patronymic ?? '',
+      value: formatPhoneNumber(data_user_info?.getUserData?.data?.phoneNumber) ?? '',
       mask: '',
     },
     {
@@ -173,7 +175,7 @@ export default function Profile() {
       mock: '01.01.2001',
       required: true,
       newValue: '',
-      value: data_user_info?.getUserData?.data?.birthDate ?? '',
+      value: formatDateNormalToRu(data_user_info?.getUserData?.data?.birthDate) ?? '',
       mask: '',
     },
     {
@@ -218,9 +220,23 @@ export default function Profile() {
     { field: 'snils', name: 'Снилс', mock: '', required: false, newValue: '', value: '', mask: '' },
   ];
 
-  const complexFields = {
+  /*const complexFields = {
     city: {},
-  };
+  };*/
+
+  function updateUserData() { //userInfo: TFields[]
+    const updatedData: any = {};
+  
+    userInfo.forEach((field) => {
+      if (field.newValue !== '') {
+        updatedData[field.field] = field.newValue;
+      }
+    });
+  
+    console.log('updatedData', updatedData);
+  
+    return updatedData;
+  }
 
   React.useEffect(() => {
     // setUserInfo(userInfo);
@@ -261,7 +277,9 @@ export default function Profile() {
         </Tabs.List>
         <Space h="xl" />
         <Tabs.Panel value="type1" pt="xs">
-          <Stack gap={6} key={'user_render'+data_user_info?.getUserData?.data?.clientId}>
+          <Stack gap={6} 
+         // key={'user_render'+data_user_info?.getUserData?.data?.clientId}
+          >
             {userInfo.map((item, index) => (
               <Group
                 key={'uinf' + index + '_' + renderCount.current}
@@ -300,7 +318,7 @@ export default function Profile() {
                   <StyledButton appearence={'main_first_outlined'} maw={150} onClick={resetChanges}>
                     Отмена
                   </StyledButton>
-                  <StyledButton appearence={'main_second'} maw={150}>
+                  <StyledButton appearence={'main_second'} maw={150} onClick={updateUserData}>
                     Сохранить
                   </StyledButton>
                 </>
@@ -330,7 +348,7 @@ export default function Profile() {
               mt="md"
             />
             <PasswordInput placeholder="Повторите новый пароль" required />
-            <StyledButton appearence={'main_second'} maw={150}>
+            <StyledButton appearence={'main_second'} maw={150} >
               Сохранить
             </StyledButton>
           </Stack>{' '}

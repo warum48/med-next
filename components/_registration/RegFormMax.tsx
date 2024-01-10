@@ -23,7 +23,7 @@ import {
   UserAdminResult,
 } from '../../__generated__/graphql';
 import { ErrorMessage } from '../../components/Errors/ErrorMessage';
-import { formatDateRuToNormal } from '../../utils/dateRuToNormal';
+import { formatDateRuToNormal } from '../../utils/formatDates';
 import { Title1_main, TitleLabel } from '../TextBlocks/TextBlocks';
 import { TRegStep } from '@/app/registration/page';
 import {
