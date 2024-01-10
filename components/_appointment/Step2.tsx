@@ -20,7 +20,7 @@ import { elementMaxWidth } from '@/global/CONSTS';
 import { SpecialityChooser } from './SpecialityChooser';
 import { useCallback, useEffect, useState } from 'react';
 import { TAppointmentType } from '@/types/types';
-import { appointmentTypeVar } from '@/apollo/appstate/globalvars';
+import { appointmentTypeVar } from '@/apollo/state/appointment/globalvars';
 import { ServiceChooser } from './ServiceChooser';
 import { ServiceChooserTree } from './ServiceChooserTree';
 

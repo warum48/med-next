@@ -4,6 +4,7 @@ import {
   ApolloClient,
   ApolloLink,
   HttpLink,
+  useReactiveVar,
 } from "@apollo/client";
 import {
     ApolloNextAppProvider,
@@ -15,6 +16,7 @@ import {
 } from "@apollo/experimental-nextjs-app-support/ssr";
 import { createContext } from "react";
 import { useCookies } from "react-cookie";
+import { tokenVar } from "./state/token";
 //-------
 //import { useCookies } from "react-cookie";
 
@@ -41,6 +43,7 @@ type Props = {
 //--------------component-----------
 export const ApolloSettingsProvider = ({ children }: Props) => {
   const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
+  const tokenVar_re = useReactiveVar(tokenVar)
 
   function makeClient() {
     const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
@@ -56,7 +59,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
         mode: "cors", // no-cors, *cors, same-origin //'*cors'//
       },
       headers: {
-        Authorization: "Bearer " + cookiesToken.mednekot, //token,
+        Authorization: "Bearer " + tokenVar_re,//cookiesToken.mednekot, //token,
         "Access-Control-Allow-Origin": "*",
       }, 
     });
@@ -67,7 +70,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
         mode: "cors", // no-cors, *cors, same-origin //'*cors'//
       },
       headers: {
-        Authorization: "Bearer " + cookiesToken.mednekot, //token,
+        Authorization: "Bearer " + tokenVar_re,//cookiesToken.mednekot, //token,
         "Access-Control-Allow-Origin": "*",
       }, 
     });

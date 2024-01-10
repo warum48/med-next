@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { APOLLO_LINKS_CONTEXT } from '@/apollo/context';
 import { GUEST_LOGIN } from '@/apollo/queries/accounts/guestLogin';
+import { tokenVar } from '@/apollo/state/token';
 //import Cookies from 'js-cookie'
 //import api from './api';
 //import jwt from "jsonwebtoken";
@@ -18,6 +19,7 @@ interface IContext {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   switchLogIn: () => void;
+  //logOut()
 }
 
 export const AuthContext = createContext({} as IContext);
@@ -28,10 +30,11 @@ export const AuthProvider = ({ children }: any) => {
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
   const router = useRouter();
   const pathname = usePathname();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!cookiesToken.mednekot);
-  console.log('cookiesToken', cookiesToken.mednekot);
-  console.log('!!cookiesToken.mednekot', !!cookiesToken.mednekot);
-  console.log('isLoggedIn-init', isLoggedIn);
+  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!cookiesToken.mednekot);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  //console.log('cookiesToken', cookiesToken.mednekot);
+  //console.log('!!cookiesToken.mednekot', !!cookiesToken.mednekot);
+  //console.log('isLoggedIn-init', isLoggedIn);
 
   function initCheck() {}
 
@@ -42,50 +45,78 @@ export const AuthProvider = ({ children }: any) => {
   // const [cookies, setCookie] = useCookies(["mednekot"]);
 
   const switchLogIn = () => {
+    console.log('---------switch login------');
+    console.log('isLoggedIn', isLoggedIn);
     console.log('cookieToken', cookiesToken.mednekot);
-    if (!cookiesToken.mednekot) {
+    console.log('---------switch login end------');
+    // if (!cookiesToken.mednekot) {
+    if (!isLoggedIn) {
       demoLogin();
     } else {
-      removeCookieToken('mednekot', { path: '/' });
-      setIsLoggedIn(false);
+      //removeCookieToken('mednekot', { path: '/' });
+      //setIsLoggedIn(false);
+      logOut();
     }
   };
+
+  function logOut() {
+   //setGuestTokenToCookies();
+   removeCookieToken('mednekot', { path: '/' });
+    tokenVar(data_guest_token?.guestLogin?.data?.token);
+    setIsLoggedIn(false);
+  }
   //const {setIsLoggedIn} = useContext(AuthContext);
 
   function checkAuth() {
-    console.log('CHECK AUTH', )
+    console.log('CHECK AUTH');
     //if (!user) {
-    if (!cookiesToken.mednekot) {
-      console.log('NET USERA');
+    if (!isLoggedIn) {
+      console.log('!!!---NET USERA');
       // router.push('/');
       // setIsLoading(false);
-      router.push(RoutesTypes.Home);
-      setIsLoggedIn(false);
+      if (pathname != RoutesTypes.Auth && pathname != RoutesTypes.Registration) {
+        //!!router.push(RoutesTypes.Home);
+      }
+      // setIsLoggedIn(false);
     } else {
       console.log('-=-=-=-=user');
-      setIsLoggedIn(true);
+      // setIsLoggedIn(true);
       if (pathname == RoutesTypes.Auth) {
         //!!!router.push(RoutesTypes.Home);
-        console.log('redirect to auth');
+        console.log('we are in auth');
       }
     }
     // window.scrollTo(0, 0); //TODO remove it from here
   }
 
-  const [
+  /*const [
     getGuestToken,
     {
-      data: data_reldergees,
-      loading: loading_reldergees,
-      error: error_reldergees,
-      refetch: refetch_reldergees,
-      networkStatus: networkStatus_reldergees,
+      data: data_guest_token,
+      loading: loading_guest_token,
+      error: error_guest_token,
+      refetch: refetch_guest_token,
+      networkStatus: networkStatus_guest_token,
     },
   ] =
     //   isDemo
     // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
     // :
     useLazyQuery(GUEST_LOGIN, {
+      context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
+    });*/
+
+  const {
+    data: data_guest_token,
+    loading: loading_guest_token,
+    error: error_guest_token,
+    refetch: refetch_guest_token,
+    networkStatus: networkStatus_guest_token,
+  } =
+    //   isDemo
+    // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
+    // :
+    useQuery(GUEST_LOGIN, {
       context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
     });
 
@@ -98,21 +129,55 @@ export const AuthProvider = ({ children }: any) => {
       { path: '/', expires: d }
     );
     // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
+
+    tokenVar('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw')
     setIsLoggedIn(true);
   }
 
+/*  function setGuestTokenToCookies() {
+    console.log('-----settting guest token -------')
+    var d = new Date();
+    d.setFullYear(d.getFullYear() + 100);
+    setCookieToken('mednekot', data_guest_token?.guestLogin?.data?.token, {
+      path: '/',
+      expires: d,
+    });
+    setIsLoggedIn(false);
+  } */
+
   React.useEffect(() => {
-    console.log('pathname', pathname);
+    //console.log('pathname', pathname);
+    console.log('----check auth----')
     checkAuth();
-    console.log('cookiesToken.mednekot', cookiesToken.mednekot);
+    //console.log('cookiesToken.mednekot', cookiesToken.mednekot);
     // checks if the user is authenticated
 
     //router.push("/dashboard");
   }, [pathname, cookiesToken.mednekot]);
 
   React.useEffect(() => {
-    setIsLoggedIn(!!cookiesToken.mednekot);
-  }, [cookiesToken.mednekot]);
+    // setIsLoggedIn(!!cookiesToken.mednekot);
+
+    console.log('tok, gtok', cookiesToken.mednekot, data_guest_token?.guestLogin?.data?.token);
+    if (
+      cookiesToken.mednekot == undefined &&
+      data_guest_token?.guestLogin?.data?.token != undefined
+    ) {
+      //setGuestTokenToCookies();
+      tokenVar(data_guest_token?.guestLogin?.data?.token);
+      setIsLoggedIn(false);
+    }
+    if( 
+      cookiesToken.mednekot != undefined 
+      /*&&
+      data_guest_token?.guestLogin?.data?.token != undefined &&
+      data_guest_token?.guestLogin?.data?.token != cookiesToken.mednekot*/){
+        setIsLoggedIn(true);
+        tokenVar(cookiesToken.mednekot);
+        console.log('CHECK TRUE')
+      }
+    // setIsLoggedIn(data_guest_token?.guestLogin?.data?.token == cookiesToken.mednekot);
+  }, [cookiesToken.mednekot, data_guest_token]);
   /*
     useEffect(() => {
         async function fetchUserFromCookie() {

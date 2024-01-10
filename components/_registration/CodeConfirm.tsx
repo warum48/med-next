@@ -18,6 +18,7 @@ import { REGISTRATION_FLASH_CALL_CODE } from '@/apollo/queries/accounts/mutation
 import { FloatingLabelInputMask } from '../Inputs/FloatingLabelInputMask';
 import { TextInfo, Title1_main } from '../TextBlocks/TextBlocks';
 import { FormPaper } from '../Containers/FormPaper';
+import { tokenVar } from '@/apollo/state/token';
 //import { TextInfo, Title1_main } from '../../_styles/headers';
 //import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
@@ -93,6 +94,9 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
         path: '/',
         expires: d,
       });
+     
+        tokenVar(data?.registrationFlashCallCode?.data?.token,);
+        
     }
   }, [data]);
 
@@ -134,3 +138,19 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
     </>
   );
 }
+
+/*
+{
+    "data": {
+        "registrationFlashCallCode": {
+            "data": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDQ4NzY5ODEsInN1YiI6eyJsb2dpbiI6Ijc5MjU3NjU0MzIxIiwicGFzc3dvcmQiOiIkMmIkMTIkeVdhLkFLT0V5Z1F1R3ZJazNneXkuLnZCcTZ5MHFBUURQdkxvNzJ3S0hiRHJqYWFGdGpWVWUifX0.vMiqoj_B44wGTF9x1iq7INpXVZ52Xd8a5qPQ3BvOD8I",
+                "__typename": "Token"
+            },
+            "details": "Ok",
+            "statusCode": 200,
+            "__typename": "LoginResult"
+        }
+    }
+}
+*/

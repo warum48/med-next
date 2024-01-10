@@ -43,6 +43,7 @@ import { innerPageMaxWidth } from '@/global/CONSTS';
 import { GridStretcher } from '../GridStrecher/GridStretcher';
 import { SpaceYMain } from '../Spacers/Spacers';
 import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
+import { tokenVar } from '@/apollo/state/token';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -268,6 +269,8 @@ export function RegFormMax({ setStep }: TRegFormProps) {
   React.useEffect(() => {
     if (data_reg?.patientRegistration?.statusCode == 200) {
       setStep('confirmCode');
+      console.log('data_reg?.patientRegistration?.data', data_reg?.patientRegistration?.data);
+      
     }
   }, [data_reg]);
 
@@ -511,7 +514,7 @@ export function RegFormMax({ setStep }: TRegFormProps) {
           </form>
         )}
         {/* <Text>{data_reg?.patientRegistration?.detail}</Text> */}
-        {loading_config && <Preloader />}
+        {(loading_config && !formConfig?.registrationVisibleFields) && <Preloader />}
         {error_config && (
           <ErrorMessage
             detail={data_config?.getUserAdminInfo?.details}

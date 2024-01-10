@@ -6,7 +6,7 @@ import { AgeChooser } from './AgeChooser';
 import { MedCenterChooser } from './MedCenterChooser';
 import { useState } from 'react';
 import { PopupAlertIntro } from './PopupAlertIntro';
-import { medCenterInitWarningShownVar } from '@/apollo/appstate/globalvars';
+import { medCenterInitWarningShownVar } from '@/apollo/state/appointment/globalvars';
 import { useReactiveVar } from '@apollo/client';
 import { MedCenterSelector } from '../MedCenterSelector/MedCenterSelector';
 import { GroupStretcher } from '../MedCenterSelector/GroupStretcher';

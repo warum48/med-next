@@ -61,7 +61,7 @@ export const AppointmentForm = ({form}:any) => {
                       //id="phone"
                     />
                     <FloatingLabelInputMask
-                      label="Дата рождения"
+                      label="Дата рождения (дд.мм.гггг)"
                       form={form}
                       formField="birthday"
                       required

@@ -37,6 +37,8 @@ import {
   Title4_main,
   Title4_second,
 } from '../TextBlocks/TextBlocks';
+import { RoutesTypes } from '@/global/ROUTES';
+import Link from 'next/link';
 
 export const Home = () => {
   //const { classes, theme } = useStyles();
@@ -93,8 +95,11 @@ export const Home = () => {
               radius="md" p={'xl'} shadow="sm">
               <Center>
                 <Group w="100%" justify="center" style={{ flex: 1 }}>
+                <Link href={RoutesTypes.Auth}>
                   <StyledButton appearence={'main_first_outlined'}>Войти</StyledButton>
-                  <StyledButton appearence={'main_first'}>Зарегистрироваться</StyledButton>
+                  </Link>
+                  <Link href={RoutesTypes.Registration}>
+                  <StyledButton appearence={'main_first'}>Зарегистрироваться</StyledButton></Link>
                 </Group>
                 
               </Center>

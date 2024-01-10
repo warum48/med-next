@@ -5,10 +5,12 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  ApolloLink
+  ApolloLink,
+  useReactiveVar
 } from "@apollo/client";
 //import { ApolloLink } from "apollo-link";
 import { useCookies } from "react-cookie";
+import { tokenVar } from "./state/token";
 
 
 /*
@@ -38,6 +40,7 @@ type Props = {
 //--------------component-----------
 export const ApolloSettingsProvider = ({ children }: Props) => {
   const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
+  const tokenVar_re = useReactiveVar(tokenVar)
 
   //!!const { pathtoserver } = React.useContext(GlobalContext);
   // ^ this causes filters refetching (and, highly likely, may be not just filters)
@@ -64,7 +67,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
       mode: "cors", // no-cors, *cors, same-origin //'*cors'//
     },
     headers: {
-      Authorization: "Bearer " + cookiesToken.mednekot, //token,
+      Authorization: "Bearer " + tokenVar_re, //cookiesToken.mednekot, //token,
       "Access-Control-Allow-Origin": "*",
     }, 
   });
@@ -75,7 +78,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
       mode: "cors", // no-cors, *cors, same-origin //'*cors'//
     },
     headers: {
-      Authorization: "Bearer " + cookiesToken.mednekot, //token,
+      Authorization: "Bearer " + tokenVar_re, //cookiesToken.mednekot, //token,
       "Access-Control-Allow-Origin": "*",
     }, 
   });
@@ -86,7 +89,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
       mode: "cors", // no-cors, *cors, same-origin //'*cors'//
     },
     headers: {
-      Authorization: "Bearer " + cookiesToken.mednekot, //token,
+      Authorization: "Bearer " + tokenVar_re, //cookiesToken.mednekot, //token,
       "Access-Control-Allow-Origin": "*",
     }, 
   });

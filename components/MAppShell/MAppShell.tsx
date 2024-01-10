@@ -33,6 +33,7 @@ import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import { innerPageMaxWidth } from '@/global/CONSTS';
 import { RoutesTypes } from '@/global/ROUTES';
 import { usePathname } from 'next/navigation';
+import { AuthContext } from '@/context/AuthContext';
 //import { RoutesTypes } from 'ROUTES';
 
 export function MAppShell({ children }: any) {
@@ -49,7 +50,8 @@ export function MAppShell({ children }: any) {
   const {navBarCollapsed} = React.useContext(GlobalContext);
   //const location = useLocation();
   const headerProps = { opened, setOpened, asideOpen, setAsideOpen };
-  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  const {isLoggedIn} = React.useContext(AuthContext);
  // const { colorScheme, setColorScheme } = useMantineColorScheme();
  console.log('location.pathname', location.pathname);
  console.log('location.pathname === RoutesTypes.Home', location.pathname === RoutesTypes.Home)
@@ -59,7 +61,7 @@ export function MAppShell({ children }: any) {
       header={{ height: { base: 60, md: 70, lg: 80 } }}
       navbar={{
         width: {
-          base: cookieToken.mednekot ? (navBarCollapsed? 98 : 320) : 1, //320
+          base: isLoggedIn ? (navBarCollapsed? 98 : 320) : 1, //320
           // md: 300, lg: 400
         },
         breakpoint: 'md',
@@ -80,7 +82,7 @@ export function MAppShell({ children }: any) {
         </Group>
       </AppShell.Header>
 
-      {cookieToken.mednekot ? (
+      {isLoggedIn ? (
         <AppShell.Navbar
           p="md"
           pb={0}

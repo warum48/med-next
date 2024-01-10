@@ -206,7 +206,7 @@ export function AddForm({ setAddMemberOpen, relDegrees, onAdd }: TProps) {
                 <FloatingLabelInput label="Имя " form={form} formField="firstName" required />
                 <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
                 <FloatingLabelInputMask
-                  label="Дата рождения "
+                  label="Дата рождения (дд.мм.гггг)"
                   form={form}
                   formField="birthDate"
                   required

@@ -1,6 +1,6 @@
 import { ReactiveVar, makeVar } from "@apollo/client";
-import { PatientRegistration } from "../../__generated__/graphql";
-import { FlashCallCode } from "../../__generated__/graphql";
+import { PatientRegistration } from "../../../__generated__/graphql";
+import { FlashCallCode } from "../../../__generated__/graphql";
 import { TAppointmentType } from "@/types/types";
 
 

@@ -56,7 +56,7 @@ import { Step3Doctor } from '@/components/_appointment/Step3Doctor';
 import { Layout } from '@/components/_appointment/Layout';
 import { Step3Speciality } from '@/components/_appointment/Step3Speciality';
 import { TAppointmentType } from '@/types/types';
-import { appointmentTypeVar, medCenterInitWarningShownVar } from '@/apollo/appstate/globalvars';
+import { appointmentTypeVar, medCenterInitWarningShownVar } from '@/apollo/state/appointment/globalvars';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { Step1 } from '@/components/_appointment/Step1';
 import { useDisclosure } from '@mantine/hooks';

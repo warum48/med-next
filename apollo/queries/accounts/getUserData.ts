@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client";
+//import { gql } from "@apollo/client";
+import { gql } from "../../../__generated__/gql";
 
 export const GET_USER_DATA= gql(`
 query getUserData{
@@ -13,30 +14,7 @@ query getUserData{
             gender
             email
             phoneNumber
-            additionalPhoneNumber
-            docType
-            docSeries
-            docNumber
-            docGivingDepName
-            docGivingDepCode
-            docDate
-            docRegAddress
-            snils
-            inn
-            cityId
-            addressFull
-            addressMisKladrId
-            longitude
-            latitude
-            zoneNumber
-            defaultMedicalCenterId
-            loginPhoneNumber
-            isVerified
-            infoWayId
-            notificationTime
-            prefNotificationContactId
-            isActive
-            created
+           
             city{
                 id
                 clientId
@@ -79,7 +57,66 @@ query getUserData{
                 description
                 isActive
             }
-            prefNotificationContact{
+            
+            addressMisKladr{
+                id
+                clientId
+                clientUserId
+                tag
+                luid
+                region
+                regionCode
+                area
+                areaCode
+                city
+                cityCode
+                town
+                townCode
+                street
+                streetCode
+                house
+                corp
+                flat
+                note
+                status
+                livesLuId
+                houseCode
+            }
+        }
+        statusCode
+        details
+    }
+}
+`)
+
+/*
+ additionalPhoneNumber
+            docType
+            docSeries
+            docNumber
+            docGivingDepName
+            docGivingDepCode
+            docDate
+            docRegAddress
+            snils
+            inn
+            cityId
+            addressFull
+            addressMisKladrId
+            longitude
+            latitude
+            zoneNumber
+            defaultMedicalCenterId
+            loginPhoneNumber
+            isVerified
+            infoWayId
+            notificationTime
+            prefNotificationContactId
+            isActive
+            created
+            */
+
+            /*prefNotificationContact{
                 id
                 clientId
                 firstName
@@ -209,33 +246,4 @@ query getUserData{
                     }
                 }
             }
-            addressMisKladr{
-                id
-                clientId
-                clientUserId
-                tag
-                luid
-                region
-                regionCode
-                area
-                areaCode
-                city
-                cityCode
-                town
-                townCode
-                street
-                streetCode
-                house
-                corp
-                flat
-                note
-                status
-                livesLuId
-                houseCode
-            }
-        }
-        statusCode
-        details
-    }
-}
-`)
+            */

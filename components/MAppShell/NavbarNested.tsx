@@ -20,6 +20,7 @@ import React from 'react';
 import { usePages } from '@/context/usePages';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { CollapseButton } from './CollapseButton';
+import { AuthContext } from '@/context/AuthContext';
 
 type PageItem =  {
   label: string;
@@ -38,7 +39,8 @@ type TProps = {
 
 export function NavbarNested({setOpened}:TProps) {
   const {pages} = usePages();
-  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  const {isLoggedIn} = React.useContext(AuthContext);
+  //const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const {navBarCollapsed, isMobile} = React.useContext(GlobalContext);
   //const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
   const links = pages.map((item:PageItem) => <LinksGroup {...item } key={item.label} setOpened={setOpened}/>);
@@ -46,7 +48,7 @@ export function NavbarNested({setOpened}:TProps) {
 
   return (
     <nav className={`${classes.navbar} ${navBarCollapsed? classes.collapsed : ''}`}>
-     {cookieToken.mednekot &&
+     {isLoggedIn &&
       <div className={classes.header}>
         <UserButton />
         { !isMobile && <CollapseButton />}
