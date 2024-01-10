@@ -97,6 +97,7 @@ export function AddForm({ setAddMemberOpen, relDegrees, onAdd }: TProps) {
   }
 
   useMutationNotifications({
+    text: 'Родственник добавлен',
     data: data_reg,
     data_code: data_reg?.addRelatives?.statusCode,
     data_details: data_reg?.addRelatives?.details,

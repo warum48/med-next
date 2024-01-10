@@ -22,15 +22,18 @@ import { InnerPageTitle, Title1_main, TitleLabel } from '@/components/TextBlocks
 import { EditableText, TEditTypes, TTfOnChange } from '@/components/Inputs/EditableText';
 import { DropZone } from '@/components/_profile/DropZone';
 import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { GET_CITIES } from '@/apollo/queries/main/getCities';
 import { Preloader } from '@/components/Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
-import { GetCentersAndCitiesQuery } from '@/__generated__/graphql';
+import { GetCentersAndCitiesQuery, UserInput } from '@/__generated__/graphql';
 import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
 import { formatDateNormalToRu } from '@/utils/formatDates';
 import { formatPhoneNumber } from '@/utils/formatPhone';
+import { CHANGE_USER } from '@/apollo/queries/accounts/mutations/changeUser';
+import { updatedUserFields } from '@/apollo/state/updateUser';
+import { useMutationNotifications } from '@/services/useNotifications';
 
 type TFields = {
   field: string;
@@ -49,6 +52,7 @@ export default function Profile() {
   const renderCount = React.useRef(0);
   const [photoUpload, setPhotoUpload] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<TFields[]>([]);
+  const updatedUserFields_re = useReactiveVar(updatedUserFields);
   //const defaultUserInfo: TFields[] = []
   const changeInfo = useCallback((text: string, fieldId: string) => {
     setUserInfo(
@@ -98,6 +102,29 @@ export default function Profile() {
       context: { clientName: 'accounts' },
     });
 
+  const [
+    mutateUser,
+    { loading: loading_mutate_user, error: error_mutate_user, data: data_mutate_user },
+  ] = useMutation(CHANGE_USER, {
+    variables: {
+      userChangings: updatedUserFields_re, //{...values, phoneNumber:values.phoneNumber.replace(/\D/g, ''), birthDate: '2012-12-31'} ,
+    },
+  });
+
+
+  function onSuccess() {
+    refetch_user_info();
+  }
+
+  useMutationNotifications({
+    text: 'Профиль обновлен',
+    data: data_mutate_user,
+    data_code: data_mutate_user?.changeUser?.statusCode,
+    data_details: data_mutate_user?.changeUser?.details,
+    error: error_mutate_user,
+    onSuccess: onSuccess,
+  });
+
   React.useEffect(() => {
     console.log('=-=data_user_info', data_user_info);
     console.log('=-=data_user_info----', data_user_info?.getUserData?.data);
@@ -126,7 +153,7 @@ export default function Profile() {
 
   const defaultUserInfo: TFields[] = [
     // React.useMemo(() => (
-   
+
     {
       field: 'firstdName',
       name: 'Имя',
@@ -224,18 +251,19 @@ export default function Profile() {
     city: {},
   };*/
 
-  function updateUserData() { //userInfo: TFields[]
-    const updatedData: any = {};
-  
+  function updateUserData() {
+    //userInfo: TFields[]
+    const updatedData: UserInput = {};
     userInfo.forEach((field) => {
       if (field.newValue !== '') {
-        updatedData[field.field] = field.newValue;
+        updatedData[field.field as keyof typeof updatedData] = field.newValue;
       }
     });
-  
     console.log('updatedData', updatedData);
-  
-    return updatedData;
+    updatedUserFields(updatedData);
+    console.log('updatedUserFields_re', updatedUserFields_re);
+   // mutateUser();
+    //return updatedData;
   }
 
   React.useEffect(() => {
@@ -246,6 +274,10 @@ export default function Profile() {
       setUserInfo(defaultUserInfo);
     }
   }, [data_profile, data_user_info]);
+
+  React.useEffect(() => {
+    updateUserData()
+  }, [userInfo])
 
   /*
     queryMapping: data?.getGoodsCategories?.resultsList.map(
@@ -277,8 +309,9 @@ export default function Profile() {
         </Tabs.List>
         <Space h="xl" />
         <Tabs.Panel value="type1" pt="xs">
-          <Stack gap={6} 
-         // key={'user_render'+data_user_info?.getUserData?.data?.clientId}
+          <Stack
+            gap={6}
+            // key={'user_render'+data_user_info?.getUserData?.data?.clientId}
           >
             {userInfo.map((item, index) => (
               <Group
@@ -312,13 +345,13 @@ export default function Profile() {
 
             {loading_profile && <Preloader />}
 
-            <Group py='md'>
+            <Group py="md">
               {userInfo.filter((item: any) => item.newValue != '').length > 0 && (
                 <>
                   <StyledButton appearence={'main_first_outlined'} maw={150} onClick={resetChanges}>
                     Отмена
                   </StyledButton>
-                  <StyledButton appearence={'main_second'} maw={150} onClick={updateUserData}>
+                  <StyledButton appearence={'main_second'} maw={150} onClick={()=> mutateUser()}>
                     Сохранить
                   </StyledButton>
                 </>
@@ -348,7 +381,7 @@ export default function Profile() {
               mt="md"
             />
             <PasswordInput placeholder="Повторите новый пароль" required />
-            <StyledButton appearence={'main_second'} maw={150} >
+            <StyledButton appearence={'main_second'} maw={150}>
               Сохранить
             </StyledButton>
           </Stack>{' '}

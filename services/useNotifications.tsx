@@ -4,6 +4,7 @@ import React from 'react';
 
 
 type TProps = {
+  text: string;
   data: unknown | null | undefined;
   data_code: number | null | undefined;
   data_details: string | null | undefined;
@@ -11,7 +12,7 @@ type TProps = {
   onSuccess: () => void;
 };
 
-export const useMutationNotifications = ({ data, data_code, data_details, error, onSuccess }: TProps) => {
+export const useMutationNotifications = ({ text, data, data_code, data_details, error, onSuccess }: TProps) => {
   React.useEffect(() => {
     if (data) {
       if (data_code == 200) {
@@ -19,7 +20,7 @@ export const useMutationNotifications = ({ data, data_code, data_details, error,
         console.log('added');
         notifications.show({
           title: 'Готово',
-          message: 'Родственник добавлен',
+          message: text,
         });
       } else {
         notifications.show({

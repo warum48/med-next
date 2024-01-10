@@ -20,6 +20,7 @@ const documents = {
     "\nquery loginFlashCallCode($flashCallCode: FlashCallCode!){\n  loginFlashCallCode(flashCallCode: $flashCallCode){\n      data{\n          token\n      }\n      statusCode\n      details\n  }\n}\n  ": types.LoginFlashCallCodeDocument,
     "\n\n\nmutation addRelatives($relationshipDegreeId: Int!, $patient: PatientRegistration!){\n    addRelatives(relationshipDegreeId: $relationshipDegreeId, patient: $patient){\n        data{\n            token\n        }\n        recordsCount\n        pagesCount\n        statusCode\n        details\n    }\n}": types.AddRelativesDocument,
     "\n\nmutation changeLoginPhoneByPhone($oldPhoneNumber: String!, $newPhoneNumber: String!){\n  changeLoginPhoneByPhone(oldPhoneNumber: $oldPhoneNumber, newPhoneNumber: $newPhoneNumber){\n      data\n      statusCode\n      details\n  }\n}": types.ChangeLoginPhoneByPhoneDocument,
+    "\n\nmutation changeUser($userChangings: UserInput!){\n    changeUser(userChangings: $userChangings){\n        data{\n            id\n            \n        }\n        recordsCount\n        pagesCount\n        statusCode\n        details\n    }\n}": types.ChangeUserDocument,
     "\nmutation PatientRegistration ($patient: PatientRegistration!){\n    patientRegistration(\n      patient: $patient\n    ) {\n      statusCode\n    details\n    data\n    }\n  }": types.PatientRegistrationDocument,
     "\nmutation RegistrationFlashCallCode ($flashCallCode:FlashCallCode!)  {\n    registrationFlashCallCode(flashCallCode: $flashCallCode) {\n      data {\n        token\n      }\n    details\n    statusCode\n    }\n  }": types.RegistrationFlashCallCodeDocument,
     "\nquery patienLoginByPassword($loginPhoneNumber: String!, $password: String!){\n  patienLoginByPassword(loginPhoneNumber: $loginPhoneNumber, password: $password){\n      data{\n          token\n      }\n      statusCode\n      details\n  }\n}\n  ": types.PatienLoginByPasswordDocument,
@@ -79,6 +80,10 @@ export function gql(source: "\n\n\nmutation addRelatives($relationshipDegreeId: 
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n\nmutation changeLoginPhoneByPhone($oldPhoneNumber: String!, $newPhoneNumber: String!){\n  changeLoginPhoneByPhone(oldPhoneNumber: $oldPhoneNumber, newPhoneNumber: $newPhoneNumber){\n      data\n      statusCode\n      details\n  }\n}"): (typeof documents)["\n\nmutation changeLoginPhoneByPhone($oldPhoneNumber: String!, $newPhoneNumber: String!){\n  changeLoginPhoneByPhone(oldPhoneNumber: $oldPhoneNumber, newPhoneNumber: $newPhoneNumber){\n      data\n      statusCode\n      details\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n\nmutation changeUser($userChangings: UserInput!){\n    changeUser(userChangings: $userChangings){\n        data{\n            id\n            \n        }\n        recordsCount\n        pagesCount\n        statusCode\n        details\n    }\n}"): (typeof documents)["\n\nmutation changeUser($userChangings: UserInput!){\n    changeUser(userChangings: $userChangings){\n        data{\n            id\n            \n        }\n        recordsCount\n        pagesCount\n        statusCode\n        details\n    }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

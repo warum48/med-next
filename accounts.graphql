@@ -31,9 +31,9 @@ type AddressMisKladrTable {
 
 type City {
   id: Int!
-  clientId: Int
   name: String!
   isActive: Boolean
+  clientId: String
 }
 
 """Date (isoformat)"""
@@ -49,10 +49,10 @@ input FlashCallCode {
 
 type InformationWay {
   id: Int!
-  clientId: Int
   name: String!
   description: String
   isActive: Boolean
+  clientId: String
 }
 
 type LoginResult {
@@ -65,7 +65,6 @@ type LoginResult {
 
 type MedicalCenter {
   id: Int!
-  clientId: Int
   cityId: Int!
   name: String!
   address: String!
@@ -85,6 +84,7 @@ type MedicalCenter {
   workTime: String!
   collectionTestsTime: String
   vaccinationTime: String
+  clientId: String
   city: City
 }
 
@@ -96,6 +96,7 @@ type Mutation {
   changeLoginPhoneByPhone(oldPhoneNumber: String!, newPhoneNumber: String!): RequestResult!
   changePhoneFlashCallCode(flashCallCode: FlashCallCode!): RequestResult!
   addRelatives(relationshipDegreeId: Int!, patient: PatientRegistration!): LoginResult!
+  changeUser(userChangings: UserInput!): UserResult!
 }
 
 input PatientRegistration {
@@ -145,10 +146,10 @@ type Query {
 
 type RelationshipDegrees {
   id: Int!
-  clientId: Int
   name: String!
   description: String
   isActive: Boolean
+  clientId: String
 }
 
 input RelationshipDegreesInput {
@@ -184,7 +185,6 @@ type Token {
 
 type User {
   id: Int!
-  clientId: Int
   firstName: String
   lastName: String
   patronymic: String
@@ -221,6 +221,7 @@ type User {
   infoWay: InformationWay
   prefNotificationContact: User
   addressMisKladr: AddressMisKladrTable
+  clientId: String
 }
 
 type UserData {
@@ -231,10 +232,46 @@ type UserData {
   details: String
 }
 
+input UserInput {
+  id: Int = null
+  clientId: [Int!] = null
+  firstName: String = null
+  lastName: String = null
+  patronymic: String = null
+  birthDate: Date = null
+  gender: String = null
+  email: String = null
+  phoneNumber: String = null
+  additionalPhoneNumber: String = null
+  docType: Int = null
+  docSeries: String = null
+  docNumber: String = null
+  docGivingDepName: String = null
+  docGivingDepCode: String = null
+  docDate: Date = null
+  docRegAddress: String = null
+  snils: String = null
+  inn: String = null
+  cityId: [Int!] = null
+  addressFull: String = null
+  addressMisKladrId: [Int!] = null
+  longitude: Float = null
+  latitude: Float = null
+  zoneNumber: Int = null
+  defaultMedicalCenterId: [Int!] = null
+  loginPhoneNumber: String = null
+  password: String = null
+  isVerified: Boolean = null
+  infoWayId: [Int!] = null
+  notificationTime: Time = null
+  prefNotificationContactId: [Int!] = null
+  isActive: Boolean = null
+  created: Date = null
+}
+
 type UserRelative {
   id: Int!
   userId: Int!
-  clientId: Int
   relativeId: Int!
   relationshipDegreeId: Int!
   extraRights: Boolean
@@ -242,6 +279,7 @@ type UserRelative {
   user: User
   relative: User
   relationshipDegree: RelationshipDegrees
+  clientId: String
 }
 
 input UserRelativeInput {
@@ -261,9 +299,16 @@ type UserRelativeResult {
   details: String
 }
 
+type UserResult {
+  data: User
+  recordsCount: Int
+  pagesCount: Int
+  statusCode: Int
+  details: String
+}
+
 type UserView {
   id: Int!
-  clientId: String
   firstName: String
   lastName: String
   patronymic: String
@@ -300,5 +345,6 @@ type UserView {
   infoWay: InformationWay
   prefNotificationContact: User
   addressMisKladr: AddressMisKladrTable
+  clientId: String
 }
 
