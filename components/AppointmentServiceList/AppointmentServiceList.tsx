@@ -1,4 +1,4 @@
-import { Group, Space, Table } from '@mantine/core';
+import { Checkbox, Group, Space, Table } from '@mantine/core';
 import { TextHighlighted, Title4_second } from '../TextBlocks/TextBlocks';
 import { appointmentData, serviceDescription } from '../___mockdata/mockdata';
 import { StyledButton } from '../Buttons/StyledButton';
@@ -17,8 +17,12 @@ return (
                {/* <Table.Td pl={0} 
                // w="80%"
           > </Table.Td> */}
-                <Table.Td valign='top'  w="100%">
+                <Table.Td valign='top'  w="100%" px='0'>
                   <Group align="center">
+                  <Checkbox
+      //defaultChecked
+      //label="I agree to sell my privacy"
+    />
                   {element.process}
                     <StyledButton
                       appearence="info_circle"

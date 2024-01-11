@@ -31,6 +31,7 @@ import { FloatingLabelInputMask } from '@/components/Inputs/FloatingLabelInputMa
 import { FloatingLabelInput } from '@/components/Inputs/FloatingLabelInput';
 import { useCookies } from 'react-cookie';
 import { AuthContext } from '@/context/AuthContext';
+import { useMutationNotifications } from '@/services/useNotifications';
 //import { Title1_main } from '../../_styles/headers';
 //import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
@@ -52,7 +53,7 @@ export default function AuthPhonePass() {
   //const [cookiesToken, setCookieToken] = useCookies(["mednekot"]);
   const phoneNumberVar_re = useReactiveVar(phoneNumberVar);
   //const {checkAuth} = useAuth();
- const {checkAuth} = React.useContext(AuthContext);
+ const {checkAuth, login} = React.useContext(AuthContext);
 
  
 
@@ -77,6 +78,17 @@ export default function AuthPhonePass() {
       password: form.values.password
     }});
 
+    useMutationNotifications({
+      text: 'Добро пожаловать!',
+      data: data,
+      data_code: data?.patienLoginByPassword?.statusCode,
+      data_details: data?.patienLoginByPassword?.details,
+      error: error,
+      onSuccess: ()=>{
+        console.log('---onSuccess');
+      },
+    });  
+
   const onSubmit = (values:any) => {
     const result = values.phone.replace(/\D/g, '');
     console.log('result', result);
@@ -88,11 +100,12 @@ export default function AuthPhonePass() {
   React.useEffect(() => {
     console.log(' auth data', data)
     if (data && data?.patienLoginByPassword?.data?.token) {
-      var d = new Date();
+    /*  var d = new Date();
       d.setFullYear(d.getFullYear() + 100);
       console.log('SETTING TOKEN', data?.patienLoginByPassword?.data?.token);
       setCookieToken("mednekot", data?.patienLoginByPassword?.data?.token, { path: "/", expires: d });
-      checkAuth();
+      checkAuth();*/
+      login(data?.patienLoginByPassword?.data?.token);
     }
   }, [data]);
 

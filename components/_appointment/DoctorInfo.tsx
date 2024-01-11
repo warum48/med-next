@@ -12,6 +12,7 @@ import {
   rem,
   List,
   Space,
+  Center,
 } from '@mantine/core';
 
 import { Calendar } from '@mantine/dates';
@@ -45,6 +46,7 @@ import { SpaceYMain } from '../Spacers/Spacers';
 import { doctorInfo } from '../___mockdata/mockdata';
 import { DoctorAvatarContainer } from '../AvatarContainer/DoctorAvatarContainer';
 import { Doctor } from '@/__generated__/graphql';
+import { StyledButton } from '../Buttons/StyledButton';
 
 /*const useStyles = createStyles((theme) => ({
     icon: {
@@ -127,6 +129,11 @@ export function DoctorInfo({
               <br />
               <TitleLabel>Стомость приемa:</TitleLabel>
               <TextHighlighted> от 5000 р.</TextHighlighted>
+              {!expanded &&
+             
+              <StyledButton my='xs' appearence={'main_small_second_transparent'}>Записаться</StyledButton>
+             
+}
               {/*
             <Group noWrap spacing={10} mt={3}>
               <IconAt stroke={1.5} size="1rem" className={classes.icon} />
@@ -157,7 +164,11 @@ export function DoctorInfo({
 
               <AppointmentServiceList />
               <Space h="xxs" />
+
+<Center><StyledButton appearence={'main_second'}>Записаться</StyledButton></Center>
+
               <List pr="xl">
+                
                 {data_services?.getDoctorsMspecialities?.data?.map((item: any, index: number) => (
                   <List.Item>
                     <TextInfo>

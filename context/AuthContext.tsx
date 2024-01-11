@@ -19,6 +19,7 @@ interface IContext {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   switchLogIn: () => void;
+  login:(token:string) => void;
   //logOut()
 }
 
@@ -130,9 +131,15 @@ export const AuthProvider = ({ children }: any) => {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw',
       { path: '/', expires: d }
     );
-    // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
-
     tokenVar('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM3NTEyNzEsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMjM0NTY3IiwicGFzc3dvcmQiOiIkMmIkMTIkUzJGcjV0c0Rvc3NiSnpwQWxOUFE2T1RnUE1xRmNCbWdPd2E2R1h6STBWSlJUa3ZxSW4zMk8ifX0.b3h6Bvh34jWt7JLCTV9XAVbXR__IwuTFASEqcoTmURw')
+    setIsLoggedIn(true);
+  }
+
+  function login(token:string){
+    var d = new Date();
+    d.setFullYear(d.getFullYear() + 100);
+    setCookieToken('mednekot', token, { path: '/', expires: d });
+    tokenVar(token);
     setIsLoggedIn(true);
   }
 
@@ -233,6 +240,7 @@ export const AuthProvider = ({ children }: any) => {
         isLoggedIn,
         setIsLoggedIn,
         switchLogIn,
+        login
       }}
     >
       {!isLoading ? <>loading</> : children}

@@ -69,3 +69,14 @@
   .main_small:hover{
     background-color: var(--mantine-color-virilis-pink);
   }
+
+  .main_small_second_transparent{
+    border-radius: 100px;
+    transition: all .4s;
+    color: var(--mantine-color-virilis-pink);
+    background-color: rgba(201, 2, 108, 0.12);
+  }
+  .main_small_second_transparent:hover{
+    color: var(--mantine-color-virilis-green);
+    background-color: rgba(2, 201, 108, 0.12);
+  }

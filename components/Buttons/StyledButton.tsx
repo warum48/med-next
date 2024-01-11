@@ -21,7 +21,9 @@ type TProps = {
     | 'main_gradient'
     | 'main_second_outlined'
     | 'info_circle'
-    | 'close';
+    | 'close'
+    | 'main_small_second_transparent'
+    | 'main_small_second';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
@@ -45,21 +47,11 @@ export const StyledButton = ({
   if (appearence == 'intro_second') {
     return (
       <Button
-        //variant="gradient"
-        //gradient={{ from: 'pink', to: 'DeepPink' }}
         size="xl"
         className={classes.intro_second}
-        // className={classes.main_second}
         mt={40}
-        //style={{
-        //  borderRadius:
-        //    DesignService.sizeAndRadius.buttonRadius[
-        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-        //    ].style,
-        //}}
       >
         {children}
-        {/*} Записаться на прием */}
       </Button>
     );
   }
@@ -67,27 +59,12 @@ export const StyledButton = ({
   if (appearence == 'main_second') {
     return (
       <Button
-        // variant="gradient"
-        // gradient={{ from: 'pink', to: '#ff3ebb' }}
-        //  gradient={{ from: 'pink', to: '#fd55d0' }}
         size="md" //"sm"
-        //className={classes.control}
         className={classes.main_second}
-        //mt={40}
-        //style={{
-        //  borderRadius:
-        //    DesignService.sizeAndRadius.buttonRadius[
-        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-        //    ].style, //
-        //  //DesignService.sizeAndRadius.buttonRadius[DesignService.buttonRadius].style,
-        //  //'100px'
-        //  ...sx,
-        //}}
         onClick={onClick}
         {...props}
       >
         {children}
-        {/*DesignService.buttonRadius*/}
       </Button>
     );
   }
@@ -97,9 +74,6 @@ export const StyledButton = ({
         variant="gradient"
         gradient={{ from: '#01868a', to: '#0dab5f' }}
         size="md" //"sm"
-        // size="xl"
-        //className={classes.control}
-        // mt={40}
         style={{
           borderRadius:
             DesignService.sizeAndRadius.buttonRadius[
@@ -118,19 +92,8 @@ export const StyledButton = ({
   if (appearence == 'main_first') {
     return (
       <Button
-        //variant="gradient"
-        //gradient={{ from: '#01868a', to: '#0dab5f' }}
         size="md" //"sm"
-        // size="xl"
         className={classes.main_first}
-        // mt={40}
-        //style={{
-        //  borderRadius:
-        //    DesignService.sizeAndRadius.buttonRadius[
-        //      DesignService.buttonRadius as keyof typeof DesignService.sizeAndRadius.buttonRadius
-        //    ].style,
-        //  ...sx,
-        //}}
         onClick={onClick}
         {...props}
       >
@@ -142,11 +105,8 @@ export const StyledButton = ({
   if (appearence == 'main_first_outlined') {
     return (
       <Button
-
         size="md" //"sm"
-
         className={classes.main_first_outlined}
-
         onClick={onClick}
         {...props}
       >
@@ -158,11 +118,8 @@ export const StyledButton = ({
   if (appearence == 'main_second_outlined') {
     return (
       <Button
-
         size="md" //"sm"
-
         className={classes.main_second_outlined}
-
         onClick={onClick}
         {...props}
       >
@@ -175,11 +132,7 @@ export const StyledButton = ({
     return (
       <Button
         variant="outline"
-        // gradient={{ from: '#01868a', to: '#0dab5f' }}
         size="sm"
-        // size="xl"
-        //className={classes.control}
-        // mt={40}
         style={{
           borderRadius:
             DesignService.sizeAndRadius.buttonRadius[
@@ -200,9 +153,19 @@ export const StyledButton = ({
       <Button
         size="compact-xs"
         className={classes.main_small}
-        //!!compact
-        // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
-        // sx={{marginLeft:'auto'}}
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
+  if (appearence == 'main_small_second_transparent') {
+    return (
+      <Button
+        size="compact-xs"
+        className={classes.main_small_second_transparent}
         onClick={onClick}
         {...props}
       >

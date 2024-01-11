@@ -1,6 +1,6 @@
-import { Grid, Group, Paper, ScrollArea, Space } from '@mantine/core';
+import { Grid, Group, Paper, ScrollArea } from '@mantine/core';
 import { SpaceYMain } from '../Spacers/Spacers';
-import { TextInfo, Title2_second, Title4_second, TitleLabel } from '../TextBlocks/TextBlocks';
+import { TextInfo, Title2_second, TitleLabel } from '../TextBlocks/TextBlocks';
 import { Calendar, DatePicker } from '@mantine/dates';
 import 'dayjs/locale/ru';
 import { DoctorConfirm } from './DoctorConfirm';
@@ -23,11 +23,7 @@ export const Step3Doctor = () => {
           span={{ base: 12, lg: 5 }}
         >
           <DoctorConfirm {...mockDoctor} />
-          <SpaceYMain/>
-          <Title4_second>Выберите услугу:</Title4_second>
-          <Space h='xs'/>
           <AppointmentServiceList />
-          <SpaceYMain/>
         </Grid.Col>
         <Grid.Col
           //xs={12} lg={6}

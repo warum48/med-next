@@ -56,12 +56,13 @@ export const DoctorConfirm = ({
             <TitleLabel>Адрес:</TitleLabel>{' '}
             <TextInfo>ДМЦ «Мамарада», Большевиков пр.,д.7, корп.3</TextInfo>
           </Group>
+          {/*
           <Group px="md" py="4" className="body_highlight">
             <TitleLabel>Время и дата:</TitleLabel> <TextInfo>10:30, 4 августа, пятница</TextInfo>
           </Group>
           <Group px="md" py="4">
             <TitleLabel>Стоимость:</TitleLabel> <TextInfo>2300 ₽</TextInfo>
-          </Group>
+  </Group> */}
         </Stack>
         <div></div>
       </Box>
