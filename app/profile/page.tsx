@@ -37,6 +37,8 @@ import { useMutationNotifications } from '@/services/useNotifications';
 
 type TFields = {
   field: string;
+  mutationField?: string;
+  mutationFunction?: (value: any) => any;
   name: string;
   mock: string;
   required: boolean;
@@ -46,7 +48,7 @@ type TFields = {
   mask?: string;
   type?: TEditTypes; //'select',
   data?: any; //null |     (  { value: any, label: any }[])
-};
+}; //TODO better typing for mutationFields and functions
 
 export default function Profile() {
   const renderCount = React.useRef(0);
@@ -207,6 +209,8 @@ export default function Profile() {
     },
     {
       field: 'city',
+      mutationField: 'cityId',
+      mutationFunction: (value:string) => parseFloat(value),
       name: 'Город',
       mock: 'Санкт-Петербург',
       required: true,
@@ -221,6 +225,8 @@ export default function Profile() {
     },
     {
       field: 'defaultMedicalCenter',
+      mutationField: 'defaultMedicalCenterId',
+      mutationFunction: (value:string) => parseFloat(value),
       name: 'Медцентр по умолчанию',
       mock: 'Онни',
       required: true,
@@ -256,7 +262,9 @@ export default function Profile() {
     const updatedData: UserInput = {};
     userInfo.forEach((field) => {
       if (field.newValue !== '') {
-        updatedData[field.field as keyof typeof updatedData] = field.newValue;
+        //updatedData[field.mutationField ? field.mutationField as keyof typeof updatedData : field.field as keyof typeof updatedData] = field.newValue;
+        let castedValue = field.mutationFunction ? field.mutationFunction(field.newValue) : field.newValue;
+        updatedData[field.mutationField ? field.mutationField as keyof typeof updatedData : field.field as keyof typeof updatedData] = castedValue;//field.newValue;
       }
     });
     console.log('updatedData', updatedData);
