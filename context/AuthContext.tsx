@@ -60,10 +60,12 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   function logOut() {
+    console.log('LOG OUT');
    //setGuestTokenToCookies();
    removeCookieToken('mednekot', { path: '/' });
     tokenVar(data_guest_token?.guestLogin?.data?.token);
     setIsLoggedIn(false);
+    router.push(RoutesTypes.Home);
   }
   //const {setIsLoggedIn} = useContext(AuthContext);
 
@@ -82,7 +84,7 @@ export const AuthProvider = ({ children }: any) => {
       console.log('-=-=-=-=user');
       // setIsLoggedIn(true);
       if (pathname == RoutesTypes.Auth) {
-        //!!!router.push(RoutesTypes.Home);
+        router.push(RoutesTypes.Home);
         console.log('we are in auth');
       }
     }
