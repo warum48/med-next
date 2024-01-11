@@ -128,7 +128,7 @@ export function DoctorInfo({
               <TextInfo>сегодня, завтра, 10.07, 12.07, 14.07</TextInfo>
               <br />
               <TitleLabel>Стомость приемa:</TitleLabel>
-              <TextHighlighted> от 5000 р.</TextHighlighted>
+              <TextHighlighted> от 5000 р.</TextHighlighted><br/>
               {!expanded &&
              
               <StyledButton my='xs' appearence={'main_small_second_transparent'}>Записаться</StyledButton>
