@@ -56,7 +56,7 @@ export const Header = ({ opened, setOpened, asideOpen, setAsideOpen }: TProps) =
         className={styles.burger}
       />
      <Box className={styles.logoContainer}>
-        <Image className={styles.logo} fit="contain" src={info.logo} height={40} />
+        <Image className={styles.logo} fit="contain" src={info.logo} height={midUpScreen ? 40 : 20} />
   </Box> 
       </Group>
       

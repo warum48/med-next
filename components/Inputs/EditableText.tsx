@@ -40,7 +40,7 @@ type TTFProps = {
   text: string | undefined; // | null;
   onChange?: TTfOnChange; //|  TSelectOnChange;// //any; //any |
   autosize?: boolean;
-  onUpdate: (value: string) => void;
+  onUpdate: (value: string ) => void;
 } & //TextInputProps &
 //  TextareaProps &
 TDifferProps;
@@ -50,7 +50,7 @@ type TSelectProps = {
   value?: string | null;
   onChange?: TSelectOnChange; // //any; //any |
   data?: any;
-  onUpdate: (value: string) => void;
+  onUpdate: (value: string ) => void;
 } & TDifferProps;
 
 /*
@@ -91,6 +91,8 @@ export const EditableText = ({
       <Group grow>
         {!edit ? (
           <>
+          {/*JSON.stringify(value)}
+          {JSON.stringify(data)*/}
             <TextInfo>
               {type == 'text'
                 ? text

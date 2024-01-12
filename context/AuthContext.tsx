@@ -6,6 +6,9 @@ import { useLazyQuery, useQuery } from '@apollo/client';
 import { APOLLO_LINKS_CONTEXT } from '@/apollo/context';
 import { GUEST_LOGIN } from '@/apollo/queries/accounts/guestLogin';
 import { tokenVar } from '@/apollo/state/token';
+import { GlobalContext } from './ContextGlobal';
+import { useFetch } from '@/services/useFetch';
+import { GuestLoginQuery } from '@/__generated__/graphql';
 //import Cookies from 'js-cookie'
 //import api from './api';
 //import jwt from "jsonwebtoken";
@@ -26,6 +29,7 @@ interface IContext {
 export const AuthContext = createContext({} as IContext);
 
 export const AuthProvider = ({ children }: any) => {
+  const {isDemo} = React.useContext(GlobalContext);
   const [user, setUser] = useState(false);
   const [cookiesToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const [isLoading, setIsLoading] = useState(true); // Loading is working bad with 404 routes
@@ -116,9 +120,9 @@ export const AuthProvider = ({ children }: any) => {
     refetch: refetch_guest_token,
     networkStatus: networkStatus_guest_token,
   } =
-    //   isDemo
-    // ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
-    // :
+       isDemo
+     ? useFetch<GuestLoginQuery>('/mock/guestLogin.json')
+     :
     useQuery(GUEST_LOGIN, {
       context: { clientName: APOLLO_LINKS_CONTEXT.accounts },
     });

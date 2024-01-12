@@ -30,11 +30,8 @@ query getUserData{
                 longitude
                 latitude
                 description
-                inn
-                bankBic
-                settlementAccount
-                correspondentAccount
-                kpp
+               
+               
                 isActive
                 logo
                 websiteUrl
@@ -62,25 +59,7 @@ query getUserData{
                 id
                 clientId
                 clientUserId
-                tag
-                luid
-                region
-                regionCode
-                area
-                areaCode
-                city
-                cityCode
-                town
-                townCode
-                street
-                streetCode
-                house
-                corp
-                flat
-                note
-                status
-                livesLuId
-                houseCode
+               
             }
         }
         statusCode

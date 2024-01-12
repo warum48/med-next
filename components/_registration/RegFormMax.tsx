@@ -44,6 +44,8 @@ import { GridStretcher } from '../GridStrecher/GridStretcher';
 import { SpaceYMain } from '../Spacers/Spacers';
 import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
 import { tokenVar } from '@/apollo/state/token';
+import { useMutationNotifications } from '@/services/useNotifications';
+import { useMockMutation } from '@/services/useMockMutation';
 
 type TRegFormProps = {
   setStep: React.Dispatch<React.SetStateAction<TRegStep>>;
@@ -241,7 +243,12 @@ export function RegFormMax({ setStep }: TRegFormProps) {
     }
   }, [data_config, isFormDemo]);
 
-  const [doReg, { loading: loading_reg, error: error_reg, data: data_reg }] = useMutation(
+  const [doReg, { loading: loading_reg, error: error_reg, data: data_reg }] = 
+  isDemo
+    ? useMockMutation<any>('/mock/patientRegistration.json', {})
+    : 
+  
+  useMutation(
     PATIENT_REGISTRATION,
     {
       variables: {
@@ -273,6 +280,20 @@ export function RegFormMax({ setStep }: TRegFormProps) {
       
     }
   }, [data_reg]);
+
+  function onSuccess() {
+    //console.log('--reg succ--');
+  }
+
+
+  useMutationNotifications({
+    text: 'Подтвердите код',
+    data: data_reg,
+    data_code: data_reg?.patientRegistration?.statusCode,
+    data_details: data_reg?.patientRegistration?.details,
+    error: error_reg,
+    onSuccess: onSuccess,
+  });
 
   const FormContainerComponent = FormPaper; //!true ? InnerPageContainer : ;
 
@@ -522,8 +543,36 @@ export function RegFormMax({ setStep }: TRegFormProps) {
             networkStatus={networkStatus_config}
           />
         )}
-        {error_reg && <ErrorMessage detail={data_reg?.patientRegistration?.details} />}
+        {error_reg && <ErrorMessage detail={data_reg?.patientRegistration?.details || error_reg.message} />}
       </FormContainerComponent>
     </Container>
   );
 }
+
+/*
+{
+    "data": {
+        "patientRegistration": {
+            "statusCode": 200,
+            "details": "Flash Call has been initiated",
+            "data": null,
+            "__typename": "RequestResult"
+        }
+    }
+}
+*/
+
+/*
+{
+    "data": {
+        "registrationFlashCallCode": {
+            "data": null,
+            "details": "The oracle connection is absent",
+            "statusCode": 500,
+            "__typename": "LoginResult"
+        }
+    }
+}
+*/
+
+

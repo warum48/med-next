@@ -9,12 +9,14 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
 import { formatPhoneNumber } from '@/utils/formatPhone';
+import { useFetch } from '@/services/useFetch';
+import { GetUserDataQuery } from '@/__generated__/graphql';
 
 export function UserButton() {
   const router = useRouter();
   const pathname = usePathname();
   const hasPhoto = false;
-  const {navBarCollapsed} = React.useContext(GlobalContext);
+  const {navBarCollapsed, isDemo} = React.useContext(GlobalContext);
   const {
     data: data_user_info,
     loading: loading_user_info,
@@ -22,9 +24,9 @@ export function UserButton() {
     refetch: refetch_user_info,
     networkStatus: networkStatus_user_info,
   } =
-    //isDemo
-    //  ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
-    //  :
+  isDemo
+  ? useFetch<GetUserDataQuery>('/mock/getUserData.json')
+  :
     useQuery(GET_USER_DATA, {
       context: { clientName: 'accounts' },
     });

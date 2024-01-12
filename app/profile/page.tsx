@@ -22,18 +22,24 @@ import { InnerPageTitle, Title1_main, TitleLabel } from '@/components/TextBlocks
 import { EditableText, TEditTypes, TTfOnChange } from '@/components/Inputs/EditableText';
 import { DropZone } from '@/components/_profile/DropZone';
 import { GET_PROFILE_FORM_DATA } from '@/apollo/queries/main/_getProfile';
-import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
+import { MutationResult, useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { GlobalContext } from '@/context/ContextGlobal';
 import { GET_CITIES } from '@/apollo/queries/main/getCities';
 import { Preloader } from '@/components/Preloader/Preloader';
 import { useFetch } from '@/services/useFetch';
-import { GetCentersAndCitiesQuery, UserInput } from '@/__generated__/graphql';
+import {
+  ChangeUserMutation,
+  GetCentersAndCitiesQuery,
+  GetUserDataQuery,
+  UserInput,
+} from '@/__generated__/graphql';
 import { GET_USER_DATA } from '@/apollo/queries/accounts/getUserData';
 import { formatDateNormalToRu } from '@/utils/formatDates';
 import { formatPhoneNumber } from '@/utils/formatPhone';
 import { CHANGE_USER } from '@/apollo/queries/accounts/mutations/changeUser';
 import { updatedUserFields } from '@/apollo/state/updateUser';
 import { useMutationNotifications } from '@/services/useNotifications';
+import { useMockMutation } from '@/services/useMockMutation';
 
 type TFields = {
   field: string;
@@ -71,7 +77,7 @@ export default function Profile() {
     setUserInfo(
       produce((draft) => {
         draft.forEach((item) => {
-          item.newValue = '';
+          item.newValue = null;
         });
       })
     );
@@ -96,26 +102,29 @@ export default function Profile() {
     error: error_user_info,
     refetch: refetch_user_info,
     networkStatus: networkStatus_user_info,
-  } =
-    //isDemo
-    //  ? useFetch<GetCentersAndCitiesQuery>('/mock/_getProfile.json')
-    //  :
-    useQuery(GET_USER_DATA, {
-      context: { clientName: 'accounts' },
-    });
+  } = isDemo
+    ? useFetch<GetUserDataQuery>('/mock/getUserData.json')
+    : useQuery(GET_USER_DATA, {
+        context: { clientName: 'accounts' },
+      });
+
+  type TmutRes = { loading: boolean; error: any; data: any; refetch?: any; networkStatus?: any };
+  type TMuta = [() => void, TmutRes];
 
   const [
     mutateUser,
     { loading: loading_mutate_user, error: error_mutate_user, data: data_mutate_user },
-  ] = useMutation(CHANGE_USER, {
-    variables: {
-      userChangings: updatedUserFields_re, //{...values, phoneNumber:values.phoneNumber.replace(/\D/g, ''), birthDate: '2012-12-31'} ,
-    },
-  });
-
+  ] = isDemo
+    ? useMockMutation<any>('/mock/changeUser.json', {})
+    : useMutation(CHANGE_USER, {
+        variables: {
+          userChangings: updatedUserFields_re, //{...values, phoneNumber:values.phoneNumber.replace(/\D/g, ''), birthDate: '2012-12-31'} ,
+        },
+      });
 
   function onSuccess() {
     refetch_user_info();
+    resetChanges();
   }
 
   useMutationNotifications({
@@ -128,15 +137,15 @@ export default function Profile() {
   });
 
   React.useEffect(() => {
-    console.log('=-=data_user_info', data_user_info);
-    console.log('=-=data_user_info----', data_user_info?.getUserData?.data);
+    //console.log('=-=data_user_info', data_user_info);
+    //console.log('=-=data_user_info----', data_user_info?.getUserData?.data);
     if (data_user_info?.getUserData?.data) {
       for (const element in data_user_info?.getUserData?.data) {
-        console.log('-=element', element);
-        console.log(
-          'data_user_info?.getUserData?.data-element',
-          data_user_info?.getUserData?.data[element as keyof typeof data_user_info.getUserData.data]
-        ); //keyof typeof data_user_info?.getUserData?.data
+        //console.log('-=element', element);
+        //console.log(
+        //  'data_user_info?.getUserData?.data-element',
+        //  data_user_info?.getUserData?.data[element as keyof typeof data_user_info.getUserData.data]
+        //); //keyof typeof data_user_info?.getUserData?.data
       }
     }
   }, [data_user_info]);
@@ -157,11 +166,11 @@ export default function Profile() {
     // React.useMemo(() => (
 
     {
-      field: 'firstdName',
+      field: 'firstName',
       name: 'Имя',
       mock: 'Анна',
       required: true,
-      newValue: '',
+      newValue: null,
       value: data_user_info?.getUserData?.data?.firstName ?? '',
     },
     {
@@ -169,7 +178,7 @@ export default function Profile() {
       name: 'Фамилия',
       mock: 'Антонова',
       required: true,
-      newValue: '',
+      newValue: null,
       value: data_user_info?.getUserData?.data?.lastName ?? '',
     },
     {
@@ -177,7 +186,7 @@ export default function Profile() {
       name: 'Отчество',
       mock: 'Антоновка',
       required: false,
-      newValue: '',
+      newValue: null,
       value: data_user_info?.getUserData?.data?.patronymic ?? '',
     },
     {
@@ -185,7 +194,7 @@ export default function Profile() {
       name: 'Телефон',
       mock: '+71234567890',
       required: true,
-      newValue: '',
+      newValue: null,
       value: formatPhoneNumber(data_user_info?.getUserData?.data?.phoneNumber) ?? '',
       mask: '',
     },
@@ -194,7 +203,7 @@ export default function Profile() {
       name: 'Email',
       mock: 'mail@gmail.com',
       required: true,
-      newValue: '',
+      newValue: null,
       value: data_user_info?.getUserData?.data?.email ?? '',
       mask: '',
     },
@@ -203,19 +212,19 @@ export default function Profile() {
       name: 'Дата рождения (дд.мм.гггг)',
       mock: '01.01.2001',
       required: true,
-      newValue: '',
+      newValue: null,
       value: formatDateNormalToRu(data_user_info?.getUserData?.data?.birthDate) ?? '',
       mask: '',
     },
     {
       field: 'city',
       mutationField: 'cityId',
-      mutationFunction: (value:string) => parseFloat(value),
+      mutationFunction: (value: string) => parseFloat(value),
       name: 'Город',
       mock: 'Санкт-Петербург',
       required: true,
-      newValue: '',
-      value: data_user_info?.getUserData?.data?.patronymic ?? '1',
+      newValue: null,
+      value: data_user_info?.getUserData?.data?.city?.id.toString() ?? '1',
       mask: '',
       type: 'select',
       data: data_profile?.getCities?.data?.map(({ id, name }: any) => ({
@@ -226,12 +235,12 @@ export default function Profile() {
     {
       field: 'defaultMedicalCenter',
       mutationField: 'defaultMedicalCenterId',
-      mutationFunction: (value:string) => parseFloat(value),
+      mutationFunction: (value: string) => parseFloat(value),
       name: 'Медцентр по умолчанию',
       mock: 'Онни',
       required: true,
-      newValue: '',
-      value: data_user_info?.getUserData?.data?.patronymic ?? '31',
+      newValue: null,
+      value: data_user_info?.getUserData?.data?.defaultMedicalCenter?.id.toString() ?? '31',
       mask: '',
       type: 'select',
       data: data_profile?.getMedicalCenters?.data?.map(({ id, name }: any) => ({
@@ -249,8 +258,16 @@ export default function Profile() {
       mask: '',
       autosize: true,
     },*/
-    { field: 'inn', name: 'ИНН', mock: '', required: false, newValue: '', value: '', mask: '' },
-    { field: 'snils', name: 'Снилс', mock: '', required: false, newValue: '', value: '', mask: '' },
+    { field: 'inn', name: 'ИНН', mock: '', required: false, newValue: null, value: '', mask: '' },
+    {
+      field: 'snils',
+      name: 'Снилс',
+      mock: '',
+      required: false,
+      newValue: null,
+      value: '',
+      mask: '',
+    },
   ];
 
   /*const complexFields = {
@@ -261,22 +278,28 @@ export default function Profile() {
     //userInfo: TFields[]
     const updatedData: UserInput = {};
     userInfo.forEach((field) => {
-      if (field.newValue !== '') {
+      if (field.newValue !== null) {
         //updatedData[field.mutationField ? field.mutationField as keyof typeof updatedData : field.field as keyof typeof updatedData] = field.newValue;
-        let castedValue = field.mutationFunction ? field.mutationFunction(field.newValue) : field.newValue;
-        updatedData[field.mutationField ? field.mutationField as keyof typeof updatedData : field.field as keyof typeof updatedData] = castedValue;//field.newValue;
+        let castedValue = field.mutationFunction
+          ? field.mutationFunction(field.newValue)
+          : field.newValue;
+        updatedData[
+          field.mutationField
+            ? (field.mutationField as keyof typeof updatedData)
+            : (field.field as keyof typeof updatedData)
+        ] = castedValue; //field.newValue;
       }
     });
-    console.log('updatedData', updatedData);
+    // console.log('updatedData', updatedData);
     updatedUserFields(updatedData);
-    console.log('updatedUserFields_re', updatedUserFields_re);
-   // mutateUser();
+    //  console.log('updatedUserFields_re', updatedUserFields_re);
+    // mutateUser();
     //return updatedData;
   }
 
   React.useEffect(() => {
     // setUserInfo(userInfo);
-    console.log('data_profile', data_profile);
+    //console.log('data_profile', data_profile);
     renderCount.current += 1;
     if (data_profile && data_user_info) {
       setUserInfo(defaultUserInfo);
@@ -284,8 +307,8 @@ export default function Profile() {
   }, [data_profile, data_user_info]);
 
   React.useEffect(() => {
-    updateUserData()
-  }, [userInfo])
+    updateUserData();
+  }, [userInfo]);
 
   /*
     queryMapping: data?.getGoodsCategories?.resultsList.map(
@@ -333,7 +356,7 @@ export default function Profile() {
                 <EditableText
                   type={item.type}
                   autosize={item.autosize}
-                  text={item.newValue || item.value} //item.mock
+                  text={item.newValue === null ? item.value : item.newValue} //item.mock
                   data={item.data}
                   value={item.newValue || item.value}
                   //onChange={(
@@ -350,16 +373,18 @@ export default function Profile() {
                 {/*<button onClick={()=>console.log('userInfo', userInfo)}>chusi</button>*/}
               </Group>
             ))}
+            {/*userInfo.filter((item: any) => item.newValue != null).length}
+            {JSON.stringify(userInfo)*/}
 
             {loading_profile && <Preloader />}
 
             <Group py="md">
-              {userInfo.filter((item: any) => item.newValue != '').length > 0 && (
+              {userInfo.filter((item: any) => item.newValue != null).length > 0 && (
                 <>
                   <StyledButton appearence={'main_first_outlined'} maw={150} onClick={resetChanges}>
                     Отмена
                   </StyledButton>
-                  <StyledButton appearence={'main_second'} maw={150} onClick={()=> mutateUser()}>
+                  <StyledButton appearence={'main_second'} maw={150} onClick={() => mutateUser()}>
                     Сохранить
                   </StyledButton>
                 </>

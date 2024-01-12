@@ -32,6 +32,8 @@ import { FloatingLabelInput } from '@/components/Inputs/FloatingLabelInput';
 import { useCookies } from 'react-cookie';
 import { AuthContext } from '@/context/AuthContext';
 import { useMutationNotifications } from '@/services/useNotifications';
+import { useMockMutation } from '@/services/useMockMutation';
+import { GlobalContext } from '@/context/ContextGlobal';
 //import { Title1_main } from '../../_styles/headers';
 //import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
@@ -54,6 +56,7 @@ export default function AuthPhonePass() {
   const phoneNumberVar_re = useReactiveVar(phoneNumberVar);
   //const {checkAuth} = useAuth();
  const {checkAuth, login} = React.useContext(AuthContext);
+ const {isDemo} = React.useContext(GlobalContext);
 
  
 
@@ -70,7 +73,13 @@ export default function AuthPhonePass() {
     },
   });
 
-  const [doAuth, { loading, error, data }] = useLazyQuery(PATIENT_LOGIN_BY_PASSWORD, {
+  const [doAuth, { loading, error, data }] = 
+  
+  isDemo
+    ? useMockMutation<any>('/mock/patientLoginByPassword.json', {})
+    :
+  
+  useLazyQuery(PATIENT_LOGIN_BY_PASSWORD, {
     variables: {
       //phoneNumber:  phoneNumberVar_re ,
       //password: form.values.password
@@ -84,9 +93,10 @@ export default function AuthPhonePass() {
       data_code: data?.patienLoginByPassword?.statusCode,
       data_details: data?.patienLoginByPassword?.details,
       error: error,
-      onSuccess: ()=>{
-        console.log('---onSuccess');
-      },
+      //onSuccess: ()=>{
+      //  console.log('---onSuccess');
+      //},
+      showOnlyError: true
     });  
 
   const onSubmit = (values:any) => {

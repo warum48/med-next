@@ -39,8 +39,10 @@ import {
 } from '../TextBlocks/TextBlocks';
 import { RoutesTypes } from '@/global/ROUTES';
 import Link from 'next/link';
+import { GlobalContext } from '@/context/ContextGlobal';
 
 export const Home = () => {
+  const { isDemo } = React.useContext(GlobalContext);
   //const { classes, theme } = useStyles();
   /*  const items = stats.map((stat) => (
           <div key={stat.label}>
@@ -80,7 +82,7 @@ export const Home = () => {
               <Stack align="center">
                 <Title1_main  style={{
                     textAlign:'center'
-                  }}>Добро пожаловать в&nbsp;Вирилис</Title1_main>
+                  }}>Добро пожаловать {!isDemo ? 'в&nbsp;Вирилис' : ''}!</Title1_main>
                 <TextInfo
                   style={{
                     textAlign:'center'

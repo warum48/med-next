@@ -19,6 +19,9 @@ import { FloatingLabelInputMask } from '../Inputs/FloatingLabelInputMask';
 import { TextInfo, Title1_main } from '../TextBlocks/TextBlocks';
 import { FormPaper } from '../Containers/FormPaper';
 import { tokenVar } from '@/apollo/state/token';
+import { useMutationNotifications } from '@/services/useNotifications';
+import { GlobalContext } from '@/context/ContextGlobal';
+import { useMockMutation } from '@/services/useMockMutation';
 //import { TextInfo, Title1_main } from '../../_styles/headers';
 //import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 //import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
@@ -43,13 +46,20 @@ type TCodeConfirmProps = {
  * @returns {JSX.Element} The JSX element for the code confirmation component.
  */
 export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
+  const { isDemo } = React.useContext(GlobalContext);
   const { setCookieToken } = React.useContext(ApolloSettingsContext);
 
   const loginPhoneNumber = useReactiveVar(phoneNumberVar);
   const confirmationCode = useReactiveVar(confirmationCodeVar);
   const flashCallCode = useReactiveVar(flashCallCodeVar);
 
-  const [doConfirmation, { loading, error, data }] = useMutation(REGISTRATION_FLASH_CALL_CODE, {
+  const [doConfirmation, { loading, error, data }] = 
+  
+  isDemo
+    ? useMockMutation<any>('/mock/registrationFlashCallCode.json', {})
+    : 
+  
+  useMutation(REGISTRATION_FLASH_CALL_CODE, {
     variables: {
       flashCallCode,
     },
@@ -100,12 +110,31 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
     }
   }, [data]);
 
+
+
+  useMutationNotifications({
+    text: 'Добро пожаловать!',
+    data: data,
+    data_code: data?.registrationFlashCallCode?.statusCode,
+    data_details: data?.registrationFlashCallCode?.details,
+    error: error,
+   // onSuccess: onSuccess,
+  });
+
   return (
     <>
       <Container size={360} my={40}>
-      <Center><Title1_main ta="center"
-        
-        >Введите код подтверждения</Title1_main></Center>
+     
+
+<Center>
+        <Title1_main
+          //align="center"
+          ta="center"
+          style={{textAlign:'center'}}
+        >
+          Введите код подтверждения
+        </Title1_main>
+      </Center>
 
         <FormPaper>
           <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
@@ -130,7 +159,7 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
             </Button>
           </form>
           {error &&
-          <ErrorMessage detail={data?.registrationFlashCallCode?.details} />
+          <ErrorMessage detail={data?.registrationFlashCallCode?.details || error.message} />
 }
         </FormPaper>
       </Container>
@@ -145,6 +174,22 @@ export function CodeConfirm({ setStep }: TCodeConfirmProps): JSX.Element {
         "registrationFlashCallCode": {
             "data": {
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDQ4NzY5ODEsInN1YiI6eyJsb2dpbiI6Ijc5MjU3NjU0MzIxIiwicGFzc3dvcmQiOiIkMmIkMTIkeVdhLkFLT0V5Z1F1R3ZJazNneXkuLnZCcTZ5MHFBUURQdkxvNzJ3S0hiRHJqYWFGdGpWVWUifX0.vMiqoj_B44wGTF9x1iq7INpXVZ52Xd8a5qPQ3BvOD8I",
+                "__typename": "Token"
+            },
+            "details": "Ok",
+            "statusCode": 200,
+            "__typename": "LoginResult"
+        }
+    }
+}
+*/
+
+/*
+{
+    "data": {
+        "registrationFlashCallCode": {
+            "data": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDUwNzQ0MDYsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMTIyMzM0IiwicGFzc3dvcmQiOiIkMmIkMTIkV3pmb3dCZFVkOU9Ja2x0R3JvVzQudTB2aDdBanFNQUdqQmhmTll6V0RCSVRzczNaVjN2REcifX0.Gv56gAItmwUDp6UgOb8eSPSlC95H7HRrmWYQVX0gxY4",
                 "__typename": "Token"
             },
             "details": "Ok",

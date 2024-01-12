@@ -71,6 +71,9 @@
   max-width: 400px;
   /*margin-right: 1.5rem; */
   margin-left: .5rem;
+  @media (max-width: $mantine-breakpoint-xs) {
+    height: 1.8rem;
+}
 }
 
 .title {

@@ -1,0 +1,13 @@
+{
+    "changeUser": {
+        "data": {
+            "id": 31,
+            "__typename": "User"
+        },
+        "recordsCount": null,
+        "pagesCount": null,
+        "statusCode": 200,
+        "details": "Ok",
+        "__typename": "UserResult"
+    }
+}

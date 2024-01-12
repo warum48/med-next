@@ -1,0 +1,11 @@
+{
+    "registrationFlashCallCode": {
+        "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDUwNzQ0MDYsInN1YiI6eyJsb2dpbiI6Ijc5MjUxMTIyMzM0IiwicGFzc3dvcmQiOiIkMmIkMTIkV3pmb3dCZFVkOU9Ja2x0R3JvVzQudTB2aDdBanFNQUdqQmhmTll6V0RCSVRzczNaVjN2REcifX0.Gv56gAItmwUDp6UgOb8eSPSlC95H7HRrmWYQVX0gxY4",
+            "__typename": "Token"
+        },
+        "details": "Ok",
+        "statusCode": 200,
+        "__typename": "LoginResult"
+    }
+}

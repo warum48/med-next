@@ -1,0 +1,13 @@
+{
+        "guestLogin": {
+            "data": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDUwNjE4MjMsInN1YiI6eyJsb2dpbiI6Imd1ZXN0IiwicGFzc3dvcmQiOiJndWVzdCJ9fQ.5UQQeWmbPqxDfyC3aLuGgWY9JEfpmqPwk0FbTCWH7pI",
+                "__typename": "Token"
+            },
+            "recordsCount": null,
+            "pagesCount": null,
+            "statusCode": 200,
+            "details": "Ok",
+            "__typename": "LoginResult"
+        }
+    }

@@ -9,14 +9,15 @@ type TProps = {
   data_code: number | null | undefined;
   data_details: string | null | undefined;
   error: ApolloError | undefined;
-  onSuccess: () => void;
+  onSuccess?: () => void;
+  showOnlyError?: boolean;
 };
 
-export const useMutationNotifications = ({ text, data, data_code, data_details, error, onSuccess }: TProps) => {
+export const useMutationNotifications = ({ text, data, data_code, data_details, error, onSuccess, showOnlyError = false }: TProps) => {
   React.useEffect(() => {
-    if (data) {
+    if (data && !showOnlyError) {
       if (data_code == 200) {
-        onSuccess();
+        onSuccess ? onSuccess() : null;
         console.log('added');
         notifications.show({
           title: 'Готово',

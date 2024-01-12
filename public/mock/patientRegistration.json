@@ -1,0 +1,8 @@
+{
+    "patientRegistration": {
+        "statusCode": 200,
+        "details": "Flash Call has been initiated",
+        "data": null,
+        "__typename": "RequestResult"
+    }
+}
